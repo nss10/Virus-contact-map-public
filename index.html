@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- Styles -->
+        <link rel = "icon" href = "img/virus-contact-map-logo.png" type = "image/x-icon"> 
+        <link rel="stylesheet" type="text/css" href="css/normal.css"/>
+        <link rel='stylesheet' type="text/css" href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css'/>
+
+        <title>Virus Contact Map</title>
+    </head>
+    <body>
+        <!-- Title Bar -->
+        <section id="title-section">
+            <table class="table-full">
+                <tr>
+                    <td>
+                        <img src="img/virus-contact-map-logo.png" height="100" width="100">
+                    </td>
+                    <td>
+                        <h1 class="page-title">Virus Contact Map</h1>
+                    </td>
+                    <td>
+                        <label>Google Maps JSON file location </label>
+                        <input type="text" id="json-script">
+                        <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <!-- Map Area -->
+        <section id="map-section">
+            <div id="map"></div>
+        </section>
+        <!-- Scripts -->
+        <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+        <script src="js/map_init.js"></script>
+    </body>
+</html>

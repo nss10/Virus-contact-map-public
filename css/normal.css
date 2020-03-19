@@ -1,0 +1,51 @@
+@font-face{
+    font-family: 'regular';
+    src: url('fonts/MADE-Evolve-Sans-Regular.woff') format('woff');
+}
+/* ids */
+#map{
+    height: 800px;
+    width: 100%;
+}
+#title-section{
+    background-color: #4d0066;
+    
+}
+
+/* classes */
+.table-full{
+    width: 100%;
+}
+.page-title{
+    font-size: 200%;
+}
+.load-json-button {
+	background:linear-gradient(to bottom, #e8dbff 5%, #d7bde6 100%);
+	background-color:#e8dbff;
+	border:1px solid #3b3b3b;
+	display:inline-block;
+	cursor:pointer;
+	color:#442857;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+.load-json-button:hover {
+	background:linear-gradient(to bottom, #d7bde6 5%, #e8dbff 100%);
+	background-color:#d7bde6;
+}
+.load-json-button:active {
+	position:relative;
+	top:1px;
+}
+
+/* regular tags */
+body{
+    background-color: #684f77;
+    font-family: regular;
+    font-weight: normal;
+    font-style: normal;
+    color: #ffebfc;
+}
