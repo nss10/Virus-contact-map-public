@@ -9,7 +9,6 @@
 }
 #title-section{
     background-color: #4d0066;
-    
 }
 
 /* classes */
@@ -39,6 +38,11 @@
 .load-json-button:active {
 	position:relative;
 	top:1px;
+}
+.long-input{
+    width: 20%;
+    padding: 4px 12px;
+    margin: 8px 0;
 }
 
 /* regular tags */
