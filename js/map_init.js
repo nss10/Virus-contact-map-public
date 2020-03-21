@@ -25,21 +25,20 @@ function initMap(pos) {
 
     // init of map with blank geojson
     map.on('load', function() {
-        map.addSource('line', {
+        map.addSource('point', {
             'type': 'geojson',
             'data': geojson
         });
         map.addLayer({
-            'id': 'line-animation',
-            'type': 'line',
-            'source': 'line',
-            'layout': {
-                'line-cap': 'round',
-                'line-join': 'round'
-            },
+            'id': 'user-position',
+            'type': 'circle',
+            'source': 'point',
             'paint': {
-                'line-color': '#F7455D',
-                'line-width': 3
+                'circle-radius': {
+                    'base': 3.75,
+                    'stops': [[18, 3], [33, 270]]
+                },
+                'circle-color': '#F7455D'
             }
         });
     });
@@ -72,12 +71,11 @@ function populateLines(json) {
     positions = new Array(0);
     for (var i = 0; i < json.timelineObjects.length; i++) {
         if (i % 2 == 1) {
-            console.log(json.timelineObjects[i].placeVisit);
-            positions.push([json.timelineObjects[i].placeVisit[0].location.longitudeE7 / 1000000,
-                json.timelineObjects[i].placeVisit.location.latitudeE7 / 1000000]);
+            var placeVisit = json['timelineObjects'][i]['placeVisit'];
+            if (placeVisit)
+                positions.push([placeVisit['location']['longitudeE7'] / 10000000, placeVisit['location']['latitudeE7'] / 10000000]);
         }
     }
-    console.log(positions);
     // reload map
     console.log("Reloading map with new positional data.");
     initGeo();
