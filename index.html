@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="google-signin-client_id" content="368312908924-tf42tdi9k7gva663qifhi4mjv1mubi59.apps.googleusercontent.com">
 
         <!-- Styles -->
         <link rel = "icon" href = "img/virus-contact-map-logo.png" type = "image/x-icon"> 
@@ -28,7 +29,14 @@
                         <label>Google Maps JSON file location </label>
                         <input class="long-input" type="text" id="json-script">
                         <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a>
+                        <div id="response-div"></div>
                     </td>
+                    <!-- Google reference buttons
+                    <td>
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                        <a href="#" onclick="signOut();">Sign out</a>
+                    </td>
+                    -->
                 </tr>
             </table>
         </section>
@@ -36,8 +44,12 @@
         <section id="map-section">
             <div id="map"></div>
         </section>
+
         <!-- Scripts -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+        <script src="js/google-signin.js"></script>
+        <script src="js/page-populations.js"></script>
         <script src="js/map_init.js"></script>
     </body>
 </html>
