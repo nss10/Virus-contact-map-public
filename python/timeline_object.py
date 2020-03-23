@@ -131,7 +131,7 @@ class timelineObject:
             if 'placeVisit' in obj:
                 v = {}
                 if 'location' in obj['placeVisit']:
-                    v['location'] = self.get_simplified_location(obj['placeVisit']['location'])
+                    v['place_location'] = self.get_simplified_location(obj['placeVisit']['location'])
                 if 'duration' in obj['placeVisit']:
                     v['duration'] = self.get_duration(obj['placeVisit']['duration'])
                 if 'placeConfidence' in obj['placeVisit']:
@@ -151,7 +151,7 @@ class timelineObject:
                     for child in child_list:
                         c = {}
                         if 'location' in child:
-                            c['location'] = self.get_simplified_location(child['location'])
+                            c['place_location'] = self.get_simplified_location(child['location'])
                         if 'duration' in child:
                             c['duration'] = self.get_duration(child['duration'])
                         if 'placeConfidence' in child:
