@@ -34,6 +34,12 @@ class timelineObject:
         return str(datetime.utcfromtimestamp(ts))
 
     def get_lat_lon(self, loc):
+        """
+        Converts E7 to standard lat, lon, and adds GeoJSON field
+        for MongoDB as Point type in 2DSphere format
+        :param loc:
+        :return:
+        """
         res = {}
         res['lat'] = self._get_scalar(loc['latitudeE7'])
         res['lon'] = self._get_scalar(loc['longitudeE7'])
