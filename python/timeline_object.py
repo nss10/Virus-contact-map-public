@@ -31,7 +31,7 @@ class timelineObject:
         :return: UTC time as string
         """
         ts = int(ts) / 1000
-        return str(datetime.utcfromtimestamp(ts))
+        return datetime.utcfromtimestamp(ts)
 
     def get_lat_lon(self, loc):
         """
