@@ -18,8 +18,9 @@ collection = db["placesVisited"]
 
 paths = []
 
-for dirname, _, filenames in os.walk("./data"):
+for dirname, _, filenames in os.walk("../json/"):
     for filename in filenames:
+        print(filename)
         pvList = get_place_visits(os.path.join(dirname, filename))
         for pv in pvList:
             collection.insert(pv)
