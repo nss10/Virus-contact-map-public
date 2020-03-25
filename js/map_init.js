@@ -69,26 +69,40 @@ function initGeo() {
 function populateLines(json) {
     console.log("Populating lines");
     positions = new Array(0);
+    console.log(json.timelineObjects.length + " timeline objects found.");
+    // for all timeline objects
     for (var i = 0; i < json.timelineObjects.length; i++) {
-        if (i % 2 == 1) {
-            var placeVisit = json['timelineObjects'][i]['placeVisit'];
-            if (placeVisit)
-                positions.push([placeVisit['location']['longitudeE7'] / 10000000, placeVisit['location']['latitudeE7'] / 10000000]);
+        // check if the timeline object is defined
+        var timelineObject = json.timelineObjects[i];
+        if (timelineObject) {
+            // check if we have the placevisit object defined
+            var placeVisit = timelineObject['placeVisit'];
+            if (placeVisit) {
+                // check if we have the location object defined
+                var location= placeVisit['location'];
+                if (location)
+                    positions.push([location['longitudeE7'] / 10000000, location['latitudeE7'] / 10000000]);
+            }
         }
     }
     // reload map
     console.log("Reloading map with new positional data.");
     initGeo();
     initMap(positions[0]);
+    document.getElementById("response-div").innerHTML = contributeForm;
 }
 
 // load JSON function called from button press
 function loadJSON() {
     var input = document.getElementById("json-script").value;
     console.log("Attempting to load: " + input);
+    document.getElementById("response-div").innerHTML = "";
     // retreives json object from http and https sources only
     fetch(input).then(response => response.json()).then(json => {
         populateLines(json);
+    }).catch(function(){
+        console.log("We encountered an error loading the given json file.");
+        document.getElementById("response-div").innerHTML = jsonError;
     });
 }
 

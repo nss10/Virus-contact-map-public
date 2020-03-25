@@ -1,0 +1,5463 @@
+{
+  "timelineObjects" : [ {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377187089,
+        "longitudeE7" : -892128616
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205012,
+        "longitudeE7" : -892118428
+      },
+      "duration" : {
+        "startTimestampMs" : "1580519534235",
+        "endTimestampMs" : "1580519655020"
+      },
+      "distance" : 218,
+      "activityType" : "WALKING",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "WALKING",
+        "probability" : 93.10256242752075
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 4.263128340244293
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 1.2285975739359856
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.7077581714838743
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.2627245616167784
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.19517458276823163
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.09862675797194242
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.06283466354943812
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.031353518716059625
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.014213213580660522
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.012236207840032876
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.008207061182474717
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.006437491538235918
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.006053158358554356
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 7.697213959545479E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377187271,
+          "lngE7" : -892126617
+        }, {
+          "latE7" : 377198104,
+          "lngE7" : -892128524
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118377
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 65.36252
+      },
+      "duration" : {
+        "startTimestampMs" : "1580519655020",
+        "endTimestampMs" : "1580664846130"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "centerLatE7" : 377205194,
+      "centerLngE7" : -892118475,
+      "visitConfidence" : 90,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 31.349552
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 2.8546996
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.23357107
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.0923859
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205012,
+        "longitudeE7" : -892118428
+      },
+      "endLocation" : {
+        "latitudeE7" : 377353733,
+        "longitudeE7" : -891875186
+      },
+      "duration" : {
+        "startTimestampMs" : "1580664846130",
+        "endTimestampMs" : "1580665210000"
+      },
+      "distance" : 2703,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 93.79987716674805
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 4.021623730659485
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.9549742564558983
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.488109327852726
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.4479174502193928
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.10499972850084305
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.0908735441043973
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.04645274602808058
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.017037364887073636
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.015532317047473043
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.005018024239689112
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.0039024122088449076
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.002760907227639109
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 9.054401743924245E-4
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.758481147362545E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203407,
+          "lngE7" : -892118377
+        }, {
+          "latE7" : 377267341,
+          "lngE7" : -892023544
+        }, {
+          "latE7" : 377353591,
+          "lngE7" : -891875381
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377354729,
+        "longitudeE7" : -891873128,
+        "placeId" : "ChIJjcC7s0MRd4gR3YeFcHZH-KU",
+        "address" : "1396 E Main St\nCarbondale, IL 62901\nUSA",
+        "name" : "McDonald's",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 88.358665
+      },
+      "duration" : {
+        "startTimestampMs" : "1580665210000",
+        "endTimestampMs" : "1580665835132"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377355200,
+      "centerLngE7" : -891873725,
+      "visitConfidence" : 93,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377384335,
+        "longitudeE7" : -891870646,
+        "placeId" : "ChIJ7f4Ep0YRd4gR7u2HSa9AVEc",
+        "locationConfidence" : 4.9876184
+      }, {
+        "latitudeE7" : 377340481,
+        "longitudeE7" : -891900229,
+        "placeId" : "ChIJ_UzifbAWd4gRgMmpltTHg6M",
+        "locationConfidence" : 3.4467912
+      }, {
+        "latitudeE7" : 377351240,
+        "longitudeE7" : -891876540,
+        "placeId" : "ChIJsW3PskMRd4gR2ASR8noggOg",
+        "locationConfidence" : 1.9222347
+      }, {
+        "latitudeE7" : 377345221,
+        "longitudeE7" : -891845297,
+        "placeId" : "ChIJoYvkmEMRd4gRpKqEq5NELmE",
+        "locationConfidence" : 0.5472958
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377355832,
+        "longitudeE7" : -891874047
+      },
+      "endLocation" : {
+        "latitudeE7" : 377331625,
+        "longitudeE7" : -891927825
+      },
+      "duration" : {
+        "startTimestampMs" : "1580665835132",
+        "endTimestampMs" : "1580667058978"
+      },
+      "distance" : 544,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 77.5393545627594
+      }, {
+        "activityType" : "STILL",
+        "probability" : 14.05695378780365
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 7.718424499034882
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.33154748380184174
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.15033232048153877
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.08468382875435054
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.033475388772785664
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.03155716403853148
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.03076112479902804
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.01121262030210346
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.006897041748743504
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.0026356003218097612
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.0011838595128210727
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 9.570321708451957E-4
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 2.0196378613945853E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377356262,
+          "lngE7" : -891874542
+        }, {
+          "latE7" : 377341575,
+          "lngE7" : -891912307
+        }, {
+          "latE7" : 377331428,
+          "lngE7" : -891927566
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377340481,
+        "longitudeE7" : -891900229,
+        "placeId" : "ChIJ_UzifbAWd4gRgMmpltTHg6M",
+        "address" : "1300 E Main St\nCarbondale, IL 62901\nUSA",
+        "name" : "University Place Shopping Ctr",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 98.8825
+      },
+      "duration" : {
+        "startTimestampMs" : "1580667058978",
+        "endTimestampMs" : "1580668548187"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377332520,
+          "longitudeE7" : -891932240,
+          "placeId" : "ChIJI6EYfmgRd4gRg33x_ihvedQ",
+          "address" : "1242 E Main St\nCarbondale, IL 62901\nUSA",
+          "name" : "Party City",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 50.45373
+        },
+        "duration" : {
+          "startTimestampMs" : "1580667058978",
+          "endTimestampMs" : "1580667302967"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377333537,
+        "centerLngE7" : -891928136,
+        "visitConfidence" : 83,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377334707,
+          "longitudeE7" : -891929891,
+          "placeId" : "ChIJmdorfGgRd4gRZrm5vf4Fmpo",
+          "locationConfidence" : 37.719875
+        }, {
+          "latitudeE7" : 377337209,
+          "longitudeE7" : -891925433,
+          "placeId" : "ChIJE3OJe2gRd4gRNWyWZGooHw0",
+          "locationConfidence" : 9.454934
+        }, {
+          "latitudeE7" : 377323142,
+          "longitudeE7" : -891934909,
+          "placeId" : "ChIJzaNEKmYRd4gRrborSH46T8s",
+          "locationConfidence" : 0.5179561
+        }, {
+          "latitudeE7" : 377322682,
+          "longitudeE7" : -891925891,
+          "placeId" : "ChIJk0eOgGgRd4gR4Kloiu1Q0EE",
+          "locationConfidence" : 0.37433007
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377333760,
+      "centerLngE7" : -891928620,
+      "visitConfidence" : 83,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377290195,
+        "longitudeE7" : -891931502,
+        "placeId" : "ChIJkz8vL2YRd4gR9w1UMET8OXs",
+        "locationConfidence" : 0.91751236
+      }, {
+        "latitudeE7" : 377303352,
+        "longitudeE7" : -891907806,
+        "placeId" : "ChIJ50EJeWgRd4gRToIQGgF378k",
+        "name" : "AMC CLASSIC Carbondale 8",
+        "locationConfidence" : 0.10744057
+      }, {
+        "latitudeE7" : 377334653,
+        "longitudeE7" : -891959911,
+        "placeId" : "ChIJc2IWnW8Rd4gRBC7QcpwJLBw",
+        "locationConfidence" : 0.08098671
+      }, {
+        "latitudeE7" : 377314657,
+        "longitudeE7" : -891933862,
+        "placeId" : "ChIJkz8vL2YRd4gR2_SAp5TUbtI",
+        "locationConfidence" : 0.0040968563
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377331625,
+          "lngE7" : -891927825,
+          "timestampMs" : "1580667058978",
+          "accuracyMeters" : 27
+        }, {
+          "latE7" : 377337729,
+          "lngE7" : -891927518,
+          "timestampMs" : "1580668099956",
+          "accuracyMeters" : 150
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377331878,
+        "longitudeE7" : -891929960
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205514,
+        "longitudeE7" : -892119213
+      },
+      "duration" : {
+        "startTimestampMs" : "1580668548187",
+        "endTimestampMs" : "1580671865338"
+      },
+      "distance" : 3841,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 49.66231286525726
+      }, {
+        "activityType" : "STILL",
+        "probability" : 43.648090958595276
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 5.685089156031609
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.49095461145043373
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.1640880247578025
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.15582398045808077
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.07794633274897933
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.041452181176282465
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.03733087214641273
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.015739534865133464
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.007631785410922021
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.0052647759730461985
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.004484540113480762
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.0036436522350413725
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.4321382195703336E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377330703,
+          "lngE7" : -891928634
+        }, {
+          "latE7" : 377369041,
+          "lngE7" : -891883316
+        }, {
+          "latE7" : 377385978,
+          "lngE7" : -891858139
+        }, {
+          "latE7" : 377225570,
+          "lngE7" : -892087478
+        }, {
+          "latE7" : 377203369,
+          "lngE7" : -892119140
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377386169,
+          "lngE7" : -891864853,
+          "timestampMs" : "1580669294586",
+          "accuracyMeters" : 28
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 62.795406
+      },
+      "duration" : {
+        "startTimestampMs" : "1580671865338",
+        "endTimestampMs" : "1580675112379"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377204996,
+      "centerLngE7" : -892118359,
+      "visitConfidence" : 90,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 32.957546
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 3.4853678
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.4965622
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.16236255
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377204913,
+        "longitudeE7" : -892118433
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205142,
+        "longitudeE7" : -892118458
+      },
+      "duration" : {
+        "startTimestampMs" : "1580675112379",
+        "endTimestampMs" : "1580679720154"
+      },
+      "distance" : 3337,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 51.47225260734558
+      }, {
+        "activityType" : "STILL",
+        "probability" : 29.58400249481201
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 17.259065806865692
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.4741281736642122
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.4010898992419243
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.4006121773272753
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.13444955693557858
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.09757860098034143
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.08901297114789486
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.04476536123547703
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.026468318537808955
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.007536577322753146
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.004437902316567488
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.0042131923692068085
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 3.8942171158851124E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203407,
+          "lngE7" : -892118453
+        }, {
+          "latE7" : 377210540,
+          "lngE7" : -892134628
+        }, {
+          "latE7" : 377098503,
+          "lngE7" : -892248916
+        }, {
+          "latE7" : 377199897,
+          "lngE7" : -892152175
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118377
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377094688,
+          "lngE7" : -892243805,
+          "timestampMs" : "1580677813961",
+          "accuracyMeters" : 16
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 58.902885
+      },
+      "duration" : {
+        "startTimestampMs" : "1580679720154",
+        "endTimestampMs" : "1580680080990"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205350,
+      "centerLngE7" : -892118875,
+      "visitConfidence" : 93,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 30.939749
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 7.466187
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 1.5210689
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.90089005
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205611,
+        "longitudeE7" : -892119383
+      },
+      "endLocation" : {
+        "latitudeE7" : 377130373,
+        "longitudeE7" : -892168533
+      },
+      "duration" : {
+        "startTimestampMs" : "1580680080990",
+        "endTimestampMs" : "1580680344112"
+      },
+      "distance" : 941,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 74.12097454071045
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 20.727917551994324
+      }, {
+        "activityType" : "STILL",
+        "probability" : 2.7189893648028374
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 1.0512408800423145
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.5927789025008678
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.38640734273940325
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.1517117372713983
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.07008873508311808
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.06837747059762478
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.0448838371085003
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.03639285278040916
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.015870756760705262
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.008721947961021215
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.005372585656004958
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 2.719295707720448E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203369,
+          "lngE7" : -892119293
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892151412
+        }, {
+          "latE7" : 377130355,
+          "lngE7" : -892167816
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 91.68967
+      },
+      "duration" : {
+        "startTimestampMs" : "1580680344112",
+        "endTimestampMs" : "1580684546000"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377138068,
+          "longitudeE7" : -892184878,
+          "placeId" : "ChIJT9MGrToSd4gRYiuq7inUV1A",
+          "address" : "SIU Student Center\n1255 Lincoln Dr Room 233\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center Bowling & Billiards",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 86.382904
+        },
+        "duration" : {
+          "startTimestampMs" : "1580681933158",
+          "endTimestampMs" : "1580683457419"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377143470,
+        "centerLngE7" : -892186400,
+        "visitConfidence" : 76,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "locationConfidence" : 1.5558143
+        }, {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 1.407136
+        }, {
+          "latitudeE7" : 377163423,
+          "longitudeE7" : -892189463,
+          "placeId" : "ChIJGVbeEyYSd4gRQ3MhR3EJZno",
+          "locationConfidence" : 1.3467178
+        }, {
+          "latitudeE7" : 377159359,
+          "longitudeE7" : -892180260,
+          "placeId" : "ChIJveA4qygSd4gR8JmSyeNRcyY",
+          "locationConfidence" : 1.1419885
+        }, {
+          "latitudeE7" : 377133078,
+          "longitudeE7" : -892184373,
+          "placeId" : "ChIJJ6CTgSUSd4gRNdaDJiHgmWo",
+          "locationConfidence" : 0.86848295
+        }, {
+          "latitudeE7" : 377141796,
+          "longitudeE7" : -892174762,
+          "placeId" : "ChIJZddybC8Sd4gRSTwRfPYS4Cg",
+          "locationConfidence" : 0.8485474
+        }, {
+          "latitudeE7" : 377152273,
+          "longitudeE7" : -892188462,
+          "placeId" : "ChIJGVbeEyYSd4gRpNzAuTd7Pbg",
+          "locationConfidence" : 0.78216594
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "address" : "605 Agriculture Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Morris Library",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 51.89982
+        },
+        "duration" : {
+          "startTimestampMs" : "1580683822122",
+          "endTimestampMs" : "1580684546000"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377161767,
+        "centerLngE7" : -892198722,
+        "visitConfidence" : 76,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377164620,
+          "longitudeE7" : -892195737,
+          "placeId" : "ChIJFSlociYSd4gR5Fxbh6Be7Os",
+          "locationConfidence" : 11.31632
+        }, {
+          "latitudeE7" : 377163423,
+          "longitudeE7" : -892189463,
+          "placeId" : "ChIJGVbeEyYSd4gRQ3MhR3EJZno",
+          "locationConfidence" : 8.831175
+        }, {
+          "latitudeE7" : 377159359,
+          "longitudeE7" : -892180260,
+          "placeId" : "ChIJveA4qygSd4gR8JmSyeNRcyY",
+          "locationConfidence" : 3.331229
+        }, {
+          "latitudeE7" : 377180914,
+          "longitudeE7" : -892199618,
+          "placeId" : "ChIJmVwmTiYSd4gRYy5KqNCXdJs",
+          "locationConfidence" : 2.4070377
+        }, {
+          "latitudeE7" : 377180356,
+          "longitudeE7" : -892199296,
+          "placeId" : "ChIJJRnNTyYSd4gRBOkCK6AG2-0",
+          "locationConfidence" : 2.278537
+        }, {
+          "latitudeE7" : 377155478,
+          "longitudeE7" : -892202175,
+          "placeId" : "ChIJD6RM0SUSd4gR5wuwI7EmBB4",
+          "locationConfidence" : 2.1639826
+        }, {
+          "latitudeE7" : 377160649,
+          "longitudeE7" : -892228155,
+          "placeId" : "ChIJsQX-qiYSd4gRvIoCVoNMHFQ",
+          "locationConfidence" : 0.87829596
+        }, {
+          "latitudeE7" : 377136372,
+          "longitudeE7" : -892179628,
+          "placeId" : "ChIJW1eUFCkSd4gRTfrGogRQDnM",
+          "locationConfidence" : 0.7555401
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377143470,
+      "centerLngE7" : -892186400,
+      "visitConfidence" : 76,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377152481,
+        "longitudeE7" : -892187576,
+        "placeId" : "ChIJuwhZrygSd4gROwWDcwGMX_g",
+        "locationConfidence" : 7.2875185
+      }, {
+        "latitudeE7" : 377130491,
+        "longitudeE7" : -892186370,
+        "placeId" : "ChIJBeyHdyUSd4gRv0VUsn_RYpI",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 0.7261702
+      }, {
+        "latitudeE7" : 377151914,
+        "longitudeE7" : -892208032,
+        "placeId" : "ChIJ3cGxMSQSd4gRKrSWZuyNtaA",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 0.29664722
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377138198,
+          "lngE7" : -892169236,
+          "timestampMs" : "1580680431688",
+          "accuracyMeters" : 42
+        }, {
+          "latE7" : 377129555,
+          "lngE7" : -892177876,
+          "timestampMs" : "1580680674680",
+          "accuracyMeters" : 100
+        }, {
+          "latE7" : 377144500,
+          "lngE7" : -892171167,
+          "timestampMs" : "1580680802805",
+          "accuracyMeters" : 30
+        }, {
+          "latE7" : 377144500,
+          "lngE7" : -892171167,
+          "timestampMs" : "1580680930998",
+          "accuracyMeters" : 30
+        }, {
+          "latE7" : 377138556,
+          "lngE7" : -892185498,
+          "timestampMs" : "1580681933158",
+          "accuracyMeters" : 14
+        }, {
+          "latE7" : 377138556,
+          "lngE7" : -892185498,
+          "timestampMs" : "1580682233388",
+          "accuracyMeters" : 14
+        }, {
+          "latE7" : 377138556,
+          "lngE7" : -892185498,
+          "timestampMs" : "1580682793669",
+          "accuracyMeters" : 14
+        }, {
+          "latE7" : 377150308,
+          "lngE7" : -892188589,
+          "timestampMs" : "1580683334665",
+          "accuracyMeters" : 15
+        }, {
+          "latE7" : 377149726,
+          "lngE7" : -892199540,
+          "timestampMs" : "1580683522269",
+          "accuracyMeters" : 15
+        }, {
+          "latE7" : 377149726,
+          "lngE7" : -892199540,
+          "timestampMs" : "1580683647384",
+          "accuracyMeters" : 15
+        }, {
+          "latE7" : 377161730,
+          "lngE7" : -892194371,
+          "timestampMs" : "1580684469000",
+          "accuracyMeters" : 3
+        }, {
+          "latE7" : 377157321,
+          "lngE7" : -892192358,
+          "timestampMs" : "1580684515000",
+          "accuracyMeters" : 5
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377156739,
+        "longitudeE7" : -892188038
+      },
+      "endLocation" : {
+        "latitudeE7" : 377461062,
+        "longitudeE7" : -889792290
+      },
+      "duration" : {
+        "startTimestampMs" : "1580684546000",
+        "endTimestampMs" : "1580686144437"
+      },
+      "distance" : 21437,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 75.58649778366089
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 16.118472814559937
+      }, {
+        "activityType" : "STILL",
+        "probability" : 7.56654366850853
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.2835191087797284
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.14221820747479796
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.09795973310247064
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.05493851494975388
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.04978699726052582
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.042254271102137864
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.03155801095999777
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.014043631381355226
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.007307027408387512
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.003277809446444735
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.0014948295756767038
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.3017070159548894E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377163047,
+          "lngE7" : -892186050
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892151412
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892166061
+        }, {
+          "latE7" : 377140808,
+          "lngE7" : -892149734
+        }, {
+          "latE7" : 377180023,
+          "lngE7" : -891862869
+        }, {
+          "latE7" : 377449760,
+          "lngE7" : -890331192
+        }, {
+          "latE7" : 377449111,
+          "lngE7" : -889967575
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377145462,
+          "lngE7" : -892165756,
+          "timestampMs" : "1580684750000",
+          "accuracyMeters" : 4
+        }, {
+          "latE7" : 377179871,
+          "lngE7" : -891862869,
+          "timestampMs" : "1580685121000",
+          "accuracyMeters" : 10
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377490778,
+        "longitudeE7" : -889799733,
+        "placeId" : "ChIJ3Rt-7Uw6d4gRCY1IQH2mftI",
+        "address" : "3000 W Deyoung St\nMarion, IL 62959\nUSA",
+        "name" : "Target",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 97.44683
+      },
+      "duration" : {
+        "startTimestampMs" : "1580686144437",
+        "endTimestampMs" : "1580688963338"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "centerLatE7" : 377491618,
+      "centerLngE7" : -889804253,
+      "visitConfidence" : 70,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377489744,
+        "longitudeE7" : -889763482,
+        "placeId" : "ChIJWYCZW7c7d4gRlwsI9egSluc",
+        "locationConfidence" : 1.1796974
+      }, {
+        "latitudeE7" : 377483666,
+        "longitudeE7" : -889778958,
+        "placeId" : "ChIJ3Rt-7Uw6d4gR_8D6ZPi3Ki8",
+        "locationConfidence" : 0.95070845
+      }, {
+        "latitudeE7" : 377481176,
+        "longitudeE7" : -889781525,
+        "placeId" : "ChIJ3Rt-7Uw6d4gR5539k9TIbd4",
+        "locationConfidence" : 0.154944
+      }, {
+        "latitudeE7" : 377507404,
+        "longitudeE7" : -889793677,
+        "placeId" : "ChIJdQhwwU06d4gRY5Uje0goSrE",
+        "locationConfidence" : 0.08945805
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377491618,
+        "longitudeE7" : -889804253
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205012,
+        "longitudeE7" : -892118428
+      },
+      "duration" : {
+        "startTimestampMs" : "1580688963338",
+        "endTimestampMs" : "1580691889531"
+      },
+      "distance" : 21923,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 80.439692735672
+      }, {
+        "activityType" : "STILL",
+        "probability" : 12.569428980350494
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 5.6312549859285355
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.7476836908608675
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.23676941636949778
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.19382421160116792
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.07285898318514228
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.03985651710536331
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.03617927141021937
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.016060781490523368
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.0057457298680674285
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.005602121746051125
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.003285238562966697
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.001622786294319667
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.3651730341734947E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377490310,
+          "lngE7" : -889807815
+        }, {
+          "latE7" : 377451629,
+          "lngE7" : -890224533
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118377
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 61.3725
+      },
+      "duration" : {
+        "startTimestampMs" : "1580691889531",
+        "endTimestampMs" : "1580760005899"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205092,
+      "centerLngE7" : -892118557,
+      "visitConfidence" : 90,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 36.000214
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 2.1248412
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.2015052
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.1445452
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205032,
+        "longitudeE7" : -892118508
+      },
+      "endLocation" : {
+        "latitudeE7" : 377090271,
+        "longitudeE7" : -892202578
+      },
+      "duration" : {
+        "startTimestampMs" : "1580760005899",
+        "endTimestampMs" : "1580760615728"
+      },
+      "distance" : 1474,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 71.97237014770508
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 10.72831004858017
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 8.346344530582428
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 5.807086825370789
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.8791090920567513
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.686991261318326
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.6867975927889347
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.3632592735812068
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.24658204056322575
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.1452991971746087
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.06110894028097391
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.05010836757719517
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.015441951109096408
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.010267978359479457
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 9.28130975808017E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203407,
+          "lngE7" : -892118453
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892151412
+        }, {
+          "latE7" : 377087860,
+          "lngE7" : -892203445
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 89.64438
+      },
+      "duration" : {
+        "startTimestampMs" : "1580760615728",
+        "endTimestampMs" : "1580777588000"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "address" : "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Computer Science Department",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 78.689606
+        },
+        "duration" : {
+          "startTimestampMs" : "1580760615728",
+          "endTimestampMs" : "1580767188521"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377100758,
+        "centerLngE7" : -892202896,
+        "visitConfidence" : 84,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 5.5303993
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 2.0316598
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 1.2965732
+        }, {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 0.48137176
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 0.48059815
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "address" : "1255 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 58.81653
+        },
+        "duration" : {
+          "startTimestampMs" : "1580767264440",
+          "endTimestampMs" : "1580769802572"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377113788,
+        "centerLngE7" : -892192512,
+        "visitConfidence" : 84,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377115516,
+          "longitudeE7" : -892194324,
+          "placeId" : "ChIJT9MGrToSd4gRPgdWmJ4Qsms",
+          "locationConfidence" : 25.239721
+        }, {
+          "latitudeE7" : 377116384,
+          "longitudeE7" : -892188599,
+          "placeId" : "ChIJaT04QyUSd4gRdA2ilDL3bF0",
+          "locationConfidence" : 8.1103525
+        }, {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 1.8226621
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 1.361821
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 85.6893
+        },
+        "duration" : {
+          "startTimestampMs" : "1580770054370",
+          "endTimestampMs" : "1580777588000"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377090383,
+        "centerLngE7" : -892206338,
+        "visitConfidence" : 84,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 6.019243
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 3.3129058
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 2.883403
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.30722788
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377100758,
+      "centerLngE7" : -892202896,
+      "visitConfidence" : 84,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377099838,
+        "longitudeE7" : -892203674,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 10.3513155
+      }, {
+        "latitudeE7" : 377095204,
+        "longitudeE7" : -892260275,
+        "placeId" : "ChIJcRdVMT0Sd4gRyF98W4z3mXg",
+        "locationConfidence" : 0.0041405857
+      }, {
+        "latitudeE7" : 377133534,
+        "longitudeE7" : -892186582,
+        "placeId" : "ChIJT9MGrToSd4gRftQQM1GQLjo",
+        "locationConfidence" : 1.6714273E-4
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377116306,
+          "lngE7" : -892191986,
+          "timestampMs" : "1580767441989",
+          "accuracyMeters" : 28
+        }, {
+          "latE7" : 377087847,
+          "lngE7" : -892203211,
+          "timestampMs" : "1580777541000",
+          "accuracyMeters" : 3
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377084761,
+        "longitudeE7" : -892199798
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205010,
+        "longitudeE7" : -892118523
+      },
+      "duration" : {
+        "startTimestampMs" : "1580777588000",
+        "endTimestampMs" : "1580778144711"
+      },
+      "distance" : 1581,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 81.79771304130554
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 13.862250745296478
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 1.7756609246134758
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.162134576588869
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.8974194526672363
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.16317744739353657
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.14616792323067784
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.08941778796724975
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.04811397229786962
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.020162556029390544
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.01706665934761986
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.014472147449851036
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.0030619219614891335
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.0029981327315908857
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.8945011106552556E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377084541,
+          "lngE7" : -892200393
+        }, {
+          "latE7" : 377172698,
+          "lngE7" : -892146911
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118453
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 62.782276
+      },
+      "duration" : {
+        "startTimestampMs" : "1580778144711",
+        "endTimestampMs" : "1580830238000"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "centerLatE7" : 377205089,
+      "centerLngE7" : -892118464,
+      "visitConfidence" : 92,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 33.664185
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 3.068216
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.284601
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.09889799
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377202880,
+        "longitudeE7" : -892121022
+      },
+      "endLocation" : {
+        "latitudeE7" : 377092159,
+        "longitudeE7" : -892206856
+      },
+      "duration" : {
+        "startTimestampMs" : "1580830238000",
+        "endTimestampMs" : "1580830881776"
+      },
+      "distance" : 2173,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 76.6106128692627
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 18.724723160266876
+      }, {
+        "activityType" : "STILL",
+        "probability" : 2.721356973052025
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.6763043347746134
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.6734139285981655
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.23543238639831543
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.14418944483622909
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.07187346345745027
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.06355780060403049
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.02377775526838377
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.022000294120516628
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.017871019372250885
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.00788266261224635
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.006838995614089072
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.7016149058690644E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203369,
+          "lngE7" : -892121047
+        }, {
+          "latE7" : 377210540,
+          "lngE7" : -892134628
+        }, {
+          "latE7" : 377184295,
+          "lngE7" : -892146301
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892151412
+        }, {
+          "latE7" : 377070655,
+          "lngE7" : -892184448
+        }, {
+          "latE7" : 377057609,
+          "lngE7" : -892188873
+        }, {
+          "latE7" : 377087860,
+          "lngE7" : -892204360
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377184296,
+          "lngE7" : -892146225,
+          "timestampMs" : "1580830315000",
+          "accuracyMeters" : 9
+        }, {
+          "latE7" : 377071800,
+          "lngE7" : -892184372,
+          "timestampMs" : "1580830487000",
+          "accuracyMeters" : 3
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 99.34493
+      },
+      "duration" : {
+        "startTimestampMs" : "1580830881776",
+        "endTimestampMs" : "1580863898099"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 84.799965
+        },
+        "duration" : {
+          "startTimestampMs" : "1580830881776",
+          "endTimestampMs" : "1580835570878"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377092230,
+        "centerLngE7" : -892206705,
+        "visitConfidence" : 87,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 6.5261707
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 3.1593263
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 2.9483464
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.74639094
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "address" : "1255 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 48.189716
+        },
+        "duration" : {
+          "startTimestampMs" : "1580836227855",
+          "endTimestampMs" : "1580837529409"
+        },
+        "placeConfidence" : "LOW_CONFIDENCE",
+        "centerLatE7" : 377132068,
+        "centerLngE7" : -892187150,
+        "visitConfidence" : 87,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377134567,
+          "longitudeE7" : -892185595,
+          "placeId" : "ChIJA_wI6TwSd4gR1AZib9nRPXY",
+          "locationConfidence" : 20.487482
+        }, {
+          "latitudeE7" : 377136372,
+          "longitudeE7" : -892179628,
+          "placeId" : "ChIJS7b2NR4Sd4gRST86DGYnIXY",
+          "locationConfidence" : 12.543205
+        }, {
+          "latitudeE7" : 377132854,
+          "longitudeE7" : -892184673,
+          "placeId" : "ChIJA68fgiUSd4gRiVlb2LISq-g",
+          "locationConfidence" : 6.9631915
+        }, {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 1.5364388
+        }, {
+          "latitudeE7" : 377133121,
+          "longitudeE7" : -892184349,
+          "placeId" : "ChIJV3yurToSd4gRmGQ-EMQTeRw",
+          "locationConfidence" : 0.89290214
+        }, {
+          "latitudeE7" : 377133078,
+          "longitudeE7" : -892184373,
+          "placeId" : "ChIJJ6CTgSUSd4gRNdaDJiHgmWo",
+          "locationConfidence" : 0.7421566
+        }, {
+          "latitudeE7" : 377138068,
+          "longitudeE7" : -892184878,
+          "placeId" : "ChIJT9MGrToSd4gRYiuq7inUV1A",
+          "locationConfidence" : 0.5696851
+        }, {
+          "latitudeE7" : 377133121,
+          "longitudeE7" : -892184349,
+          "placeId" : "ChIJC6KrPy4Sd4gRodePch30i8A",
+          "locationConfidence" : 0.4962621
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377134567,
+          "longitudeE7" : -892185595,
+          "placeId" : "ChIJA_wI6TwSd4gR1AZib9nRPXY",
+          "address" : "475 Clocktower Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Southern Illinois University Dining Room",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 77.062675
+        },
+        "duration" : {
+          "startTimestampMs" : "1580837736713",
+          "endTimestampMs" : "1580838157810"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377129338,
+        "centerLngE7" : -892185306,
+        "visitConfidence" : 87,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "locationConfidence" : 8.686102
+        }, {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 5.281143
+        }, {
+          "latitudeE7" : 377132854,
+          "longitudeE7" : -892184673,
+          "placeId" : "ChIJA68fgiUSd4gRiVlb2LISq-g",
+          "locationConfidence" : 0.24474588
+        }, {
+          "latitudeE7" : 377133078,
+          "longitudeE7" : -892184373,
+          "placeId" : "ChIJJ6CTgSUSd4gRNdaDJiHgmWo",
+          "locationConfidence" : 0.12588122
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 79.294785
+        },
+        "duration" : {
+          "startTimestampMs" : "1580838486694",
+          "endTimestampMs" : "1580847423973"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377090920,
+        "centerLngE7" : -892206414,
+        "visitConfidence" : 87,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 6.597286
+        }, {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 6.494544
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 4.125936
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 1.0679402
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377090920,
+      "centerLngE7" : -892206414,
+      "visitConfidence" : 87,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377099838,
+        "longitudeE7" : -892203674,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 0.61648387
+      }, {
+        "latitudeE7" : 377095204,
+        "longitudeE7" : -892260275,
+        "placeId" : "ChIJcRdVMT0Sd4gRyF98W4z3mXg",
+        "locationConfidence" : 0.038583267
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377089622,
+        "longitudeE7" : -892206165
+      },
+      "endLocation" : {
+        "latitudeE7" : 377203824,
+        "longitudeE7" : -892113179
+      },
+      "duration" : {
+        "startTimestampMs" : "1580863898099",
+        "endTimestampMs" : "1580864280000"
+      },
+      "distance" : 1723,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 88.84663581848145
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 5.837054923176765
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 3.2465897500514984
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.9005019441246986
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.5328553728759289
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.2773940796032548
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.13066607061773539
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.11906459694728255
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.05431832978501916
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.02952406939584762
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.015838310355320573
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.004362621621112339
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.0032749790989328176
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.001808865272323601
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.095707716558536E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377087745,
+          "lngE7" : -892204818
+        }, {
+          "latE7" : 377140808,
+          "lngE7" : -892149734
+        }, {
+          "latE7" : 377203483,
+          "lngE7" : -892113189
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 67.30184
+      },
+      "duration" : {
+        "startTimestampMs" : "1580864280000",
+        "endTimestampMs" : "1580931887479"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "centerLatE7" : 377205004,
+      "centerLngE7" : -892118300,
+      "visitConfidence" : 90,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 29.47472
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 2.7011304
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.27623293
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.1156884
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205099,
+        "longitudeE7" : -892118360
+      },
+      "endLocation" : {
+        "latitudeE7" : 377089757,
+        "longitudeE7" : -892203533
+      },
+      "duration" : {
+        "startTimestampMs" : "1580931887479",
+        "endTimestampMs" : "1580934252246"
+      },
+      "distance" : 7503,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 75.77259540557861
+      }, {
+        "activityType" : "STILL",
+        "probability" : 19.100278615951538
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 3.5654794424772263
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.7878122851252556
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.20011828746646643
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.17424507532268763
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.08724067592993379
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.08652685792185366
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.07842968916520476
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.05584238679148257
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.05417942884378135
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.014758862380404025
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.01330535305896774
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.008893568156054243
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 2.958788172691129E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203407,
+          "lngE7" : -892118301
+        }, {
+          "latE7" : 377267341,
+          "lngE7" : -892023544
+        }, {
+          "latE7" : 377382507,
+          "lngE7" : -891854553
+        }, {
+          "latE7" : 377273292,
+          "lngE7" : -892155303
+        }, {
+          "latE7" : 377087898,
+          "lngE7" : -892203750
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377381592,
+          "lngE7" : -891855927,
+          "timestampMs" : "1580932723000",
+          "accuracyMeters" : 4
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 93.633896
+      },
+      "duration" : {
+        "startTimestampMs" : "1580934252246",
+        "endTimestampMs" : "1580939933295"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "address" : "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Computer Science Department",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 78.557625
+        },
+        "duration" : {
+          "startTimestampMs" : "1580934252246",
+          "endTimestampMs" : "1580939933295"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377100680,
+        "centerLngE7" : -892202914,
+        "visitConfidence" : 88,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 8.5772
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 2.6120648
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 1.8914334
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 0.69994533
+        }, {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 0.5209137
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377100680,
+      "centerLngE7" : -892202914,
+      "visitConfidence" : 88,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377094765,
+        "longitudeE7" : -892205505,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 6.361741
+      }, {
+        "latitudeE7" : 377095204,
+        "longitudeE7" : -892260275,
+        "placeId" : "ChIJcRdVMT0Sd4gRyF98W4z3mXg",
+        "locationConfidence" : 0.0042197956
+      }, {
+        "latitudeE7" : 377133534,
+        "longitudeE7" : -892186582,
+        "placeId" : "ChIJT9MGrToSd4gRftQQM1GQLjo",
+        "locationConfidence" : 1.425094E-4
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377089757,
+          "lngE7" : -892203533,
+          "timestampMs" : "1580934252246",
+          "accuracyMeters" : 37
+        }, {
+          "latE7" : 377101040,
+          "lngE7" : -892202689,
+          "timestampMs" : "1580936239130",
+          "accuracyMeters" : 16
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377103948,
+        "longitudeE7" : -892192315
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205012,
+        "longitudeE7" : -892118428
+      },
+      "duration" : {
+        "startTimestampMs" : "1580939933295",
+        "endTimestampMs" : "1580940613407"
+      },
+      "distance" : 1587,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 75.73112845420837
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 17.543068528175354
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 2.5345221161842346
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 1.884124055504799
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.4086727984249592
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.3706330433487892
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.3046299796551466
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.09606798994354904
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.05506938323378563
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.03888838109560311
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.012210823479108512
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.011212514073122293
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.006809151091147214
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.002591483098512981
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 3.7527668155235006E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377104682,
+          "lngE7" : -892201690
+        }, {
+          "latE7" : 377140808,
+          "lngE7" : -892149734
+        }, {
+          "latE7" : 377174758,
+          "lngE7" : -892130661
+        }, {
+          "latE7" : 377201423,
+          "lngE7" : -892088012
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118377
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377174568,
+          "lngE7" : -892130661,
+          "timestampMs" : "1580940320000",
+          "accuracyMeters" : 3
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 67.769066
+      },
+      "duration" : {
+        "startTimestampMs" : "1580940613407",
+        "endTimestampMs" : "1580951259000"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "centerLatE7" : 377204707,
+      "centerLngE7" : -892119067,
+      "visitConfidence" : 83,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 28.405827
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 3.194963
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.3094662
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.20231123
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 87.44376
+      },
+      "duration" : {
+        "startTimestampMs" : "1580951259000",
+        "endTimestampMs" : "1580953758163"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377185810,
+          "longitudeE7" : -892124699,
+          "placeId" : "ChIJsb_LCCsSd4gRcVQxJ3F10a4",
+          "address" : "300 E Grand Ave\nCarbondale, IL 62901\nUSA",
+          "name" : "SIU Student Recreation Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 80.93912
+        },
+        "duration" : {
+          "startTimestampMs" : "1580951291000",
+          "endTimestampMs" : "1580953758163"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377182537,
+        "centerLngE7" : -892127599,
+        "visitConfidence" : 87,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377182392,
+          "longitudeE7" : -892097056,
+          "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+          "locationConfidence" : 0.5282727
+        }, {
+          "latitudeE7" : 377182763,
+          "longitudeE7" : -892157030,
+          "placeId" : "ChIJcffiACkSd4gRT_nh2RhwaBs",
+          "locationConfidence" : 0.18890314
+        }, {
+          "latitudeE7" : 377200290,
+          "longitudeE7" : -892127670,
+          "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+          "locationConfidence" : 0.08768511
+        }, {
+          "latitudeE7" : 377179958,
+          "longitudeE7" : -892108712,
+          "placeId" : "ChIJu-mtACsSd4gRp-KIryZiM70",
+          "locationConfidence" : 0.04490612
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377182063,
+      "centerLngE7" : -892127922,
+      "visitConfidence" : 87,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377183838,
+        "longitudeE7" : -892124481,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "locationConfidence" : 10.991923
+      }, {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 1.0810789
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.344141
+      }, {
+        "latitudeE7" : 377179958,
+        "longitudeE7" : -892108712,
+        "placeId" : "ChIJu-mtACsSd4gRp-KIryZiM70",
+        "locationConfidence" : 0.07048148
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377183798,
+        "longitudeE7" : -892126791
+      },
+      "endLocation" : {
+        "latitudeE7" : 377203788,
+        "longitudeE7" : -892118240
+      },
+      "duration" : {
+        "startTimestampMs" : "1580953758163",
+        "endTimestampMs" : "1580954140365"
+      },
+      "distance" : 234,
+      "activityType" : "WALKING",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "WALKING",
+        "probability" : 84.05522108078003
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 11.048466712236404
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 1.309695653617382
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 1.2444243766367435
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.1695252731442451
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.7423200644552708
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.19294805824756622
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.08038275991566479
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.03865355683956295
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.03817894321400672
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.037907439400441945
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.022575625916942954
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.013511863653548062
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.005885120845050551
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 3.0158789741108194E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377182273,
+          "lngE7" : -892126770
+        }, {
+          "latE7" : 377192077,
+          "lngE7" : -892127685
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118225
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 63.08605
+      },
+      "duration" : {
+        "startTimestampMs" : "1580954140365",
+        "endTimestampMs" : "1581003016866"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "centerLatE7" : 377205167,
+      "centerLngE7" : -892118300,
+      "visitConfidence" : 89,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 33.147278
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 3.1890912
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.31574777
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.11197978
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205480,
+        "longitudeE7" : -892118405
+      },
+      "endLocation" : {
+        "latitudeE7" : 377092198,
+        "longitudeE7" : -892206478
+      },
+      "duration" : {
+        "startTimestampMs" : "1581003016866",
+        "endTimestampMs" : "1581003726910"
+      },
+      "distance" : 2111,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 78.40049862861633
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 16.824418306350708
+      }, {
+        "activityType" : "STILL",
+        "probability" : 3.087788075208664
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.6612200289964676
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.4981719423085451
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.20126185845583677
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.1803919207304716
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.042915434460155666
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.0384717684937641
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.032923612161539495
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.01676522515481338
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.007051601278362796
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.004622694177669473
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.003401334470254369
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.0169177357965964E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203407,
+          "lngE7" : -892118301
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892151412
+        }, {
+          "latE7" : 377070808,
+          "lngE7" : -892152709
+        }, {
+          "latE7" : 377057609,
+          "lngE7" : -892185516
+        }, {
+          "latE7" : 377072448,
+          "lngE7" : -892185440
+        }, {
+          "latE7" : 377057609,
+          "lngE7" : -892188873
+        }, {
+          "latE7" : 377087860,
+          "lngE7" : -892204360
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377070847,
+          "lngE7" : -892152786,
+          "timestampMs" : "1581003224000",
+          "accuracyMeters" : 3
+        }, {
+          "latE7" : 377072563,
+          "lngE7" : -892185287,
+          "timestampMs" : "1581003301000",
+          "accuracyMeters" : 3
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 96.063225
+      },
+      "duration" : {
+        "startTimestampMs" : "1581003726910",
+        "endTimestampMs" : "1581015466657"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 80.5903
+        },
+        "duration" : {
+          "startTimestampMs" : "1581003726910",
+          "endTimestampMs" : "1581009241936"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377092968,
+        "centerLngE7" : -892206735,
+        "visitConfidence" : 90,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 5.108174
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 2.5371656
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 1.5132215
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.6922208
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "address" : "1255 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 57.821217
+        },
+        "duration" : {
+          "startTimestampMs" : "1581009476713",
+          "endTimestampMs" : "1581013206979"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377127667,
+        "centerLngE7" : -892186937,
+        "visitConfidence" : 90,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 30.604736
+        }, {
+          "latitudeE7" : 377134567,
+          "longitudeE7" : -892185595,
+          "placeId" : "ChIJA_wI6TwSd4gR1AZib9nRPXY",
+          "locationConfidence" : 4.642963
+        }, {
+          "latitudeE7" : 377129737,
+          "longitudeE7" : -892184640,
+          "placeId" : "ChIJ___vFC8Sd4gR-fjah-i9QOQ",
+          "locationConfidence" : 1.0675051
+        }, {
+          "latitudeE7" : 377136372,
+          "longitudeE7" : -892179628,
+          "placeId" : "ChIJS7b2NR4Sd4gRST86DGYnIXY",
+          "locationConfidence" : 0.8937284
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "address" : "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Computer Science Department",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 66.73523
+        },
+        "duration" : {
+          "startTimestampMs" : "1581013689275",
+          "endTimestampMs" : "1581015466657"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377098064,
+        "centerLngE7" : -892204764,
+        "visitConfidence" : 90,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 6.2711887
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.8874748
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 0.62396187
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 0.3603485
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377105846,
+      "centerLngE7" : -892199523,
+      "visitConfidence" : 90,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377130491,
+        "longitudeE7" : -892186370,
+        "placeId" : "ChIJBeyHdyUSd4gRv0VUsn_RYpI",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 3.24437
+      }, {
+        "latitudeE7" : 377094765,
+        "longitudeE7" : -892205505,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 0.63233346
+      }, {
+        "latitudeE7" : 377152481,
+        "longitudeE7" : -892187576,
+        "placeId" : "ChIJuwhZrygSd4gROwWDcwGMX_g",
+        "locationConfidence" : 0.06007021
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377092192,
+          "lngE7" : -892203362,
+          "timestampMs" : "1581008663811",
+          "accuracyMeters" : 14
+        }, {
+          "latE7" : 377128688,
+          "lngE7" : -892187546,
+          "timestampMs" : "1581010144134",
+          "accuracyMeters" : 17
+        }, {
+          "latE7" : 377097995,
+          "lngE7" : -892203985,
+          "timestampMs" : "1581013689275",
+          "accuracyMeters" : 14
+        }, {
+          "latE7" : 377098042,
+          "lngE7" : -892211366,
+          "timestampMs" : "1581015341000",
+          "accuracyMeters" : 21
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377098615,
+        "longitudeE7" : -892203754
+      },
+      "endLocation" : {
+        "latitudeE7" : 377090850,
+        "longitudeE7" : -892206559
+      },
+      "duration" : {
+        "startTimestampMs" : "1581015466657",
+        "endTimestampMs" : "1581016922430"
+      },
+      "distance" : 3227,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 58.011895418167114
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 19.441701471805573
+      }, {
+        "activityType" : "STILL",
+        "probability" : 15.101222693920135
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 3.8624357432127
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 2.393634058535099
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.5900877993553877
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.22659588139504194
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.1254020375199616
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.11334714945405722
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.05426201969385147
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.03687134012579918
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.03173121658619493
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.007034049485810101
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.0030405595680349506
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 7.361912594205933E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377104682,
+          "lngE7" : -892201614
+        }, {
+          "latE7" : 377197418,
+          "lngE7" : -892168197
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118225
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892151412
+        }, {
+          "latE7" : 377087860,
+          "lngE7" : -892204360
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377205086,
+          "lngE7" : -892118301,
+          "timestampMs" : "1581016232174",
+          "accuracyMeters" : 13
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 91.89897
+      },
+      "duration" : {
+        "startTimestampMs" : "1581016922430",
+        "endTimestampMs" : "1581023315196"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 82.5166
+        },
+        "duration" : {
+          "startTimestampMs" : "1581016922430",
+          "endTimestampMs" : "1581020961395"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377091637,
+        "centerLngE7" : -892206108,
+        "visitConfidence" : 88,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 3.56313
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 2.6506114
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 2.1961339
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.46230245
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377097869,
+          "longitudeE7" : -892205544,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "address" : "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Computer Science Department",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 68.11431
+        },
+        "duration" : {
+          "startTimestampMs" : "1581021024243",
+          "endTimestampMs" : "1581023315196"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377099123,
+        "centerLngE7" : -892203861,
+        "visitConfidence" : 88,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 4.767048
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 2.2158673
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 0.91743505
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 0.37990966
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377091637,
+      "centerLngE7" : -892206108,
+      "visitConfidence" : 88,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377094765,
+        "longitudeE7" : -892205505,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 8.070198
+      }, {
+        "latitudeE7" : 377095204,
+        "longitudeE7" : -892260275,
+        "placeId" : "ChIJcRdVMT0Sd4gRyF98W4z3mXg",
+        "locationConfidence" : 0.030832794
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377092419,
+          "lngE7" : -892205315,
+          "timestampMs" : "1581020897322",
+          "accuracyMeters" : 15
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581021146146",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581021266374",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581021387688",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581021509389",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581021632383",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581021758427",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581022204382",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377099144,
+          "lngE7" : -892203862,
+          "timestampMs" : "1581022570409",
+          "accuracyMeters" : 16
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377099144,
+        "longitudeE7" : -892203862
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205546,
+        "longitudeE7" : -892120156
+      },
+      "duration" : {
+        "startTimestampMs" : "1581023315196",
+        "endTimestampMs" : "1581024176488"
+      },
+      "distance" : 1809,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 50.845545530319214
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 27.359476685523987
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 17.881973087787628
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.9244996830821037
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.633488642051816
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.5243472754955292
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.37892924156039953
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.1324943732470274
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.09249241556972265
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.07462918292731047
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.057747255777940154
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.055851880460977554
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.03442498855292797
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.0023785534722264856
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 0.0017261643733945675
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377104721,
+          "lngE7" : -892201919
+        }, {
+          "latE7" : 377103691,
+          "lngE7" : -892191238
+        }, {
+          "latE7" : 377089004,
+          "lngE7" : -892173843
+        }, {
+          "latE7" : 377140808,
+          "lngE7" : -892149734
+        }, {
+          "latE7" : 377203369,
+          "lngE7" : -892120056
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377085304,
+          "lngE7" : -892171783,
+          "timestampMs" : "1581023868848",
+          "accuracyMeters" : 44
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 63.158348
+      },
+      "duration" : {
+        "startTimestampMs" : "1581024176488",
+        "endTimestampMs" : "1581026587234"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205019,
+      "centerLngE7" : -892119152,
+      "visitConfidence" : 91,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 30.943144
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 4.789861
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.56445545
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.3774453
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377204839,
+        "longitudeE7" : -892125538
+      },
+      "endLocation" : {
+        "latitudeE7" : 377181687,
+        "longitudeE7" : -892127863
+      },
+      "duration" : {
+        "startTimestampMs" : "1581026587234",
+        "endTimestampMs" : "1581026665600"
+      },
+      "distance" : 258,
+      "activityType" : "WALKING",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "WALKING",
+        "probability" : 83.04423689842224
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 13.708893954753876
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.9049729444086552
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.754681508988142
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.7196282036602497
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.626783212646842
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.07026815437711775
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.06166637176647782
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.03691143065225333
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.0329856964526698
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.023239917936734855
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.006738055526511744
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.006301106623141095
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.0024560144083807245
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 2.3827819859434385E-4
+      } ]
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 91.38298
+      },
+      "duration" : {
+        "startTimestampMs" : "1581026665600",
+        "endTimestampMs" : "1581032015447"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377185810,
+          "longitudeE7" : -892124699,
+          "placeId" : "ChIJsb_LCCsSd4gRcVQxJ3F10a4",
+          "address" : "300 E Grand Ave\nCarbondale, IL 62901\nUSA",
+          "name" : "SIU Student Recreation Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 87.49708
+        },
+        "duration" : {
+          "startTimestampMs" : "1581026665600",
+          "endTimestampMs" : "1581032015447"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377182181,
+        "centerLngE7" : -892127630,
+        "visitConfidence" : 88,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377182392,
+          "longitudeE7" : -892097056,
+          "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+          "locationConfidence" : 0.24580236
+        }, {
+          "latitudeE7" : 377182763,
+          "longitudeE7" : -892157030,
+          "placeId" : "ChIJcffiACkSd4gRT_nh2RhwaBs",
+          "locationConfidence" : 0.098616466
+        }, {
+          "latitudeE7" : 377200290,
+          "longitudeE7" : -892127670,
+          "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+          "locationConfidence" : 0.04657479
+        }, {
+          "latitudeE7" : 377179958,
+          "longitudeE7" : -892108712,
+          "placeId" : "ChIJu-mtACsSd4gRp-KIryZiM70",
+          "locationConfidence" : 0.04593445
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377180866,
+      "centerLngE7" : -892128176,
+      "visitConfidence" : 88,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377183838,
+        "longitudeE7" : -892124481,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "locationConfidence" : 7.6148815
+      }, {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 0.7617754
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.16827251
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.03141901
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377183600,
+        "longitudeE7" : -892127050
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205075,
+        "longitudeE7" : -892118541
+      },
+      "duration" : {
+        "startTimestampMs" : "1581032015447",
+        "endTimestampMs" : "1581032313217"
+      },
+      "distance" : 250,
+      "activityType" : "WALKING",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "WALKING",
+        "probability" : 69.50443387031555
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 24.269622564315796
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 2.414020337164402
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.7782922834157944
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.9322050027549267
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.5702959839254618
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.1943460199981928
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.10835976572707295
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.0787574565038085
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.07837046287022531
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.023462792159989476
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.02304132212884724
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.021574947459157556
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.00300680967484368
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 2.0834727365581784E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377182273,
+          "lngE7" : -892126770
+        }, {
+          "latE7" : 377198104,
+          "lngE7" : -892128524
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118453
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 60.86763
+      },
+      "duration" : {
+        "startTimestampMs" : "1581032313217",
+        "endTimestampMs" : "1581093089000"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205105,
+      "centerLngE7" : -892118277,
+      "visitConfidence" : 88,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 35.640137
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 3.0778491
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.17959598
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.12555021
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377210833,
+        "longitudeE7" : -892129844
+      },
+      "endLocation" : {
+        "latitudeE7" : 377091097,
+        "longitudeE7" : -892208094
+      },
+      "duration" : {
+        "startTimestampMs" : "1581093089000",
+        "endTimestampMs" : "1581093613388"
+      },
+      "distance" : 1915,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 80.60936331748962
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 13.189391791820526
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 1.5957821160554886
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 1.4549745246767998
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 1.4447057619690895
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.3704398646950722
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.15822885325178504
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.05666596116498113
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.049265159759670496
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.030912039801478386
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.014471322356257588
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.012892831000499427
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.007779488078085706
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.004811181497643702
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 3.0603312097809976E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377210807,
+          "lngE7" : -892130203
+        }, {
+          "latE7" : 377210540,
+          "lngE7" : -892134628
+        }, {
+          "latE7" : 377182159,
+          "lngE7" : -892145996
+        }, {
+          "latE7" : 377144508,
+          "lngE7" : -892151412
+        }, {
+          "latE7" : 377070693,
+          "lngE7" : -892185592
+        }, {
+          "latE7" : 377059516,
+          "lngE7" : -892208328
+        }, {
+          "latE7" : 377087860,
+          "lngE7" : -892204360
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377182159,
+          "lngE7" : -892146225,
+          "timestampMs" : "1581093135000",
+          "accuracyMeters" : 4
+        }, {
+          "latE7" : 377070656,
+          "lngE7" : -892185745,
+          "timestampMs" : "1581093306000",
+          "accuracyMeters" : 6
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 97.510216
+      },
+      "duration" : {
+        "startTimestampMs" : "1581093613388",
+        "endTimestampMs" : "1581120582795"
+      },
+      "placeConfidence" : "HIGH_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 75.53942
+        },
+        "duration" : {
+          "startTimestampMs" : "1581093613388",
+          "endTimestampMs" : "1581102412596"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377091648,
+        "centerLngE7" : -892206010,
+        "visitConfidence" : 85,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 5.27306
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 3.3492944
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 3.2510037
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.67267036
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "address" : "1255 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 60.441017
+        },
+        "duration" : {
+          "startTimestampMs" : "1581102761107",
+          "endTimestampMs" : "1581105099069"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377125510,
+        "centerLngE7" : -892187443,
+        "visitConfidence" : 85,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 31.981268
+        }, {
+          "latitudeE7" : 377134567,
+          "longitudeE7" : -892185595,
+          "placeId" : "ChIJA_wI6TwSd4gR1AZib9nRPXY",
+          "locationConfidence" : 2.195503
+        }, {
+          "latitudeE7" : 377136372,
+          "longitudeE7" : -892179628,
+          "placeId" : "ChIJS7b2NR4Sd4gRST86DGYnIXY",
+          "locationConfidence" : 1.1576216
+        }, {
+          "latitudeE7" : 377129737,
+          "longitudeE7" : -892184640,
+          "placeId" : "ChIJ___vFC8Sd4gR-fjah-i9QOQ",
+          "locationConfidence" : 0.47565123
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 67.409
+        },
+        "duration" : {
+          "startTimestampMs" : "1581105266551",
+          "endTimestampMs" : "1581105810104"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377092824,
+        "centerLngE7" : -892204140,
+        "visitConfidence" : 85,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 4.47179
+        }, {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 3.4989555
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 1.374923
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.9045025
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377097869,
+          "longitudeE7" : -892205544,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "address" : "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Computer Science Department",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 64.6521
+        },
+        "duration" : {
+          "startTimestampMs" : "1581106014602",
+          "endTimestampMs" : "1581112311869"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377100971,
+        "centerLngE7" : -892203375,
+        "visitConfidence" : 85,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 5.1363115
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 2.094062
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 1.3987293
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 0.33595636
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 28.786129
+        },
+        "duration" : {
+          "startTimestampMs" : "1581112474245",
+          "endTimestampMs" : "1581112957146"
+        },
+        "placeConfidence" : "LOW_CONFIDENCE",
+        "centerLatE7" : 377089453,
+        "centerLngE7" : -892209697,
+        "visitConfidence" : 85,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 14.799923
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 8.768163
+        }, {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 8.5547905
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 1.1555859
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 0.64865625
+        }, {
+          "latitudeE7" : 377089940,
+          "longitudeE7" : -892218556,
+          "placeId" : "ChIJ805wajsSd4gRXlQaAaZ03_c",
+          "locationConfidence" : 0.6236267
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377100701,
+      "centerLngE7" : -892201982,
+      "visitConfidence" : 85,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377130491,
+        "longitudeE7" : -892186370,
+        "placeId" : "ChIJBeyHdyUSd4gRv0VUsn_RYpI",
+        "semanticType" : "TYPE_SEARCHED_ADDRESS",
+        "locationConfidence" : 1.7765744
+      }, {
+        "latitudeE7" : 377094765,
+        "longitudeE7" : -892205505,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 0.65961665
+      }, {
+        "latitudeE7" : 377152481,
+        "longitudeE7" : -892187576,
+        "placeId" : "ChIJuwhZrygSd4gROwWDcwGMX_g",
+        "locationConfidence" : 0.053593628
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377094965,
+          "lngE7" : -892202883,
+          "timestampMs" : "1581102317000",
+          "accuracyMeters" : 4
+        }, {
+          "latE7" : 377124567,
+          "lngE7" : -892186897,
+          "timestampMs" : "1581105007670",
+          "accuracyMeters" : 15
+        }, {
+          "latE7" : 377099635,
+          "lngE7" : -892202485,
+          "timestampMs" : "1581112243742",
+          "accuracyMeters" : 14
+        }, {
+          "latE7" : 377091481,
+          "lngE7" : -892209033,
+          "timestampMs" : "1581120452000",
+          "accuracyMeters" : 24
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377088631,
+        "longitudeE7" : -892209870
+      },
+      "endLocation" : {
+        "latitudeE7" : 377187586,
+        "longitudeE7" : -892123681
+      },
+      "duration" : {
+        "startTimestampMs" : "1581120582795",
+        "endTimestampMs" : "1581121288722"
+      },
+      "distance" : 1911,
+      "activityType" : "WALKING",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "WALKING",
+        "probability" : 50.883662700653076
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 26.92878544330597
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 7.879685610532761
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 6.66147843003273
+      }, {
+        "activityType" : "STILL",
+        "probability" : 4.079027846455574
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 1.752978190779686
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.5294985137879848
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.45301965437829494
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.41105831041932106
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.16222967533394694
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.10914095910266042
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.09102168260142207
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.043477927101776004
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.012045822222717106
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 0.002885160574805923
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377088356,
+          "lngE7" : -892210769
+        }, {
+          "latE7" : 377148132,
+          "lngE7" : -892160797
+        }, {
+          "latE7" : 377203445,
+          "lngE7" : -892115783
+        }, {
+          "latE7" : 377198104,
+          "lngE7" : -892128524
+        }, {
+          "latE7" : 377187271,
+          "lngE7" : -892126617
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377203636,
+          "lngE7" : -892115784,
+          "timestampMs" : "1581120984000",
+          "accuracyMeters" : 3
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 83.49257
+      },
+      "duration" : {
+        "startTimestampMs" : "1581121288722",
+        "endTimestampMs" : "1581125661577"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377185810,
+          "longitudeE7" : -892124699,
+          "placeId" : "ChIJsb_LCCsSd4gRcVQxJ3F10a4",
+          "address" : "300 E Grand Ave\nCarbondale, IL 62901\nUSA",
+          "name" : "SIU Student Recreation Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 82.67962
+        },
+        "duration" : {
+          "startTimestampMs" : "1581121288722",
+          "endTimestampMs" : "1581125661577"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377185824,
+        "centerLngE7" : -892120224,
+        "visitConfidence" : 87,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377182392,
+          "longitudeE7" : -892097056,
+          "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+          "locationConfidence" : 0.4341833
+        }, {
+          "latitudeE7" : 377182763,
+          "longitudeE7" : -892157030,
+          "placeId" : "ChIJcffiACkSd4gRT_nh2RhwaBs",
+          "locationConfidence" : 0.13559856
+        }, {
+          "latitudeE7" : 377200290,
+          "longitudeE7" : -892127670,
+          "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+          "locationConfidence" : 0.114981666
+        }, {
+          "latitudeE7" : 377179958,
+          "longitudeE7" : -892108712,
+          "placeId" : "ChIJu-mtACsSd4gRp-KIryZiM70",
+          "locationConfidence" : 0.085237294
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377185824,
+      "centerLngE7" : -892120224,
+      "visitConfidence" : 87,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377183838,
+        "longitudeE7" : -892124481,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "locationConfidence" : 13.974559
+      }, {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 1.8746477
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.43845242
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.116112225
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377187586,
+          "lngE7" : -892123681,
+          "timestampMs" : "1581121288722",
+          "accuracyMeters" : 17
+        }, {
+          "latE7" : 377185778,
+          "lngE7" : -892118016,
+          "timestampMs" : "1581123675806",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377185778,
+          "lngE7" : -892118016,
+          "timestampMs" : "1581124287031",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377183643,
+          "lngE7" : -892128120,
+          "timestampMs" : "1581125352279",
+          "accuracyMeters" : 14
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377193689,
+        "longitudeE7" : -892127536
+      },
+      "endLocation" : {
+        "latitudeE7" : 377206705,
+        "longitudeE7" : -892113625
+      },
+      "duration" : {
+        "startTimestampMs" : "1581125661577",
+        "endTimestampMs" : "1581125755258"
+      },
+      "distance" : 189,
+      "activityType" : "WALKING",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "WALKING",
+        "probability" : 94.52963471412659
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 3.2442938536405563
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.6197099108248949
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.6131445989012718
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.5212919786572456
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.35522114485502243
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.03774939104914665
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.026561570120975375
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.013029048568569124
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.012973179400432855
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.011238160368520766
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.00893426185939461
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.003524187923176214
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.002544965536799282
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.6443798358523054E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377193641,
+          "lngE7" : -892127838
+        }, {
+          "latE7" : 377201309,
+          "lngE7" : -892128906
+        }, {
+          "latE7" : 377207984,
+          "lngE7" : -892113647
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 52.125694
+      },
+      "duration" : {
+        "startTimestampMs" : "1581125755258",
+        "endTimestampMs" : "1581185910380"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205322,
+      "centerLngE7" : -892118322,
+      "visitConfidence" : 90,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 43.546124
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 3.726262
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.30840978
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.12033921
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377196332,
+        "longitudeE7" : -892124275
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205089,
+        "longitudeE7" : -892118332
+      },
+      "duration" : {
+        "startTimestampMs" : "1581185910380",
+        "endTimestampMs" : "1581195300625"
+      },
+      "distance" : 376,
+      "activityType" : "WALKING",
+      "confidence" : "LOW",
+      "activities" : [ {
+        "activityType" : "WALKING",
+        "probability" : 48.91039431095123
+      }, {
+        "activityType" : "STILL",
+        "probability" : 46.208277344703674
+      }, {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 3.6250434815883636
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.4661914426833391
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.2946138847619295
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.13853537384420633
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.12410493800416589
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.07150682504288852
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.050965172704309225
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.02889768802560866
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.022101006470620632
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.02084703737637028
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.019153367611579597
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.01864868972916156
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 7.281745183718158E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377195434,
+          "lngE7" : -892124099
+        }, {
+          "latE7" : 377192077,
+          "lngE7" : -892127685
+        }, {
+          "latE7" : 377198104,
+          "lngE7" : -892128524
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118225
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377184525,
+          "lngE7" : -892127457,
+          "timestampMs" : "1581194804054",
+          "accuracyMeters" : 66
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 53.51341
+      },
+      "duration" : {
+        "startTimestampMs" : "1581195300625",
+        "endTimestampMs" : "1581223823827"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205174,
+      "centerLngE7" : -892118250,
+      "visitConfidence" : 92,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 41.915394
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 3.8437874
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.4117222
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.13090102
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205457,
+        "longitudeE7" : -892116453
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205318,
+        "longitudeE7" : -892118495
+      },
+      "duration" : {
+        "startTimestampMs" : "1581223823827",
+        "endTimestampMs" : "1581225545172"
+      },
+      "distance" : 18,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 61.73784136772156
+      }, {
+        "activityType" : "STILL",
+        "probability" : 22.536365687847137
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 13.822975754737854
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.548900943249464
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.4881753586232662
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.41031064465641975
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.1420574844814837
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.10547912679612637
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.09646230610087514
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.03494358097668737
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.02929331676568836
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.028309918707236648
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.014662413741461933
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.004085513501195237
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 1.3523271036319784E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203445,
+          "lngE7" : -892116394
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892117462
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118453
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377216583,
+        "longitudeE7" : -892110745,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "address" : "610 S Logan Ave\nCarbondale, IL 62901\nUSA",
+        "name" : "610 S Logan Ave",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 51.41517
+      },
+      "duration" : {
+        "startTimestampMs" : "1581225545172",
+        "endTimestampMs" : "1581350149125"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205344,
+      "centerLngE7" : -892118561,
+      "visitConfidence" : 91,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377183838,
+        "longitudeE7" : -892124481,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "locationConfidence" : 43.898155
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 4.035027
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.34430373
+      }, {
+        "latitudeE7" : 377206014,
+        "longitudeE7" : -892110308,
+        "placeId" : "ChIJL8XJESoSd4gRDSvr9t3JLNw",
+        "locationConfidence" : 0.122116864
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205109,
+        "longitudeE7" : -892118548
+      },
+      "endLocation" : {
+        "latitudeE7" : 377083217,
+        "longitudeE7" : -892197195
+      },
+      "duration" : {
+        "startTimestampMs" : "1581350149125",
+        "endTimestampMs" : "1581350554000"
+      },
+      "distance" : 1804,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 69.75038647651672
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 27.068227529525757
+      }, {
+        "activityType" : "STILL",
+        "probability" : 1.1423222720623016
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 1.0277504101395607
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.5864705424755812
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.17893684562295675
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.0763681367971003
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.06410190253518522
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.05226501962170005
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.02021977852564305
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.016340224829036742
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.011641458695521578
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.003151135388179682
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.0017228423530468717
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 9.532823241897859E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203407,
+          "lngE7" : -892118453
+        }, {
+          "latE7" : 377200622,
+          "lngE7" : -892145156
+        }, {
+          "latE7" : 377178688,
+          "lngE7" : -892145614
+        }, {
+          "latE7" : 377173881,
+          "lngE7" : -892147064
+        }, {
+          "latE7" : 377074241,
+          "lngE7" : -892186813
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377180061,
+          "lngE7" : -892146225,
+          "timestampMs" : "1581350197000",
+          "accuracyMeters" : 3
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 81.90871
+      },
+      "duration" : {
+        "startTimestampMs" : "1581350554000",
+        "endTimestampMs" : "1581388002681"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 71.4674
+        },
+        "duration" : {
+          "startTimestampMs" : "1581350554000",
+          "endTimestampMs" : "1581358748846"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377090700,
+        "centerLngE7" : -892205839,
+        "visitConfidence" : 84,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 4.917151
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 4.0798235
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 3.2837749
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.47006276
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377138068,
+          "longitudeE7" : -892184878,
+          "placeId" : "ChIJT9MGrToSd4gRYiuq7inUV1A",
+          "address" : "SIU Student Center\n1255 Lincoln Dr Room 233\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center Bowling & Billiards",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 87.65401
+        },
+        "duration" : {
+          "startTimestampMs" : "1581359022882",
+          "endTimestampMs" : "1581361926719"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377136817,
+        "centerLngE7" : -892185640,
+        "visitConfidence" : 84,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "locationConfidence" : 4.827961
+        }, {
+          "latitudeE7" : 377134567,
+          "longitudeE7" : -892185595,
+          "placeId" : "ChIJA_wI6TwSd4gR1AZib9nRPXY",
+          "locationConfidence" : 2.046326
+        }, {
+          "latitudeE7" : 377133078,
+          "longitudeE7" : -892184373,
+          "placeId" : "ChIJJ6CTgSUSd4gRNdaDJiHgmWo",
+          "locationConfidence" : 1.34976
+        }, {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 0.636538
+        }, {
+          "latitudeE7" : 377133121,
+          "longitudeE7" : -892184349,
+          "placeId" : "ChIJV3yurToSd4gRmGQ-EMQTeRw",
+          "locationConfidence" : 0.5424471
+        }, {
+          "latitudeE7" : 377141796,
+          "longitudeE7" : -892174762,
+          "placeId" : "ChIJZddybC8Sd4gRSTwRfPYS4Cg",
+          "locationConfidence" : 0.5320874
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "address" : "1255 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 46.072792
+        },
+        "duration" : {
+          "startTimestampMs" : "1581362120089",
+          "endTimestampMs" : "1581364923760"
+        },
+        "placeConfidence" : "LOW_CONFIDENCE",
+        "centerLatE7" : 377128854,
+        "centerLngE7" : -892187267,
+        "visitConfidence" : 84,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 37.292126
+        }, {
+          "latitudeE7" : 377134567,
+          "longitudeE7" : -892185595,
+          "placeId" : "ChIJA_wI6TwSd4gR1AZib9nRPXY",
+          "locationConfidence" : 7.4590077
+        }, {
+          "latitudeE7" : 377129737,
+          "longitudeE7" : -892184640,
+          "placeId" : "ChIJ___vFC8Sd4gR-fjah-i9QOQ",
+          "locationConfidence" : 1.428087
+        }, {
+          "latitudeE7" : 377136372,
+          "longitudeE7" : -892179628,
+          "placeId" : "ChIJS7b2NR4Sd4gRST86DGYnIXY",
+          "locationConfidence" : 0.90193385
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 69.72352
+        },
+        "duration" : {
+          "startTimestampMs" : "1581365304421",
+          "endTimestampMs" : "1581365670780"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377096350,
+        "centerLngE7" : -892204400,
+        "visitConfidence" : 84,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 8.372137
+        }, {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 1.1196445
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 0.84360355
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 0.43843758
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377090700,
+      "centerLngE7" : -892205839,
+      "visitConfidence" : 84,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377094765,
+        "longitudeE7" : -892205505,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 18.05509
+      }, {
+        "latitudeE7" : 377095204,
+        "longitudeE7" : -892260275,
+        "placeId" : "ChIJcRdVMT0Sd4gRyF98W4z3mXg",
+        "locationConfidence" : 0.036203198
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377101664,
+          "lngE7" : -892203685,
+          "timestampMs" : "1581368310619",
+          "accuracyMeters" : 17
+        }, {
+          "latE7" : 377089380,
+          "lngE7" : -892208952,
+          "timestampMs" : "1581381731545",
+          "accuracyMeters" : 15
+        }, {
+          "latE7" : 377092416,
+          "lngE7" : -892202625,
+          "timestampMs" : "1581387759000",
+          "accuracyMeters" : 15
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377087599,
+        "longitudeE7" : -892200416
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205108,
+        "longitudeE7" : -892118458
+      },
+      "duration" : {
+        "startTimestampMs" : "1581388002681",
+        "endTimestampMs" : "1581388542632"
+      },
+      "distance" : 1492,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 93.39942336082458
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 4.765794798731804
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.529827643185854
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.4599199630320072
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.43387673795223236
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.1448877388611436
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.10704987216740847
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.05673496634699404
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.03974183346144855
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.020359872723929584
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.019144373072776943
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.012886730837635696
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.005615100235445425
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.004670469934353605
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 6.720791247971647E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377086334,
+          "lngE7" : -892201690
+        }, {
+          "latE7" : 377140808,
+          "lngE7" : -892149734
+        }, {
+          "latE7" : 377203407,
+          "lngE7" : -892118377
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 49.633076
+      },
+      "duration" : {
+        "startTimestampMs" : "1581388542632",
+        "endTimestampMs" : "1581434985209"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205209,
+      "centerLngE7" : -892118472,
+      "visitConfidence" : 92,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 44.613884
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 4.800785
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.5298012
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.22957052
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377205221,
+        "longitudeE7" : -892118902
+      },
+      "endLocation" : {
+        "latitudeE7" : 377087603,
+        "longitudeE7" : -892201037
+      },
+      "duration" : {
+        "startTimestampMs" : "1581434985209",
+        "endTimestampMs" : "1581435470000"
+      },
+      "distance" : 1717,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "MEDIUM",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 65.70572257041931
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 27.491655945777893
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 4.441455751657486
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.9486754424870014
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.7688630372285843
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.34058510791510344
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.10554330656304955
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.08265975047834218
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.04575994680635631
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.03541378828231245
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.019624002743512392
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.008889994933269918
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.003593645669752732
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.0013457924069371074
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 2.0852082798228366E-4
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377203407,
+          "lngE7" : -892118835
+        }, {
+          "latE7" : 377165145,
+          "lngE7" : -892154769
+        }, {
+          "latE7" : 377089004,
+          "lngE7" : -892173843
+        }, {
+          "latE7" : 377103691,
+          "lngE7" : -892191238
+        }, {
+          "latE7" : 377087135,
+          "lngE7" : -892202224
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377085457,
+          "lngE7" : -892173004,
+          "timestampMs" : "1581435336339",
+          "accuracyMeters" : 77
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "address" : "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+        "name" : "Southern Illinois University",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 91.178856
+      },
+      "duration" : {
+        "startTimestampMs" : "1581435470000",
+        "endTimestampMs" : "1581468014000"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "childVisits" : [ {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 79.41827
+        },
+        "duration" : {
+          "startTimestampMs" : "1581435470000",
+          "endTimestampMs" : "1581441652236"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377092010,
+        "centerLngE7" : -892205795,
+        "visitConfidence" : 89,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 4.7166452
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 2.4536302
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 1.9968061
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.525259
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377097869,
+          "longitudeE7" : -892205544,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "address" : "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Computer Science Department",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 69.814384
+        },
+        "duration" : {
+          "startTimestampMs" : "1581441895263",
+          "endTimestampMs" : "1581442451244"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377100059,
+        "centerLngE7" : -892204290,
+        "visitConfidence" : 89,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 4.3140454
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 1.178715
+        }, {
+          "latitudeE7" : 377099694,
+          "longitudeE7" : -892200887,
+          "placeId" : "ChIJ5xdm0DoSd4gRYVozoiU8En8",
+          "locationConfidence" : 0.8979713
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 0.2889836
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 64.5246
+        },
+        "duration" : {
+          "startTimestampMs" : "1581442719915",
+          "endTimestampMs" : "1581449030000"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377091162,
+        "centerLngE7" : -892206336,
+        "visitConfidence" : 89,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 7.1672764
+        }, {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 6.270184
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 4.1610904
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.6314427
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377129965,
+          "longitudeE7" : -892185215,
+          "placeId" : "ChIJCetLeSUSd4gRwQFfMc9WGMY",
+          "address" : "1255 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "Student Center",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 69.52701
+        },
+        "duration" : {
+          "startTimestampMs" : "1581449182000",
+          "endTimestampMs" : "1581449658649"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377125320,
+        "centerLngE7" : -892186400,
+        "visitConfidence" : 89,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377152920,
+          "longitudeE7" : -892204647,
+          "placeId" : "ChIJAa0NMiQSd4gRnMrEsmCd6DU",
+          "locationConfidence" : 13.452216
+        }, {
+          "latitudeE7" : 377134567,
+          "longitudeE7" : -892185595,
+          "placeId" : "ChIJA_wI6TwSd4gR1AZib9nRPXY",
+          "locationConfidence" : 2.7003686
+        }, {
+          "latitudeE7" : 377136372,
+          "longitudeE7" : -892179628,
+          "placeId" : "ChIJS7b2NR4Sd4gRST86DGYnIXY",
+          "locationConfidence" : 1.4894674
+        }, {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "locationConfidence" : 0.46637315
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      }, {
+        "location" : {
+          "latitudeE7" : 377092034,
+          "longitudeE7" : -892203408,
+          "placeId" : "ChIJI4xIHjsSd4gRT7nhy60fUls",
+          "address" : "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "name" : "School of Information Systems and Applied Technologies",
+          "sourceInfo" : {
+            "deviceTag" : 1333862746
+          },
+          "locationConfidence" : 66.94151
+        },
+        "duration" : {
+          "startTimestampMs" : "1581450022570",
+          "endTimestampMs" : "1581450412028"
+        },
+        "placeConfidence" : "MEDIUM_CONFIDENCE",
+        "centerLatE7" : 377091667,
+        "centerLngE7" : -892204567,
+        "visitConfidence" : 89,
+        "otherCandidateLocations" : [ {
+          "latitudeE7" : 377090612,
+          "longitudeE7" : -892200592,
+          "placeId" : "ChIJwwBL5joSd4gRbkI1-qCzw4E",
+          "locationConfidence" : 4.8709865
+        }, {
+          "latitudeE7" : 377097679,
+          "longitudeE7" : -892205014,
+          "placeId" : "ChIJT9MGrToSd4gRbgH3ghqUquo",
+          "locationConfidence" : 3.840017
+        }, {
+          "latitudeE7" : 377091027,
+          "longitudeE7" : -892207565,
+          "placeId" : "ChIJ3VWOHjsSd4gRfJYcndxLiRY",
+          "locationConfidence" : 3.7831285
+        }, {
+          "latitudeE7" : 377098824,
+          "longitudeE7" : -892199010,
+          "placeId" : "ChIJJwNexToSd4gRyHYvmCf21us",
+          "locationConfidence" : 0.727339
+        } ],
+        "editConfirmationStatus" : "NOT_CONFIRMED"
+      } ],
+      "centerLatE7" : 377093749,
+      "centerLngE7" : -892205028,
+      "visitConfidence" : 89,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377094765,
+        "longitudeE7" : -892205505,
+        "placeId" : "ChIJlY-J3joSd4gRYZYtgloKLF8",
+        "name" : "Engineering",
+        "locationConfidence" : 8.793336
+      }, {
+        "latitudeE7" : 377095204,
+        "longitudeE7" : -892260275,
+        "placeId" : "ChIJcRdVMT0Sd4gRyF98W4z3mXg",
+        "locationConfidence" : 0.027806157
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED",
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377124133,
+          "lngE7" : -892186296,
+          "timestampMs" : "1581449316602",
+          "accuracyMeters" : 16
+        }, {
+          "latE7" : 377093415,
+          "lngE7" : -892200595,
+          "timestampMs" : "1581450022570",
+          "accuracyMeters" : 15
+        }, {
+          "latE7" : 377095170,
+          "lngE7" : -892207208,
+          "timestampMs" : "1581467733000",
+          "accuracyMeters" : 10
+        }, {
+          "latE7" : 377088528,
+          "lngE7" : -892204351,
+          "timestampMs" : "1581467952000",
+          "accuracyMeters" : 4
+        }, {
+          "latE7" : 377084927,
+          "lngE7" : -892199899,
+          "timestampMs" : "1581467998000",
+          "accuracyMeters" : 3
+        } ]
+      }
+    }
+  }, {
+    "activitySegment" : {
+      "startLocation" : {
+        "latitudeE7" : 377083801,
+        "longitudeE7" : -892198239
+      },
+      "endLocation" : {
+        "latitudeE7" : 377205375,
+        "longitudeE7" : -892116704
+      },
+      "duration" : {
+        "startTimestampMs" : "1581468014000",
+        "endTimestampMs" : "1581468503475"
+      },
+      "distance" : 1753,
+      "activityType" : "IN_PASSENGER_VEHICLE",
+      "confidence" : "HIGH",
+      "activities" : [ {
+        "activityType" : "IN_PASSENGER_VEHICLE",
+        "probability" : 81.7242443561554
+      }, {
+        "activityType" : "WALKING",
+        "probability" : 16.08552634716034
+      }, {
+        "activityType" : "CYCLING",
+        "probability" : 0.7053919602185488
+      }, {
+        "activityType" : "STILL",
+        "probability" : 0.6640092935413122
+      }, {
+        "activityType" : "IN_BUS",
+        "probability" : 0.4064663778990507
+      }, {
+        "activityType" : "RUNNING",
+        "probability" : 0.1410129596479237
+      }, {
+        "activityType" : "MOTORCYCLING",
+        "probability" : 0.11199145810678601
+      }, {
+        "activityType" : "IN_TRAM",
+        "probability" : 0.07083347882144153
+      }, {
+        "activityType" : "IN_FERRY",
+        "probability" : 0.03682668029796332
+      }, {
+        "activityType" : "IN_TRAIN",
+        "probability" : 0.01701369183138013
+      }, {
+        "activityType" : "SKIING",
+        "probability" : 0.015868783521000296
+      }, {
+        "activityType" : "FLYING",
+        "probability" : 0.012693536700680852
+      }, {
+        "activityType" : "SAILING",
+        "probability" : 0.005934683213126846
+      }, {
+        "activityType" : "IN_SUBWAY",
+        "probability" : 0.0021061074221506715
+      }, {
+        "activityType" : "IN_VEHICLE",
+        "probability" : 8.257895842689322E-5
+      } ],
+      "waypointPath" : {
+        "waypoints" : [ {
+          "latE7" : 377083702,
+          "lngE7" : -892198104
+        }, {
+          "latE7" : 377104873,
+          "lngE7" : -892180786
+        }, {
+          "latE7" : 377089271,
+          "lngE7" : -892179260
+        }, {
+          "latE7" : 377172698,
+          "lngE7" : -892146911
+        }, {
+          "latE7" : 377194976,
+          "lngE7" : -892104339
+        } ]
+      },
+      "simplifiedRawPath" : {
+        "points" : [ {
+          "latE7" : 377083664,
+          "lngE7" : -892179718,
+          "timestampMs" : "1581468118988",
+          "accuracyMeters" : 93
+        } ]
+      }
+    }
+  }, {
+    "placeVisit" : {
+      "location" : {
+        "latitudeE7" : 377205907,
+        "longitudeE7" : -892118604,
+        "placeId" : "ChIJu0O8cSoSd4gRqkcDqUO0C70",
+        "address" : "310 E Hester St\nCarbondale, IL 62901\nUSA",
+        "name" : "310 E Hester St",
+        "sourceInfo" : {
+          "deviceTag" : 1333862746
+        },
+        "locationConfidence" : 48.805378
+      },
+      "duration" : {
+        "startTimestampMs" : "1581468503475",
+        "endTimestampMs" : "1581496401652"
+      },
+      "placeConfidence" : "MEDIUM_CONFIDENCE",
+      "centerLatE7" : 377205065,
+      "centerLngE7" : -892118219,
+      "visitConfidence" : 93,
+      "otherCandidateLocations" : [ {
+        "latitudeE7" : 377205162,
+        "longitudeE7" : -892118835,
+        "placeId" : "ChIJPzmDh4ARd4gRXcgCO5DIJzw",
+        "locationConfidence" : 46.305836
+      }, {
+        "latitudeE7" : 377100209,
+        "longitudeE7" : -892225941,
+        "placeId" : "ChIJA_wI6TwSd4gR0zAAt4nEmJY",
+        "locationConfidence" : 4.218946
+      }, {
+        "latitudeE7" : 377182392,
+        "longitudeE7" : -892097056,
+        "placeId" : "ChIJX5tLvyoSd4gRBKMUgKh4xLs",
+        "locationConfidence" : 0.41068402
+      }, {
+        "latitudeE7" : 377200290,
+        "longitudeE7" : -892127670,
+        "placeId" : "ChIJlQu7GCoSd4gR3TVmUXKpeaQ",
+        "locationConfidence" : 0.1182334
+      } ],
+      "editConfirmationStatus" : "NOT_CONFIRMED"
+    }
+  } ]
+}

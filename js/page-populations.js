@@ -1,0 +1,2 @@
+let jsonError = "<p>Unable to load json file. Is it an http or https link directly to the .json?</p>";
+let contributeForm = "<p>JSON file loaded. If you see nothing, then there was probably no location data in the file.</p>";
