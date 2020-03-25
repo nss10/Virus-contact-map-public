@@ -6,18 +6,13 @@ class timelineObject:
     """
     Utility class that takes a json file path and returns list of activity segments or place visits
     """
-    def __init__(self, path_to_json=None,timeline_json=None):
+    def __init__(self, timeline_json):
         """
         For now takes a path to a json file
         should implement for a JSON object
         :param path_to_json: path to json file
         """
-        self.path = path_to_json
-        if(self.path!=None):
-            with open(self.path) as self.json_file:
-                self.timeline = json.load(self.json_file)
-        else:
-            self.timeline = timeline_json
+        self.timeline = timeline_json
     def _get_scalar(self, coord):
         """
         Converts coordinate in E7 format to double
@@ -174,6 +169,6 @@ class timelineObject:
                             c['visitConfidence'] = child['visitConfidence']
                         if 'editConfirmationStatus' in child:
                             c['editConfirmationStatus'] = child['editConfirmationStatus']
-                        # visits.append(c)
+                        visits.append(c)
                 visits.append(v)
         return visits
