@@ -10,11 +10,11 @@ app = Flask(__name__)
 @app.route("/json", methods=["POST"])
 def extract_json_from_input():
     timelineJson = request.get_json()
-    radius = 50 # in meters    
-    timeSpan=5 # in hours
+    radius = 20 # in meters    
+    timeSpan=3 * 24 # in hours
     tObj = timelineObject(timelineJson)
     placeVisits = tObj.getPlaceVisits()
-    matchLocations = getSpatioTemporalMatch(placeVisits, 50,5)
+    matchLocations = getSpatioTemporalMatch(placeVisits, radius,timeSpan)
     return json.dumps(get_response(matchLocations))
 
 
