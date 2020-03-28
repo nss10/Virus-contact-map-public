@@ -14,29 +14,41 @@
 
         <title>Virus Contact Map</title>
     </head>
+    <!-- Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Login / Signup</h2>
+            </div>
+            <div class="modal-body">
+
+                <strong class="modal-title">DISCLOSURE</strong>
+                <p>We do not save user information with location data for the sole purpose of keeping information private.</p>
+                <!-- Google signin api -->
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <!--<a href="#" onclick="signOut();">Sign out</a><br>
+                <!-- Load JSON button fields -->
+                <label>Google Maps JSON file location </label><input class="long-input" type="text" id="json-script">
+                <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a>
+            </div>
+        </div>
+    </div>
     <body>
         <!-- Title Bar -->
         <section id="title-section">
             <table class="table-full">
                 <tr>
-                    <td>
+                    <td class="span-left-align">
                         <img src="img/virus-contact-map-logo.png" height="100" width="100">
                     </td>
-                    <td>
+                    <td class="span-center-align">
                         <h1 class="page-title">Virus Contact Map</h1>
                     </td>
-                    <td>
-                        <label>Google Maps JSON file location </label>
-                        <input class="long-input" type="text" id="json-script">
-                        <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a>
+                    <td class="span-right-align">
+                        <a href="#" id="loginModal-button" class="load-json-button">Check my location data</a>
                         <div id="response-div"></div>
                     </td>
-                    <!-- Google reference buttons
-                    <td>
-                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                        <a href="#" onclick="signOut();">Sign out</a>
-                    </td>
-                    -->
                 </tr>
             </table>
         </section>
