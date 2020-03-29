@@ -21,8 +21,6 @@ def extract_json_from_input():
     os.remove(filePath)
     return json.dumps(get_response(matchLocations))
 
-
-
 @app.route("/handleUpload", methods=['POST'])
 def handleFileUpload():
     if 'jsonFile' in request.files:
