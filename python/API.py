@@ -1,4 +1,5 @@
 from flask import Flask, request,render_template, url_for, redirect
+from flask_cors import CORS
 from timeline_object import timelineObject
 from query import getSpatioTemporalMatch
 from response import get_response
@@ -6,7 +7,7 @@ from helper import get_json_from_path
 import json,uuid
 import os
 app = Flask(__name__)
-
+CORS(app)
 
 
 @app.route("/json", methods=["get"])

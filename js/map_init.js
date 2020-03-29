@@ -6,9 +6,10 @@ let positions = null;   // 2D array of longitude and latitude
 // initializer functions -------------------------------------------------------
 // main initializer
 function mainInit() {
-    positions = [[-74.006042, 40.712769],[-74.005811, 40.713033],[-74.005505, 40.713399]];
+    positions = [[-74.006042, 40.712769], [-74.005811, 40.713033], [-74.005505, 40.713399]];
     initGeo();
     initMap(positions[0]);
+    $("#uploadForm").submit(loadJSON)
 }
 
 // initializes map
@@ -24,7 +25,7 @@ function initMap(pos) {
     map.addControl(new mapboxgl.NavigationControl());
 
     // init of map with blank geojson
-    map.on('load', function() {
+    map.on('load', function () {
         map.addSource('point', {
             'type': 'geojson',
             'data': geojson
@@ -66,22 +67,18 @@ function initGeo() {
 
 // function functions -------------------------------------------------------------
 // populates the geojson object with points
-function populateLines(json) {
+function populateLines(json_data) {
     console.log("Populating lines");
     positions = new Array(0);
-    console.log(json.timelineObjects.length + " timeline objects found.");
-    // for all timeline objects
-    for (var i = 0; i < json.timelineObjects.length; i++) {
-        // check if the timeline object is defined
-        var timelineObject = json.timelineObjects[i];
-        if (timelineObject) {
-            // check if we have the placevisit object defined
-            var placeVisit = timelineObject['placeVisit'];
-            if (placeVisit) {
-                // check if we have the location object defined
-                var location= placeVisit['location'];
-                if (location)
-                    positions.push([location['longitudeE7'] / 10000000, location['latitudeE7'] / 10000000]);
+    console.log(json_data.length + " location objects found.");
+    for (var i = 0; i < json_data.length; i++) {
+        var nearby = json_data[i].nearby;
+        if (nearby) {
+            for (var place in nearby) {
+                coords = nearby[place]["coordinates"]
+                if (coords) {
+                    positions.push([coords['lon'], coords['lat']]);
+                }
             }
         }
     }
@@ -90,20 +87,30 @@ function populateLines(json) {
     initGeo();
     initMap(positions[0]);
     document.getElementById("response-div").innerHTML = contributeForm;
+    $("#loginModal")[0].style.display="none";
+
 }
 
 // load JSON function called from button press
-function loadJSON() {
-    var input = document.getElementById("json-script").value;
-    console.log("Attempting to load: " + input);
-    document.getElementById("response-div").innerHTML = "";
-    // retreives json object from http and https sources only
-    fetch(input).then(response => response.json()).then(json => {
-        populateLines(json);
-    }).catch(function(){
-        console.log("We encountered an error loading the given json file.");
-        document.getElementById("response-div").innerHTML = jsonError;
+function loadJSON(e) {
+    formdata = new FormData();
+    file = $("#file").prop('files')[0];
+    formdata.append('jsonFile', file);
+    console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:5000/handleUpload",
+        data: formdata,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            // console.log(data);
+            json_data = JSON.parse(data);
+            populateLines(json_data);
+        }
     });
+    e.preventDefault();
+
 }
 
 // call methods -------------------------------------------
