@@ -29,8 +29,13 @@
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <!--<a href="#" onclick="signOut();">Sign out</a><br>
                 <!-- Load JSON button fields -->
-                <label>Google Maps JSON file location </label><input class="long-input" type="text" id="json-script">
-                <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a>
+                <label>Google Maps JSON file location </label>
+                <!-- <input class="long-input" type="text" id="json-script"> -->
+                <!-- <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a> -->
+                <br/>
+                <form action="http://localhost:5000/handleUpload" method="post" enctype="multipart/form-data">
+                    <input type="submit" class="load-json-button" value="Upload"/>  <input type="file" id="file" name="jsonFile" /> 
+                </form> 
             </div>
         </div>
     </div>

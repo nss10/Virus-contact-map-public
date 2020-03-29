@@ -13,9 +13,15 @@ def get_place_visits(jsonObject):
     pvList = to.getPlaceVisits()
     return pvList
 
-client = MongoClient('localhost', 27017)
-db = client["testdb"]
-collection = db["placesVisited"]
+# local
+# client = MongoClient('localhost', 27017)
+# db = client["testdb"]
+# collection = db["placesVisited"]
+
+# remote
+client = MongoClient('173.28.146.185', 27017)
+db = client["covid19"]
+collection = db["infectedPlaces"]
 
 paths = []
 for dirname, _, filenames in os.walk("../json/"):
