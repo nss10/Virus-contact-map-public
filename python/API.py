@@ -1,21 +1,34 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request,render_template, url_for, redirect
+from flask_cors import CORS
+from timeline_object import timelineObject
+from query import getSpatioTemporalMatch
+from response import get_response
+from helper import get_json_from_path
+import json,uuid
+import os
 app = Flask(__name__)
+CORS(app)
 
-def extract_info_from_place(place):
-    place_info={}
-    # if("placeVisit" in place):
-        # print(place["placeVisit"])
-    place_info["lat"] = place["placeVisit"]["location"]["latitudeE7"]/10000000
-    place_info["lon"] = place["placeVisit"]["location"]["longitudeE7"]/10000000
-    place_info["start_time"] = place["placeVisit"]["duration"]["startTimestampMs"]
-    place_info["end_time"] = place["placeVisit"]["duration"]["endTimestampMs"]
 
-    return place_info
-    
-@app.route("/json", methods=["POST"])
+@app.route("/json", methods=["get"])
 def extract_json_from_input():
-    req = request.get_json()    
-    placesVisited = [extract_info_from_place(place) for place in req["timelineObjects"] if "placeVisit" in place ]
-    return str(placesVisited)
+    filePath = os.getcwd()+"\\tempFiles\\"+ str(request.args.get('id'))
+    timelineJson = get_json_from_path(filePath)
+    radius = 20 # in meters    
+    timeSpan=3 * 24 # in hours
+    tObj = timelineObject(timelineJson)
+    placeVisits = tObj.getPlaceVisits()
+    matchLocations = getSpatioTemporalMatch(placeVisits, radius,timeSpan)
+    os.remove(filePath)
+    return json.dumps(get_response(matchLocations))
+
+@app.route("/handleUpload", methods=['POST'])
+def handleFileUpload():
+    if 'jsonFile' in request.files:
+        jsonFile = request.files['jsonFile']
+        if jsonFile.filename != '':    
+            filename = str(uuid.uuid4())
+            jsonFile.save(os.path.join(os.getcwd() + '\\tempFiles', filename))
+            return redirect(url_for('extract_json_from_input',id=filename))
+    return "Upload Error!"
 

@@ -29,10 +29,15 @@
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <!--<a href="#" onclick="signOut();">Sign out</a><br>
                 <!-- Load JSON button fields -->
-                <label>Google Maps JSON file location </label><input class="long-input" type="text" id="json-script">
-                <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a>
+                <label>Google Maps JSON file location </label>
+                <!-- <input class="long-input" type="text" id="json-script"> -->
+                <!-- <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a> -->
+                <br/>
+                <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
+                    <input type="submit" class="load-json-button" value="Upload" />  <input type="file" id="file" name="jsonFile" /> 
+                </form> 
             </div>
-        </div>
+        </div>  
     </div>
     <body>
         <!-- Title Bar -->
@@ -58,6 +63,7 @@
         </section>
 
         <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
         <script src="js/google-signin.js"></script>

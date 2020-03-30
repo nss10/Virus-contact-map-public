@@ -1,0 +1,55 @@
+[
+    {
+      "place": "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+      "nearby": [
+        {
+          "id": "5e7ac2727ed212248c74539c",
+          "Address": "1263 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "coordinates": {
+            "lat": 37.7100209,
+            "lon": -89.2225941
+          },
+          "Confidence": 86,
+          "timestamp": {
+            "start": "2020-02-06 03:44:18.734000",
+            "end": "2020-02-06 08:00:06",
+            "startTimestampMs": "1580960658734",
+            "endTimestampMs": "1580976006000"
+          },
+          "timeDifference": 55.57
+        },
+        {
+          "id": "5e7ac2727ed212248c745384",
+          "Address": "1230 Lincoln Dr\nCarbondale, IL 62901\nUSA",
+          "coordinates": {
+            "lat": 37.7097679,
+            "lon": -89.2205014
+          },
+          "Confidence": 88,
+          "timestamp": {
+            "start": "2020-02-04 04:43:02.931000",
+            "end": "2020-02-04 08:39:27.955000",
+            "startTimestampMs": "1580791382931",
+            "endTimestampMs": "1580805567955"
+          },
+          "timeDifference": 8.55
+        },
+        {
+          "id": "5e7ac0a435361636b2af0bd0",
+          "Address": "1365 Douglas Dr\nCarbondale, IL 62901\nUSA",
+          "coordinates": {
+            "lat": 37.7090612,
+            "lon": -89.2200592
+          },
+          "Confidence": 87,
+          "timestamp": {
+            "start": "2020-02-13 05:50:06.705000",
+            "end": "2020-02-13 05:56:28.932000",
+            "startTimestampMs": "1581573006705",
+            "endTimestampMs": "1581573388932"
+          },
+          "timeDifference": 36.42
+        }
+      ]
+    }
+  ]
