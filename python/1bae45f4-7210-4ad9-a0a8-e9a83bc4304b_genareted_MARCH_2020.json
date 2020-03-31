@@ -1,0 +1,1780 @@
+{
+    "timelineObjects": [
+        {
+            "placeVisit": {
+                "centerLatE7": 406682175,
+                "centerLngE7": -737920982,
+                "duration": {
+                    "endTimestampMs": "1583411072",
+                    "startTimestampMs": "1583346272"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "133-16 147 ST\\n New York, NY 11436 \\n USA",
+                    "latitudeE7": 406682175,
+                    "locationConfidence": 97.47427610012099,
+                    "longitudeE7": -737920982,
+                    "name": "133-16 147 ST",
+                    "placeId": "fac500e5-448b-43e1-a3b6-e26f3f989059",
+                    "sourceInfo": {
+                        "deviceTag": "3476283183"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406366035,
+                "centerLngE7": -739990265,
+                "duration": {
+                    "endTimestampMs": "1585101888",
+                    "startTimestampMs": "1585087488"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1057 52 ST\\n New York, NY 11219 \\n USA",
+                    "latitudeE7": 406366035,
+                    "locationConfidence": 66.77301445934216,
+                    "longitudeE7": -739990265,
+                    "name": "1057 52 ST",
+                    "placeId": "39861cbb-0115-4c18-af7e-96034e08ac89",
+                    "sourceInfo": {
+                        "deviceTag": "9210883950"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405886079,
+                "centerLngE7": -739222418,
+                "duration": {
+                    "endTimestampMs": "1584581969",
+                    "startTimestampMs": "1584542369"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "53 CANTON CT\\n New York, NY 11229 \\n USA",
+                    "latitudeE7": 405886079,
+                    "locationConfidence": 80.07119373912819,
+                    "longitudeE7": -739222418,
+                    "name": "53 CANTON CT",
+                    "placeId": "4a6a8f7f-72dd-42d2-bbe3-327d4c8ea7aa",
+                    "sourceInfo": {
+                        "deviceTag": "9176047054"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407778616,
+                "centerLngE7": -739802814,
+                "duration": {
+                    "endTimestampMs": "1583509123",
+                    "startTimestampMs": "1583501923"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "138 W  72 ST\\n New York, NY 10023 \\n USA",
+                    "latitudeE7": 407778616,
+                    "locationConfidence": 86.86619528448747,
+                    "longitudeE7": -739802814,
+                    "name": "138 W  72 ST",
+                    "placeId": "b2a7b216-a4f0-4a40-b90e-b9644d6293f9",
+                    "sourceInfo": {
+                        "deviceTag": "0205210257"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407118283,
+                "centerLngE7": -739926349,
+                "duration": {
+                    "endTimestampMs": "1585481320",
+                    "startTimestampMs": "1585477720"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "75 MONROE ST\\n New York, NY 10002 \\n USA",
+                    "latitudeE7": 407118283,
+                    "locationConfidence": 67.23016491604828,
+                    "longitudeE7": -739926349,
+                    "name": "75 MONROE ST",
+                    "placeId": "543e5dde-27ab-4adf-8e8f-4c400c664166",
+                    "sourceInfo": {
+                        "deviceTag": "4949262485"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 409137113,
+                "centerLngE7": -739048460,
+                "duration": {
+                    "endTimestampMs": "1585562342",
+                    "startTimestampMs": "1585558742"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "600 DEPEYSTER ST\\n New York, NY 10471 \\n USA",
+                    "latitudeE7": 409137113,
+                    "locationConfidence": 87.70810448132629,
+                    "longitudeE7": -739048460,
+                    "name": "600 DEPEYSTER ST",
+                    "placeId": "c2904f22-df9f-4326-8720-3b39d79b0870",
+                    "sourceInfo": {
+                        "deviceTag": "6128845928"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406438057,
+                "centerLngE7": -739286674,
+                "duration": {
+                    "endTimestampMs": "1585388094",
+                    "startTimestampMs": "1585337694"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "714 E  51 ST\\n New York, NY 11203 \\n USA",
+                    "latitudeE7": 406438057,
+                    "locationConfidence": 75.59587236940055,
+                    "longitudeE7": -739286674,
+                    "name": "714 E  51 ST",
+                    "placeId": "d1602a92-cc0e-40be-a4ed-d4d56f1ddc3a",
+                    "sourceInfo": {
+                        "deviceTag": "3650127459"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408076692,
+                "centerLngE7": -738500241,
+                "duration": {
+                    "endTimestampMs": "1585196994",
+                    "startTimestampMs": "1585178994"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "111 LIGHTHOUSE CT\\n New York, NY 10473 \\n USA",
+                    "latitudeE7": 408076692,
+                    "locationConfidence": 78.53346921917777,
+                    "longitudeE7": -738500241,
+                    "name": "111 LIGHTHOUSE CT",
+                    "placeId": "e8d11291-3bf9-4f4f-8a1e-d7b014a15239",
+                    "sourceInfo": {
+                        "deviceTag": "0278656480"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407262682,
+                "centerLngE7": -738742338,
+                "duration": {
+                    "endTimestampMs": "1583648740",
+                    "startTimestampMs": "1583616340"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "82-88 61 RD\\n New York, NY 11379 \\n USA",
+                    "latitudeE7": 407262682,
+                    "locationConfidence": 77.18918934336502,
+                    "longitudeE7": -738742338,
+                    "name": "82-88 61 RD",
+                    "placeId": "ee91972b-ca7c-4cd9-ae3b-ec42e2de8736",
+                    "sourceInfo": {
+                        "deviceTag": "1555748883"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407657674,
+                "centerLngE7": -739700036,
+                "duration": {
+                    "endTimestampMs": "1584957557",
+                    "startTimestampMs": "1584939557"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "696 MADISON AVE\\n New York, NY 10065 \\n USA",
+                    "latitudeE7": 407657674,
+                    "locationConfidence": 60.93172922747713,
+                    "longitudeE7": -739700036,
+                    "name": "696 MADISON AVE",
+                    "placeId": "c1e2e7e2-9f9a-4fcf-a9ba-602ecb251275",
+                    "sourceInfo": {
+                        "deviceTag": "8058135518"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406884230,
+                "centerLngE7": -739166312,
+                "duration": {
+                    "endTimestampMs": "1584758699",
+                    "startTimestampMs": "1584715499"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1186 BUSHWICK AVE\\n New York, NY 11221 \\n USA",
+                    "latitudeE7": 406884230,
+                    "locationConfidence": 63.21751362012773,
+                    "longitudeE7": -739166312,
+                    "name": "1186 BUSHWICK AVE",
+                    "placeId": "6de95b5b-9032-4642-957e-dbc006cf8a8f",
+                    "sourceInfo": {
+                        "deviceTag": "4831551687"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407717377,
+                "centerLngE7": -738117154,
+                "duration": {
+                    "endTimestampMs": "1584523237",
+                    "startTimestampMs": "1584508837"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "152-07 BAYSIDE AVE\\n New York, NY 11354 \\n USA",
+                    "latitudeE7": 407717377,
+                    "locationConfidence": 98.51027776338995,
+                    "longitudeE7": -738117154,
+                    "name": "152-07 BAYSIDE AVE",
+                    "placeId": "0010aedd-97ec-4542-a1ef-195c855b0bd8",
+                    "sourceInfo": {
+                        "deviceTag": "0795920565"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407229559,
+                "centerLngE7": -739820017,
+                "duration": {
+                    "endTimestampMs": "1584131929",
+                    "startTimestampMs": "1584106729"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "254 E  4 ST\\n New York, NY 10009 \\n USA",
+                    "latitudeE7": 407229559,
+                    "locationConfidence": 77.57705891736812,
+                    "longitudeE7": -739820017,
+                    "name": "254 E  4 ST",
+                    "placeId": "9f62228e-8551-4572-9d7b-c1f7d59f1572",
+                    "sourceInfo": {
+                        "deviceTag": "9967157881"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407432207,
+                "centerLngE7": -737112790,
+                "duration": {
+                    "endTimestampMs": "1583582744",
+                    "startTimestampMs": "1583579144"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "80-53 259 ST\\n New York, NY 11004 \\n USA",
+                    "latitudeE7": 407432207,
+                    "locationConfidence": 68.86927184685904,
+                    "longitudeE7": -737112790,
+                    "name": "80-53 259 ST",
+                    "placeId": "26d0b8ee-3102-44fd-96a1-4eaebd6b8572",
+                    "sourceInfo": {
+                        "deviceTag": "3456618728"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406448594,
+                "centerLngE7": -739018205,
+                "duration": {
+                    "endTimestampMs": "1583825415",
+                    "startTimestampMs": "1583760615"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1447 ROCKAWAY PKWY\\n New York, NY 11236 \\n USA",
+                    "latitudeE7": 406448594,
+                    "locationConfidence": 77.32616601387474,
+                    "longitudeE7": -739018205,
+                    "name": "1447 ROCKAWAY PKWY",
+                    "placeId": "1c40313b-c661-4752-938d-9c2dd9ba7f6c",
+                    "sourceInfo": {
+                        "deviceTag": "1952955195"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 97
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406196451,
+                "centerLngE7": -740305498,
+                "duration": {
+                    "endTimestampMs": "1584076298",
+                    "startTimestampMs": "1584054698"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "359 91 ST\\n New York, NY 11209 \\n USA",
+                    "latitudeE7": 406196451,
+                    "locationConfidence": 94.5121652329067,
+                    "longitudeE7": -740305498,
+                    "name": "359 91 ST",
+                    "placeId": "7cbd5a10-69a9-4d29-b1e7-0f4834ea3d46",
+                    "sourceInfo": {
+                        "deviceTag": "6291151246"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 97
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407044876,
+                "centerLngE7": -737877678,
+                "duration": {
+                    "endTimestampMs": "1584214766",
+                    "startTimestampMs": "1584200366"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "170-19 DOUGLAS AVE\\n New York, NY 11433 \\n USA",
+                    "latitudeE7": 407044876,
+                    "locationConfidence": 68.67162758037679,
+                    "longitudeE7": -737877678,
+                    "name": "170-19 DOUGLAS AVE",
+                    "placeId": "393b396c-591c-4e4f-a7b2-9ea7ab4cee44",
+                    "sourceInfo": {
+                        "deviceTag": "8349885103"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408099193,
+                "centerLngE7": -739515813,
+                "duration": {
+                    "endTimestampMs": "1584264046",
+                    "startTimestampMs": "1584249646"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "2319 FREDERICK DOUGLASS BLVD\\n New York, NY 10...",
+                    "latitudeE7": 408099193,
+                    "locationConfidence": 78.86132431311749,
+                    "longitudeE7": -739515813,
+                    "name": "2319 FREDERICK DOUGLASS BLVD",
+                    "placeId": "d3a1883f-ea84-43cf-a581-aee3328694a0",
+                    "sourceInfo": {
+                        "deviceTag": "5786723767"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406761549,
+                "centerLngE7": -738184059,
+                "duration": {
+                    "endTimestampMs": "1584264436",
+                    "startTimestampMs": "1584206836"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "119-19 ROCKAWAY BLVD\\n New York, NY 11420 \\n USA",
+                    "latitudeE7": 406761549,
+                    "locationConfidence": 66.97443756300258,
+                    "longitudeE7": -738184059,
+                    "name": "119-19 ROCKAWAY BLVD",
+                    "placeId": "c36e665b-7f02-4d83-a0b5-7c703caa7b0b",
+                    "sourceInfo": {
+                        "deviceTag": "7430366652"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408339309,
+                "centerLngE7": -738951168,
+                "duration": {
+                    "endTimestampMs": "1583930833",
+                    "startTimestampMs": "1583880433"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1458 BOSTON RD\\n New York, NY 10459 \\n USA",
+                    "latitudeE7": 408339309,
+                    "locationConfidence": 68.00112501335626,
+                    "longitudeE7": -738951168,
+                    "name": "1458 BOSTON RD",
+                    "placeId": "cfd6383e-c472-4180-9e06-6065fd11622f",
+                    "sourceInfo": {
+                        "deviceTag": "1986567566"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406771023,
+                "centerLngE7": -738521434,
+                "duration": {
+                    "endTimestampMs": "1583628569",
+                    "startTimestampMs": "1583599769"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "84-13 108 AVE\\n New York, NY 11417 \\n USA",
+                    "latitudeE7": 406771023,
+                    "locationConfidence": 87.87496272517205,
+                    "longitudeE7": -738521434,
+                    "name": "84-13 108 AVE",
+                    "placeId": "b8cdba55-2576-48e8-a84c-88dedace3ae1",
+                    "sourceInfo": {
+                        "deviceTag": "4249193766"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408043976,
+                "centerLngE7": -738831328,
+                "duration": {
+                    "endTimestampMs": "1584617429",
+                    "startTimestampMs": "1584538229"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1316 RYAWA AVE\\n New York, NY 10474 \\n USA",
+                    "latitudeE7": 408043976,
+                    "locationConfidence": 95.30642520991418,
+                    "longitudeE7": -738831328,
+                    "name": "1316 RYAWA AVE",
+                    "placeId": "1765dab4-c334-4daf-8e41-69dfdba7b074",
+                    "sourceInfo": {
+                        "deviceTag": "5605218060"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408260361,
+                "centerLngE7": -738435224,
+                "duration": {
+                    "endTimestampMs": "1585140643",
+                    "startTimestampMs": "1585115443"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "895 ZEREGA AVE\\n New York, NY 10473 \\n USA",
+                    "latitudeE7": 408260361,
+                    "locationConfidence": 81.46400613967621,
+                    "longitudeE7": -738435224,
+                    "name": "895 ZEREGA AVE",
+                    "placeId": "a358495e-5bdb-4a7b-bdc2-1dd58a87df06",
+                    "sourceInfo": {
+                        "deviceTag": "1316506871"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407381700,
+                "centerLngE7": -737163011,
+                "duration": {
+                    "endTimestampMs": "1585466511",
+                    "startTimestampMs": "1585426911"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "252-04 82 DR\\n New York, NY 11426 \\n USA",
+                    "latitudeE7": 407381700,
+                    "locationConfidence": 73.52535966137685,
+                    "longitudeE7": -737163011,
+                    "name": "252-04 82 DR",
+                    "placeId": "c262dcfc-28e6-447d-820b-faa22078136f",
+                    "sourceInfo": {
+                        "deviceTag": "7768375712"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 90
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407197889,
+                "centerLngE7": -737582137,
+                "duration": {
+                    "endTimestampMs": "1583572700",
+                    "startTimestampMs": "1583533100"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "88-49 FRANCIS LEWIS BLVD\\n New York, NY 11427 ...",
+                    "latitudeE7": 407197889,
+                    "locationConfidence": 91.99777480379609,
+                    "longitudeE7": -737582137,
+                    "name": "88-49 FRANCIS LEWIS BLVD",
+                    "placeId": "211094b3-4728-458a-bf38-a11eb13f72c8",
+                    "sourceInfo": {
+                        "deviceTag": "8346946061"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407265533,
+                "centerLngE7": -739546493,
+                "duration": {
+                    "endTimestampMs": "1584449511",
+                    "startTimestampMs": "1584406311"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "69 MESEROLE AVE\\n New York, NY 11222 \\n USA",
+                    "latitudeE7": 407265533,
+                    "locationConfidence": 61.22924703065222,
+                    "longitudeE7": -739546493,
+                    "name": "69 MESEROLE AVE",
+                    "placeId": "283514be-fd05-4322-8844-050be7d097b7",
+                    "sourceInfo": {
+                        "deviceTag": "5015671580"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405620352,
+                "centerLngE7": -741553000,
+                "duration": {
+                    "endTimestampMs": "1584096080",
+                    "startTimestampMs": "1584063680"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "422 GIFFORDS LN\\n New York, NY 10308 \\n USA",
+                    "latitudeE7": 405620352,
+                    "locationConfidence": 80.864539603049,
+                    "longitudeE7": -741553000,
+                    "name": "422 GIFFORDS LN",
+                    "placeId": "846e1d80-e0c1-40b6-9bdf-b12f768d99a0",
+                    "sourceInfo": {
+                        "deviceTag": "5786109127"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 97
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405947746,
+                "centerLngE7": -739576704,
+                "duration": {
+                    "endTimestampMs": "1584698976",
+                    "startTimestampMs": "1584644976"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "2272 E  13 ST\\n New York, NY 11229 \\n USA",
+                    "latitudeE7": 405947746,
+                    "locationConfidence": 90.65359025788493,
+                    "longitudeE7": -739576704,
+                    "name": "2272 E  13 ST",
+                    "placeId": "704eda2b-6f79-4f3f-9d29-6876b65cbc00",
+                    "sourceInfo": {
+                        "deviceTag": "8083890941"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406449910,
+                "centerLngE7": -739442948,
+                "duration": {
+                    "endTimestampMs": "1584088482",
+                    "startTimestampMs": "1584081282"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "412 E  35 ST\\n New York, NY 11203 \\n USA",
+                    "latitudeE7": 406449910,
+                    "locationConfidence": 63.971620408272884,
+                    "longitudeE7": -739442948,
+                    "name": "412 E  35 ST",
+                    "placeId": "a9d48ed4-e872-414b-8925-179037fb1993",
+                    "sourceInfo": {
+                        "deviceTag": "8253552770"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 90
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406848590,
+                "centerLngE7": -738382132,
+                "duration": {
+                    "endTimestampMs": "1583575864",
+                    "startTimestampMs": "1583536264"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "101-57 104 ST\\n New York, NY 11416 \\n USA",
+                    "latitudeE7": 406848590,
+                    "locationConfidence": 71.54540563797782,
+                    "longitudeE7": -738382132,
+                    "name": "101-57 104 ST",
+                    "placeId": "3de10342-cbcb-482c-879c-2a72646587d2",
+                    "sourceInfo": {
+                        "deviceTag": "8006071872"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406994374,
+                "centerLngE7": -737733459,
+                "duration": {
+                    "endTimestampMs": "1584859410",
+                    "startTimestampMs": "1584827010"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "111-17 180 ST\\n New York, NY 11433 \\n USA",
+                    "latitudeE7": 406994374,
+                    "locationConfidence": 86.84180651025157,
+                    "longitudeE7": -737733459,
+                    "name": "111-17 180 ST",
+                    "placeId": "b7d735b6-939e-46fa-9e1d-3e3c78679c60",
+                    "sourceInfo": {
+                        "deviceTag": "2484470448"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406002997,
+                "centerLngE7": -741370112,
+                "duration": {
+                    "endTimestampMs": "1584530005",
+                    "startTimestampMs": "1584479605"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "106 JOSEPH AVE\\n New York, NY 10314 \\n USA",
+                    "latitudeE7": 406002997,
+                    "locationConfidence": 88.37039391665319,
+                    "longitudeE7": -741370112,
+                    "name": "106 JOSEPH AVE",
+                    "placeId": "47de505c-874c-45fb-b485-185897c279eb",
+                    "sourceInfo": {
+                        "deviceTag": "8146015608"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406432216,
+                "centerLngE7": -739028302,
+                "duration": {
+                    "endTimestampMs": "1583744092",
+                    "startTimestampMs": "1583736892"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "132 CONKLIN AVE\\n New York, NY 11236 \\n USA",
+                    "latitudeE7": 406432216,
+                    "locationConfidence": 87.42238864842308,
+                    "longitudeE7": -739028302,
+                    "name": "132 CONKLIN AVE",
+                    "placeId": "eb746559-ea69-460c-91ef-0a80b7fcae4d",
+                    "sourceInfo": {
+                        "deviceTag": "7169615756"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406178100,
+                "centerLngE7": -740046459,
+                "duration": {
+                    "endTimestampMs": "1584100608",
+                    "startTimestampMs": "1584071808"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1441 76 ST\\n New York, NY 11228 \\n USA",
+                    "latitudeE7": 406178100,
+                    "locationConfidence": 93.6190801232004,
+                    "longitudeE7": -740046459,
+                    "name": "1441 76 ST",
+                    "placeId": "c403cfd1-d9e8-4a75-bac4-27618e060cff",
+                    "sourceInfo": {
+                        "deviceTag": "7316440540"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405136130,
+                "centerLngE7": -742385727,
+                "duration": {
+                    "endTimestampMs": "1584984871",
+                    "startTimestampMs": "1584977671"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "267 NASHVILLE ST\\n New York, NY 10307 \\n USA",
+                    "latitudeE7": 405136130,
+                    "locationConfidence": 65.35265934526227,
+                    "longitudeE7": -742385727,
+                    "name": "267 NASHVILLE ST",
+                    "placeId": "36614858-8da6-4b4b-8abd-827baecaf0ab",
+                    "sourceInfo": {
+                        "deviceTag": "9960662416"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407004132,
+                "centerLngE7": -738805729,
+                "duration": {
+                    "endTimestampMs": "1584264720",
+                    "startTimestampMs": "1584221520"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "73-44 70 ST\\n New York, NY 11385 \\n USA",
+                    "latitudeE7": 407004132,
+                    "locationConfidence": 77.45274077886769,
+                    "longitudeE7": -738805729,
+                    "name": "73-44 70 ST",
+                    "placeId": "f22e786a-7dbb-4f86-bebe-72a62307e04a",
+                    "sourceInfo": {
+                        "deviceTag": "4048342662"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 94
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405929632,
+                "centerLngE7": -740826173,
+                "duration": {
+                    "endTimestampMs": "1584347296",
+                    "startTimestampMs": "1584332896"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "168 QUINTARD ST\\n New York, NY 10305 \\n USA",
+                    "latitudeE7": 405929632,
+                    "locationConfidence": 64.38087003617423,
+                    "longitudeE7": -740826173,
+                    "name": "168 QUINTARD ST",
+                    "placeId": "4e4318b8-cb8a-42af-9bb3-88e624d1939e",
+                    "sourceInfo": {
+                        "deviceTag": "5351019817"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 94
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407125287,
+                "centerLngE7": -737642017,
+                "duration": {
+                    "endTimestampMs": "1585444586",
+                    "startTimestampMs": "1585437386"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "92-29 195 PL\\n New York, NY 11423 \\n USA",
+                    "latitudeE7": 407125287,
+                    "locationConfidence": 72.53982521235469,
+                    "longitudeE7": -737642017,
+                    "name": "92-29 195 PL",
+                    "placeId": "6480cc2a-4680-4e03-ac6e-1b746e0d6ce4",
+                    "sourceInfo": {
+                        "deviceTag": "7384971776"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406279476,
+                "centerLngE7": -740390378,
+                "duration": {
+                    "endTimestampMs": "1584741430",
+                    "startTimestampMs": "1584723430"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "23 83 ST\\n New York, NY 11209 \\n USA",
+                    "latitudeE7": 406279476,
+                    "locationConfidence": 69.6420985967082,
+                    "longitudeE7": -740390378,
+                    "name": "23 83 ST",
+                    "placeId": "60e1de86-0ff5-4315-ab97-0fe84450552a",
+                    "sourceInfo": {
+                        "deviceTag": "5917955519"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405920212,
+                "centerLngE7": -739529485,
+                "duration": {
+                    "endTimestampMs": "1583141159",
+                    "startTimestampMs": "1583126759"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "2415 E  17 ST\\n New York, NY 11235 \\n USA",
+                    "latitudeE7": 405920212,
+                    "locationConfidence": 80.56691088473033,
+                    "longitudeE7": -739529485,
+                    "name": "2415 E  17 ST",
+                    "placeId": "87bce5f0-0cad-4334-b7fc-f0d428de9880",
+                    "sourceInfo": {
+                        "deviceTag": "4949707892"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407057443,
+                "centerLngE7": -738760435,
+                "duration": {
+                    "endTimestampMs": "1583927702",
+                    "startTimestampMs": "1583891702"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "73-38 COOPER AVE\\n New York, NY 11385 \\n USA",
+                    "latitudeE7": 407057443,
+                    "locationConfidence": 91.97883974265726,
+                    "longitudeE7": -738760435,
+                    "name": "73-38 COOPER AVE",
+                    "placeId": "79909775-ac1e-4449-9524-0c5cf921bc9d",
+                    "sourceInfo": {
+                        "deviceTag": "3090538117"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407648883,
+                "centerLngE7": -737705289,
+                "duration": {
+                    "endTimestampMs": "1584989867",
+                    "startTimestampMs": "1584986267"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "39-21 CORPORAL STONE ST\\n New York, NY 11361 \\...",
+                    "latitudeE7": 407648883,
+                    "locationConfidence": 61.41032015395819,
+                    "longitudeE7": -737705289,
+                    "name": "39-21 CORPORAL STONE ST",
+                    "placeId": "f892caaa-d813-4933-a7b6-0d17a11f3d2e",
+                    "sourceInfo": {
+                        "deviceTag": "0821379149"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407802109,
+                "centerLngE7": -739180968,
+                "duration": {
+                    "endTimestampMs": "1584262779",
+                    "startTimestampMs": "1584237579"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "19-20 22 RD\\n New York, NY 11105 \\n USA",
+                    "latitudeE7": 407802109,
+                    "locationConfidence": 77.31872421395575,
+                    "longitudeE7": -739180968,
+                    "name": "19-20 22 RD",
+                    "placeId": "40a94cc0-f659-4a1b-ad94-352656b06ff4",
+                    "sourceInfo": {
+                        "deviceTag": "3524383464"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 94
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407341329,
+                "centerLngE7": -740013886,
+                "duration": {
+                    "endTimestampMs": "1583751261",
+                    "startTimestampMs": "1583726061"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "174 WAVERLY PL\\n New York, NY 10014 \\n USA",
+                    "latitudeE7": 407341329,
+                    "locationConfidence": 77.36715786623478,
+                    "longitudeE7": -740013886,
+                    "name": "174 WAVERLY PL",
+                    "placeId": "693f28e2-c7a2-4e06-98dd-df0c8b39704b",
+                    "sourceInfo": {
+                        "deviceTag": "0306853274"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406320232,
+                "centerLngE7": -739046398,
+                "duration": {
+                    "endTimestampMs": "1585556827",
+                    "startTimestampMs": "1585546027"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1218 E  84 ST\\n New York, NY 11236 \\n USA",
+                    "latitudeE7": 406320232,
+                    "locationConfidence": 78.01084122937468,
+                    "longitudeE7": -739046398,
+                    "name": "1218 E  84 ST",
+                    "placeId": "aa1185a5-9fd1-4db9-9964-848d739721fb",
+                    "sourceInfo": {
+                        "deviceTag": "6336744916"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406142046,
+                "centerLngE7": -739508522,
+                "duration": {
+                    "endTimestampMs": "1584210214",
+                    "startTimestampMs": "1584206614"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1491 E  23 ST\\n New York, NY 11210 \\n USA",
+                    "latitudeE7": 406142046,
+                    "locationConfidence": 68.75491413409512,
+                    "longitudeE7": -739508522,
+                    "name": "1491 E  23 ST",
+                    "placeId": "5dd6cc79-9eaf-49e4-adc7-ac585d0c7066",
+                    "sourceInfo": {
+                        "deviceTag": "8982835262"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 92
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408433121,
+                "centerLngE7": -738236912,
+                "duration": {
+                    "endTimestampMs": "1585397912",
+                    "startTimestampMs": "1585394312"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "1427 ROBERTSON PL\\n New York, NY 10465 \\n USA",
+                    "latitudeE7": 408433121,
+                    "locationConfidence": 97.35353269229813,
+                    "longitudeE7": -738236912,
+                    "name": "1427 ROBERTSON PL",
+                    "placeId": "aceeedb9-a5a6-41bc-af8e-aa68237332ad",
+                    "sourceInfo": {
+                        "deviceTag": "4449645047"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 94
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405950125,
+                "centerLngE7": -739785084,
+                "duration": {
+                    "endTimestampMs": "1583307522",
+                    "startTimestampMs": "1583267922"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "92 LAKE PL\\n New York, NY 11223 \\n USA",
+                    "latitudeE7": 405950125,
+                    "locationConfidence": 63.18209092667737,
+                    "longitudeE7": -739785084,
+                    "name": "92 LAKE PL",
+                    "placeId": "95321c3c-3087-4831-a655-acf6823eb7a9",
+                    "sourceInfo": {
+                        "deviceTag": "4439414912"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 92
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408715107,
+                "centerLngE7": -738592919,
+                "duration": {
+                    "endTimestampMs": "1584784292",
+                    "startTimestampMs": "1584762692"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "3202 COLDEN AVE\\n New York, NY 10469 \\n USA",
+                    "latitudeE7": 408715107,
+                    "locationConfidence": 70.53745431780835,
+                    "longitudeE7": -738592919,
+                    "name": "3202 COLDEN AVE",
+                    "placeId": "75c16f21-6c34-4787-a6f4-68a9fd722334",
+                    "sourceInfo": {
+                        "deviceTag": "6638563195"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408521024,
+                "centerLngE7": -739103255,
+                "duration": {
+                    "endTimestampMs": "1585212832",
+                    "startTimestampMs": "1585198432"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "19 W  TREMONT AVE\\n New York, NY 10453 \\n USA",
+                    "latitudeE7": 408521024,
+                    "locationConfidence": 90.78172602247439,
+                    "longitudeE7": -739103255,
+                    "name": "19 W  TREMONT AVE",
+                    "placeId": "48461e53-6cb2-4abc-a467-a3e688526d79",
+                    "sourceInfo": {
+                        "deviceTag": "9402733065"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406204272,
+                "centerLngE7": -740178249,
+                "duration": {
+                    "endTimestampMs": "1583426568",
+                    "startTimestampMs": "1583422968"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "8117 10 AVE\\n New York, NY 11228 \\n USA",
+                    "latitudeE7": 406204272,
+                    "locationConfidence": 79.69403758727994,
+                    "longitudeE7": -740178249,
+                    "name": "8117 10 AVE",
+                    "placeId": "48a57237-5aeb-407c-a776-7bc4cf616ced",
+                    "sourceInfo": {
+                        "deviceTag": "8823085918"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407148416,
+                "centerLngE7": -739442787,
+                "duration": {
+                    "endTimestampMs": "1585347640",
+                    "startTimestampMs": "1585322440"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "354 GRAHAM AVE\\n New York, NY 11211 \\n USA",
+                    "latitudeE7": 407148416,
+                    "locationConfidence": 66.21199884758035,
+                    "longitudeE7": -739442787,
+                    "name": "354 GRAHAM AVE",
+                    "placeId": "808d7df7-f292-443e-9702-3e06e5d05b53",
+                    "sourceInfo": {
+                        "deviceTag": "0827854602"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406984020,
+                "centerLngE7": -737756054,
+                "duration": {
+                    "endTimestampMs": "1584015457",
+                    "startTimestampMs": "1584011857"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "110-20 179 ST\\n New York, NY 11433 \\n USA",
+                    "latitudeE7": 406984020,
+                    "locationConfidence": 67.56344476071082,
+                    "longitudeE7": -737756054,
+                    "name": "110-20 179 ST",
+                    "placeId": "652d0f42-410a-4e2f-88f4-c5d0ee57ab35",
+                    "sourceInfo": {
+                        "deviceTag": "7076098676"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406748926,
+                "centerLngE7": -737488294,
+                "duration": {
+                    "endTimestampMs": "1583832430",
+                    "startTimestampMs": "1583818030"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "136-35 222 ST\\n New York, NY 11413 \\n USA",
+                    "latitudeE7": 406748926,
+                    "locationConfidence": 68.64459090712558,
+                    "longitudeE7": -737488294,
+                    "name": "136-35 222 ST",
+                    "placeId": "24a03b62-f40c-4ee7-92dd-47626b09d8ab",
+                    "sourceInfo": {
+                        "deviceTag": "8292884716"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406461080,
+                "centerLngE7": -739790135,
+                "duration": {
+                    "endTimestampMs": "1584881867",
+                    "startTimestampMs": "1584863867"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "224 E  2 ST\\n New York, NY 11218 \\n USA",
+                    "latitudeE7": 406461080,
+                    "locationConfidence": 80.62970578389191,
+                    "longitudeE7": -739790135,
+                    "name": "224 E  2 ST",
+                    "placeId": "b59505d4-2946-4fa2-aee7-5e0a467522ff",
+                    "sourceInfo": {
+                        "deviceTag": "8998108083"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406101174,
+                "centerLngE7": -739749387,
+                "duration": {
+                    "endTimestampMs": "1584381847",
+                    "startTimestampMs": "1584367447"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "2477 65 ST\\n New York, NY 11204 \\n USA",
+                    "latitudeE7": 406101174,
+                    "locationConfidence": 72.03786620493632,
+                    "longitudeE7": -739749387,
+                    "name": "2477 65 ST",
+                    "placeId": "9d39bd60-2ecf-4728-9454-5d3374b91c89",
+                    "sourceInfo": {
+                        "deviceTag": "5287053394"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406458130,
+                "centerLngE7": -738938297,
+                "duration": {
+                    "endTimestampMs": "1584620699",
+                    "startTimestampMs": "1584584699"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "973 E  104 ST\\n New York, NY 11236 \\n USA",
+                    "latitudeE7": 406458130,
+                    "locationConfidence": 95.54800095670873,
+                    "longitudeE7": -738938297,
+                    "name": "973 E  104 ST",
+                    "placeId": "d7a42451-0992-4e3f-a29d-6622fd50ac22",
+                    "sourceInfo": {
+                        "deviceTag": "3163625153"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406711865,
+                "centerLngE7": -739941771,
+                "duration": {
+                    "endTimestampMs": "1584231341",
+                    "startTimestampMs": "1584227741"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "90 11 ST\\n New York, NY 11215 \\n USA",
+                    "latitudeE7": 406711865,
+                    "locationConfidence": 91.39383501565622,
+                    "longitudeE7": -739941771,
+                    "name": "90 11 ST",
+                    "placeId": "3276e737-3069-4d0d-a101-12661df5ab04",
+                    "sourceInfo": {
+                        "deviceTag": "9043782360"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 92
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407373648,
+                "centerLngE7": -738649533,
+                "duration": {
+                    "endTimestampMs": "1583065878",
+                    "startTimestampMs": "1582986678"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "55-39 96 ST\\n New York, NY 11368 \\n USA",
+                    "latitudeE7": 407373648,
+                    "locationConfidence": 81.1857403530112,
+                    "longitudeE7": -738649533,
+                    "name": "55-39 96 ST",
+                    "placeId": "a11179b9-c371-4473-8cd3-7c8275c73488",
+                    "sourceInfo": {
+                        "deviceTag": "7203843882"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407390034,
+                "centerLngE7": -738064275,
+                "duration": {
+                    "endTimestampMs": "1585552085",
+                    "startTimestampMs": "1585534085"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "59-45 162 ST\\n New York, NY 11365 \\n USA",
+                    "latitudeE7": 407390034,
+                    "locationConfidence": 87.09373819322226,
+                    "longitudeE7": -738064275,
+                    "name": "59-45 162 ST",
+                    "placeId": "2a5791a3-3a71-4c92-b2d8-e819e561ef29",
+                    "sourceInfo": {
+                        "deviceTag": "0623704966"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 99
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407712242,
+                "centerLngE7": -738011817,
+                "duration": {
+                    "endTimestampMs": "1585657762",
+                    "startTimestampMs": "1585639762"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "163-09 29 AVE\\n New York, NY 11358 \\n USA",
+                    "latitudeE7": 407712242,
+                    "locationConfidence": 66.5638012237446,
+                    "longitudeE7": -738011817,
+                    "name": "163-09 29 AVE",
+                    "placeId": "d09fe6db-dd7b-4d9f-bf89-d8be5d013a1a",
+                    "sourceInfo": {
+                        "deviceTag": "6441808442"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408799156,
+                "centerLngE7": -738635267,
+                "duration": {
+                    "endTimestampMs": "1583896698",
+                    "startTimestampMs": "1583878698"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "3643 HOLLAND AVE\\n New York, NY 10467 \\n USA",
+                    "latitudeE7": 408799156,
+                    "locationConfidence": 73.01290824112169,
+                    "longitudeE7": -738635267,
+                    "name": "3643 HOLLAND AVE",
+                    "placeId": "0a48f030-ffa5-43ef-97d7-bbd54ca25454",
+                    "sourceInfo": {
+                        "deviceTag": "4570128063"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 95
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 408883907,
+                "centerLngE7": -738183441,
+                "duration": {
+                    "endTimestampMs": "1583585132",
+                    "startTimestampMs": "1583505932"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "3509 ROPES AVE\\n New York, NY 10475 \\n USA",
+                    "latitudeE7": 408883907,
+                    "locationConfidence": 67.35270520740772,
+                    "longitudeE7": -738183441,
+                    "name": "3509 ROPES AVE",
+                    "placeId": "64054434-0c16-44f2-b65d-9ba7e20250fd",
+                    "sourceInfo": {
+                        "deviceTag": "8845487346"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 97
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407323112,
+                "centerLngE7": -738863015,
+                "duration": {
+                    "endTimestampMs": "1585308177",
+                    "startTimestampMs": "1585286577"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "52-68 79 ST\\n New York, NY 11373 \\n USA",
+                    "latitudeE7": 407323112,
+                    "locationConfidence": 90.31113751092172,
+                    "longitudeE7": -738863015,
+                    "name": "52-68 79 ST",
+                    "placeId": "8cbf054d-9007-4ffb-bb35-4704544ed5c2",
+                    "sourceInfo": {
+                        "deviceTag": "6009479515"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406979557,
+                "centerLngE7": -739610829,
+                "duration": {
+                    "endTimestampMs": "1583360253",
+                    "startTimestampMs": "1583342253"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "32 TAAFFE PL\\n New York, NY 11205 \\n USA",
+                    "latitudeE7": 406979557,
+                    "locationConfidence": 63.298962947887574,
+                    "longitudeE7": -739610829,
+                    "name": "32 TAAFFE PL",
+                    "placeId": "8bab7ea0-cea4-4309-8709-1b2c2c87c46a",
+                    "sourceInfo": {
+                        "deviceTag": "7960729154"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 93
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407576174,
+                "centerLngE7": -738007459,
+                "duration": {
+                    "endTimestampMs": "1584338900",
+                    "startTimestampMs": "1584310100"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "43-28 166 ST\\n New York, NY 11358 \\n USA",
+                    "latitudeE7": 407576174,
+                    "locationConfidence": 64.24543663981734,
+                    "longitudeE7": -738007459,
+                    "name": "43-28 166 ST",
+                    "placeId": "460222cb-d958-4b5c-b27b-e240897f4d7c",
+                    "sourceInfo": {
+                        "deviceTag": "3212489596"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406244310,
+                "centerLngE7": -739446275,
+                "duration": {
+                    "endTimestampMs": "1584339999",
+                    "startTimestampMs": "1584321999"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "3124 AVE K\\n New York, NY 11210 \\n USA",
+                    "latitudeE7": 406244310,
+                    "locationConfidence": 80.31871112062038,
+                    "longitudeE7": -739446275,
+                    "name": "3124 AVE K",
+                    "placeId": "32a053dd-dafe-4438-9dd6-150bd65febc0",
+                    "sourceInfo": {
+                        "deviceTag": "5577257194"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 90
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 405931360,
+                "centerLngE7": -740915557,
+                "duration": {
+                    "endTimestampMs": "1584606127",
+                    "startTimestampMs": "1584552127"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "32 EVERGREEN AVE\\n New York, NY 10304 \\n USA",
+                    "latitudeE7": 405931360,
+                    "locationConfidence": 71.99391564081841,
+                    "longitudeE7": -740915557,
+                    "name": "32 EVERGREEN AVE",
+                    "placeId": "4a486fcd-4e86-49b5-9c16-c58d5ef4cab1",
+                    "sourceInfo": {
+                        "deviceTag": "1155148313"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 94
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407484482,
+                "centerLngE7": -738833092,
+                "duration": {
+                    "endTimestampMs": "1584275814",
+                    "startTimestampMs": "1584225414"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "37-48 83 ST\\n New York, NY 11372 \\n USA",
+                    "latitudeE7": 407484482,
+                    "locationConfidence": 61.809479673774774,
+                    "longitudeE7": -738833092,
+                    "name": "37-48 83 ST",
+                    "placeId": "7e85f201-6a59-485c-abad-535d1706883d",
+                    "sourceInfo": {
+                        "deviceTag": "0309531082"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 98
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407497782,
+                "centerLngE7": -739854271,
+                "duration": {
+                    "endTimestampMs": "1584157584",
+                    "startTimestampMs": "1584153984"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "27 W  35 ST\\n New York, NY 10018 \\n USA",
+                    "latitudeE7": 407497782,
+                    "locationConfidence": 91.73206906217946,
+                    "longitudeE7": -739854271,
+                    "name": "27 W  35 ST",
+                    "placeId": "a9adc0d9-07d0-480b-8eb6-7ee4b3d77d9a",
+                    "sourceInfo": {
+                        "deviceTag": "2584365577"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 406798547,
+                "centerLngE7": -738852867,
+                "duration": {
+                    "endTimestampMs": "1584472496",
+                    "startTimestampMs": "1584468896"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "2963 FULTON ST\\n New York, NY 11208 \\n USA",
+                    "latitudeE7": 406798547,
+                    "locationConfidence": 61.11152436442831,
+                    "longitudeE7": -738852867,
+                    "name": "2963 FULTON ST",
+                    "placeId": "26aebc1f-81c2-491a-8d0f-2a003c941619",
+                    "sourceInfo": {
+                        "deviceTag": "5301799452"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407119782,
+                "centerLngE7": -738723625,
+                "duration": {
+                    "endTimestampMs": "1583827415",
+                    "startTimestampMs": "1583809415"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "79-29 67 DR\\n New York, NY 11379 \\n USA",
+                    "latitudeE7": 407119782,
+                    "locationConfidence": 85.97912771842871,
+                    "longitudeE7": -738723625,
+                    "name": "79-29 67 DR",
+                    "placeId": "0bf02fa8-8307-440b-9bbd-e47c3af17b20",
+                    "sourceInfo": {
+                        "deviceTag": "0706980458"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 91
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407539896,
+                "centerLngE7": -737703870,
+                "duration": {
+                    "endTimestampMs": "1583146853",
+                    "startTimestampMs": "1583107253"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "48-29 210 ST\\n New York, NY 11364 \\n USA",
+                    "latitudeE7": 407539896,
+                    "locationConfidence": 70.03283785836001,
+                    "longitudeE7": -737703870,
+                    "name": "48-29 210 ST",
+                    "placeId": "bb27910c-5a53-4d49-812b-84e6ddec1dac",
+                    "sourceInfo": {
+                        "deviceTag": "6896056517"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        },
+        {
+            "placeVisit": {
+                "centerLatE7": 407538220,
+                "centerLngE7": -739897757,
+                "duration": {
+                    "endTimestampMs": "1584781626",
+                    "startTimestampMs": "1584742026"
+                },
+                "editConfirmationStatus": "NOT_CONFIRMED",
+                "location": {
+                    "address": "228 W  38 ST\\n New York, NY 10018 \\n USA",
+                    "latitudeE7": 407538220,
+                    "locationConfidence": 93.98457079886902,
+                    "longitudeE7": -739897757,
+                    "name": "228 W  38 ST",
+                    "placeId": "271c6ae1-a6e2-4bf9-ac52-b137115f96f1",
+                    "sourceInfo": {
+                        "deviceTag": "5838745218"
+                    }
+                },
+                "placeConfidence": "HIGH_CONFIDENCE",
+                "visitConfidence": 96
+            }
+        }
+    ]
+}
