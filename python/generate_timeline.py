@@ -20,7 +20,7 @@ df['ADDRESS'] = df.apply(lambda row: f"{row.NUMBER} {row.STREET}\n {row.CITY}, {
 df['NAME'] = df.apply(lambda row: f"{row.NUMBER} {row.STREET}", axis=1)
 
 # How many?
-N = 2500
+N = 40
 L = len(df)
 for i in range(0,N):
     """
@@ -62,7 +62,7 @@ for i in range(0,N):
 
         start = datetime(2020, 3, day, hour, minute, second, microsecond)
         diff = 23 - hour
-        end = datetime(2020, 3, day, hour + random.randint(1, diff), minute, second, microsecond) # At least and hour
+        end = datetime(2020, 3, day, hour + random.randint(1, diff), minute, second, microsecond) # At least an hour
 
         place_visit["placeVisit"]["duration"]["startTimestampMs"] = str(int(time.mktime(start.timetuple())))
         place_visit["placeVisit"]["duration"]["endTimestampMs"] = str(int(time.mktime(end.timetuple())))
@@ -72,14 +72,30 @@ for i in range(0,N):
         place_visit["placeVisit"]["visitConfidence"] = random.randint(90, 99)
         place_visit["placeVisit"]["editConfirmationStatus"] = "NOT_CONFIRMED"
         res["timelineObjects"].append(place_visit)
+
+        activity_segment = {}
+        activity_segment["activitySegment"] = {}
+
+        activity_segment["activitySegment"]["startLocation"] = {}
+        row1 = df.sample()
+        activity_segment["activitySegment"]["startLocation"]["latitudeE7"] = int(float(row1.LAT) * 1e7)
+        activity_segment["activitySegment"]["startLocation"]["longitudeE7"] = int(float(row1.LON) * 1e7)
+
+        activity_segment["activitySegment"]["endLocation"] = {}
+        row2 = df.sample()
+        activity_segment["activitySegment"]["endLocation"]["latitudeE7"] = int(float(row2.LAT) * 1e7)
+        activity_segment["activitySegment"]["endLocation"]["longitudeE7"] = int(float(row2.LON) * 1e7)
+
+        activity_segment["activitySegment"]["duration"] = {}
+        activity_segment["activitySegment"]["duration"]["startTimestampMs"] = str(int(time.mktime(start.timetuple())))
+        activity_segment["activitySegment"]["duration"]["endTimestampMs"] = str(int(time.mktime(end.timetuple())))
+        activity_segment["activitySegment"]["distance"] = random.randint(1000, 50000)
+        activity_segment["activitySegment"]["activityType"] = "IN_PASSENGER_VEHICLE"
+        activity_segment["activitySegment"]["confidence"] = "HIGH"
+
+        res["timelineObjects"].append(activity_segment)
+
     # Save json
-    with open(f'{id}_genareted_MARCH_2020.json', 'w') as fp:
-        json.dump(res, fp, sort_keys=True, indent=4)
-
-
-
-
-
-
-
+    with open(f'./generated/{id}_genareted_MARCH_2020.json', 'w') as fp:
+        json.dump(res, fp, indent=4)
 
