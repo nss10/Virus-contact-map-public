@@ -1,6 +1,6 @@
 import os
 TEST="Hello World from Config file"
-RADIUS_IN_MTRS=20
+RADIUS_IN_MTRS=50
 TIMESPAN_IN_HRS=3*24
 UPLOAD_PATH= os.getcwd()+"\\tempFiles\\"
 MESSAGE_UPLOAD_ERROR = "Upload Error"
