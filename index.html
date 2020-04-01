@@ -14,27 +14,36 @@
 
         <title>Virus Contact Map</title>
     </head>
-    <!-- Modal -->
+    <!-- Modals -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Login / Signup</h2>
+                <h2>Data Check Form</h2>
             </div>
             <div class="modal-body">
-
                 <strong class="modal-title">DISCLOSURE</strong>
                 <p>We do not save user information with location data for the sole purpose of keeping information private.</p>
                 <!-- Google signin api -->
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <!--<a href="#" onclick="signOut();">Sign out</a><br>
                 <!-- Load JSON button fields -->
-                <label>Google Maps JSON file location </label>
+                
+                
                 <!-- <input class="long-input" type="text" id="json-script"> -->
                 <!-- <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a> -->
                 <br/>
                 <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
-                    <input type="submit" class="load-json-button" value="Upload" />  <input type="file" id="file" name="jsonFile" /> 
+                    <div><strong>Are you confirmed sick and want to share your data for the sake of others health and well being?</strong>
+                        <br>
+                        <input type="radio" id="data-consent-yes" name="data-consent" value="yes">
+                        <label for="data-consent">Yes</label>
+                        <input type="radio" id="data-consent-no" name="data-consent" value="no" checked>
+                        <label for="data-no-consent">No</label>
+                    </div>
+                    <br>
+                    <label>Google Maps JSON file location </label>
+                    <input type="file" id="file" name="jsonFile" /><br><input type="submit" class="load-json-button" value="Upload" />
                 </form> 
             </div>
         </div>  
