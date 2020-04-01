@@ -99,7 +99,7 @@ function loadJSON(e) {
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
     $.ajax({
         method: "POST",
-        url: "http://173.28.146.185:5000/handleUpload",
+        url: config.server_remote,  // config.server_remote, config.server_local
         data: formdata,
         processData: false,
         contentType: false,
