@@ -59,6 +59,9 @@
     padding: 4px 12px;
     margin: 8px 0;
 }
+.map-info-box{
+    color: rgb(10,10,10);
+}
 
 /* Modal*/
 .modal {
