@@ -6,7 +6,8 @@ let positions = null;   // 2D array of longitude and latitude
 // initializer functions -------------------------------------------------------
 // main initializer
 function mainInit() {
-    positions = [{address:"City Hall",location:[-74.006042, 40.712769]}];
+    positions = [{address:"City Hall",location:[-74.006042, 40.712769], start: "2020-02-01 00:28:58",
+            end: "2020-02-01 00:40:40", timeDifference: 0}];
     initGeo();
     initMap(positions[0].location);
     $("#uploadForm").submit(loadJSON)
@@ -52,7 +53,7 @@ function initMap(pos) {
                 // Change the cursor style as a UI indicator.
                 map.getCanvas().style.cursor = 'pointer';
                 
-                var coordinates = e.features[0].geometry.coordinates.slice(0,1);
+                var coordinates = e.features[0].geometry.coordinates;
                 var description = e.features[0].properties.description;
                 
                 // Ensure that if the map is zoomed out such that multiple
@@ -63,8 +64,7 @@ function initMap(pos) {
                 }
                 // Populate the popup and set its coordinates
                 // based on the feature found.
-                console.log(coordinates);
-                popup.setLngLat(coordinates[0][0]).setHTML(description).addTo(map);
+                popup.setLngLat(coordinates).setHTML(description).addTo(map);
             });
             
             map.on('mouseleave', 'user-position', function() {
@@ -87,18 +87,35 @@ function initGeo() {
                     '<strong>Location Address</strong><p>Example inside information.</p>'
                 },
                 'geometry': {
-                    'type': 'LineString',
-                    'coordinates': [[0, 0]]
+                    'type': 'Point',
+                    'coordinates': [0, 0]
                 }
             }
         ]
     };
     // Test data load
-    geojson.features[0].geometry.coordinates = [];
+    geojson.features = [];
+
     positions.forEach(pos => {
-        geojson.features[0].geometry.coordinates.push(pos.location)
-        geojson.features[0].properties.description = "<strong class=\"map-info-box\">" + pos.address + "</strong><p>" + "</p>"
-    });
+        var startDate = new Date(pos.start);
+        var endDate = new Date(pos.end);
+        geojson.features.push({
+                'type': 'Feature',
+                'properties': {
+                    'description':'<strong class=\"map-info-box\">' + pos.address +
+                    '</strong><hr><p class=\"map-info-box\"><strong>Time Arrived:</strong> ' +
+                    startDate.toLocaleTimeString() + ' (' + startDate.toLocaleDateString() + ')' +
+                    '<br><strong>Time Left:</strong> '
+                    + endDate.toLocaleTimeString() + ' (' + endDate.toLocaleDateString() + ')' +
+                    '<br><strong>Time after an infected person was present at location:</strong> '
+                    + pos.timeDifference + ' minutes.</p>'
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': pos.location
+                }
+            })
+    }); 
 }
 
 // function functions -------------------------------------------------------------
@@ -114,7 +131,10 @@ function populatePoints(json_data) {
                 for (var place in nearby) {
                     coords = nearby[place]["coordinates"];
                     if (coords) {
-                        positions.push({address:nearby[place]["Address"],location:[coords['lon'], coords['lat']]});
+                        positions.push({address:nearby[place]["Address"],location:[coords['lon'], coords['lat']],
+                        start:nearby[place]["timestamp"]["startTimestampMs"],
+                        end:nearby[place]["timestamp"]["endTimestampMs"],
+                        timeDifference: nearby[place]["timeDifference"]});
                     }
                 }
             }
@@ -131,33 +151,24 @@ function populatePoints(json_data) {
     }
 }
 
-// load JSON and store to database
-function uploadJSON(e) {
-    console.log("User opted to store data and claims illness. Storing data.");
-}
-
 // load JSON function called from button press
 function loadJSON(e) {
-//    if (getElementById("data-consent-no").checked) {
-        formdata = new FormData();
-        file = $("#file").prop('files')[0];
-        formdata.append('jsonFile', file);
-        console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
-        $.ajax({
-            method: "POST",
-            url: "http://173.28.146.185:5000/handleUpload",
-            data: formdata,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                json_data = JSON.parse(data);
-                populatePoints(json_data);
-            }
-        });
-        e.preventDefault();
-//    } else {
-//       uploadJSON(e);
-//    }
+    formdata = new FormData();
+    file = $("#file").prop('files')[0];
+    formdata.append('jsonFile', file);
+    console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
+    $.ajax({
+        method: "POST",
+        url: "http://173.28.146.185:5000/handleUpload",
+        data: formdata,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            json_data = JSON.parse(data);
+            populatePoints(json_data);
+        }
+    });
+    e.preventDefault();
 }
 
 // call methods -------------------------------------------
