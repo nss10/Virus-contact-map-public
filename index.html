@@ -34,16 +34,15 @@
                 <!-- <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a> -->
                 <br/>
                 Are you diagnosed with the infection? <input type="checkbox" id="isInfected"/><br/>
+                <div><strong>Are you confirmed sick and want to share your data for the sake of others health and well being?</strong>
+                    <br>
+                    <input type="radio" id="data-consent-yes" name="data-consent" value="yes">
+                    <label for="data-consent">Yes</label>
+                    <input type="radio" id="data-consent-no" name="data-consent" value="no" checked>
+                    <label for="data-no-consent">No</label>
+                </div><br>
                 <div id="2FileComment" style="color:red" hidden> Please upload current and previous month's location data</div>
                 <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
-                    <div><strong>Are you confirmed sick and want to share your data for the sake of others health and well being?</strong>
-                        <br>
-                        <input type="radio" id="data-consent-yes" name="data-consent" value="yes">
-                        <label for="data-consent">Yes</label>
-                        <input type="radio" id="data-consent-no" name="data-consent" value="no" checked>
-                        <label for="data-no-consent">No</label>
-                    </div>
-                    <br>
                     <label>Google Maps JSON file location </label>
                     <input type="file" id="file" name="jsonFile" /><br><input type="submit" class="load-json-button" value="Upload" />
                 </form> 

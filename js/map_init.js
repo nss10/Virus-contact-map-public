@@ -163,12 +163,11 @@ function loadJSON(e) {
         formdata.append("jsonFile1",fileList[0]);
         formdata.append("jsonFile2",fileList[1]);
         console.log(fileList);
-    }
-    else{
+    }else{
         file = $("#file").prop('files')[0];
         formdata.append('jsonFile', file);
         console.log(file)
-        }
+    }
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
     $.ajax({
         method: "POST",
@@ -185,7 +184,7 @@ function loadJSON(e) {
                     return false;
             } else{
                 json_data = JSON.parse(data);
-                populateLines(json_data);
+                populatePoints(json_data);
             }
             $("#loginModal")[0].style.display="none";
         }
