@@ -93,7 +93,6 @@ function populateLines(json_data) {
         initMap(positions[0]);
     }
     document.getElementById("response-div").innerHTML = contributeForm;
-    $("#loginModal")[0].style.display="none";
 
 }
 
@@ -125,12 +124,16 @@ function loadJSON(e) {
         encType:"multipart/form-data",
         success: function (data) {
             // console.log(data);
-            if(data.toLowerCase().includes("error")){
+            if(data.toLowerCase().includes("message")){
                 alert(data);
-                return false;
+                if(data.toLowerCase().includes("error"))
+                    return false;
+            } else{
+                json_data = JSON.parse(data);
+                populateLines(json_data);
             }
-            json_data = JSON.parse(data);
-            populateLines(json_data);
+            $("#loginModal")[0].style.display="none";
+
         }
     });
     e.preventDefault();

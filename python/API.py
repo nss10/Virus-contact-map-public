@@ -35,6 +35,8 @@ def handleFileUpload():
             filename = str(uuid.uuid4())
             jsonFile.save(os.path.join(app.config['UPLOAD_PATH'], filename))
             return redirect(url_for('process_input',id=filename))
+        else:
+            return app.config['MESSAGE_UPLOAD_ERROR']
     errorFiles=[]
     for i in [1,2]:
         tagName = htmlTag+str(i)
@@ -43,7 +45,8 @@ def handleFileUpload():
                 errorFiles.append(request.files[tagName].filename)
     if(len(errorFiles) > 0):
         return app.config['MESSAGE_UPLOAD_ERROR'] + ":\n " + str(errorFiles)
-    return app.config['MESSAGE_UPLOAD_ERROR']
+    else:
+        return app.config['MESSAGE_DATA_SAVED']
 
 
 def uploadFile(file):
