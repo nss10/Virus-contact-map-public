@@ -21,13 +21,19 @@ collection = db[dbConf['collection']]
 
 
 paths = []
-for dirname, _, filenames in os.walk("../json/"):
-    for filename in filenames:
-        if("test" in dirname):
-            continue
-        jsonObject = get_json_from_path(os.path.join(dirname, filename))
-        pvList = get_place_visits(jsonObject)
-        for pv in pvList:
-            collection.insert(pv)
 
-collection.create_index([("location", GEOSPHERE)])
+def save_to_db(jsonObj):
+    pvList = get_place_visits(jsonObj)
+    for pv in pvList:
+        collection.insert(pv)
+
+def process():
+    for dirname, _, filenames in os.walk("../json/"):
+        for filename in filenames:
+            if("test" in dirname):
+                continue
+            jsonObject = get_json_from_path(os.path.join(dirname, filename))
+            save_to_db(jsonObject)
+
+    collection.create_index([("location", GEOSPHERE)])
+# process()
