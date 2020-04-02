@@ -118,7 +118,7 @@ function loadJSON(e) {
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
     $.ajax({
         method: "POST",
-        url: config.server_local,  // config.server_remote, config.server_local
+        url: config.server_remote,  // config.server_remote, config.server_local
         data: formdata,
         processData: false,
         contentType: false,

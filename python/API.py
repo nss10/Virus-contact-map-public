@@ -5,8 +5,7 @@ from query import getSpatioTemporalMatch
 from response import get_response
 from helper import get_json_from_path
 from mdb import save_to_db
-import json,uuid
-import os,sys
+import json,uuid,os,sys
 app = Flask(__name__)
 CORS(app)
 app.config.from_pyfile('config.py')
