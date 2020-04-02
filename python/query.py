@@ -1,14 +1,11 @@
 from pymongo import MongoClient
 from helper import getTimeOverlap
-# LocalDb
-# client = MongoClient('localhost', 27017)
-# db = client["testdb"]
-# collection = db["placesVisited"]
+import config as cfg
+dbConf=cfg.DB_REMOTE #cfg.DB_LOCAL, cfg.DB_REMOTE
 
-# RemoteDb
-client = MongoClient('173.28.146.185', 27017)
-db = client["covid19"]
-collection = db["infectedPlaces"]
+client = MongoClient(dbConf['uri'], dbConf['port'])
+db = client[dbConf["dbname"]]
+collection = db[dbConf['collection']]
 
 
 def getSpatioTemporalMatch(placesVisited, radius, timeSpan):

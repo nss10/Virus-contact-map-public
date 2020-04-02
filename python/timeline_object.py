@@ -169,6 +169,8 @@ class timelineObject:
                             c['visitConfidence'] = child['visitConfidence']
                         if 'editConfirmationStatus' in child:
                             c['editConfirmationStatus'] = child['editConfirmationStatus']
-                        visits.append(c)
-                visits.append(v)
+                        if len(c) == 8:
+                            visits.append(c)
+                if(len(v)==8):
+                    visits.append(v)
         return visits

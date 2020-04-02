@@ -33,6 +33,8 @@
                 <!-- <input class="long-input" type="text" id="json-script"> -->
                 <!-- <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a> -->
                 <br/>
+                Are you diagnosed with the infection? <input type="checkbox" id="isInfected"/><br/>
+                <div id="2FileComment" style="color:red" hidden> Please upload current and previous month's location data</div>
                 <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
                     <div><strong>Are you confirmed sick and want to share your data for the sake of others health and well being?</strong>
                         <br>
@@ -67,11 +69,12 @@
             </table>
         </section>
         <!-- Map Area -->
-        <section id="map-section">
+        <section id="map-section">  
             <div id="map"></div>
         </section>
 
         <!-- Scripts -->
+        <script src="resources/config.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>

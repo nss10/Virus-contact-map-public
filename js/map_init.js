@@ -11,6 +11,7 @@ function mainInit() {
     initGeo();
     initMap(positions[0].location);
     $("#uploadForm").submit(loadJSON)
+    $("#isInfected").change(checkBoxStatusChange)
 }
 
 // initializes map
@@ -147,29 +148,54 @@ function populatePoints(json_data) {
         $("#loginModal")[0].style.display="none";
     } else {
         console.log("Welp. Looks like there's no location overlap data.");
-
     }
 }
 
 // load JSON function called from button press
 function loadJSON(e) {
     formdata = new FormData();
-    file = $("#file").prop('files')[0];
-    formdata.append('jsonFile', file);
+    if($("#isInfected")[0].checked){
+        if($("#file").prop('files').length!=2){
+            alert("You were expected to upload exactly two files");
+            return false;
+        }
+        fileList=$("#file").prop('files');
+        formdata.append("jsonFile1",fileList[0]);
+        formdata.append("jsonFile2",fileList[1]);
+        console.log(fileList);
+    }
+    else{
+        file = $("#file").prop('files')[0];
+        formdata.append('jsonFile', file);
+        console.log(file)
+        }
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
     $.ajax({
         method: "POST",
-        url: "http://173.28.146.185:5000/handleUpload",
+        url: config.server_remote,  // config.server_remote, config.server_local
         data: formdata,
         processData: false,
         contentType: false,
+        encType:"multipart/form-data",
         success: function (data) {
-            json_data = JSON.parse(data);
-            populatePoints(json_data);
+            // console.log(data);
+            if(data.toLowerCase().includes("message")){
+                alert(data);
+                if(data.toLowerCase().includes("error"))
+                    return false;
+            } else{
+                json_data = JSON.parse(data);
+                populateLines(json_data);
+            }
+            $("#loginModal")[0].style.display="none";
         }
     });
     e.preventDefault();
 }
 
+function checkBoxStatusChange(){
+    $("#file")[0].toggleAttribute("multiple");
+    $("#2FileComment").toggle()
+}
 // call methods -------------------------------------------
 mainInit();
