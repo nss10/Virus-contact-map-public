@@ -10,6 +10,7 @@ function mainInit() {
     initGeo();
     initMap(positions[0]);
     $("#uploadForm").submit(loadJSON)
+    $("#isInfected").change(checkBoxStatusChange)
 }
 
 // initializes map
@@ -82,20 +83,37 @@ function populateLines(json_data) {
             }
         }
     }
-    // reload map
-    console.log("Reloading map with new positional data.");
-    initGeo();
-    initMap(positions[0]);
+    if(positions.length==0){
+        alert("No matches found!")
+    }
+    else{
+        // reload map
+        console.log("Reloading map with new positional data.");
+        initGeo();
+        initMap(positions[0]);
+    }
     document.getElementById("response-div").innerHTML = contributeForm;
-    $("#loginModal")[0].style.display="none";
 
 }
 
 // load JSON function called from button press
 function loadJSON(e) {
     formdata = new FormData();
-    file = $("#file").prop('files')[0];
-    formdata.append('jsonFile', file);
+    if($("#isInfected")[0].checked){
+        if($("#file").prop('files').length!=2){
+            alert("You were expected to upload exactly two files");
+            return false;
+        }
+        fileList=$("#file").prop('files');
+        formdata.append("jsonFile1",fileList[0]);
+        formdata.append("jsonFile2",fileList[1]);
+        console.log(fileList);
+    }
+    else{
+        file = $("#file").prop('files')[0];
+        formdata.append('jsonFile', file);
+        console.log(file)
+        }
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
     $.ajax({
         method: "POST",
@@ -103,15 +121,28 @@ function loadJSON(e) {
         data: formdata,
         processData: false,
         contentType: false,
+        encType:"multipart/form-data",
         success: function (data) {
             // console.log(data);
-            json_data = JSON.parse(data);
-            populateLines(json_data);
+            if(data.toLowerCase().includes("message")){
+                alert(data);
+                if(data.toLowerCase().includes("error"))
+                    return false;
+            } else{
+                json_data = JSON.parse(data);
+                populateLines(json_data);
+            }
+            $("#loginModal")[0].style.display="none";
+
         }
     });
     e.preventDefault();
 
 }
 
+function checkBoxStatusChange(){
+    $("#file")[0].toggleAttribute("multiple");
+    $("#2FileComment").toggle()
+}
 // call methods -------------------------------------------
 mainInit();
