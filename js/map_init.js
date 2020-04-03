@@ -8,20 +8,23 @@ let positions = null;   // 2D array of longitude and latitude
 function mainInit() {
     positions = [{address:"City Hall",location:[-74.006042, 40.712769], start: "2020-02-01 00:28:58",
             end: "2020-02-01 00:40:40", timeDifference: 0}];
+    var zoom = [3, 11];
     initGeo();
-    initMap(positions[0].location);
+    initMap(positions[0].location, zoom);
     $("#uploadForm").submit(loadJSON)
     $("#isInfected").change(checkBoxStatusChange)
 }
 
 // initializes map
-function initMap(pos) {
+function initMap(pos, zoom) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
     map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [pos[0], pos[1]],
-        zoom: 9
+        zoom: 9,
+        minZoom: zoom[0],
+        maxZoom: zoom[1]
     });
 
     map.addControl(new mapboxgl.NavigationControl());
@@ -32,18 +35,99 @@ function initMap(pos) {
             'type': 'geojson',
             'data': geojson
         });
+        // Heatmap
         map.addLayer({
-            'id': 'user-position',
-            'type': 'circle',
-            'source': 'point',
-            'paint': {
-                'circle-radius': {
-                    'base': 3.75,
-                    'stops': [[18, 7], [33, 270]]
-                },
-                'circle-color': 'rgba(255, 50, 50, 0.8)'
+            id: 'user-heat',
+            type: 'heatmap',
+            source: 'point',
+            maxzoom: 15,
+            paint: {
+              // increase weight as diameter breast height increases
+              'heatmap-weight': {
+                property: 'dbh',
+                type: 'exponential',
+                stops: [
+                  [1, 0],
+                  [62, 1]
+                ]
+              },
+              // increase intensity as zoom level increases
+              'heatmap-intensity': {
+                stops: [
+                  [11, 1],
+                  [15, 3]
+                ]
+              },
+              // assign color values be applied to points depending on their density
+              'heatmap-color': [
+                'interpolate',
+                ['linear'],
+                ['heatmap-density'],
+                0, 'rgba(239,222,222,0)',
+                0.2, 'rgb(230,208,208)',
+                0.4, 'rgb(207,103,103)',
+                0.6, 'rgb(207,103,103)',
+                0.8, 'rgb(153,28,28)'
+              ],
+              // increase radius as zoom increases
+              'heatmap-radius': {
+                stops: [
+                  [11, 15],
+                  [15, 20]
+                ]
+              },
+              // decrease opacity to transition into the circle layer
+              'heatmap-opacity': {
+                default: 1,
+                stops: [
+                  [14, 1],
+                  [15, 0]
+                ]
+              },
             }
-        });
+        }, 'waterway-label');
+
+        // Adding circles
+        map.addLayer({
+            id: 'user-position',
+            type: 'circle',
+            source: 'point',
+            minzoom: 14,
+            paint: {
+                // increase the radius of the circle as the zoom level and dbh value increases
+                'circle-radius': {
+                property: 'dbh',
+                type: 'exponential',
+                stops: [
+                    [{ zoom: 15, value: 1 }, 5],
+                    [{ zoom: 15, value: 62 }, 10],
+                    [{ zoom: 22, value: 1 }, 20],
+                    [{ zoom: 22, value: 62 }, 50],
+                ]
+                },
+                'circle-color': {
+                property: 'dbh',
+                type: 'exponential',
+                stops: [
+                    [0, 'rgba(239,222,222,0)'],
+                    [10, 'rgb(255,222,222)'],
+                    [20, 'rgb(230,208,208)'],
+                    [30, 'rgb(219,166,166)'],
+                    [40, 'rgb(207,103,103)'],
+                    [50, 'rgb(153,28,28)'],
+                    [60, 'rgb(108,1,1)']
+                ]
+                },
+                'circle-stroke-color': 'white',
+                'circle-stroke-width': 1,
+                'circle-opacity': {
+                stops: [
+                    [14, 0],
+                    [15, 1]
+                ]
+                }
+            }
+            }, 'waterway-label');
         // Create a popup, but don't add it to the map yet.
         var popup = new mapboxgl.Popup({
             closeButton: false,
@@ -142,8 +226,10 @@ function populatePoints(json_data) {
         }
         // reload map
         console.log("Reloading map with new positional data.");
+        var zoom = [3, 20];
+
         initGeo();
-        initMap(positions[0].location);
+        initMap(positions[0].location, zoom);
         document.getElementById("response-div").innerHTML = contributeForm;
         $("#loginModal")[0].style.display="none";
     } else {
