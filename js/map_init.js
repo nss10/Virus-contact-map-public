@@ -12,7 +12,7 @@ function mainInit() {
     initGeo();
     initMap(positions[0].location, zoom);
     $("#uploadForm").submit(loadJSON)
-    $("#isInfected").change(checkBoxStatusChange)
+    $( "input[name='data-consent']" ).change(checkBoxStatusChange)
 }
 
 // initializes map
