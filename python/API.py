@@ -1,10 +1,10 @@
 from flask import Flask, request,render_template, url_for, redirect
 from flask_cors import CORS
 from timeline_object import timelineObject
-from query import getSpatioTemporalMatch
+from query import getSpatioTemporalMatch,getAllInfectedLocations
 from response import get_response
 from helper import get_json_from_path
-from mdb import save_to_db
+from mdb import save_to_db,get_place_visits
 import json,uuid,os,sys
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +26,11 @@ def process_input():
     os.remove(filePath)  # Delete tempFile once processed
     return json.dumps(get_response(matchLocations))
 
+@app.route("/allData")
+def intialData():
+    return json.dumps(getAllInfectedLocations())
+
+
 @app.route(app.config['ROUTE_UPLOAD_HANDLER'], methods=['POST'])
 def handleFileUpload():
     htmlTag=app.config['FILE_ELEMENT_TAG']
@@ -38,24 +43,33 @@ def handleFileUpload():
         else:
             return app.config['MESSAGE_UPLOAD_ERROR']
     errorFiles=[]
+    shouldUpload=True
     for i in [1,2]:
         tagName = htmlTag+str(i)
         if(tagName in request.files):
-            if(not uploadFile(request.files[tagName])):
-                errorFiles.append(request.files[tagName].filename)
+            if(not uploadFile(request.files[tagName],errorFiles,shouldUpload)):
+                shouldUpload=False
     if(len(errorFiles) > 0):
         return app.config['MESSAGE_UPLOAD_ERROR'] + ":\n " + str(errorFiles)
     else:
         return app.config['MESSAGE_DATA_SAVED']
 
 
-def uploadFile(file):
-    status=False
+def uploadFile(file,errorFiles, shouldUpload=True):
     try:
         jsonObj = json.load(file)
-        save_to_db(jsonObj)
-        status=True    
+        pvList=get_place_visits(jsonObj)
     except:
         e = sys.exc_info()[0]
-        print("Exception caught " + str(e))
-    return status
+        print("Exception caught " + str(e) + " while adding "+file.filename)
+        errorFiles.append(file.filename)
+        return False
+    
+    if shouldUpload:
+        print('Uploading ',len(pvList),' records to db from file: ',file.filename)
+        save_to_db(pvList)
+        return True
+    else:
+        print('Not Uploading ',file.filename,' records to db')
+        return False
+
