@@ -3,7 +3,7 @@ from helper import get_json_from_path
 from timeline_object import timelineObject
 import os
 import config as cfg
-dbConf=cfg.DB_REMOTE #cfg.DB_LOCAL, cfg.DB_REMOTE
+dbConf=cfg.DB
 
 def get_activity_segments(path):
     to = timelineObject(jsonObject)

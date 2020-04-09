@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from helper import getTimeOverlap
 import config as cfg
-dbConf = cfg.DB_REMOTE  # cfg.DB_LOCAL, cfg.DB_REMOTE
+dbConf = cfg.DB
 
 client = MongoClient(dbConf['uri'], dbConf['port'])
 db = client[dbConf["dbname"]]
@@ -11,12 +11,8 @@ def getAllInfectedLocations():
   res = collection.find()
   retVal=[]
   for item in res:
-    lat, lon = item["place_location"]["location"]["coordinates"]
-    retVal.append(
-        {"address": "", "location": [lat, lon], "start": "",
-        "end": "", "timeDifference": 0})
+    retVal.append({"address": "","location": item["place_location"]["location"]["coordinates"], "start": "", "end": "", "timeDifference": 0})
   return retVal
-
 def getSpatioTemporalMatch(placesVisited, radius, timeSpan):
   '''
     Returns list of all location objects that fall within the distance range and timespan \n

@@ -51,10 +51,8 @@ def handleFileUpload():
             shouldUpload = shouldUpload and uploadFile(request.files[tagName],errorFiles,uploadList)
     
     if shouldUpload:
-        print('Uploading ',len(uploadList),' records to db from file: ',request.files[tagName].filename)
+        print('Uploading ',len(uploadList),' files to db')
         save_to_db(uploadList)
-    else:
-        print('Not Uploading ',request.files[tagName].filename,' records to db')
 
     if(len(errorFiles) > 0):
         return app.config['MESSAGE_UPLOAD_ERROR'] + ":\n " + str(errorFiles)
@@ -65,7 +63,7 @@ def handleFileUpload():
 def uploadFile(file,errorFiles, uploadList):
     try:
         jsonObj = json.load(file)
-        uploadList.append(get_place_visits(jsonObj))
+        uploadList+=get_place_visits(jsonObj)
         return True
     except:
         e = sys.exc_info()[0]

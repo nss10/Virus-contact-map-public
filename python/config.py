@@ -8,6 +8,7 @@ MESSAGE_DATA_SAVED = "MESSAGE : Data added to database succesfully"
 FILE_ELEMENT_TAG='jsonFile'
 ROUTE_UPLOAD_HANDLER='/handleUpload'
 ROUTE_PROCESS_INPUT='/processJson'
+BACKEND_REMOTE=True
 DB_LOCAL={
     "uri":'localhost',
      "port":27017,   
@@ -21,3 +22,4 @@ DB_REMOTE={
     "collection":"infectedPlaces"
 }
 
+DB=DB_REMOTE if BACKEND_REMOTE else DB_LOCAL
