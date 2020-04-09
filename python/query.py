@@ -16,11 +16,14 @@ def getAllInfectedLocations():
   if(len(res) > 0 and res[0]['loggedDate']==str(date.today())):
     print("Returning data from Cache")
     return res
+  return updateCacheAndFetch()
+
+def updateCacheAndFetch():
   perDayCollection.drop()
   res = collection.find()
   retVal=[]
   for item in res:
-    retVal.append({"address": "","location": item["place_location"]["location"]["coordinates"], "start": "", "end": "", "timeDifference": 0})
+    retVal.append({"address": "","location": item["place_location"]["location"]["coordinates"], "start": "", "end": "", "timeDifference": 0, "loggedDate": str(date.today())})
   save_to_db(retVal,perDayCollection) 
   return retVal
 def getSpatioTemporalMatch(placesVisited, radius, timeSpan):

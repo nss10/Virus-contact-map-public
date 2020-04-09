@@ -1,7 +1,7 @@
 from flask import Flask, request,render_template, url_for, redirect
 from flask_cors import CORS
 from timeline_object import timelineObject
-from query import getSpatioTemporalMatch,getAllInfectedLocations
+from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch
 from response import get_response
 from helper import get_json_from_path
 from mdb import save_to_db,get_place_visits
@@ -51,12 +51,13 @@ def handleFileUpload():
             shouldUpload = shouldUpload and uploadFile(request.files[tagName],errorFiles,uploadList)
     
     if shouldUpload:
-        print('Uploading ',len(uploadList),' files to db')
-        save_to_db(uploadList)
+
+        save_to_db(uploadList,userDefinedId=True)
 
     if(len(errorFiles) > 0):
         return app.config['MESSAGE_UPLOAD_ERROR'] + ":\n " + str(errorFiles)
     else:
+        updateCacheAndFetch()
         return app.config['MESSAGE_DATA_SAVED']
 
 
