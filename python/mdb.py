@@ -22,8 +22,7 @@ collection = db[dbConf['collection']]
 
 paths = []
 
-def save_to_db(jsonObj):
-    pvList = get_place_visits(jsonObj)
+def save_to_db(pvList):
     for pv in pvList:
         collection.insert(pv)
 
@@ -33,7 +32,8 @@ def process():
             if("test" in dirname):
                 continue
             jsonObject = get_json_from_path(os.path.join(dirname, filename))
-            save_to_db(jsonObject)
+            pvList = get_place_visits(jsonObject)
+            save_to_db(pvList)
 
     collection.create_index([("location", GEOSPHERE)])
 # process()
