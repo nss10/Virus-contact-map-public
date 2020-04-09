@@ -17,8 +17,9 @@ def testMethod():
 @app.route(app.config['ROUTE_PROCESS_INPUT'], methods=["get"])
 def process_input():
     filePath = app.config['UPLOAD_PATH'] + str(request.args.get('id'))
-    radius = app.config['RADIUS_IN_MTRS'] 
-    timeSpan=app.config['TIMESPAN_IN_HRS'] 
+    radius = int(request.args.get('radius')) 
+    timeSpan=int(request.args.get('time'))  
+    print(radius, timeSpan)
     timelineJson = get_json_from_path(filePath)
     tObj = timelineObject(timelineJson) # Convert input json into python object
     placeVisits = tObj.getPlaceVisits()
@@ -34,12 +35,13 @@ def intialData():
 @app.route(app.config['ROUTE_UPLOAD_HANDLER'], methods=['POST'])
 def handleFileUpload():
     htmlTag=app.config['FILE_ELEMENT_TAG']
+    
     if htmlTag in request.files:
         jsonFile = request.files[htmlTag]
         if jsonFile.filename != '':    
             filename = str(uuid.uuid4())
             jsonFile.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-            return redirect(url_for('process_input',id=filename))
+            return redirect(url_for('process_input',id=filename,radius=int(request.form['radius']),time=int(request.form['time'])))
         else:
             return app.config['MESSAGE_UPLOAD_ERROR']
     errorFiles=[]

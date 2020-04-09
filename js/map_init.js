@@ -256,6 +256,8 @@ function populatePoints(json_data) {
 // load JSON function called from button press
 function loadJSON(e) {
     formdata = new FormData();
+    formdata.append('radius',$("#radius")[0].value);
+    formdata.append('time',$("#time")[0].value);
     if($("#data-consent-yes")[0].checked){
         if($("#file").prop('files').length!=2){
             alert("You were expected to upload exactly two files");
@@ -299,6 +301,7 @@ function loadJSON(e) {
 function checkBoxStatusChange(){
     $("#file")[0].toggleAttribute("multiple");
     $("#2FileComment").toggle()
+    $("#configParams").toggle()
 }
 // call methods -------------------------------------------
 mainInit();
