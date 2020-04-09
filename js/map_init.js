@@ -6,13 +6,22 @@ let positions = null;   // 2D array of longitude and latitude
 // initializer functions -------------------------------------------------------
 // main initializer
 function mainInit() {
-    positions = [{address:"City Hall",location:[-74.006042, 40.712769], start: "2020-02-01 00:28:58",
-            end: "2020-02-01 00:40:40", timeDifference: 0}];
-    var zoom = [3, 11];
-    initGeo();
-    initMap(positions[0].location, zoom);
+    $.ajax({
+        method: "GET",
+        url: config.server_local + config.allData_url,  // config.server_remote, config.server_local
+        processData: false,
+        contentType: false,
+        encType: "multipart/form-data",
+        success: function (data) {
+            positions = JSON.parse(data);
+            var zoom = [3, 11];
+            initGeo();
+            initMap(positions[0].location, zoom);
+        }
+    });
+
     $("#uploadForm").submit(loadJSON)
-    $( "input[name='data-consent']" ).change(checkBoxStatusChange)
+    $("input[name='data-consent']").change(checkBoxStatusChange)
 }
 
 // initializes map
