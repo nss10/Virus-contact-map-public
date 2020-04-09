@@ -18,3 +18,8 @@ btn.onclick = function() {
 span.onclick = function() {
   modal.style.display = "none";
 }
+
+// Will display the footer modal with a message
+function displayFotterMessage(text, active) {
+  
+}
