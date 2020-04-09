@@ -240,7 +240,7 @@ function populatePoints(json_data) {
 // load JSON function called from button press
 function loadJSON(e) {
     formdata = new FormData();
-    if($("#isInfected")[0].checked){
+    if($("#data-consent-yes")[0].checked){
         if($("#file").prop('files').length!=2){
             alert("You were expected to upload exactly two files");
             return false;
