@@ -20,6 +20,6 @@ span.onclick = function() {
 }
 
 // Will display the footer modal with a message
-function displayFotterMessage(text, active) {
+function displayFooterMessage(text, active) {
   
 }

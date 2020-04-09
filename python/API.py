@@ -43,33 +43,32 @@ def handleFileUpload():
         else:
             return app.config['MESSAGE_UPLOAD_ERROR']
     errorFiles=[]
+    uploadList=[]
     shouldUpload=True
     for i in [1,2]:
         tagName = htmlTag+str(i)
         if(tagName in request.files):
-            if(not uploadFile(request.files[tagName],errorFiles,shouldUpload)):
-                shouldUpload=False
+            shouldUpload = shouldUpload and uploadFile(request.files[tagName],errorFiles,uploadList)
+    
+    if shouldUpload:
+        print('Uploading ',len(uploadList),' files to db')
+        save_to_db(uploadList)
+
     if(len(errorFiles) > 0):
         return app.config['MESSAGE_UPLOAD_ERROR'] + ":\n " + str(errorFiles)
     else:
         return app.config['MESSAGE_DATA_SAVED']
 
 
-def uploadFile(file,errorFiles, shouldUpload=True):
+def uploadFile(file,errorFiles, uploadList):
     try:
         jsonObj = json.load(file)
-        pvList=get_place_visits(jsonObj)
+        uploadList+=get_place_visits(jsonObj)
+        return True
     except:
         e = sys.exc_info()[0]
         print("Exception caught " + str(e) + " while adding "+file.filename)
         errorFiles.append(file.filename)
         return False
     
-    if shouldUpload:
-        print('Uploading ',len(pvList),' records to db from file: ',file.filename)
-        save_to_db(pvList)
-        return True
-    else:
-        print('Not Uploading ',file.filename,' records to db')
-        return False
-
+    

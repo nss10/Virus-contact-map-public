@@ -8,7 +8,7 @@ let positions = null;   // 2D array of longitude and latitude
 function mainInit() {
     $.ajax({
         method: "GET",
-        url: config.server_local + config.allData_url,  // config.server_remote, config.server_local
+        url: config.server_ip + config.allData_url,  // config.server_remote, config.server_local
         processData: false,
         contentType: false,
         encType: "multipart/form-data",
@@ -22,12 +22,15 @@ function mainInit() {
 
     // We pass through a string to change the footer notification for a user on the front end
     // We pass the text, and wither or not to make it active or not active
-    displayFotterMessage("This is the text that will be displayed", true);
-
+    displayFooterMessage("This is the text that will be displayed", true);
     $("#uploadForm").submit(loadJSON)
     $("input[name='data-consent']").change(checkBoxStatusChange)
 }
 
+
+function loadInitialData(){
+   
+}
 // initializes map
 function initMap(pos, zoom) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
@@ -246,7 +249,7 @@ function populatePoints(json_data) {
         document.getElementById("response-div").innerHTML = contributeForm;
         $("#loginModal")[0].style.display="none";
     } else {
-        console.log("Welp. Looks like there's no location overlap data.");
+        alert("Welp. Looks like there's no location overlap data.");
     }
 }
 
@@ -270,7 +273,7 @@ function loadJSON(e) {
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
     $.ajax({
         method: "POST",
-        url: config.server_remote,  // config.server_remote, config.server_local
+        url: config.server_ip + config.upload_url, 
         data: formdata,
         processData: false,
         contentType: false,
