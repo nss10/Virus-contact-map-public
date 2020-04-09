@@ -1,17 +1,27 @@
 from pymongo import MongoClient
-from helper import getTimeOverlap
+from helper import *
 import config as cfg
+from mdb import save_to_db
+import time
+from datetime import date
 dbConf = cfg.DB
 
 client = MongoClient(dbConf['uri'], dbConf['port'])
 db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
+perDayCollection = db[dbConf['dailyCollection']]
 
 def getAllInfectedLocations():
+  res =  list(perDayCollection.find({},{ "_id": 0}))
+  if(len(res) > 0 and res[0]['loggedDate']==str(date.today())):
+    print("Returning data from Cache")
+    return res
+  perDayCollection.drop()
   res = collection.find()
   retVal=[]
   for item in res:
     retVal.append({"address": "","location": item["place_location"]["location"]["coordinates"], "start": "", "end": "", "timeDifference": 0})
+  save_to_db(retVal,perDayCollection) 
   return retVal
 def getSpatioTemporalMatch(placesVisited, radius, timeSpan):
   '''
