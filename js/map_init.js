@@ -20,6 +20,10 @@ function mainInit() {
         }
     });
 
+    // We pass through a string to change the footer notification for a user on the front end
+    // We pass the text, and wither or not to make it active or not active
+    displayFotterMessage("This is the text that will be displayed", true);
+
     $("#uploadForm").submit(loadJSON)
     $("input[name='data-consent']").change(checkBoxStatusChange)
 }
@@ -249,7 +253,7 @@ function populatePoints(json_data) {
 // load JSON function called from button press
 function loadJSON(e) {
     formdata = new FormData();
-    if($("#isInfected")[0].checked){
+    if($("#data-consent-yes")[0].checked){
         if($("#file").prop('files').length!=2){
             alert("You were expected to upload exactly two files");
             return false;
