@@ -1,4 +1,4 @@
-import json
+import json,time
 
 def getTimeOverlap(infectedTime,userTime):
     '''
@@ -11,14 +11,17 @@ def getTimeOverlap(infectedTime,userTime):
     elif(infectedTime["endTimestampMs"] < userTime["startTimestampMs"]):
         # user visited after infected person left : Returns the time gap between visits
         diff = int(userTime["startTimestampMs"]) - int(infectedTime["startTimestampMs"])
-        return diff/(1000*60*60)
+        return diff
 
     else:
         # both are at the same place with some time overlap 
         return 0
 
 
+def getTimeSince(infectedTime):
+    diff = time.time()- int(infectedTime["startTimestampMs"])
+    return diff
 
 def get_json_from_path(path):
     with open(path) as json_file:
-            return json.load(json_file)
+            return json.load(json_file)          

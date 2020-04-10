@@ -198,8 +198,8 @@ function initGeo() {
     geojson.features = [];
 
     positions.forEach(pos => {
-        var startDate = new Date(pos.start);
-        var endDate = new Date(pos.end);
+        var startDate = new Date(parseInt(pos.start));
+        var endDate = new Date(parseInt(pos.end));
         geojson.features.push({
                 'type': 'Feature',
                 'properties': {
@@ -284,6 +284,8 @@ function loadJSON(e) {
                 alert(data);
                 if(data.toLowerCase().includes("error"))
                     return false;
+                else    
+                    location.reload()
             } else{
                 json_data = JSON.parse(data);
                 populatePoints(json_data);
