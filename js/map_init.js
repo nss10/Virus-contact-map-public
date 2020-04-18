@@ -280,6 +280,8 @@ function msToTime(duration) {
 // load JSON function called from button press
 function loadJSON(e) {
     formdata = new FormData();
+    formdata.append('radius',$("#radius")[0].value);
+    formdata.append('time',$("#time")[0].value);
     if($("#data-consent-yes")[0].checked){
         if($("#file").prop('files').length!=2){
             alert("You were expected to upload exactly two files");
@@ -308,6 +310,8 @@ function loadJSON(e) {
                 alert(data);
                 if(data.toLowerCase().includes("error"))
                     return false;
+                else    
+                    location.reload()
             } else{
                 json_data = JSON.parse(data);
                 populatePoints(json_data);
@@ -321,6 +325,7 @@ function loadJSON(e) {
 function checkBoxStatusChange(){
     $("#file")[0].toggleAttribute("multiple");
     $("#2FileComment").toggle()
+    $("#configParams").toggle()
 }
 // call methods -------------------------------------------
 mainInit();

@@ -41,7 +41,11 @@
                     <input type="radio" id="data-consent-no" name="data-consent" value="no" checked>
                     <label for="data-no-consent">No</label>
                 </div><br>
-                <div id="2FileComment" style="color:red" hidden> Please upload current and previous month's location data</div>
+                <div id="configParams">
+                    Radius (in meters) <input id="radius" type="number" value=50 placeholder="Radius in meters"/><br/><br/>
+                    Time Difference (in hours) <input id="time" type="number" value=72 placeholder="Time in hours"/>
+                </div></br>
+                <div id="2FileComment" style="color:red" hidden> Please upload current and previous month's location data</div><br/>
                 <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
                     <label>Google Maps JSON file location </label>
                     <input type="file" id="file" name="jsonFile" /><br><input type="submit" class="load-json-button" value="Upload" />

@@ -13,13 +13,14 @@ DB_LOCAL={
     "uri":'localhost',
      "port":27017,   
     "dbname":"testdb",
-    "collection":"placesVisited"
+    "collection":"placesVisited",
+    "dailyCollection":"latestCollection"
 }
 DB_REMOTE={
     "uri":'173.28.146.185',
     "port":27017,
     "dbname":"covid19",
-    "collection":"infectedPlaces"
+    "collection":"infectedPlaces",
+    "dailyCollection":"latestCollection"
 }
-
 DB=DB_REMOTE if BACKEND_REMOTE else DB_LOCAL
