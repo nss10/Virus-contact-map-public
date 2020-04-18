@@ -4,7 +4,7 @@ import requests
 import os
 import json
 from datetime import datetime
-
+from mdb import add_timeline_data_to_collection
 
 """
 Data for following states are missing in usa facts (all state id 72 - PUERTO RICO - which is fine!)
@@ -44,8 +44,7 @@ def countyData(path):
     deaths_df = getDeaths()
 
     columns = confirmed_df.columns.tolist()
-    date_series = columns[4:-1]
-
+    date_series = columns[4:-2]
     if not os.path.isfile(path):
         url = "https://eric.clst.org/assets/wiki/uploads/Stuff/gz_2010_us_050_00_20m.json"
         data = requests.get(url).json()
@@ -60,22 +59,20 @@ def countyData(path):
             c['geometry'] = county['geometry']
 
             confirmed_series = confirmed_df[confirmed_df['CODE']==c['GEO_ID']].values.tolist()
-
             if len(confirmed_series)> 0:
-                ccases = confirmed_series[0][4:-1]
-                c['confirmed_cases'] = [{'date':d, 'count':c} for d,c in zip(date_series,ccases)]
-
+                ccases = confirmed_series[0][4:-2]
+                c['confirmed_cases'] = [{'daysElapsed':d, 'count':c} for d,c in zip(range(len(date_series)),ccases)]
                 deaths_series = deaths_df[deaths_df['CODE']==c['GEO_ID']].values.tolist()
-                dcases = deaths_series[0][4:-1]
-                c['deaths'] = [{'date':d, 'count':c} for d,c in zip(date_series,dcases)]
+                dcases = deaths_series[0][4:-2]
+                c['deaths'] = [{'daysElapsed':d, 'count':c} for d,c in zip(range(len(date_series)),dcases)]
             else:
                 print(f'{c["GEO_ID"]}    {confirmed_series}')
-                c['confirmed_cases'] = [{'date': d, 'count': 0} for d in date_series]
-                c['deaths'] = [{'date': d, 'count': 0} for d in date_series]
-
+                c['confirmed_cases'] = [{'daysElapsed': d, 'count': 0} for d in range(len(date_series))]
+                c['deaths'] = [{'daysElapsed': d, 'count': 0} for d in range(len(date_series))]
+            c['GEO_ID'] = c['GEO_ID'][-5:]
             output_data['counties'].append(c)
             # Modify here to insert each c into mongodb
-
+    add_timeline_data_to_collection(output_data['counties'])
     # Save json
     with open(f'./generated/{datetime.now()}.json', 'w') as fp:
         json.dump(output_data, fp, indent=4)
@@ -89,7 +86,6 @@ def main():
 
     if not os.path.exists('./generated'):
         os.makedirs('./generated')
-
     countyData("./data/gz_2010_us_050_00_20m.json")
 
 if __name__ == "__main__":
