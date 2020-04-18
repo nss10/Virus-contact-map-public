@@ -8,36 +8,33 @@ let positions = null;   // 2D array of longitude and latitude
 function mainInit() {
     $.ajax({
         method: "GET",
-        url: config.server_ip + config.allData_url,  // config.server_remote, config.server_local
+        url: config.server_ip + "/countyLocationData",  // config.server_remote, config.server_local
         processData: false,
         contentType: false,
         encType: "multipart/form-data",
-        success: function (data) {
-            positions = JSON.parse(data);
-            var zoom = [3, 11];
-            initGeo();
-            initMap(positions[0].location, zoom);
-        }
+        success: loadInitialData
     });
 
-    // We pass through a string to change the footer notification for a user on the front end
-    // We pass the text, and wither or not to make it active or not active
+    initMap([3, 11]);
+    
     displayFooterMessage("This is the text that will be displayed", true);
     $("#uploadForm").submit(loadJSON)
     $("input[name='data-consent']").change(checkBoxStatusChange)
 }
 
 
-function loadInitialData(){
-   
+function loadInitialData(data){
+    positions = JSON.parse(data);
+    alert("data loaded");
 }
+
 // initializes map
-function initMap(pos, zoom) {
+function initMap(zoom) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
     map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [pos[0], pos[1]],
+        center: [-89.651607, 39.781232],
         zoom: 9,
         minZoom: zoom[0],
         maxZoom: zoom[1]
@@ -49,111 +46,112 @@ function initMap(pos, zoom) {
     map.on('load', function () {
         map.addSource('point', {
             'type': 'geojson',
-            'data': geojson
+            'data': 'https://eric.clst.org/assets/wiki/uploads/Stuff/gz_2010_us_050_00_20m.json'
+            //'data': geojson
         });
         // Heatmap
+        // map.addLayer({
+        //     id: 'user-heat',
+        //     type: 'heatmap',
+        //     source: 'point',
+        //     maxzoom: 15,
+        //     paint: {
+        //       // increase weight as diameter breast height increases
+        //       'heatmap-weight': {
+        //         property: 'dbh',
+        //         type: 'exponential',
+        //         stops: [
+        //           [1, 0],
+        //           [62, 1]
+        //         ]
+        //       },
+        //       // increase intensity as zoom level increases
+        //       'heatmap-intensity': {
+        //         stops: [
+        //           [11, 1],
+        //           [15, 3]
+        //         ]
+        //       },
+        //       // assign color values be applied to points depending on their density
+        //         'heatmap-color': [
+        //             'interpolate',
+        //             ['linear'],
+        //             ['heatmap-density'],
+        //             0, 'hsla(180, 100%, 80%, 0)',
+        //             0.2, 'hsl(230, 100%, 80%)',
+        //             0.4, 'hsl(275, 100%, 70%)',
+        //             0.6, 'hsl(320, 100%, 60%)',
+        //             0.8, 'hsl(360, 100%, 50%)',
+        //         ],
+        //       // increase radius as zoom increases
+        //       'heatmap-radius': {
+        //         stops: [
+        //           [11, 15],
+        //           [15, 20]
+        //         ]
+        //       },
+        //       // decrease opacity to transition into the circle layer
+        //       'heatmap-opacity': {
+        //         default: 1,
+        //         stops: [
+        //           [14, 1],
+        //           [15, 0]
+        //         ]
+        //       },
+        //     }
+        // }, 'waterway-label');
+
         map.addLayer({
-            id: 'user-heat',
-            type: 'heatmap',
-            source: 'point',
-            maxzoom: 15,
-            paint: {
-              // increase weight as diameter breast height increases
-              'heatmap-weight': {
-                property: 'dbh',
-                type: 'exponential',
-                stops: [
-                  [1, 0],
-                  [62, 1]
-                ]
-              },
-              // increase intensity as zoom level increases
-              'heatmap-intensity': {
-                stops: [
-                  [11, 1],
-                  [15, 3]
-                ]
-              },
-              // assign color values be applied to points depending on their density
-            //   'heatmap-color': [
-            //     'interpolate',
-            //     ['linear'],
-            //     ['heatmap-density'],
-            //     0, 'rgba(239,222,222,0)',
-            //     0.2, 'rgb(230,208,208)',
-            //     0.4, 'rgb(207,103,103)',
-            //     0.6, 'rgb(207,103,103)',
-            //     0.8, 'rgb(153,28,28)'
-            //   ],
-                'heatmap-color': [
-                    'interpolate',
-                    ['linear'],
-                    ['heatmap-density'],
-                    0, 'hsla(180, 100%, 50%, 0)',
-                    0.2, 'hsl(230, 100%, 50%)',
-                    0.4, 'hsl(275, 100%, 50%)',
-                    0.6, 'hsl(320, 100%, 50%)',
-                    0.8, 'hsl(360, 100%, 50%)',
-                ],
-              // increase radius as zoom increases
-              'heatmap-radius': {
-                stops: [
-                  [11, 15],
-                  [15, 20]
-                ]
-              },
-              // decrease opacity to transition into the circle layer
-              'heatmap-opacity': {
-                default: 1,
-                stops: [
-                  [14, 1],
-                  [15, 0]
-                ]
-              },
+            'id': 'county-layer',
+            'type': 'fill',
+            'source': 'point',
+            'paint': {
+                'fill-color': 'rgba(200, 100, 240, 0.4)',
+                'fill-outline-color': 'rgba(200, 100, 240, 1)'
             }
-        }, 'waterway-label');
+        });
 
         // Adding circles
-        map.addLayer({
-            id: 'user-position',
-            type: 'circle',
-            source: 'point',
-            minzoom: 14,
-            paint: {
-                // increase the radius of the circle as the zoom level and dbh value increases
-                'circle-radius': {
-                property: 'dbh',
-                type: 'exponential',
-                stops: [
-                    [{ zoom: 15, value: 1 }, 5],
-                    [{ zoom: 15, value: 62 }, 10],
-                    [{ zoom: 22, value: 1 }, 20],
-                    [{ zoom: 22, value: 62 }, 50],
-                ]
-                },
-                'circle-color': {
-                property: 'dbh',
-                type: 'exponential',
-                stops: [
-                    [0, 'rgba(239,222,222,0)'],
-                    [10, 'rgb(255,222,222)'],
-                    [20, 'rgb(230,208,208)'],
-                    [30, 'rgb(219,166,166)'],
-                    [40, 'rgb(207,103,103)'],
-                    [50, 'rgb(153,28,28)'],
-                    [60, 'rgb(108,1,1)']
-                ]
-                },
-                'circle-stroke-color': 'white',
-                'circle-stroke-width': 1,
-                'circle-opacity': {
-                stops: [
-                    [14, 0],
-                    [15, 1]
-                ]
-                }
-            }
-            }, 'waterway-label');
+        // map.addLayer({
+        //     id: 'user-position',
+        //     type: 'circle',
+        //     source: 'point',
+        //     minzoom: 14,
+        //     paint: {
+        //         // increase the radius of the circle as the zoom level and dbh value increases
+        //         'circle-radius': {
+        //         property: 'dbh',
+        //         type: 'exponential',
+        //         stops: [
+        //             [{ zoom: 15, value: 1 }, 5],
+        //             [{ zoom: 15, value: 62 }, 10],
+        //             [{ zoom: 22, value: 1 }, 20],
+        //             [{ zoom: 22, value: 62 }, 50],
+        //         ]
+        //         },
+        //         'circle-color': {
+        //         property: 'dbh',
+        //         type: 'exponential',
+        //         stops: [
+        //             [0, 'rgba(239,222,222,0)'],
+        //             [10, 'rgb(255,222,222)'],
+        //             [20, 'rgb(230,208,208)'],
+        //             [30, 'rgb(219,166,166)'],
+        //             [40, 'rgb(207,103,103)'],
+        //             [50, 'rgb(153,28,28)'],
+        //             [60, 'rgb(108,1,1)']
+        //         ]
+        //         },
+        //         'circle-stroke-color': 'white',
+        //         'circle-stroke-width': 1,
+        //         'circle-opacity': {
+        //         stops: [
+        //             [14, 0],
+        //             [15, 1]
+        //         ]
+        //         }
+        //     }
+        //     }, 'waterway-label');
         // Create a popup, but don't add it to the map yet.
         var popup = new mapboxgl.Popup({
             closeButton: false,
