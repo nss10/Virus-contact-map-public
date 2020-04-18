@@ -75,16 +75,26 @@ function initMap(pos, zoom) {
                 ]
               },
               // assign color values be applied to points depending on their density
-              'heatmap-color': [
-                'interpolate',
-                ['linear'],
-                ['heatmap-density'],
-                0, 'rgba(239,222,222,0)',
-                0.2, 'rgb(230,208,208)',
-                0.4, 'rgb(207,103,103)',
-                0.6, 'rgb(207,103,103)',
-                0.8, 'rgb(153,28,28)'
-              ],
+            //   'heatmap-color': [
+            //     'interpolate',
+            //     ['linear'],
+            //     ['heatmap-density'],
+            //     0, 'rgba(239,222,222,0)',
+            //     0.2, 'rgb(230,208,208)',
+            //     0.4, 'rgb(207,103,103)',
+            //     0.6, 'rgb(207,103,103)',
+            //     0.8, 'rgb(153,28,28)'
+            //   ],
+                'heatmap-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['heatmap-density'],
+                    0, 'hsla(180, 100%, 50%, 0)',
+                    0.2, 'hsl(230, 100%, 50%)',
+                    0.4, 'hsl(275, 100%, 50%)',
+                    0.6, 'hsl(320, 100%, 50%)',
+                    0.8, 'hsl(360, 100%, 50%)',
+                ],
               // increase radius as zoom increases
               'heatmap-radius': {
                 stops: [
