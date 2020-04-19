@@ -51,8 +51,15 @@
                     <input type="file" id="file" name="jsonFile" /><br><input type="submit" class="load-json-button" value="Upload" />
                 </form> 
             </div>
-        </div>  
+        </div>
     </div>
+    <div id="message-modal" class="message-modal">
+        <div id="message-modal-content" class="message-modal-content">
+            <span class="close-footer">&times;</span>
+            <div id="modal-footer" class="modal-footer"></div>
+        </div>
+    </div>
+    <!-- Body Text -->
     <body>
         <!-- Title Bar -->
         <section id="title-section">
@@ -83,6 +90,7 @@
         <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
         <script src="js/google-signin.js"></script>
         <script src="js/page-populations.js"></script>
+        <script src="js/helper.js"></script>
         <script src="js/map_init.js"></script>
     </body>
 </html>
