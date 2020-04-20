@@ -2,13 +2,17 @@
 let map = null;         // Mapbox GL object
 let geojson = null;     // Geojson object
 let positions = null;   // 2D array of longitude and latitude
-let counties = null;    // Counties object
-let erics = null;
-let dateBins = null;
+let counties = null;    // Counties object from our backend
+let erics = null;       // Erics county geometry data
+let dateList = null;    // List of dates to filter by
+var maxCases = 0;       // Max cases to determine the min and max for gradient
 
 // initializer functions -------------------------------------------------------
 // main initializer
 function mainInit() {
+    dateList = getDateArray();
+    document.getElementById('slider').max = dateList.length -1;
+    document.getElementById('slider').value = dateList.length - 1;
     // load erics
     $.ajax({
         method: "GET",
@@ -40,48 +44,41 @@ function mainInit() {
 // load erics while moving stuff around in the background
 function loadEricData(data){
     erics = data;
-    displayFooterMessage("Erics data loaded.", false);
+    displayFooterMessage("Map pre-load finished. Moving to background loading...", false);
     initMap(erics, [4, 11]);
 }
 
-// initial ajax call of data load
+// ajax call to populate county data with formated filter
 function loadInitialData(data){
     counties = JSON.parse(data);
-    console.log(niceDate(getToday()));
 
     // hopefully erics data doesn't change
     for (var i = 0; i < counties.length; i++) {
         // cut out the first part of the geoid
         var geoid = erics.features[i].properties.GEO_ID.substring(9,);
-        // our cases array that will change as we reconstruct the differential encoding
-        var cases = counties[i].confirmed_cases;
-        // make sure there are cases in the county
-        if (cases.length > 0) {
-            // current index
-            var casesIndex = 0;
-            // most recently changed date in the for current index
-            var lastChangedDate = addToDate(startDate, cases[0].daysElapsed);
-            // the number of days from our first case until now
-            var daysFromFirst = date_diff_indays(lastChangedDate, getToday());
-            // iterate from the first day in cases until today
-            for (var j = 0; j < daysFromFirst; j++) {
-                // if we're on the last array of the casses, we just need to copy it until todays date to display
-                if ((casesIndex + 1) >= cases.length) {
-                    cases.push({'daysElapsed':cases[casesIndex].daysElapsed,'date':addToDate(startDate, cases[casesIndex].daysElapsed + j),'count':cases[casesIndex].count});
-                    casesIndex ++;
-                } else {
-                    cases[casesIndex]['date'] = addToDate(startDate, cases[casesIndex].daysElapsed);
-                    if (cases[casesIndex].daysElapsed != cases[casesIndex + 1].daysElapsed) {
-                        cases.splice(casesIndex + 1, 0, {'daysElapsed':cases[casesIndex].daysElapsed + j,'date':addToDate(startDate, cases[casesIndex].daysElapsed + j),'count':cases[casesIndex].count});
-                    } else {
-                        lastChangedDate = addToDate(startDate, cases[casesIndex].daysElapsed + j);
-                        casesIndex ++;
-                    }
-                }
-            }
-        }
         // just a double check if theres an inconsitency in data, we really just wanna break out of the loop
         if (geoid == counties[i].GEO_ID) {
+            // our cases array that will change as we reconstruct the differential encoding
+            var cases = counties[i].confirmed_cases;
+            // make sure there are cases in the county
+            if (cases.length > 0) {
+                erics.features[i].properties['dates'] = new Array(cases.length);
+                // current index
+                var casesIndex = 0;
+                // most recently changed date in the for current index
+                var lastChangedDate = addToDate(startDate, cases[0].daysElapsed);
+                // the number of days from our first case until now
+                var daysFromFirst = date_diff_indays(lastChangedDate, getToday());
+                // iterate from the first day in cases until today
+                for (var j = 0; j < cases.length; j++) {
+                    // Get the max of all cases
+                    if (cases[casesIndex].count > maxCases)
+                        maxCases = cases[casesIndex].count;
+                    cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex].daysElapsed));
+                    erics.features[i].properties['dates'][j] = cases[casesIndex].daysElapsed;
+                    casesIndex ++;
+                }
+            }
             erics.features[i].properties['confirmed_cases'] = counties[i].confirmed_cases;
             erics.features[i].properties['deaths'] = counties[i].deaths;
         } else {
@@ -90,8 +87,10 @@ function loadInitialData(data){
             break;
         }
     }
-    displayFooterMessage("County data loaded.", false);
+    displayFooterMessage("Background loading complete. Map is fully ready.", false);
+    console.log("Max cases found in a singular county: " + maxCases);
     console.log(erics);
+    initMap(erics, [4, 11]);
 }
 
 // initializes map
@@ -113,102 +112,8 @@ function initMap(data, zoom) {
         map.addSource('county', {
             'type': 'geojson',
             'data': data
-            //'data': geojson
         });
-        // Heatmap
-        // map.addLayer({
-        //     id: 'user-heat',
-        //     type: 'heatmap',
-        //     source: 'point',
-        //     maxzoom: 15,
-        //     paint: {
-        //       // increase weight as diameter breast height increases
-        //       'heatmap-weight': {
-        //         property: 'dbh',
-        //         type: 'exponential',
-        //         stops: [
-        //           [1, 0],
-        //           [62, 1]
-        //         ]
-        //       },
-        //       // increase intensity as zoom level increases
-        //       'heatmap-intensity': {
-        //         stops: [
-        //           [11, 1],
-        //           [15, 3]
-        //         ]
-        //       },
-        //       // assign color values be applied to points depending on their density
-        //         'heatmap-color': [
-        //             'interpolate',
-        //             ['linear'],
-        //             ['heatmap-density'],
-        //             0, 'hsla(180, 100%, 80%, 0)',
-        //             0.2, 'hsl(230, 100%, 80%)',
-        //             0.4, 'hsl(275, 100%, 70%)',
-        //             0.6, 'hsl(320, 100%, 60%)',
-        //             0.8, 'hsl(360, 100%, 50%)',
-        //         ],
-        //       // increase radius as zoom increases
-        //       'heatmap-radius': {
-        //         stops: [
-        //           [11, 15],
-        //           [15, 20]
-        //         ]
-        //       },
-        //       // decrease opacity to transition into the circle layer
-        //       'heatmap-opacity': {
-        //         default: 1,
-        //         stops: [
-        //           [14, 1],
-        //           [15, 0]
-        //         ]
-        //       },
-        //     }
-        // }, 'waterway-label');
-        // Adding circles
-        // map.addLayer({
-        //     id: 'user-position',
-        //     type: 'circle',
-        //     source: 'point',
-        //     minzoom: 14,
-        //     paint: {
-        //         // increase the radius of the circle as the zoom level and dbh value increases
-        //         'circle-radius': {
-        //         property: 'dbh',
-        //         type: 'exponential',
-        //         stops: [
-        //             [{ zoom: 15, value: 1 }, 5],
-        //             [{ zoom: 15, value: 62 }, 10],
-        //             [{ zoom: 22, value: 1 }, 20],
-        //             [{ zoom: 22, value: 62 }, 50],
-        //         ]
-        //         },
-        //         'circle-color': {
-        //         property: 'dbh',
-        //         type: 'exponential',
-        //         stops: [
-        //             [0, 'rgba(239,222,222,0)'],
-        //             [10, 'rgb(255,222,222)'],
-        //             [20, 'rgb(230,208,208)'],
-        //             [30, 'rgb(219,166,166)'],
-        //             [40, 'rgb(207,103,103)'],
-        //             [50, 'rgb(153,28,28)'],
-        //             [60, 'rgb(108,1,1)']
-        //         ]
-        //         },
-        //         'circle-stroke-color': 'white',
-        //         'circle-stroke-width': 1,
-        //         'circle-opacity': {
-        //              stops: [
-        //                  [14, 0],
-        //                  [15, 1]
-        //              ]
-        //         }
-        //     }
-        // }, 'waterway-label');
-        // Create a popup, but don't add it to the map yet.
-
+        // county geometry
         map.addLayer({
             'id': 'county-layer',
             'type': 'fill',
@@ -219,7 +124,7 @@ function initMap(data, zoom) {
                 'fill-outline-color': 'rgba(50, 0, 50, 0.8)'
             }
         });
-
+        // county labels
         map.addLayer({
             'id': 'county-labels',
             'type': 'symbol',
@@ -241,7 +146,140 @@ function initMap(data, zoom) {
                     'text-color': 'rgba(0,0,0,1)'
                 }
         });
+        // filter starting position
+        filterBy(dateList.length - 1);
+        // filter listener
+        document.getElementById('slider').addEventListener('input', function(e) {
+            filterBy(e.target.value);
+        });
+    });
+}
 
+function getIndexOfMatchedDate() {
+
+}
+
+// filter by date for county map
+function filterBy(date) {
+    var filters = ['in', date, ['literal',['get','dates']]];
+    // map.setFilter('county-layer', filters);
+    // map.setFilter('county-labels', filters);
+
+    document.getElementById('map-date').textContent = niceDate(addToDate(startDate, dateList[date]));
+}
+
+// function for checking location overlap with infected
+function initContactMap(center, zoom) {
+    map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: [center[0], center[1]],
+        zoom: 7,
+        minZoom: zoom[0],
+        maxZoom: zoom[1]
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // init of map with blank geojson
+    map.on('load', function () {
+        map.addSource('county', {
+            'type': 'geojson',
+            'data': geojson
+        });
+        // Heatmap
+        map.addLayer({
+            id: 'user-heat',
+            type: 'heatmap',
+            source: 'point',
+            maxzoom: 15,
+            paint: {
+              // increase weight as diameter breast height increases
+              'heatmap-weight': {
+                property: 'dbh',
+                type: 'exponential',
+                stops: [
+                  [1, 0],
+                  [62, 1]
+                ]
+              },
+              // increase intensity as zoom level increases
+              'heatmap-intensity': {
+                stops: [
+                  [11, 1],
+                  [15, 3]
+                ]
+              },
+              // assign color values be applied to points depending on their density
+                'heatmap-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['heatmap-density'],
+                    0, 'hsla(180, 100%, 80%, 0)',
+                    0.2, 'hsl(230, 100%, 80%)',
+                    0.4, 'hsl(275, 100%, 70%)',
+                    0.6, 'hsl(320, 100%, 60%)',
+                    0.8, 'hsl(360, 100%, 50%)',
+                ],
+              // increase radius as zoom increases
+              'heatmap-radius': {
+                stops: [
+                  [11, 15],
+                  [15, 20]
+                ]
+              },
+              // decrease opacity to transition into the circle layer
+              'heatmap-opacity': {
+                default: 1,
+                stops: [
+                  [14, 1],
+                  [15, 0]
+                ]
+              },
+            }
+        }, 'waterway-label');
+        // Adding circles
+        map.addLayer({
+            id: 'user-position',
+            type: 'circle',
+            source: 'point',
+            minzoom: 14,
+            paint: {
+                // increase the radius of the circle as the zoom level and dbh value increases
+                'circle-radius': {
+                property: 'dbh',
+                type: 'exponential',
+                stops: [
+                    [{ zoom: 15, value: 1 }, 5],
+                    [{ zoom: 15, value: 62 }, 10],
+                    [{ zoom: 22, value: 1 }, 20],
+                    [{ zoom: 22, value: 62 }, 50],
+                ]
+                },
+                'circle-color': {
+                property: 'dbh',
+                type: 'exponential',
+                stops: [
+                    [0, 'rgba(239,222,222,0)'],
+                    [10, 'rgb(255,222,222)'],
+                    [20, 'rgb(230,208,208)'],
+                    [30, 'rgb(219,166,166)'],
+                    [40, 'rgb(207,103,103)'],
+                    [50, 'rgb(153,28,28)'],
+                    [60, 'rgb(108,1,1)']
+                ]
+                },
+                'circle-stroke-color': 'white',
+                'circle-stroke-width': 1,
+                'circle-opacity': {
+                     stops: [
+                         [14, 0],
+                         [15, 1]
+                     ]
+                }
+            }
+        }, 'waterway-label');
+        // Create a popup, but don't add it to the map yet.
         var popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: false
@@ -272,13 +310,7 @@ function initMap(data, zoom) {
     });
 }
 
-// filter by function for map
-function filterBy(date) {
-    var dateArray = getDateArray();
-    var filters = ['==', 'date', date];
-}
-
-// initializes geojson
+// initializes geojson for location overlap
 function initGeo() {
     // init for geojson
     geojson = {
@@ -348,7 +380,7 @@ function populatePoints(json_data) {
         var zoom = [3, 20];
 
         initGeo();
-        initMap(positions[0].location, zoom);
+        initContactMap(positions[0].location, zoom);
         document.getElementById("response-div").innerHTML = contributeForm;
         $("#loginModal")[0].style.display="none";
     } else {
@@ -402,6 +434,7 @@ function loadJSON(e) {
     e.preventDefault();
 }
 
+// check box listener
 function checkBoxStatusChange(){
     $("#file")[0].toggleAttribute("multiple");
     $("#2FileComment").toggle()

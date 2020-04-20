@@ -20,11 +20,11 @@ function msToTime(duration) {
 // Will generate an array of dates to filter through for the time slider
 function getDateArray() {
     var temp = new Array();
-    var length = date_diff_indays(new Date(2020, 1, 22), getToday());
-
+    var length = date_diff_indays(startDate, getToday());
+    console.log("length of dates: " + length);
     // create initial date array
     for (var i = 0; i < length; i++) {
-        temp.push(addDays(startDate, i))
+        temp.push(i);
     }
     return temp;
 }
@@ -53,6 +53,11 @@ function niceDate(date) {
     var yyyy = date.getFullYear();
 
     return mm + "/" + dd + "/" + yyyy;
+}
+
+// linear map function
+function linMap(value, start1, stop1, start2, stop2) {
+    return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
 }
 
 // This function will transfer days from to a readable date
