@@ -4,12 +4,36 @@ import config as cfg
 from mdb import save_to_db
 import time
 from datetime import date
+import random
 dbConf = cfg.DB
 
 client = MongoClient(dbConf['uri'], dbConf['port'])
 db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
 perDayCollection = db[dbConf['dailyCollection']]
+countyCollection = db[dbConf['countyLocationCollection']]
+
+
+def getCountyLocations():
+  retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1,"deaths":1}))
+  for item in retCollection:
+    counter=0
+    caseList=[]
+    deathList=[]
+    for case in item['confirmed_cases']:
+      if(case['count']!=counter):
+        caseList.append(case)
+        # counter=case['count']
+    counter=0
+    for case in item['deaths']:
+      if(case['count']!=counter):
+        deathList.append(case)
+        # counter=case['count']
+    item['confirmed_cases']=caseList
+    item['deaths']=deathList
+    item['color'] = [random.randint(0,256),random.randint(0,256),random.randint(0,256),0.4]
+  return retCollection
+
 
 def getAllInfectedLocations():
   res =  list(perDayCollection.find({},{ "_id": 0}))
