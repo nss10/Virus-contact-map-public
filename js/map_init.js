@@ -6,6 +6,7 @@ let counties = null;    // Counties object from our backend
 let erics = null;       // Erics county geometry data
 let dateList = null;    // List of dates to filter by
 var maxCases = 0;       // Max cases to determine the min and max for gradient
+var maxDeaths = 0;      // Max deaths to determine the min and max for gradient
 
 // initializer functions -------------------------------------------------------
 // main initializer
@@ -50,47 +51,68 @@ function loadEricData(data){
 
 // ajax call to populate county data with formated filter
 function loadInitialData(data){
-    counties = JSON.parse(data);
+    if (data.length > 2) {
+        counties = JSON.parse(data);
+        // hopefully erics data doesn't change
+        for (var i = 0; i < counties.length; i++) {
+            // cut out the first part of the geoid
+            var geoid = erics.features[i].properties.GEO_ID.substring(9,);
+            // just a double check if theres an inconsitency in data, we really just wanna break out of the loop
+            if (geoid == counties[i].GEO_ID) {
+                // our cases array that will change as we reconstruct the differential encoding
+                var cases = counties[i].confirmed_cases;
+                // make sure there are cases in the county
+                if (cases.length > 0) {
+                    // current index
+                    var casesIndex = 0;
 
-    // hopefully erics data doesn't change
-    for (var i = 0; i < counties.length; i++) {
-        // cut out the first part of the geoid
-        var geoid = erics.features[i].properties.GEO_ID.substring(9,);
-        // just a double check if theres an inconsitency in data, we really just wanna break out of the loop
-        if (geoid == counties[i].GEO_ID) {
-            // our cases array that will change as we reconstruct the differential encoding
-            var cases = counties[i].confirmed_cases;
-            // make sure there are cases in the county
-            if (cases.length > 0) {
-                erics.features[i].properties['dates'] = new Array(cases.length);
-                // current index
-                var casesIndex = 0;
-                // most recently changed date in the for current index
-                var lastChangedDate = addToDate(startDate, cases[0].daysElapsed);
-                // the number of days from our first case until now
-                var daysFromFirst = date_diff_indays(lastChangedDate, getToday());
-                // iterate from the first day in cases until today
-                for (var j = 0; j < cases.length; j++) {
-                    // Get the max of all cases
-                    if (cases[casesIndex].count > maxCases)
-                        maxCases = cases[casesIndex].count;
-                    cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex].daysElapsed));
-                    erics.features[i].properties['dates'][j] = cases[casesIndex].daysElapsed;
-                    casesIndex ++;
+                    erics.features[i].properties['dates'] = new Array();
+                    // most recently changed date in the for current index
+                    var lastChangedDate = addToDate(startDate, cases[0].daysElapsed);
+                    // the number of days from our first case until now
+                    var daysFromFirst = date_diff_indays(lastChangedDate, getToday());
+                    // iterate from the first day in cases until today
+                    for (var j = 0; j < cases.length; j++) {
+                        // Get the max of all cases
+                        if (cases[casesIndex].count > maxCases)
+                            maxCases = cases[casesIndex].count;
+                        cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex].daysElapsed));
+                        erics.features[i].properties.dates.push(niceDate(addToDate(startDate, cases[casesIndex].daysElapsed)));
+                        // will add colors to erics properties
+                        casesIndex ++;
+                    }
                 }
+                // load deaths into an array for easy interaction
+                var deaths = counties[i].deaths;
+                // make sure there are deaths in the county before doing anything else
+                if (deaths.length > 0) {
+                    // current index
+                    var deathsIndex = 0;
+                    // iterate through all deaths to add the date field
+                    for (var j = 0; j < deaths.length; j++) {
+                        // Get the max of all deaths
+                        if (deaths[deathsIndex].count > maxDeaths)
+                            maxDeaths = deaths[deathsIndex].count;
+                        deaths[deathsIndex]['date'] = niceDate(addToDate(startDate, deaths[deathsIndex].daysElapsed));
+                        deathsIndex ++;
+                    }
+                }
+                erics.features[i].properties['confirmed_cases'] = counties[i].confirmed_cases;
+                erics.features[i].properties['deaths'] = counties[i].deaths;
+            } else {
+                displayFooterMessage("An error occured with combining erics data.", true);
+                console.log(geoid);
+                break;
             }
-            erics.features[i].properties['confirmed_cases'] = counties[i].confirmed_cases;
-            erics.features[i].properties['deaths'] = counties[i].deaths;
-        } else {
-            displayFooterMessage("An error occured with combining erics data.", true);
-            console.log(geoid);
-            break;
         }
-    }
-    displayFooterMessage("Background loading complete. Map is fully ready.", false);
-    console.log("Max cases found in a singular county: " + maxCases);
-    console.log(erics);
-    initMap(erics, [4, 11]);
+        displayFooterMessage("Background loading complete. Map is fully ready.", false);
+        console.log("Max cases found in a singular county: " + maxCases);
+        console.log("erics:");
+        console.log(erics);
+        initMap(erics, [4, 11]);
+    } else {
+        displayFooterMessage("Data was empty. We need to repopulate the database again...", true);
+    }    
 }
 
 // initializes map
@@ -161,9 +183,9 @@ function getIndexOfMatchedDate() {
 
 // filter by date for county map
 function filterBy(date) {
-    var filters = ['in', date, ['literal',['get','dates']]];
-    // map.setFilter('county-layer', filters);
-    // map.setFilter('county-labels', filters);
+    var filters = ['match', niceDate(addToDate(startDate, dateList[date])), ['get','dates'], true, false];
+    map.setFilter('county-layer', filters);
+    map.setFilter('county-labels', filters);
 
     document.getElementById('map-date').textContent = niceDate(addToDate(startDate, dateList[date]));
 }
