@@ -1,7 +1,7 @@
 from flask import Flask, request,render_template, url_for, redirect
 from flask_cors import CORS
 from timeline_object import timelineObject
-from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch
+from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations
 from response import get_response
 from helper import get_json_from_path
 from mdb import save_to_db,get_place_visits
@@ -30,6 +30,10 @@ def process_input():
 @app.route("/allData")
 def intialData():
     return json.dumps(getAllInfectedLocations())
+
+@app.route("/countyLocationData")
+def countyLocationData():
+    return json.dumps(getCountyLocations())
 
 
 @app.route(app.config['ROUTE_UPLOAD_HANDLER'], methods=['POST'])

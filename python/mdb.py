@@ -15,12 +15,15 @@ def get_place_visits(jsonObject):
     pvList = to.getPlaceVisits()
     return pvList
 
+def add_timeline_data_to_collection(countyList):
+    save_to_db(countyList,countyCollection)
+
+
 client = MongoClient(dbConf['uri'], dbConf['port'])
 db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
+countyCollection = db[dbConf['countyLocationCollection']]
 
-
-paths = []
 
 def save_to_db(pvList,collectionName=collection,userDefinedId=False):    
     for pv in pvList:
@@ -33,10 +36,12 @@ def save_to_db(pvList,collectionName=collection,userDefinedId=False):
         del pv['_id']
     if(collectionName==collection):
         collection.create_index([("location", GEOSPHERE)])
+
+
 def process():
     for dirname, _, filenames in os.walk("../json/"):
         for filename in filenames:
-            if("test" in dirname):
+            if("test" in dirname or "geo" in dirname):
                 continue
             jsonObject = get_json_from_path(os.path.join(dirname, filename))
             pvList = get_place_visits(jsonObject)

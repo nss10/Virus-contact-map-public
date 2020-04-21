@@ -18,9 +18,10 @@ function msToTime(duration) {
 }
 
 // Will generate an array of dates to filter through for the time slider
-function getDateArray() {
+function getDateArray(lastAvailableDate) {
     var temp = new Array();
-    var length = date_diff_indays(startDate, getToday());
+    if (lastAvailableDate == undefined){ lastAvailableDate = getToday()}
+    var length = date_diff_indays(startDate, lastAvailableDate);
     console.log("length of dates: " + length);
     // create initial date array
     for (var i = 0; i < length; i++) {
