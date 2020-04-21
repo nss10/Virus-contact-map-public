@@ -23,12 +23,12 @@ def getCountyLocations():
     for case in item['confirmed_cases']:
       if(case['count']!=counter):
         caseList.append(case)
-        counter=case['count']
+      # counter=case['count']
     counter=0
     for case in item['deaths']:
       if(case['count']!=counter):
         deathList.append(case)
-        counter=case['count']
+        # counter=case['count']
     item['confirmed_cases']=caseList
     item['deaths']=deathList
     item['color'] = [random.randint(0,256),random.randint(0,256),random.randint(0,256),0.4]

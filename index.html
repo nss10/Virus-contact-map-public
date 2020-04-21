@@ -51,8 +51,15 @@
                     <input type="file" id="file" name="jsonFile" /><br><input type="submit" class="load-json-button" value="Upload" />
                 </form> 
             </div>
-        </div>  
+        </div>
     </div>
+    <div id="message-modal" class="message-modal">
+        <div id="message-modal-content" class="message-modal-content">
+            <span class="close-footer">&times;</span>
+            <div id="modal-footer" class="modal-footer"></div>
+        </div>
+    </div>
+    <!-- Body Text -->
     <body>
         <!-- Title Bar -->
         <section id="title-section">
@@ -74,6 +81,19 @@
         <!-- Map Area -->
         <section id="map-section">  
             <div id="map"></div>
+            <div class="map-overlay top">
+                <div class="map-overlay-inner">
+                    <h2>Number of cases by county timeline</h2>
+                        <label id="map-date"></label>
+                        <input id="slider" type="range" min="0" max="88" step="1" value="88" />
+                    </div>
+                    <div class="map-overlay-inner">
+                        <div id="legend" class="legend">
+                        <div class="bar"></div>
+                        <div>Number of Cases</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Scripts -->
@@ -83,6 +103,7 @@
         <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
         <script src="js/google-signin.js"></script>
         <script src="js/page-populations.js"></script>
+        <script src="js/helper.js"></script>
         <script src="js/map_init.js"></script>
     </body>
 </html>
