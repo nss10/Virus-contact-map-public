@@ -11,9 +11,7 @@ var maxDeaths = 0;      // Max deaths to determine the min and max for gradient
 // initializer functions -------------------------------------------------------
 // main initializer
 function mainInit() {
-    dateList = getDateArray();
-    document.getElementById('slider').max = dateList.length -1;
-    document.getElementById('slider').value = dateList.length - 1;
+   
     // load erics
     $.ajax({
         method: "GET",
@@ -52,7 +50,9 @@ function loadEricData(data){
 // ajax call to populate county data with formated filter
 function loadInitialData(data){
     if (data.length > 2) {
-        counties = JSON.parse(data);
+        dataObj = JSON.parse(data);
+        counties = dataObj.collection
+        colorCodes = dataObj.colorCodes
         // hopefully erics data doesn't change
         for (var i = 0; i < counties.length; i++) {
             // cut out the first part of the geoid
@@ -77,7 +77,8 @@ function loadInitialData(data){
                         if (cases[casesIndex].count > maxCases)
                             maxCases = cases[casesIndex].count;
                         cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex].daysElapsed));
-                        erics.features[i].properties.dates.push(niceDate(addToDate(startDate, cases[casesIndex].daysElapsed)));
+                        erics.features[i].properties.dates.push(cases[casesIndex].daysElapsed);
+                        erics.features[i].properties[cases[casesIndex].daysElapsed+"_color"] = colorCodes[cases[casesIndex].count];
                         // will add colors to erics properties
                         casesIndex ++;
                     }
@@ -109,6 +110,10 @@ function loadInitialData(data){
         console.log("Max cases found in a singular county: " + maxCases);
         console.log("erics:");
         console.log(erics);
+        latestDateAvailable = erics.features[0].properties.dates.slice(-1)[0];
+        dateList = getDateArray(addToDate(startDate,latestDateAvailable));
+        document.getElementById('slider').max = dateList.length -1;
+        document.getElementById('slider').value = dateList.length - 1;
         initMap(erics, [4, 11]);
     } else {
         displayFooterMessage("Data was empty. We need to repopulate the database again...", true);
@@ -122,7 +127,7 @@ function initMap(data, zoom) {
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: [-89.651607, 39.781232],
-        zoom: 7,
+        zoom: 1,
         minZoom: zoom[0],
         maxZoom: zoom[1]
     });
@@ -140,9 +145,8 @@ function initMap(data, zoom) {
             'id': 'county-layer',
             'type': 'fill',
             'source': 'county',
-            'minzoom': 5.5,
+            // 'minzoom': 5.5,
             'paint': {
-                'fill-color': 'rgba(150, 75, 150, 0.4)',
                 'fill-outline-color': 'rgba(50, 0, 50, 0.8)'
             }
         });
@@ -183,7 +187,15 @@ function getIndexOfMatchedDate() {
 
 // filter by date for county map
 function filterBy(date) {
-    var filters = ['match', niceDate(addToDate(startDate, dateList[date])), ['get','dates'], true, false];
+    date_color=date+"_color"
+    var filters = ['!=',date_color, null];
+    map.setPaintProperty('county-layer', 'fill-color', 
+    [   
+        "case",
+        ["!=",["get",date_color],null],["get",date_color],
+       "rgba(0,0,0,0)"
+    ]
+    );
     map.setFilter('county-layer', filters);
     map.setFilter('county-labels', filters);
 

@@ -61,14 +61,14 @@ def countyData(path):
             confirmed_series = confirmed_df[confirmed_df['CODE']==c['GEO_ID']].values.tolist()
             if len(confirmed_series)> 0:
                 ccases = confirmed_series[0][4:-2]
-                c['confirmed_cases'] = [{'daysElapsed':d, 'count':c} for d,c in zip(range(len(date_series)),ccases)]
+                c['confirmed_cases'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),ccases)]
                 deaths_series = deaths_df[deaths_df['CODE']==c['GEO_ID']].values.tolist()
                 dcases = deaths_series[0][4:-2]
-                c['deaths'] = [{'daysElapsed':d, 'count':c} for d,c in zip(range(len(date_series)),dcases)]
+                c['deaths'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),dcases)]
             else:
                 print(f'{c["GEO_ID"]}    {confirmed_series}')
-                c['confirmed_cases'] = [{'daysElapsed': d, 'count': 0} for d in range(len(date_series))]
-                c['deaths'] = [{'daysElapsed': d, 'count': 0} for d in range(len(date_series))]
+                c['confirmed_cases'] = [{'daysElapsed': (d+1), 'count': 0} for d in range(len(date_series))]
+                c['deaths'] = [{'daysElapsed': (d+1), 'count': 0} for d in range(len(date_series))]
             c['GEO_ID'] = c['GEO_ID'][-5:]
             output_data['counties'].append(c)
             # Modify here to insert each c into mongodb

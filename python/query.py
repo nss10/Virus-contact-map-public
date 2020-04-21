@@ -15,25 +15,33 @@ countyCollection = db[dbConf['countyLocationCollection']]
 
 
 def getCountyLocations():
-  retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1,"deaths":1}))
+  retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
+  case_count_set=set()
   for item in retCollection:
-    counter=0
     caseList=[]
     deathList=[]
     for case in item['confirmed_cases']:
-      if(case['count']!=counter):
+      if(case['count']>0):
         caseList.append(case)
-      # counter=case['count']
-    counter=0
+        case_count_set.add(case['count'])
     for case in item['deaths']:
-      if(case['count']!=counter):
+      if(case['count']!=0):
         deathList.append(case)
-        # counter=case['count']
     item['confirmed_cases']=caseList
     item['deaths']=deathList
-    item['color'] = [random.randint(0,256),random.randint(0,256),random.randint(0,256),0.4]
-  return retCollection
+  colorList = get_quantile(list(case_count_set))
+  colorCodes = {}
+  for item in colorList:
+    colorCodes[item[0]] = item[1]
+    
+  return {"colorCodes" : colorCodes,"collection" : retCollection}
 
+
+def temp():
+  retCollection = list(countyCollection.find({},{"_id":0, "confirmed_cases.count":1}))
+  # print(retCollection)
+
+# getCountyLocations()
 
 def getAllInfectedLocations():
   res =  list(perDayCollection.find({},{ "_id": 0}))

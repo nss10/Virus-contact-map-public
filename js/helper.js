@@ -18,9 +18,10 @@ function msToTime(duration) {
 }
 
 // Will generate an array of dates to filter through for the time slider
-function getDateArray() {
+function getDateArray(lastAvailableDate) {
     var temp = new Array();
-    var length = date_diff_indays(startDate, getToday());
+    if (lastAvailableDate == undefined){ lastAvailableDate = getToday()}
+    var length = date_diff_indays(startDate, lastAvailableDate);
     console.log("length of dates: " + length);
     // create initial date array
     for (var i = 0; i < length; i++) {
@@ -59,6 +60,13 @@ function niceDate(date) {
 function linMap(value, start1, stop1, start2, stop2) {
     return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
 }
+
+
+// linear map function
+function linMap(value, start1, stop1, start2, stop2) {
+    return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
+}
+
 
 // This function will transfer days from to a readable date
 function addToDate(date, days) {
