@@ -61,13 +61,6 @@ function linMap(value, start1, stop1, start2, stop2) {
     return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
 }
 
-
-// linear map function
-function linMap(value, start1, stop1, start2, stop2) {
-    return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
-}
-
-
 // This function will transfer days from to a readable date
 function addToDate(date, days) {
     Date.prototype.addDays = function(days) {
