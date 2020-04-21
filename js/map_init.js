@@ -7,6 +7,7 @@ let erics = null;       // Erics county geometry data
 let dateList = null;    // List of dates to filter by
 var maxCases = 0;       // Max cases to determine the min and max for gradient
 var maxDeaths = 0;      // Max deaths to determine the min and max for gradient
+var currentDay = 0;
 
 // initializer functions -------------------------------------------------------
 // main initializer
@@ -77,6 +78,7 @@ function loadInitialData(data){
                         if (cases[casesIndex].count > maxCases)
                             maxCases = cases[casesIndex].count;
                         cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex].daysElapsed));
+                        erics.features[i].properties[cases[casesIndex].daysElapsed] = cases[casesIndex].count;
                         erics.features[i].properties.dates.push(niceDate(addToDate(startDate, cases[casesIndex].daysElapsed)));
                         // will add colors to erics properties
                         casesIndex ++;
@@ -122,7 +124,7 @@ function initMap(data, zoom) {
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: [-89.651607, 39.781232],
-        zoom: 7,
+        zoom: 4,
         minZoom: zoom[0],
         maxZoom: zoom[1]
     });
@@ -140,7 +142,7 @@ function initMap(data, zoom) {
             'id': 'county-layer',
             'type': 'fill',
             'source': 'county',
-            'minzoom': 5.5,
+            //'minzoom': 5.5,
             'paint': {
                 'fill-color': 'rgba(150, 75, 150, 0.4)',
                 'fill-outline-color': 'rgba(50, 0, 50, 0.8)'
@@ -183,7 +185,8 @@ function getIndexOfMatchedDate() {
 
 // filter by date for county map
 function filterBy(date) {
-    var filters = ['match', niceDate(addToDate(startDate, dateList[date])), ['get','dates'], true, false];
+    currentDay = date;
+    var filters = ['>', date, 0];
     map.setFilter('county-layer', filters);
     map.setFilter('county-labels', filters);
 
