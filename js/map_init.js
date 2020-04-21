@@ -7,6 +7,7 @@ let erics = null;       // Erics county geometry data
 let dateList = null;    // List of dates to filter by
 var maxCases = 0;       // Max cases to determine the min and max for gradient
 var maxDeaths = 0;      // Max deaths to determine the min and max for gradient
+var currentDay = 0;
 
 // initializer functions -------------------------------------------------------
 // main initializer
@@ -127,7 +128,7 @@ function initMap(data, zoom) {
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: [-89.651607, 39.781232],
-        zoom: 1,
+        zoom: 4,
         minZoom: zoom[0],
         maxZoom: zoom[1]
     });
@@ -196,6 +197,7 @@ function filterBy(date) {
        "rgba(0,0,0,0)"
     ]
     );
+
     map.setFilter('county-layer', filters);
     map.setFilter('county-labels', filters);
 
