@@ -19,7 +19,7 @@ def add_timeline_data_to_collection(countyList):
     save_to_db(countyList,countyCollection)
 
 
-client = MongoClient(dbConf['uri'], dbConf['port'])
+client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
 db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
 countyCollection = db[dbConf['countyLocationCollection']]

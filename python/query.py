@@ -7,7 +7,7 @@ from datetime import date
 import random
 dbConf = cfg.DB
 
-client = MongoClient(dbConf['uri'], dbConf['port'])
+client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
 db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
 perDayCollection = db[dbConf['dailyCollection']]
@@ -37,18 +37,13 @@ def getCountyLocations():
   return {"colorCodes" : colorCodes,"collection" : retCollection}
 
 
-def temp():
-  retCollection = list(countyCollection.find({},{"_id":0, "confirmed_cases.count":1}))
-  # print(retCollection)
-
-# getCountyLocations()
-
 def getAllInfectedLocations():
   res =  list(perDayCollection.find({},{ "_id": 0}))
   if(len(res) > 0 and res[0]['loggedDate']==str(date.today())):
     print("Returning data from Cache")
     return res
   return updateCacheAndFetch()
+
 
 def updateCacheAndFetch():
   perDayCollection.drop()
@@ -115,3 +110,27 @@ def get_neighbouring_places(location, radius):
   )
 
   return res
+
+
+def get_county_matches(places):
+  county_dict={}
+  for place in places:
+    lat,lon = place['place_location']['lat'],place['place_location']['lon']
+
+    county_fips = getCountyFromPoint(lat,lon)
+    if(county_fips not in county_dict):
+      county_dict[county_fips] = list(countyCollection.find({"GEO_ID":county_fips},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
+    countyList = list(county_dict.values())
+    
+
+
+def test():
+  print(list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1})))
+
+
+
+if __name__ == "__main__":
+  test()
+
+ 
+ 
