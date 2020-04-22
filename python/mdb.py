@@ -18,11 +18,14 @@ def get_place_visits(jsonObject):
 def add_timeline_data_to_collection(countyList):
     save_to_db(countyList,countyCollection)
 
+def add_feature_data_to_collection(featureList):
+    save_to_db(featureList,ericsCollection)
 
 client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
 db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
 countyCollection = db[dbConf['countyLocationCollection']]
+ericsCollection = db[dbConf['ericsCollection']]
 
 
 def save_to_db(pvList,collectionName=collection,userDefinedId=False):    
