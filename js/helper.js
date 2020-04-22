@@ -22,7 +22,6 @@ function getDateArray(lastAvailableDate) {
     var temp = new Array();
     if (lastAvailableDate == undefined){ lastAvailableDate = getToday()}
     var length = date_diff_indays(startDate, lastAvailableDate);
-    console.log("length of dates: " + length);
     // create initial date array
     for (var i = 0; i < length; i++) {
         temp.push(i);

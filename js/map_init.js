@@ -7,12 +7,13 @@ let erics = null;       // Erics county geometry data
 let dateList = null;    // List of dates to filter by
 var maxCases = 0;       // Max cases to determine the min and max for gradient
 var maxDeaths = 0;      // Max deaths to determine the min and max for gradient
-var currentDay = 0;
+var currentDate = '';    // Current day determined from the slider
+var mapStyle = 'mapbox://styles/mapbox/light-v10';
 
 // initializer functions -------------------------------------------------------
 // main initializer
 function mainInit() {
-   
+    drawBlankMap();
     // load erics
     $.ajax({
         method: "GET",
@@ -45,7 +46,18 @@ function mainInit() {
 function loadEricData(data){
     erics = data;
     displayFooterMessage("Map pre-load finished. Moving to background loading...", false);
-    initMap(erics, [4, 11]);
+}
+
+function drawBlankMap() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
+    map = new mapboxgl.Map({
+        container: 'map',
+        style: mapStyle,
+        center: [-89.651607, 39.781232],
+        zoom: 4,
+        minZoom: 4,
+        maxZoom: 7
+    });
 }
 
 // ajax call to populate county data with formated filter
@@ -109,13 +121,12 @@ function loadInitialData(data){
         }
         displayFooterMessage("Background loading complete. Map is fully ready.", false);
         console.log("Max cases found in a singular county: " + maxCases);
-        console.log("erics:");
-        console.log(erics);
+        // console.log(erics);  // printing erics data for testing
         latestDateAvailable = erics.features[0].properties.dates.slice(-1)[0];
         dateList = getDateArray(addToDate(startDate,latestDateAvailable));
         document.getElementById('slider').max = dateList.length -1;
         document.getElementById('slider').value = dateList.length - 1;
-        initMap(erics, [4, 11]);
+        initMap(erics, [4, 7]);
     } else {
         displayFooterMessage("Data was empty. We need to repopulate the database again...", true);
     }    
@@ -126,15 +137,20 @@ function initMap(data, zoom) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
     map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10',
+        style: mapStyle,
         center: [-89.651607, 39.781232],
         zoom: 4,
         minZoom: zoom[0],
         maxZoom: zoom[1]
     });
-
-    map.addControl(new mapboxgl.NavigationControl());
-
+    // disable map rotation using right click + drag
+    map.dragRotate.disable();
+    // disable map rotation using touch rotation gesture
+    map.touchZoomRotate.disableRotation();
+    //map.addControl(new mapboxgl.NavigationControl());
+    var popup = new mapboxgl.Popup({
+        closeButton: false
+    });
     // init of map with blank geojson
     map.on('load', function () {
         map.addSource('county', {
@@ -146,45 +162,74 @@ function initMap(data, zoom) {
             'id': 'county-layer',
             'type': 'fill',
             'source': 'county',
-            // 'minzoom': 5.5,
             'paint': {
-                'fill-outline-color': 'rgba(50, 0, 50, 0.8)'
+                'fill-outline-color': 'rgba(40, 0, 20, 0.5)'
             }
         });
-        // county labels
-        map.addLayer({
-            'id': 'county-labels',
-            'type': 'symbol',
-            'source': 'county',
-            'minzoom': 8,
-            'layout': {
-                'text-field': [
-                    'concat',
-                    ['to-string', ['get', 'NAME']],
-                    '\nCases:'
-                ],
-                'text-font': [
-                    'Open Sans Bold',
-                    'Arial Unicode MS Bold'
-                ],
-                'text-size': 14
-            },
-                'paint': {
-                    'text-color': 'rgba(0,0,0,1)'
+        // mouse moving display
+        map.on('mousemove', 'county-layer', function(e) {
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
+             
+            // Single out the first found feature.
+            var feature = e.features[0];
+
+            // Start the popup string
+            var stringBuilder = "<div class=\"map-info-box\">" + currentDate;
+            // Grab our confirmed cases array
+            var casesConfirmed = JSON.parse(feature.properties['confirmed_cases']);
+            // Flag if there was no cases for that date
+            var flag = 0;
+            if (casesConfirmed) {
+                if (casesConfirmed.length > 0) {
+                    casesConfirmed.forEach(element => {
+                        if (element.date == currentDate) {
+                            stringBuilder += "<br>Confirmed Cases:" + element.count;
+                            flag = 1;
+                        }
+                    });
+                    // We won't see a death with out seeing other cases
+                    if (flag == 1) {
+                        // grab our deaths array
+                        var deathsConfirmed = JSON.parse(feature.properties['deaths']);
+                        if (deathsConfirmed.length > 0) {
+                            deathsConfirmed.forEach(element => {
+                                if (element.date == currentDate) {
+                                    stringBuilder += "<br>Deaths:" + element.count;
+                                } 
+                            });
+                        } else {
+                            stringBuilder += "<br>No deaths in this county.";  
+                        }
+                    }
                 }
+            }
+            // Flag will be 0 if no cases were gathered on date the user is currently looking at
+            if (flag == 0) {
+                stringBuilder += "<br>There are no reported cases on this day.";
+            }
+
+            stringBuilder += "</div>";
+            // Display a popup with the name of the county
+            var textString = "<strong class=\"map-info-box-title\">" + feature.properties.NAME + "</strong>" + stringBuilder;
+            popup.setLngLat(e.lngLat).setHTML(textString).addTo(map);
         });
+
+        map.on('mouseleave', 'county', function() {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+            overlay.style.display = 'none';
+        });
+
         // filter starting position
-        filterBy(dateList.length - 1);
+        if (dateList != null)
+            filterBy(dateList.length - 1);
         // filter listener
         document.getElementById('slider').addEventListener('input', function(e) {
             filterBy(e.target.value);
         });
-    });
-}
-
-function getIndexOfMatchedDate() {
-
-}
+    }); // eof map.onLoad
+} // eof initMap
 
 // filter by date for county map
 function filterBy(date) {
@@ -197,18 +242,17 @@ function filterBy(date) {
        "rgba(0,0,0,0)"
     ]
     );
+    currentDate = niceDate(addToDate(startDate, dateList[date]));
+    //map.setFilter('county-layer', filters);
 
-    map.setFilter('county-layer', filters);
-    map.setFilter('county-labels', filters);
-
-    document.getElementById('map-date').textContent = niceDate(addToDate(startDate, dateList[date]));
+    document.getElementById('map-date').textContent = currentDate;
 }
 
 // function for checking location overlap with infected
 function initContactMap(center, zoom) {
     map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10',
+        style: mapStyle,
         center: [center[0], center[1]],
         zoom: 7,
         minZoom: zoom[0],
@@ -438,7 +482,7 @@ function loadJSON(e) {
         formdata.append("jsonFile1",fileList[0]);
         formdata.append("jsonFile2",fileList[1]);
         console.log(fileList);
-    }else{
+    } else {
         file = $("#file").prop('files')[0];
         formdata.append('jsonFile', file);
         console.log(file)
