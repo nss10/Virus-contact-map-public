@@ -1,7 +1,7 @@
 from flask import Flask, request,render_template, url_for, redirect
 from flask_cors import CORS
 from timeline_object import timelineObject
-from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations
+from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations,get_county_matches,getEricsData
 from response import get_response
 from helper import get_json_from_path
 from mdb import save_to_db,get_place_visits
@@ -19,27 +19,31 @@ def process_input():
     filePath = app.config['UPLOAD_PATH'] + str(request.args.get('id'))
     radius = int(request.args.get('radius')) 
     timeSpan=int(request.args.get('time'))  
-    print(radius, timeSpan)
     timelineJson = get_json_from_path(filePath)
     tObj = timelineObject(timelineJson) # Convert input json into python object
     placeVisits = tObj.getPlaceVisits()
-    matchLocations = getSpatioTemporalMatch(placeVisits, radius,timeSpan)
+    # matchLocations = getSpatioTemporalMatch(placeVisits, radius,timeSpan)
+    countyMatches = get_county_matches(placeVisits)
     os.remove(filePath)  # Delete tempFile once processed
-    return json.dumps(get_response(matchLocations))
+    return json.dumps({"placesVisited" : placeVisits, "counties" : countyMatches})
 
-@app.route("/allData")
+@app.route(app.config['GET_ALL_INFECTED_DATA'])
 def intialData():
     return json.dumps(getAllInfectedLocations())
 
-@app.route("/countyLocationData")
+@app.route(app.config['GET_COUNTY_CASES_DATA'])
 def countyLocationData():
     return json.dumps(getCountyLocations())
+
+
+@app.route(app.config['GET_ERICS_DATA'])
+def ericsData():
+    return json.dumps({"type":"FeatureCollection" , "features" : getEricsData()})
 
 
 @app.route(app.config['ROUTE_UPLOAD_HANDLER'], methods=['POST'])
 def handleFileUpload():
     htmlTag=app.config['FILE_ELEMENT_TAG']
-    
     if htmlTag in request.files:
         jsonFile = request.files[htmlTag]
         if jsonFile.filename != '':    
@@ -57,7 +61,6 @@ def handleFileUpload():
             shouldUpload = shouldUpload and uploadFile(request.files[tagName],errorFiles,uploadList)
     
     if shouldUpload:
-
         save_to_db(uploadList,userDefinedId=True)
 
     if(len(errorFiles) > 0):

@@ -16,7 +16,7 @@ function mainInit() {
     // load erics
     $.ajax({
         method: "GET",
-        url: "https://eric.clst.org/assets/wiki/uploads/Stuff/gz_2010_us_050_00_20m.json",
+        url: config.server_ip + config.ericsData_url,
         processData: false,
         contentType: false,
         encType: "multipart/form-data",
@@ -27,7 +27,7 @@ function mainInit() {
     // load ours
     $.ajax({
         method: "GET",
-        url: config.server_ip + "/countyLocationData",  // config.server_remote, config.server_local
+        url: config.server_ip + config.countyCases_url, 
         processData: false,
         contentType: false,
         encType: "multipart/form-data",
@@ -43,7 +43,7 @@ function mainInit() {
 
 // load erics while moving stuff around in the background
 function loadEricData(data){
-    erics = data;
+    erics = JSON.parse(data);
     displayFooterMessage("Map pre-load finished. Moving to background loading...", false);
     initMap(erics, [4, 11]);
 }
@@ -148,7 +148,7 @@ function initMap(data, zoom) {
             'source': 'county',
             // 'minzoom': 5.5,
             'paint': {
-                'fill-outline-color': 'rgba(50, 0, 50, 0.8)'
+                'fill-outline-color': 'rgba(50, 0, 50, 0.1)'
             }
         });
         // county labels
@@ -452,8 +452,8 @@ function loadJSON(e) {
         contentType: false,
         encType:"multipart/form-data",
         success: function (data) {
-            // console.log(data);
-            if(data.toLowerCase().includes("message")){
+            console.log(data);
+            if(typeof data != "object" && data.toLowerCase().includes("message")){
                 alert(data);
                 if(data.toLowerCase().includes("error"))
                     return false;
@@ -461,7 +461,8 @@ function loadJSON(e) {
                     location.reload()
             } else{
                 json_data = JSON.parse(data);
-                populatePoints(json_data);
+                console.log(json_data);
+                populatePoints(json_data.placesVisited);
             }
             $("#loginModal")[0].style.display="none";
         },
