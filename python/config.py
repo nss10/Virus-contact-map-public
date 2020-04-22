@@ -19,8 +19,10 @@ DB_LOCAL={
 }
 DB_REMOTE={
     "uri":'173.28.146.185',
-    "port":27017,
+    "port":25564,
     "dbname":"covid19",
+    "un":"admin",
+    "pwd":"covid19 sucks",
     "collection":"infectedPlaces",
     "dailyCollection":"latestCollection",
     "countyLocationCollection" : "countyLocations"
