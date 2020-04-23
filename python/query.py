@@ -12,6 +12,7 @@ db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
 perDayCollection = db[dbConf['dailyCollection']]
 countyCollection = db[dbConf['countyLocationCollection']]
+ericsCollection = db[dbConf['ericsCollection']]
 
 
 def getCountyLocations():
@@ -33,10 +34,11 @@ def getCountyLocations():
   colorCodes = {}
   for item in colorList:
     colorCodes[item[0]] = item[1]
-    
   return {"colorCodes" : colorCodes,"collection" : retCollection}
 
-
+def getEricsData():
+  return  list(ericsCollection.find({},{ "_id": 0}))
+    
 def getAllInfectedLocations():
   res =  list(perDayCollection.find({},{ "_id": 0}))
   if(len(res) > 0 and res[0]['loggedDate']==str(date.today())):
