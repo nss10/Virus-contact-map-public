@@ -66,6 +66,11 @@
 /* Map */
 .map-info-box{
     color: rgb(10,10,10);
+    font-size: 12px;
+}
+.map-info-box-title {
+    color: rgb(10,10,10);
+    font-size: 18px;
 }
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
