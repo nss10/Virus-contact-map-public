@@ -164,7 +164,7 @@ function initMap(data, zoom) {
             'source': 'county',
             'paint': {
                 'fill-outline-color': 'rgba(50, 0, 50, 0.3)',
-                'fill-opacity': 0.2
+                'fill-opacity': 1
             }
         });
         // mouse moving display
