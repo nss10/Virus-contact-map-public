@@ -1,7 +1,7 @@
 from flask import Flask, request,render_template, url_for, redirect
 from flask_cors import CORS
 from timeline_object import timelineObject
-from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations,get_county_matches,getEricsData
+from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations,get_county_matches,getEricsData,filterPlacesStayedLongerThan
 from response import get_response
 from helper import get_json_from_path
 from mdb import save_to_db,get_place_visits
@@ -17,12 +17,10 @@ def testMethod():
 @app.route(app.config['ROUTE_PROCESS_INPUT'], methods=["get"])
 def process_input():
     filePath = app.config['UPLOAD_PATH'] + str(request.args.get('id'))
-    radius = int(request.args.get('radius')) 
-    timeSpan=int(request.args.get('time'))  
     timelineJson = get_json_from_path(filePath)
     tObj = timelineObject(timelineJson) # Convert input json into python object
     placeVisits = tObj.getPlaceVisits()
-    # matchLocations = getSpatioTemporalMatch(placeVisits, radius,timeSpan)
+    placeVisits = filterPlacesStayedLongerThan(placeVisits, 15*60*1000) #15 minutes
     countyMatches = get_county_matches(placeVisits)
     os.remove(filePath)  # Delete tempFile once processed
     return json.dumps({"placesVisited" : placeVisits, "counties" : countyMatches})

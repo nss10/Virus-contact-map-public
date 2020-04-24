@@ -30,10 +30,7 @@ def getCountyLocations():
         deathList.append(case)
     item['confirmed_cases']=caseList
     item['deaths']=deathList
-  colorList = get_quantile(list(case_count_set))
-  colorCodes = {}
-  for item in colorList:
-    colorCodes[item[0]] = item[1]
+  colorCodes = get_quantile(list(case_count_set))
   return {"colorCodes" : colorCodes,"collection" : retCollection}
 
 def getEricsData():
@@ -113,26 +110,36 @@ def get_neighbouring_places(location, radius):
 
   return res
 
+def get_geometry_from_erics(fips):
+  geo_id = "0500000US"+fips
+  return list(ericsCollection.find({"properties.GEO_ID":geo_id},{ "_id": 0,"geometry.coordinates":1})[0]['geometry']['coordinates'][0])
 
 def get_county_matches(places):
   county_dict={}
   for place in places:
     lat,lon = place['place_location']['lat'],place['place_location']['lon']
-
-    county_fips = getCountyFromPoint(lat,lon)
-    if(county_fips not in county_dict):
+    if(not isPointInCounty(lat,lon,county_dict, get_geometry_from_erics)):
+      county_fips = getCountyFromPoint(lat,lon)
       county_dict[county_fips] = list(countyCollection.find({"GEO_ID":county_fips},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
-    countyList = list(county_dict.values())
-    
+  countyList = list(county_dict.values())
+  colorCodes = get_quantile([get_latest_cases_count(county) for county in countyList])
+  return {"colorCodes" : colorCodes,"collection" : countyList}
+
+
+def filterPlacesStayedLongerThan(places, time):
+    return [place for place in places  if int(place['duration']['endTimestampMs']) - int(place['duration']['startTimestampMs']) > time]
+
 
 
 def test():
-  print(list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1})))
+  countyList = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
+  caseCountList = [get_latest_cases_count(county) for county in countyList]
+  colorCodes = get_quantile(caseCountList)
 
 
 
 if __name__ == "__main__":
-  test()
+  get_geometry_from_erics("01009")
 
  
  
