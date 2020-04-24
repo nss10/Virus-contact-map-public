@@ -8,7 +8,7 @@ let dateList = null;    // List of dates to filter by
 var maxCases = 0;       // Max cases to determine the min and max for gradient
 var maxDeaths = 0;      // Max deaths to determine the min and max for gradient
 var currentDate = '';    // Current day determined from the slider
-var mapStyle = 'mapbox://styles/mapbox/light-v10';
+var mapStyle = 'mapbox://styles/mapbox/dark-v10';
 
 // initializer functions -------------------------------------------------------
 // main initializer
@@ -163,7 +163,8 @@ function initMap(data, zoom) {
             'type': 'fill',
             'source': 'county',
             'paint': {
-                'fill-outline-color': 'rgba(50, 0, 50, 0.1)'
+                'fill-outline-color': 'rgba(50, 0, 50, 0.3)',
+                'fill-opacity': 1
             }
         });
         // mouse moving display
@@ -442,29 +443,24 @@ function populatePoints(json_data) {
     console.log(json_data.length + " location objects found.");
     if (json_data.length > 0) {
         for (var i = 0; i < json_data.length; i++) {
-            var nearby = json_data[i].nearby;
-            if (nearby) {
-                for (var place in nearby) {
-                    coords = nearby[place]["coordinates"];
-                    if (coords) {
-                        positions.push({address:nearby[place]["Address"],location:[coords['lon'], coords['lat']],
-                        start:nearby[place]["timestamp"]["startTimestampMs"],
-                        end:nearby[place]["timestamp"]["endTimestampMs"],
-                        timeDifference: nearby[place]["timeDifference"]});
-                    }
-                }
-            }
+            var place_location = json_data[i]['place_location'];
+            var duration = json_data[i]['duration'];
+            positions.push({
+                address:place_location["Address"],
+                location:[place_location['lon'], place_location['lat']],
+                start:duration["startTimestampMs"],
+                end:duration["endTimestampMs"]
+            });
         }
-        // reload map
-        console.log("Reloading map with new positional data.");
-        var zoom = [3, 20];
+        console.log(positions);
 
+        var zoom = [3, 20];
         initGeo();
         initContactMap(positions[0].location, zoom);
         document.getElementById("response-div").innerHTML = contributeForm;
         $("#loginModal")[0].style.display="none";
     } else {
-        alert("Welp. Looks like there's no location overlap data.");
+        displayFooterMessage("There was no data returned from the database. This might be a data population error.", true);
     }
 }
 
