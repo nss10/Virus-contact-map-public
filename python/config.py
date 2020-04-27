@@ -11,7 +11,7 @@ ROUTE_PROCESS_INPUT='/processJson'
 GET_ALL_INFECTED_DATA='/allData'
 GET_COUNTY_CASES_DATA='/countyCasesData'
 GET_ERICS_DATA='/ericsData'
-BACKEND_REMOTE=False
+BACKEND_REMOTE=True
 DB_LOCAL={
     "uri":'localhost',
      "port":27017,   
