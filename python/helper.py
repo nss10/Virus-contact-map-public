@@ -4,6 +4,7 @@ import requests
 import numpy as np
 import pandas as pd
 from shapely.geometry import Point, Polygon
+from datetime import datetime
 
 
 def getTimeOverlap(infectedTime, userTime):
@@ -28,14 +29,19 @@ def getTimeSince(infectedTime):
     diff = time.time() - int(infectedTime["startTimestampMs"])
     return diff
 
+def getDaysSinceTimeLineEpoch(timeInMs):
+    diff = datetime(2020, 5, 17) - datetime.fromtimestamp(int(timeInMs)/1000.0)
+    return diff.days
+
 
 def get_json_from_path(path):
     with open(path) as json_file:
         return json.load(json_file)
 
 
-def get_latest_cases_count(county):
-    return county['confirmed_cases'][-1]['count']
+def get_latest_cases_count(county,daysSinceEpoch):
+    firstConfirmedCaseDay = int(county['confirmed_cases'][0]['daysElapsed'])
+    return county['confirmed_cases'][daysSinceEpoch-firstConfirmedCaseDay]['count'] if firstConfirmedCaseDay < daysSinceEpoch < int(county['confirmed_cases'][-1]['daysElapsed'])else 0
 
 
 def get_quantile(arr):
@@ -65,6 +71,16 @@ def isPointInCounty(lat, lon, county_dict, get_geometry_from_erics, poly_dict={}
             return True
     return False
 
+
+def getRiskScore(place):
+    diff = int(place['duration']['endTimestampMs']) - int(place['duration']['endTimestampMs'])
+    minute = 60*1000
+    if(diff >= 30*minute):
+        return "HIGH"
+    elif(diff >=15*minute):
+        return "MODERATE"
+    else:
+        return "LOW"
 
 if __name__ == "__main__":
     print(isPointInCounty())

@@ -20,7 +20,7 @@ def process_input():
     timelineJson = get_json_from_path(filePath)
     tObj = timelineObject(timelineJson) # Convert input json into python object
     placeVisits = tObj.getPlaceVisits()
-    placeVisits = filterPlacesStayedLongerThan(placeVisits, 15*60*1000) #15 minutes
+    placeVisits = filterPlacesStayedLongerThan(placeVisits, 10*60*1000) #10 minutes
     countyMatches = get_county_matches(placeVisits)
     os.remove(filePath)  # Delete tempFile once processed
     return json.dumps({"placesVisited" : placeVisits, "counties" : countyMatches})
