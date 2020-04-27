@@ -45,9 +45,9 @@ def get_latest_cases_count(county,daysSinceEpoch):
 
 
 def get_quantile(arr):
-    low = 200
-    up = -1
     arr = list(dict.fromkeys(arr))
+    if(len(arr)==1):
+        return {arr[0] : "#D36E1B"} # If single county returns median color from the list
     labelList = ["#FEC421", "#F5B30C", "#EDA25C", "#E59248", "#DC8031",
                  "#D36E1B", "#C85964", "#BE454C", "#B6373A", "#A91C19", "#B12B2C"]
     x = pd.qcut(arr, len(labelList), labels=labelList)
@@ -83,4 +83,4 @@ def getRiskScore(place):
         return "LOW"
 
 if __name__ == "__main__":
-    print(isPointInCounty())
+    print(get_quantile([1,1]))
