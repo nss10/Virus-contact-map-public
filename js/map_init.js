@@ -164,7 +164,7 @@ function initMap(data, zoom) {
             'source': 'county',
             'paint': {
                 'fill-outline-color': 'rgba(50, 0, 50, 0.3)',
-                'fill-opacity': 1
+                'fill-opacity': 0.1
             }
         });
         // mouse moving display
@@ -414,6 +414,7 @@ function initGeo() {
     };
     // Test data load
     geojson.features = new Array();
+    var indexPos = 0;
     positions.forEach(pos => {
         var startDate = new Date(parseInt(pos.start));
         var endDate = new Date(parseInt(pos.end));
@@ -434,14 +435,15 @@ function initGeo() {
                     '<br><strong>Time Left:</strong> '
                     + endDate.toLocaleTimeString() + ' (' + endDate.toLocaleDateString() + ')' +
                     '<br><strong style="font-size:15px">Risk Assessment:</strong> '
-                    + riskDisplay + '</p>',
+                    + riskDisplay + '</p><label class="map-info-box" for="pos_' + indexPos + '">Keep this location?</label><input type="checkbox" id="pos_' + indexPos + '" checked>',
                     'risk': pos.risk
                 },
                 'geometry': {
                     'type': 'Point',
                     'coordinates': pos.location
                 }
-            })
+            });
+        indexPos ++;
     });
 }
 
@@ -461,8 +463,8 @@ function populatePoints(json_data) {
             // add to the positions array
             positions.push({
                 address: place_location["address"],
-                location: [place_location['lon'], place_location['lat']],
-                risk: Math.random(),
+                location: [json_data[i]['centerLon'], json_data[i]['centerLat']],
+                risk: 0.6,
                 start: duration["startTimestampMs"],
                 end: duration["endTimestampMs"]
             });
@@ -515,6 +517,7 @@ function loadJSON(e) {
                     location.reload()
             } else{
                 json_data = JSON.parse(data);
+                console.log(json_data);
                 populatePoints(json_data.placesVisited);
             }
             $("#loginModal")[0].style.display="none";
