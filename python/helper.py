@@ -76,11 +76,11 @@ def getRiskScore(place):
     diff = int(place['duration']['endTimestampMs']) - int(place['duration']['endTimestampMs'])
     minute = 60*1000
     if(diff >= 30*minute):
-        return "HIGH"
+        return 1
     elif(diff >=15*minute):
-        return "MODERATE"
+        return 0.7
     else:
-        return "LOW"
+        return 0
 
 if __name__ == "__main__":
     print(get_quantile([1,1]))
