@@ -124,7 +124,6 @@ def get_county_matches(places):
   countyList=[]
   for value in county_dict.values():
     countyList+=value
-  print(countyList)
   colorCodes = get_quantile([get_latest_cases_count(county) for county in countyList])
   return {"colorCodes" : colorCodes,"collection" : countyList}
 
