@@ -28,8 +28,6 @@
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <!--<a href="#" onclick="signOut();">Sign out</a><br>
                 <!-- Load JSON button fields -->
-                
-                
                 <!-- <input class="long-input" type="text" id="json-script"> -->
                 <!-- <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a> -->
                 <br/>
@@ -48,7 +46,13 @@
                 <div id="2FileComment" style="color:red" hidden> Please upload current and previous month's location data</div><br/>
                 <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
                     <label>Google Maps JSON file location </label>
-                    <input type="file" id="file" name="jsonFile" /><br><input type="submit" class="load-json-button" value="Upload" />
+                    <input type="file" id="file" name="jsonFile" />
+                    <br><label>Do you want to check your data against all your locations?</label>
+                    <br><input type="radio" id="data-check-yes" name="data-check" value="yes" checked>
+                    <label for="data-check">Yes, check it all!</label>
+                    <br><input type="radio" id="data-check-no" name="data-check" value="no">
+                    <label for="data-no-check">No, I want to remove some locations!</label>
+                    <br><input type="submit" class="load-json-button" value="Upload" />
                 </form> 
             </div>
         </div>
@@ -81,17 +85,17 @@
         <!-- Map Area -->
         <section id="map-section">  
             <div id="map"></div>
-            <div class="map-overlay top">
+            <div id="map-slider" class="map-overlay top">
                 <div class="map-overlay-inner">
-                    <h2>Number of cases by county timeline</h2>
-                        <label id="map-date"></label>
-                        <input id="slider" type="range" min="0" max="88" step="1" value="88" />
-                    </div>
-                    <div class="map-overlay-inner">
-                        <div id="legend" class="legend">
-                        <div class="bar"></div>
-                        <div>Number of Cases</div>
-                    </div>
+                    <h2>View number of cases by county and time</h2>
+                    <label class="medium-title" id="map-date"></label>
+                    <input id="slider" type="range" min="0" max="88" step="1" value="88" />
+                </div>
+                <div class="map-overlay-inner">
+                    <div id="legend" class="legend">
+                    <div class="bar"></div>
+                    <div>Number of Cases</div>
+                </div>
                 </div>
             </div>
         </section>
