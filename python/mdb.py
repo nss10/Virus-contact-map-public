@@ -15,7 +15,8 @@ def get_place_visits(jsonObject):
     pvList = to.getPlaceVisits()
     return pvList
 
-def add_timeline_data_to_collection(countyList):
+def add_cases_data_to_collection(countyList):
+    countyCollection.drop()
     save_to_db(countyList,countyCollection)
 
 def add_feature_data_to_collection(featureList):
@@ -49,3 +50,6 @@ def process():
             jsonObject = get_json_from_path(os.path.join(dirname, filename))
             pvList = get_place_visits(jsonObject)
             save_to_db(pvList)
+
+if __name__ == "__main__":
+    process()

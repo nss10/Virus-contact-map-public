@@ -3,7 +3,9 @@ import time
 import requests
 import numpy as np
 import pandas as pd
-from shapely.geometry import Point, Polygon 
+from shapely.geometry import Point, Polygon
+from datetime import datetime
+
 
 def getTimeOverlap(infectedTime, userTime):
     '''
@@ -27,40 +29,58 @@ def getTimeSince(infectedTime):
     diff = time.time() - int(infectedTime["startTimestampMs"])
     return diff
 
+def getDaysSinceTimeLineEpoch(timeInMs):
+    diff = datetime(2020, 5, 17) - datetime.fromtimestamp(int(timeInMs)/1000.0)
+    return diff.days
+
+
 def get_json_from_path(path):
     with open(path) as json_file:
         return json.load(json_file)
 
 
-def get_latest_cases_count(county):
-    return county[0]['confirmed_cases'][-1]['count']
+def get_latest_cases_count(county,daysSinceEpoch):
+    firstConfirmedCaseDay = int(county['confirmed_cases'][0]['daysElapsed'])
+    return county['confirmed_cases'][daysSinceEpoch-firstConfirmedCaseDay]['count'] if firstConfirmedCaseDay < daysSinceEpoch < int(county['confirmed_cases'][-1]['daysElapsed'])else 0
 
 
 def get_quantile(arr):
-    low = 200
-    up = -1
-    arr=list(dict.fromkeys(arr))
-    labelList = ["rgba(254,196,233,0.4)", "rgba(245,179,212,0.4)", "rgba(237,162,192,0.4)", "rgba(229,146,172,0.4)", "rgba(220,128,149,0.4)",
-                 "rgba(211,110,127,0.4)", "rgba(200,89,100,0.4)", "rgba(190,69,76,0.4)", "rgba(182,55,58,0.4)", "rgba(177,43,44,0.4)", "rgba(169,28,25,0.4)"]
+    arr = list(dict.fromkeys(arr))
+    if(len(arr)==1):
+        return {arr[0] : "#D36E1B"} # If single county returns median color from the list
+    labelList = ["#FEC421", "#F5B30C", "#EDA25C", "#E59248", "#DC8031",
+                 "#D36E1B", "#C85964", "#BE454C", "#B6373A", "#A91C19", "#B12B2C"]
     x = pd.qcut(arr, len(labelList), labels=labelList)
-    return dict((x,y) for x,y in zip(arr, list(x)))
+    return dict((x, y) for x, y in zip(arr, list(x)))
 
 
-def getCountyFromPoint(lat,lon):
-    content = requests.get("https://geo.fcc.gov/api/census/area?lat="+str(lat)+"&lon="+str(lon)+"&format=json")
+def getCountyFromPoint(lat, lon):
+    content = requests.get(
+        "https://geo.fcc.gov/api/census/area?lat="+str(lat)+"&lon="+str(lon)+"&format=json")
     jsonObj = json.loads(content.content)
     return jsonObj['results'][0]['county_fips']
 
-def isPointInCounty(lat,lon, county_dict, get_geometry_from_erics, poly_dict={}):
+
+def isPointInCounty(lat, lon, county_dict, get_geometry_from_erics, poly_dict={}):
     for county_fips in county_dict:
         if(county_fips not in poly_dict):
             poly_dict[county_fips] = get_geometry_from_erics(county_fips)
-        p1 = Point(lon,lat)
+        p1 = Point(lon, lat)
         poly = Polygon(poly_dict[county_fips])
         if(p1.within(poly)):
             return True
     return False
 
 
+def getRiskScore(place):
+    diff = int(place['duration']['endTimestampMs']) - int(place['duration']['endTimestampMs'])
+    minute = 60*1000
+    if(diff >= 30*minute):
+        return 1
+    elif(diff >=15*minute):
+        return 0.7
+    else:
+        return 0
+
 if __name__ == "__main__":
-    print(isPointInCounty())
+    print(get_quantile([1,1]))
