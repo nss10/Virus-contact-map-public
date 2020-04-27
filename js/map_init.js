@@ -126,7 +126,7 @@ function loadInitialData(data){
         dateList = getDateArray(addToDate(startDate,latestDateAvailable));
         document.getElementById('slider').max = dateList.length -1;
         document.getElementById('slider').value = dateList.length - 1;
-        initMap(erics, [4, 7]);
+        initMap(erics, [4, 8]);
     } else {
         displayFooterMessage("Data was empty. We need to repopulate the database again...", true);
     }    
@@ -164,7 +164,7 @@ function initMap(data, zoom) {
             'source': 'county',
             'paint': {
                 'fill-outline-color': 'rgba(50, 0, 50, 0.3)',
-                'fill-opacity': 1
+                'fill-opacity': 0.1
             }
         });
         // mouse moving display
@@ -185,7 +185,7 @@ function initMap(data, zoom) {
                 if (casesConfirmed.length > 0) {
                     casesConfirmed.forEach(element => {
                         if (element.date == currentDate) {
-                            stringBuilder += "<br>Confirmed Cases:" + element.count;
+                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + element.count;
                             flag = 1;
                         }
                     });
@@ -196,7 +196,7 @@ function initMap(data, zoom) {
                         if (deathsConfirmed.length > 0) {
                             deathsConfirmed.forEach(element => {
                                 if (element.date == currentDate) {
-                                    stringBuilder += "<br>Deaths:" + element.count;
+                                    stringBuilder += "<br><strong>Deaths:</strong> " + element.count;
                                 } 
                             });
                         } else {
@@ -244,13 +244,12 @@ function filterBy(date) {
     ]
     );
     currentDate = niceDate(addToDate(startDate, dateList[date]));
-    //map.setFilter('county-layer', filters);
-
     document.getElementById('map-date').textContent = currentDate;
 }
 
 // function for checking location overlap with infected
 function initContactMap(center, zoom) {
+    document.getElementById("map-slider").style.display="none";;
     map = new mapboxgl.Map({
         container: 'map',
         style: mapStyle,
@@ -264,24 +263,24 @@ function initContactMap(center, zoom) {
 
     // init of map with blank geojson
     map.on('load', function () {
-        map.addSource('county', {
+        map.addSource('Points', {
             'type': 'geojson',
             'data': geojson
         });
         // Heatmap
         map.addLayer({
-            id: 'user-heat',
+            id: 'user-heatmap',
             type: 'heatmap',
-            source: 'point',
+            source: 'Points',
             maxzoom: 15,
             paint: {
-              // increase weight as diameter breast height increases
+              // increase weight as risk increases
               'heatmap-weight': {
-                property: 'dbh',
+                property: 'risk',
                 type: 'exponential',
                 stops: [
-                  [1, 0],
-                  [62, 1]
+                  [0, 0],
+                  [1, 1]
                 ]
               },
               // increase intensity as zoom level increases
@@ -300,7 +299,7 @@ function initContactMap(center, zoom) {
                     0.2, 'hsl(230, 100%, 80%)',
                     0.4, 'hsl(275, 100%, 70%)',
                     0.6, 'hsl(320, 100%, 60%)',
-                    0.8, 'hsl(360, 100%, 50%)',
+                    0.8, 'hsl(350, 100%, 60%)',
                 ],
               // increase radius as zoom increases
               'heatmap-radius': {
@@ -323,39 +322,41 @@ function initContactMap(center, zoom) {
         map.addLayer({
             id: 'user-position',
             type: 'circle',
-            source: 'point',
+            source: 'Points',
             minzoom: 14,
             paint: {
                 // increase the radius of the circle as the zoom level and dbh value increases
                 'circle-radius': {
-                property: 'dbh',
-                type: 'exponential',
-                stops: [
-                    [{ zoom: 15, value: 1 }, 5],
-                    [{ zoom: 15, value: 62 }, 10],
-                    [{ zoom: 22, value: 1 }, 20],
-                    [{ zoom: 22, value: 62 }, 50],
-                ]
+                    property: 'risk',
+                    type: 'exponential',
+                    stops: [
+                        [{ zoom: 15, value: 0 }, 1],
+                        [{ zoom: 15, value: 1 }, 10],
+                        [{ zoom: 22, value: 0 }, 10],
+                        [{ zoom: 22, value: 1 }, 30],
+                    ]
                 },
                 'circle-color': {
-                property: 'dbh',
-                type: 'exponential',
-                stops: [
-                    [0, 'rgba(239,222,222,0)'],
-                    [10, 'rgb(255,222,222)'],
-                    [20, 'rgb(230,208,208)'],
-                    [30, 'rgb(219,166,166)'],
-                    [40, 'rgb(207,103,103)'],
-                    [50, 'rgb(153,28,28)'],
-                    [60, 'rgb(108,1,1)']
-                ]
+                    property: 'risk',
+                    type: 'exponential',
+                    stops: [
+                        [0, 'rgba(50,255,50,0.5)'],
+                        [0.7, 'rgb(50,255,50)'],
+                        [0.9, 'rgb(255,255,50)'],
+                        [1, 'rgb(255,50,50)']
+                    ]
                 },
-                'circle-stroke-color': 'white',
-                'circle-stroke-width': 1,
+                'circle-stroke-color': 'black',
+                'circle-stroke-width': {
+                    stops: [
+                        [13, 1],
+                        [16, 0]
+                    ]
+               },
                 'circle-opacity': {
                      stops: [
-                         [14, 0],
-                         [15, 1]
+                         [13, 0],
+                         [16, 1]
                      ]
                 }
             }
@@ -389,6 +390,7 @@ function initContactMap(center, zoom) {
             popup.remove();
         });
     });
+    displayFooterMessage("Map displayed.", false);
 }
 
 // initializes geojson for location overlap
@@ -411,11 +413,19 @@ function initGeo() {
         ]
     };
     // Test data load
-    geojson.features = [];
-
+    geojson.features = new Array();
+    var indexPos = 0;
     positions.forEach(pos => {
         var startDate = new Date(parseInt(pos.start));
         var endDate = new Date(parseInt(pos.end));
+        var riskDisplay = "<ins class=\"risk-low\">low";
+        if (pos.risk > 0.7){
+            riskDisplay = "<ins class=\"risk-med\">moderate";
+            if (pos.risk > 0.9) {
+                riskDisplay = "<ins class=\"risk-high\">high"
+            }
+        }
+        riskDisplay += "</ins>";
         geojson.features.push({
                 'type': 'Feature',
                 'properties': {
@@ -424,35 +434,41 @@ function initGeo() {
                     startDate.toLocaleTimeString() + ' (' + startDate.toLocaleDateString() + ')' +
                     '<br><strong>Time Left:</strong> '
                     + endDate.toLocaleTimeString() + ' (' + endDate.toLocaleDateString() + ')' +
-                    '<br><strong>Time after an infected person was present at location:</strong> '
-                    + pos.timeDifference + ' minutes.</p>'
+                    '<br><strong style="font-size:15px">Risk Assessment:</strong> '
+                    + riskDisplay + '</p><label class="map-info-box" for="pos_' + indexPos + '">Keep this location?</label><input type="checkbox" id="pos_' + indexPos + '" checked>',
+                    'risk': pos.risk
                 },
                 'geometry': {
                     'type': 'Point',
                     'coordinates': pos.location
                 }
-            })
-    }); 
+            });
+        indexPos ++;
+    });
 }
 
 // function functions -------------------------------------------------------------
 // populates the geojson object with points
 function populatePoints(json_data) {
-    console.log("Looking to populate points");
+    displayFooterMessage("Populating user points.", false);
+    // set position array to the size of the data
     positions = new Array(0);
     console.log(json_data.length + " location objects found.");
+    // check to make sure there is an array to go through
     if (json_data.length > 0) {
+        // for each data point
         for (var i = 0; i < json_data.length; i++) {
             var place_location = json_data[i]['place_location'];
             var duration = json_data[i]['duration'];
+            // add to the positions array
             positions.push({
-                address:place_location["Address"],
-                location:[place_location['lon'], place_location['lat']],
-                start:duration["startTimestampMs"],
-                end:duration["endTimestampMs"]
+                address: place_location["address"],
+                location: [json_data[i]['centerLon'], json_data[i]['centerLat']],
+                risk: 0.6,
+                start: duration["startTimestampMs"],
+                end: duration["endTimestampMs"]
             });
         }
-        console.log(positions);
 
         var zoom = [3, 20];
         initGeo();
@@ -483,6 +499,7 @@ function loadJSON(e) {
         formdata.append('jsonFile', file);
         console.log(file)
     }
+    displayFooterMessage("Loading user data...", false);
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
     $.ajax({
         method: "POST",
@@ -492,7 +509,6 @@ function loadJSON(e) {
         contentType: false,
         encType:"multipart/form-data",
         success: function (data) {
-            console.log(data);
             if(typeof data != "object" && data.toLowerCase().includes("message")){
                 alert(data);
                 if(data.toLowerCase().includes("error"))
