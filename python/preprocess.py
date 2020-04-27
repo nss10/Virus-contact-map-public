@@ -4,7 +4,7 @@ import requests
 import os
 import json
 from datetime import datetime
-from mdb import add_timeline_data_to_collection
+from mdb import add_cases_data_to_collection
 
 """
 Data for following states are missing in usa facts (all state id 72 - PUERTO RICO - which is fine!)
@@ -66,15 +66,14 @@ def countyData(path):
                 dcases = deaths_series[0][4:-2]
                 c['deaths'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),dcases)]
             else:
-                print(f'{c["GEO_ID"]}    {confirmed_series}')
                 c['confirmed_cases'] = [{'daysElapsed': (d+1), 'count': 0} for d in range(len(date_series))]
                 c['deaths'] = [{'daysElapsed': (d+1), 'count': 0} for d in range(len(date_series))]
             c['GEO_ID'] = c['GEO_ID'][-5:]
             output_data['counties'].append(c)
             # Modify here to insert each c into mongodb
-    add_timeline_data_to_collection(output_data['counties'])
+    add_cases_data_to_collection(output_data['counties'])
     # Save json
-    with open(f'./generated/{datetime.now()}.json', 'w') as fp:
+    with open(f'./generated/{datetime.date(datetime.now())}.json', 'w') as fp:
         json.dump(output_data, fp, indent=4)
 
 

@@ -121,7 +121,10 @@ def get_county_matches(places):
     if(not isPointInCounty(lat,lon,county_dict, get_geometry_from_erics)):
       county_fips = getCountyFromPoint(lat,lon)
       county_dict[county_fips] = list(countyCollection.find({"GEO_ID":county_fips},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
-  countyList = list(county_dict.values())
+  countyList=[]
+  for value in county_dict.values():
+    countyList+=value
+  print(countyList)
   colorCodes = get_quantile([get_latest_cases_count(county) for county in countyList])
   return {"colorCodes" : colorCodes,"collection" : countyList}
 
