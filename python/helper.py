@@ -47,9 +47,8 @@ def get_latest_cases_count(county,daysSinceEpoch):
 def get_quantile(arr):
     arr = list(dict.fromkeys(arr))
     if(len(arr)==1):
-        return {arr[0] : "#D36E1B"} # If single county returns median color from the list
-    labelList = ["#FEC421", "#F5B30C", "#EDA25C", "#E59248", "#DC8031",
-                 "#D36E1B", "#C85964", "#BE454C", "#B6373A", "#A91C19", "#B12B2C"]
+        return {arr[0] : 5} # If single county returns median color from the list
+    labelList = list(range(11))
     x = pd.qcut(arr, len(labelList), labels=labelList)
     return dict((x, y) for x, y in zip(arr, list(x)))
 
