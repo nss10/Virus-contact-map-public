@@ -20,13 +20,30 @@ function msToTime(duration) {
 // Will generate an array of dates to filter through for the time slider
 function getDateArray(lastAvailableDate) {
     var temp = new Array();
-    if (lastAvailableDate == undefined){ lastAvailableDate = getToday()}
+    // check incase reasons
+    if (lastAvailableDate == undefined) {
+        lastAvailableDate = getToday();
+    }
     var length = date_diff_indays(startDate, lastAvailableDate);
     // create initial date array
-    for (var i = 0; i < length; i++) {
+    for (var i = 0; i <= length; i++) {
         temp.push(i);
     }
     return temp;
+}
+
+// turns a number to neat commas and neat printing
+function niceNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// A pause function yoinked from endmemo
+function wait(ms) {
+    var d = new Date();
+    var d2 = null;
+    do {
+        d2 = new Date();
+    } while(d2-d < ms);
 }
 
 // Days between 2 dates
