@@ -24,6 +24,9 @@
     font-weight: bold;
     width: 100%;
 }
+.bolded-text {
+    color: rgb(201, 134, 212);
+}
 .span-center-align {
     text-align: center;
 }
@@ -171,6 +174,7 @@
     left: 0;
     width:300px;
     overflow-x: hidden;
+    overflow-y: hidden;
     padding-top: 60px;
     transition: 0.5s;
 }
