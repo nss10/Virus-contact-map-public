@@ -22,7 +22,6 @@ def process_input():
     tObj = timelineObject(timelineJson) # Convert input json into python object
     placeVisits = tObj.getPlaceVisits()
     placeVisits = filterPlacesStayedLongerThan(placeVisits, 10*60*1000) #10 minutes
-
     if(request.args.get('uploadOption') == "countyLevel"):
         countyMatches = get_county_matches(placeVisits)
         return json.dumps({"uploadOption": "countyLevel","placesVisited" : placeVisits, "counties" : countyMatches})
@@ -56,7 +55,7 @@ def handleFileUpload():
         if jsonFile.filename != '':
             filename = str(uuid.uuid4())
             jsonFile.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-            return redirect(url_for('process_input', id=filename, againstCounty=request.form['againstCounty'], radius=int(request.form['radius']), time=int(request.form['time'])))
+            return redirect(url_for('process_input', id=filename, uploadOption=request.form['uploadOption'], radius=int(request.form['radius']), time=int(request.form['time'])))
         else:
             return app.config['MESSAGE_UPLOAD_ERROR']
     errorFiles = []
