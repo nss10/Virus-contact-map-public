@@ -59,6 +59,25 @@ function mapSideToggle() {
   mapSide = !mapSide;
 }
 
+// Acts as the tab handler
+function openTab(event, tabName) {
+  var tabContent = document.getElementsByClassName("tab-content");
+  for (var i = 0; i < tabContent.length; i++) {
+    tabContent[i].style.display = "none";
+  }
+  var tabLinks = document.getElementsByClassName("tab-link");
+  for (var i = 0; i < tabLinks.length; i++) {
+    tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+  }
+
+  if (tabName != 'upload-consent') {
+    
+  }
+  uploadOption = tabName;
+  document.getElementById(tabName).style.display = "block";
+  event.currentTarget.className += " active";
+}
+
 // Will display the footer modal with a message
 // the boolean will determine to higlight it red for an error or not red for a regular message
 function displayFooterMessage(text, error) {
@@ -79,3 +98,5 @@ function displayFooterMessage(text, error) {
 function ajaxErrorHandle(XMLHttpRequest, textStatus, errorThrown) {
   displayFooterMessage("An error has occured: " + errorThrown, true);
 }
+
+document.getElementById("defaultTab").click();

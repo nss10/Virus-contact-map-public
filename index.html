@@ -24,36 +24,54 @@
             <div class="modal-body">
                 <strong class="modal-title">DISCLOSURE</strong>
                 <p>We do not save user information with location data for the sole purpose of keeping information private.</p>
-                <!-- Google signin api -->
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                <!--<a href="#" onclick="signOut();">Sign out</a><br>
-                <!-- Load JSON button fields -->
-                <!-- <input class="long-input" type="text" id="json-script"> -->
-                <!-- <a href="#" onclick="loadJSON()" class="load-json-button">Load JSON</a> -->
-                <br/>
-               
-                <div><strong>Are you confirmed sick and want to share your data for the sake of others health and well being?</strong>
-                    <br>
-                    <input type="radio" id="data-consent-yes" name="data-consent" value="yes">
-                    <label for="data-consent">Yes</label>
-                    <input type="radio" id="data-consent-no" name="data-consent" value="no" checked>
-                    <label for="data-no-consent">No</label>
-                </div><br>
-                <div id="configParams">
-                    Radius (in meters) <input id="radius" type="number" value=50 placeholder="Radius in meters"/><br/><br/>
-                    Time Difference (in hours) <input id="time" type="number" value=72 placeholder="Time in hours"/>
-                </div></br>
-                <div id="2FileComment" style="color:red" hidden> Please upload current and previous month's location data</div><br/>
-                <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
-                    <label>Google Maps JSON file location </label>
-                    <input type="file" id="file" name="jsonFile" />
-                    <br><label>Do you want to check your data against all your locations?</label>
-                    <br><input type="radio" id="data-check-yes" name="data-check" value="yes" checked>
-                    <label for="data-check">Yes, check it all!</label>
-                    <br><input type="radio" id="data-check-no" name="data-check" value="no">
-                    <label for="data-no-check">No, I want to remove some locations!</label>
-                    <br><input type="submit" class="load-json-button" value="Upload" />
-                </form> 
+                
+                <!-- Tabs -->
+                <section class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-link" onclick="openTab(event, 'upload-countyLevel')" id="defaultTab">County Overlay</button>
+                        <button class="tab-link" onclick="openTab(event, 'upload-infectedLevel')">Trace Contacts</button>
+                        <button class="tab-link" onclick="openTab(event, 'upload-consent')">Contribute Data</button>
+                    </div>
+                    <div id="upload-countyLevel" class="tab-content">
+                        <p>The county overlay is designed to display the users location data overlayed with the counties they've been in. No user data will be saved during this operation.</p>
+                    </div>
+                    <div id="upload-infectedLevel" class="tab-content">
+                        <p>The trace contacts overlay is designed to display a users location data matched against all infected locations in our database.<br>
+                            The result points visible on the map (if any) will be points where you may have came in contact with an infected individual!<br>
+                            If no points show up, that's a good thing!</p>
+                        <br><div id="configParams">
+                            Radius between locations (in meters) <input id="radius" type="number" value="50" min="10" max="120" placeholder="Radius in meters"/><br/><br/>
+                            Time Difference (in hours) <input id="time" type="number" value="72" min="1" max="120" placeholder="Time in hours"/>
+                        </div><br>
+                    </div>
+                    <div id="upload-consent" class="tab-content">
+                        <p>Contributing your own data will require you to login below.
+                            We will need to confirm your account before the data you submit is added to our database.</p>
+                        <!-- Google signin api -->
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                        <!--<a href="#" onclick="signOut();">Sign out</a><br>
+                        <!-- Load JSON button fields -->
+                        <br><div><strong>Are you sure you want to manually upload a users data?</strong><br>
+                            <input type="radio" id="data-consent-yes" name="data-consent" value="yes">
+                            <label for="data-consent">Yes</label>
+                            <input type="radio" id="data-consent-no" name="data-consent" value="no" checked>
+                            <label for="data-no-consent">No</label>
+                        </div>
+                        <div id="2FileComment" style="color:red" hidden> Please upload current and previous month's location data</div><br/>
+                        <label>Do you want to upload all addresses found in the location history?</label>
+                        <br><input type="radio" id="data-check-yes" name="data-check" value="yes" checked>
+                        <label for="data-check">Yes, upload it all!</label>
+                        <br><input type="radio" id="data-check-no" name="data-check" value="no">
+                        <label for="data-no-check">No, I want to remove some locations!</label>
+                        <br><br>
+                    </div>
+                    <br><hr>
+                    <form id="uploadForm" method="post" name="uploadForm" enctype="multipart/form-data">
+                        <p>Please upload your Google Maps JSON file location (<a href="https://vwo.com/blog/google-maps-heatmap/" target="_blank">?</a>)</p>
+                        <input type="file" id="file" name="jsonFile" />
+                        <br><br><input type="submit" class="load-json-button" value="Upload" />
+                    </form>
+                </section>
             </div>
         </div>
     </div>
@@ -89,27 +107,31 @@
                 <div class="span-center-align">
                     <img class="icon-logo" src="img/virus-contact-map-logo.png">
                 </div>
+                <br>
                 <div class="span-center-align">
                     <a href="#" id="loginModal-button" class="load-json-button">Check my location data</a>
                 </div>
-                <br>
-                <div class="map-side-menu-title span-center-align">About the VCM</div>
+                <br><br><br><br>
+                <div class="map-side-menu-title span-center-align">About VCM</div>
                 <div class="map-side-menu-content">
-                    <p>This is a tool created from the graduate students in the school of Computing at Southern Illinois University.</p>
-                    <p><strong class="bolded-text">Frontend </strong>writen by Zachary Vanscoit, a Masters student graduating in May 2020.</p>
-                    <p><strong class="bolded-text">Backend </strong>writen by Sai Shanmukha Narumanchi, a Masters student in pursuit of a PHD.</p>
-                    <p><strong class="bolded-text">Project Lead, </strong>and faculty at Southern Illinois University, Koushik Sinha.</p>
-                    <p><strong class="bolded-text">Professional Consulting </strong>from Subhas K. Ghosh, a Senior Staff Engineer in the Commonwealth Bank of Australia.</p>
+                    <p>This tool was created for the purpose of blank.</p>
+                </div>
+                <div class="map-side-menu-title span-center-align" style="font-size: 26px;">Credits</div>
+                <div class="map-side-menu-content">
+                    <p><strong class="bolded-text">Front-end </strong>developed by Zachary Vanscoit, graduate student in the School of Computing at Southern Illinois University, Carbondale.</p>
+                    <p><strong class="bolded-text">Back-end </strong>developed by Sai Shanmukha Narumanchi, graduate student in the School of Computing at Southern Illinois University, Carbondale.</p>
+                    <p>Subhas K. Ghosh is a Senior Staff Engineer in the Commonwealth Bank of Australia.</p>
+                    <p>Koushim Sinha is a faculty in the School of Computing, Southern Illinois University, Carbondale.</p>
                 </div>
             </div>
         </section>
 
         <!-- Their Scripts -->
+        <script src="js/config.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
         <!-- Our Scripts -->
-        <script src="resources/config.js"></script>
         <script src="js/google-signin.js"></script>
         <script src="js/page-populations.js"></script>
         <script src="js/helper.js"></script>

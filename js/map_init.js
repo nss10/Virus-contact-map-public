@@ -203,7 +203,7 @@ function initMap(data, zoom) {
                 if (casesConfirmed.length > 0) {
                     casesConfirmed.forEach(element => {
                         if (element.date == currentDate) {
-                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + element.count;
+                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(element.count);
                             flag = 1;
                         }
                     });
@@ -214,7 +214,7 @@ function initMap(data, zoom) {
                         if (deathsConfirmed.length > 0) {
                             deathsConfirmed.forEach(element => {
                                 if (element.date == currentDate) {
-                                    stringBuilder += "<br><strong>Deaths:</strong> " + element.count;
+                                    stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(element.count);
                                 } 
                             });
                         } else {
@@ -473,7 +473,7 @@ function initGeo() {
 
 // function functions -------------------------------------------------------------
 // populates the geojson object with points
-function populatePoints(json_data) {
+function populatePoints(json_data, option) {
     displayFooterMessage("Populating user points.", false);
     // set position array to the size of the data
     positions = new Array(0);
@@ -493,11 +493,6 @@ function populatePoints(json_data) {
                 end: duration["endTimestampMs"]
             });
         }
-
-        var zoom = [3, 20];
-        initGeo();
-        initContactMap(positions[0].location, zoom);
-        displayFooterMessage(contributeForm, false);
         $("#loginModal")[0].style.display="none";
     } else {
         displayFooterMessage("There was no data returned from the database. This might be a data population error.", true);
@@ -510,9 +505,10 @@ function loadJSON(e) {
     formdata.append('uploadOption', uploadOption);
     formdata.append('radius',$("#radius")[0].value);
     formdata.append('time',$("#time")[0].value);
+    console.log();
     if($("#data-consent-yes")[0].checked){
         // for crowd sourcing
-        if($("#file").prop('files').length!=2){
+        if($("#file").prop('files').length != 2){
             alert("You were expected to upload exactly two files");
             return false;
         }
@@ -524,10 +520,10 @@ function loadJSON(e) {
         // for regular checking
         file = $("#file").prop('files')[0];
         formdata.append('jsonFile', file);
-        console.log(file)
     }
     displayFooterMessage("Loading user data...", false);
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
+    console.log(formdata);
     $.ajax({
         method: "POST",
         url: config.server_ip + config.upload_url, 
@@ -536,6 +532,7 @@ function loadJSON(e) {
         contentType: false,
         encType:"multipart/form-data",
         success: function (data) {
+            console.log(data);
             if(typeof data != "object" && data.toLowerCase().includes("message")){
                 alert(data);
                 if(data.toLowerCase().includes("error"))
@@ -545,7 +542,22 @@ function loadJSON(e) {
             } else{
                 json_data = JSON.parse(data);
                 console.log(json_data);
-                populatePoints(json_data.placesVisited);
+                // Detect what json file is coming from the backend
+                var option = json_data['uploadOption'];
+                switch (option) {
+                    case "countyLevel":
+                        populatePoints(json_data.placesVisited, option);
+                        initGeo();
+                        initContactMap(positions[0].location, [3, 20]);
+                        displayFooterMessage(contributeForm, false);
+                        break;
+                    case "infectedPlaces":
+                        console.log("The feature for displaying infected users matched with regular users is not fully done.");
+                        console.log(json_data);
+                        break;
+                    default:
+                        console.log("The uploadOption returned a string not familiar. It returned: " + option);
+                }
 
             }
             $("#loginModal")[0].style.display="none";
