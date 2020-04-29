@@ -1,6 +1,6 @@
 @font-face{
     font-family: 'regular';
-    src: url('fonts/MADE-Evolve-Sans-Regular.woff') format('woff');
+    src: url('MADE-Evolve-Sans-Regular.woff') format('woff');
 }
 /* General classes */
 .error {
@@ -15,7 +15,7 @@
     width: 100%;
 }
 .page-title{
-    font-size: 42px;
+    font-size: 38px;
     text-align: center;
     position: absolute;
     z-index: 1;
@@ -290,6 +290,34 @@
     color: rgb(143, 143, 143);
     text-decoration: none;
     cursor: pointer;
+}
+/* Tabs */
+.tab-buttons {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+.tab-buttons button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+.tab-buttons button:hover {
+    background-color: #ddd;
+}
+.tab-buttons button.active {
+    background-color: #ccc;
+}
+.tab-content {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    animation: fadeIn 0.5s;
 }
 /* animation css */
 @-webkit-keyframes slideIn {

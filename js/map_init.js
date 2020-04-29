@@ -11,7 +11,6 @@ var maxDeaths = 0;          // Max deaths to determine the min and max for gradi
 var currentDate = '';       // Current day determined from the slider
 var mapStyle = 'mapbox://styles/mapbox/dark-v10';
 var uploadOption = "countyLevel";    // countyLevel, infectedPlaces, etc..
-var colorArray = ['#FEC4E9','#F5B3D4','#EDA2C0','#E592AC','#DC8095','#D36E7F','#C85964','#BE454C','#B6373A','#B12B2C','#A91C19'];
 
 // initializer functions -------------------------------------------------------
 // main initializer
@@ -57,8 +56,8 @@ function drawBlankMap() {
         container: 'map',
         style: mapStyle,
         center: [-89.651607, 39.781232],
-        zoom: 4,
-        minZoom: 4,
+        zoom: 3.5,
+        minZoom: 3.5,
         maxZoom: 7
     });
 }
@@ -68,7 +67,6 @@ function loadInitialData(data) {
     if (erics != null) {
         if (data.length > 2) {
             dataObj = JSON.parse(data);
-            console.log(dataObj);
             counties = dataObj.collection
             colorCodes = dataObj.colorCodes
             // hopefully erics data doesn't change
@@ -100,6 +98,7 @@ function loadInitialData(data) {
                             // will add colors to erics properties
                             casesIndex ++;
                         }
+                        erics.features[i].properties['latestColor'] = colorArray[colorCodes[cases[casesIndex - 1].count]]
                     }
                     // load deaths into an array for easy interaction
                     var deaths = counties[i].deaths;
@@ -133,7 +132,8 @@ function loadInitialData(data) {
             var slider = document.getElementById("slider");
             slider.max = dateList.length -1;
             slider.value = dateList.length - 1;
-            initMap(erics, [4, 8]);
+            console.log(erics);
+            initMap(erics);
         } else {
             displayFooterMessage("Data was empty. We need to repopulate the database again...", true);
         }
@@ -151,15 +151,15 @@ function loadInitialData(data) {
 }
 
 // initializes map
-function initMap(data, zoom) {
+function initMap(data) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
     map = new mapboxgl.Map({
         container: 'map',
         style: mapStyle,
         center: [-89.651607, 39.781232],
-        zoom: 4,
-        minZoom: zoom[0],
-        maxZoom: zoom[1]
+        zoom: 3.5,
+        minZoom: 3.5,
+        maxZoom: 8
     });
     // disable map rotation using right click + drag
     map.dragRotate.disable();
@@ -203,7 +203,7 @@ function initMap(data, zoom) {
                 if (casesConfirmed.length > 0) {
                     casesConfirmed.forEach(element => {
                         if (element.date == currentDate) {
-                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + element.count;
+                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(element.count);
                             flag = 1;
                         }
                     });
@@ -214,7 +214,7 @@ function initMap(data, zoom) {
                         if (deathsConfirmed.length > 0) {
                             deathsConfirmed.forEach(element => {
                                 if (element.date == currentDate) {
-                                    stringBuilder += "<br><strong>Deaths:</strong> " + element.count;
+                                    stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(element.count);
                                 } 
                             });
                         } else {
@@ -272,21 +272,55 @@ function filterBy(date) {
 }
 
 // function for checking location overlap with infected
-function initContactMap(center, zoom) {
-    document.getElementById("map-slider").style.display="none";;
+function initContactMap(center, option, countyData) {
+    document.getElementById("map-slider").style.display="none";
+    document.getElementById("map-color").style.display="none";
     map = new mapboxgl.Map({
         container: 'map',
         style: mapStyle,
         center: [center[0], center[1]],
         zoom: 7,
-        minZoom: zoom[0],
-        maxZoom: zoom[1]
+        minZoom: 3,
+        maxZoom: 20
     });
 
     map.addControl(new mapboxgl.NavigationControl());
 
     // init of map with blank geojson
     map.on('load', function () {
+        if (option == "countyLevel") {
+            var formatedData = {
+                'type': 'FeatureCollection',
+                'features': []
+            };
+            for (var i = 0; i < countyData['collection'].length; i++) {
+                for (var j = 0; j < erics.features.length; j++) {
+                    if (erics.features[j].properties.GEO_ID.substring(9,) == countyData['collection'][i]['GEO_ID']) {
+                        formatedData.features.push({
+                            'geometry': erics.features[j].geometry,
+                            'properties': erics.features[j].properties,
+                            'type': "Feature"
+                        });
+                    }
+                }
+            }
+            console.log(formatedData);
+            map.addSource('county', {
+                'type': 'geojson',
+                'data': formatedData
+            });
+            // county geometry
+            map.addLayer({
+                'id': 'county-layer',
+                'type': 'fill',
+                'source': 'county',
+                'paint': {
+                    'fill-outline-color': 'rgba(50, 0, 50, 0.3)',
+                    'fill-opacity': 0.2,
+                    'fill-color': ['get', 'latestColor']
+                }
+            });
+        } // eof if county level
         map.addSource('Points', {
             'type': 'geojson',
             'data': geojson
@@ -303,7 +337,7 @@ function initContactMap(center, zoom) {
                 property: 'risk',
                 type: 'exponential',
                 stops: [
-                  [0, 0],
+                  [0.1, 0.1],
                   [1, 1]
                 ]
               },
@@ -354,7 +388,7 @@ function initContactMap(center, zoom) {
                     property: 'risk',
                     type: 'exponential',
                     stops: [
-                        [{ zoom: 15, value: 0 }, 1],
+                        [{ zoom: 15, value: 0 }, 5],
                         [{ zoom: 15, value: 1 }, 10],
                         [{ zoom: 22, value: 0 }, 10],
                         [{ zoom: 22, value: 1 }, 30],
@@ -418,7 +452,7 @@ function initContactMap(center, zoom) {
 }
 
 // initializes geojson for location overlap
-function initGeo() {
+function initGeo(uploadOption) {
     // init for geojson
     geojson = {
         'type': 'FeatureCollection',
@@ -449,17 +483,23 @@ function initGeo() {
                 riskDisplay = "<ins class=\"risk-high\">high"
             }
         }
+        var temp = '<strong class=\"map-info-box\">' + pos.address +
+        '</strong><hr><p class=\"map-info-box\"><strong>Time Arrived:</strong> ' +
+        startDate.toLocaleTimeString() + ' (' + startDate.toLocaleDateString() + ')' +
+        '<br><strong>Time Left:</strong> '
+        + endDate.toLocaleTimeString() + ' (' + endDate.toLocaleDateString() + ')' +
+        '<br><strong style="font-size:15px">';
+        if (uploadOption == "countyLevel")
+            temp += 'Area Risk Assessment:</strong> '+ riskDisplay + '</p>';
+        if (uploadOption == "infectedPlaces")
+            temp += 'Risk Assessment:</strong> '+ riskDisplay + '</p><label class="map-info-box" for="pos_' + indexPos +
+            '">Keep this location?</label><input type="checkbox" id="pos_' + indexPos + '" checked>';
+
         riskDisplay += "</ins>";
         geojson.features.push({
                 'type': 'Feature',
                 'properties': {
-                    'description':'<strong class=\"map-info-box\">' + pos.address +
-                    '</strong><hr><p class=\"map-info-box\"><strong>Time Arrived:</strong> ' +
-                    startDate.toLocaleTimeString() + ' (' + startDate.toLocaleDateString() + ')' +
-                    '<br><strong>Time Left:</strong> '
-                    + endDate.toLocaleTimeString() + ' (' + endDate.toLocaleDateString() + ')' +
-                    '<br><strong style="font-size:15px">Risk Assessment:</strong> '
-                    + riskDisplay + '</p><label class="map-info-box" for="pos_' + indexPos + '">Keep this location?</label><input type="checkbox" id="pos_' + indexPos + '" checked>',
+                    'description': temp,
                     'risk': pos.risk
                 },
                 'geometry': {
@@ -473,32 +513,47 @@ function initGeo() {
 
 // function functions -------------------------------------------------------------
 // populates the geojson object with points
-function populatePoints(json_data) {
+function populatePoints(json_data, option) {
     displayFooterMessage("Populating user points.", false);
     // set position array to the size of the data
     positions = new Array(0);
     console.log(json_data.length + " location objects found.");
     // check to make sure there is an array to go through
     if (json_data.length > 0) {
-        // for each data point
-        for (var i = 0; i < json_data.length; i++) {
-            var place_location = json_data[i]['place_location'];
-            var duration = json_data[i]['duration'];
-            // add to the positions array
-            positions.push({
-                address: place_location["address"],
-                location: [json_data[i]['centerLon'], json_data[i]['centerLat']],
-                risk: 0.6,
-                start: duration["startTimestampMs"],
-                end: duration["endTimestampMs"]
-            });
+        if (option == "countyLevel") {
+            // for each data point
+            for (var i = 0; i < json_data.length; i++) {
+                var place_location = json_data[i]['place_location'];
+                var duration = json_data[i]['duration'];
+                // add to the positions array
+                positions.push({
+                    address: place_location["address"],
+                    location: [json_data[i]['centerLon'], json_data[i]['centerLat']],
+                    risk: json_data[i]['risk'],
+                    start: duration["startTimestampMs"],
+                    end: duration["endTimestampMs"]
+                });
+            }
         }
-
-        var zoom = [3, 20];
-        initGeo();
-        initContactMap(positions[0].location, zoom);
-        displayFooterMessage(contributeForm, false);
-        $("#loginModal")[0].style.display="none";
+        if (option == "infectedPlaces") {
+            // for each infected location
+            for (var i = 0; i < json_data.length; i++) {
+                var nearby = json_data[i]['nearby'];
+                // for each nearby location
+                for (var j = 0; j < nearby.length; j++) {
+                    var coords = nearby[j]['coordinates'];
+                    var timeStamp = nearby[j]['timestamp'];
+                    // add to the positions array
+                    positions.push({
+                        address: nearby[j]['Address'],
+                        location: [coords['lon'], coords['lat']],
+                        risk: 0.95,
+                        start: timeStamp['startTimestampMs'],
+                        end: timeStamp['endTimestampMs']
+                    });
+                }
+            }
+        }
     } else {
         displayFooterMessage("There was no data returned from the database. This might be a data population error.", true);
     }
@@ -512,7 +567,7 @@ function loadJSON(e) {
     formdata.append('time',$("#time")[0].value);
     if($("#data-consent-yes")[0].checked){
         // for crowd sourcing
-        if($("#file").prop('files').length!=2){
+        if($("#file").prop('files').length != 2){
             alert("You were expected to upload exactly two files");
             return false;
         }
@@ -524,10 +579,10 @@ function loadJSON(e) {
         // for regular checking
         file = $("#file").prop('files')[0];
         formdata.append('jsonFile', file);
-        console.log(file)
     }
     displayFooterMessage("Loading user data...", false);
     console.log("Calling ajax! with " + $("#file").prop('files').length + " file");
+    // this next part is real pasta code
     $.ajax({
         method: "POST",
         url: config.server_ip + config.upload_url, 
@@ -541,11 +596,30 @@ function loadJSON(e) {
                 if(data.toLowerCase().includes("error"))
                     return false;
                 else    
-                    location.reload()
+                    location.reload();
             } else{
                 json_data = JSON.parse(data);
-                console.log(json_data);
-                populatePoints(json_data.placesVisited);
+                // Detect what json file is coming from the backend
+                var option = json_data['uploadOption'];
+                switch (option) {
+                    case "countyLevel":
+                        populatePoints(json_data.placesVisited, option);
+                        $("#loginModal")[0].style.display="none";
+                        initGeo(option);
+                        initContactMap(positions[0].location, option, json_data['counties']);
+                        displayFooterMessage(contributeForm, false);
+                        break;
+                    case "infectedPlaces":
+                        populatePoints(json_data.infectedPlaces, option);
+                        $("#loginModal")[0].style.display="none";
+                        initGeo(option);
+                        initContactMap(positions[0].location, option);
+                        displayFooterMessage(contributeForm, false);
+                        break;
+                    default:
+                        console.log("The uploadOption returned a string not familiar. It returned: " + option);
+                        displayFooterMessage("The file you submitted may not be supported or something else happened.", true);
+                }
 
             }
             $("#loginModal")[0].style.display="none";
