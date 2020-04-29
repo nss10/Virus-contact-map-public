@@ -70,7 +70,7 @@ function openTab(event, tabName) {
     tabLinks[i].className = tabLinks[i].className.replace(" active", "");
   }
 
-  if (tabName != 'upload-consent') {
+  if (tabName != 'saveData') {
     
   }
   uploadOption = tabName;

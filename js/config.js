@@ -12,3 +12,5 @@ config={
 }
 
 config['server_ip'] = config.backend_remote ? config.server_remote : config.server_local;
+
+var colorArray = ['#FEC4E9','#F5B3D4','#EDA2C0','#E592AC','#DC8095','#D36E7F','#C85964','#BE454C','#B6373A','#B12B2C','#A91C19'];
