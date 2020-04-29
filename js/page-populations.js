@@ -18,6 +18,9 @@ var footerSpan = document.getElementsByClassName("close-footer")[0];
 // Error flag
 var errorFlag = false;
 
+// Map toggle boolean
+var mapSide = true;
+
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
@@ -38,6 +41,22 @@ window.onclick = function(event) {
   if (event.target == messageModal) {
     messageModal.style.display = "none";
   }
+}
+
+// Toggles the map side bar
+function mapSideToggle() {
+  var buttonDiv = document.getElementById("map-side-interface-button");
+  var sideMenu = document.getElementById("map-side-menu");
+  if (mapSide) {
+    sideMenu.style.width = "0";
+    buttonDiv.innerHTML = "<i class=\"arrow right-arrow\"></i>";
+    buttonDiv.style.left = "0";
+  } else {
+    sideMenu.style.width = "300px";
+    buttonDiv.style.left = "300px";
+    buttonDiv.innerHTML = "<i class=\"arrow left-arrow\"></i>";
+  }
+  mapSide = !mapSide;
 }
 
 // Will display the footer modal with a message

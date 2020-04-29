@@ -2,37 +2,53 @@
     font-family: 'regular';
     src: url('fonts/MADE-Evolve-Sans-Regular.woff') format('woff');
 }
-/* ids */
-#map{
-    height: 800px;
-    width: 100%;
-}
-#title-section{
-    background-color: #4d0066;
-    width: 100%;
-}
-
-/* classes */
+/* General classes */
 .error {
     color: #ff5858;
     font-size: 150%;
 }
+.icon-logo {
+    width: 50%;
+    min-width: 100px;
+}
 .table-full{
     width: 100%;
+}
+.page-title{
+    font-size: 42px;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    padding-bottom: 5px;
+    background-color: #4d0066;
+    font-weight: bold;
+    width: 100%;
+}
+.bolded-text {
+    color: rgb(201, 134, 212);
 }
 .span-center-align {
     text-align: center;
 }
-.span-right-align {
-    text-align: right;
-    padding-right: 20px;
-}
 .span-left-align {
     text-align: left;
-    padding-left: 20px;
 }
-.page-title{
-    font-size: 200%;
+.right-align {
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    margin: 5px;
+    display: inline;
+}
+.left-align {
+    text-align: left;
+    position: absolute;
+    margin: 5px;
+    display: inline;
+}
+.space {
+    padding: 10px;
+    margin: 1px;
 }
 .g-signin2 {
     width: 100%;
@@ -50,7 +66,8 @@
 	color:#442857;
 	font-family:Arial;
 	font-size:15px;
-	font-weight:bold;
+    font-weight:bold;
+    min-width: 100px;
 	padding:6px 24px;
 	text-decoration:none;
 }
@@ -68,46 +85,21 @@
     margin: 8px 0;
 }
 /* Map */
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: block;
+}
+/* County popup information */
 .map-info-box{
-    color: rgb(10,10,10);
+    color: rgb(30, 30, 30);
     font-size: 12px;
 }
 .map-info-box-title {
-    color: rgb(10,10,10);
+    color: rgb(85, 0, 85);
     font-size: 18px;
-}
-.map-overlay {
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    position: absolute;
-    width: 25%;
-    top: 150px;
-    left: 0;
-    padding: 10px;
-}
-.map-overlay .map-overlay-inner {
-    background-color: #4d0066;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-.map-overlay h2 {
-    line-height: 24px;
-    display: block;
-    margin: 0 0 10px;
-}
-.map-overlay .legend .bar {
-    height: 10px;
-    width: 100%;
-    background: linear-gradient(to right, #ff8bc5, #c00000);
-}
-.map-overlay input {
-    background-color: transparent;
-    display: inline-block;
-    width: 100%;
-    position: relative;
-    margin: 0;
-    cursor: ew-resize;
 }
 .risk-low {
     color: rgb(50, 150, 50);
@@ -121,11 +113,113 @@
     color: rgb(200, 50, 50);
     font-size: 18px;
 }
+/* Time slider bar */
+.map-slider {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 50%;
+    min-width: 150px;
+    max-width: 500px;
+    bottom: 30px;
+    right: 0;
+    padding: 10px;
+}
+.map-slider .map-overlay-inner {
+    background-color: rgba(77, 0, 102, 0.7);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.map-slider input {
+    background-color: transparent;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    cursor: ew-resize;
+}
+.map-slider h2 {
+    line-height: 24px;
+    display: block;
+    margin: 0 0 10px;
+}
+/* Density Color overlay */
+.map-overlay-color {
+    background-color: rgba(77, 0, 102, 0.7);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    position: absolute;
+    padding: 10px;
+    top: 70px;
+    width: 15%;
+    min-width: 110px;
+    max-width: 250px;
+    right: 0;
+    margin: 10px;
+}
+.map-overlay-color .legend .bar {
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to right, #ff8bc5, #c00000);
+}
+/* Side menu */
+.map-side-menu {
+    background-color: rgba(77, 0, 102, 0.7);
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width:300px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.map-side-interface-button {
+    background-color: rgba(77, 0, 102, 0.7);
+    width: 25px;
+    height: 30px;
+    top: 55px;
+    left: 300px;
+    position: fixed;
+    transition: 0.5s;
+}
+.map-side-interface-button:hover {
+    background-color: rgba(147, 1, 196, 0.7);
+}
+.arrow {
+    border: solid rgb(240, 180, 255);
+    margin-top: 7px;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 5px;
+}
+.right-arrow {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.left-arrow {
+    margin-left: 7px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.map-side-menu-title {
+    font-size: 36px;
+    font-weight: bold;
+}
+.map-side-menu-content {
+    margin: 10px;
+    font-size: 18px;
+    text-align: left;
+}
 /* Modals */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%;
@@ -134,23 +228,8 @@
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
-.message-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    overflow: auto;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-animation-name: fadeIn;
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadeIn;
-    animation-duration: 0.4s
-}
 .message-modal-content {
+    z-index: 10;
     position: fixed;
     bottom: 0;
     background-color: #4d0066;
@@ -229,12 +308,18 @@
     from {opacity: 0} 
     to {opacity: 1}
 }
-
 /* regular tags */
+html, body {
+    height: 100%;
+    width: 100%;
+}
 body{
     background-color: #684f77;
     font-family: regular;
     font-weight: normal;
     font-style: normal;
     color: #ffebfc;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
