@@ -174,7 +174,6 @@
     left: 0;
     width:300px;
     overflow-x: hidden;
-    overflow-y: hidden;
     padding-top: 60px;
     transition: 0.5s;
 }

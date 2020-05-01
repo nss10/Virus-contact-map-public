@@ -58,7 +58,7 @@ function drawBlankMap() {
         center: [-89.651607, 39.781232],
         zoom: 3.5,
         minZoom: 3.5,
-        maxZoom: 7
+        maxZoom: 12
     });
 }
 
@@ -159,7 +159,7 @@ function initMap(data) {
         center: [-89.651607, 39.781232],
         zoom: 3.5,
         minZoom: 3.5,
-        maxZoom: 8
+        maxZoom: 12
     });
     // disable map rotation using right click + drag
     map.dragRotate.disable();
