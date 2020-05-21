@@ -4,6 +4,8 @@ let geojson = null;     // Geojson object
 let positions = null;   // 2D array of longitude and latitude
 let counties = null;    // Counties object from our backend
 let erics = null;       // Erics county geometry data
+let allData = null;     // All data in the whole universe
+let allDataGeo = null;  // All data but in mapbox readable format
 let dateList = null;    // List of dates to filter by
 var ericDataAttempts = 0;   // Attempts to grab erics data
 var maxCases = 0;           // Max cases to determine the min and max for gradient
@@ -30,7 +32,7 @@ function mainInit() {
     // load ours
     $.ajax({
         method: "GET",
-        url: config.server_ip + config.countyCases_url, 
+        url: config.server_ip + config.countyCases_url,
         processData: false,
         contentType: false,
         encType: "multipart/form-data",
@@ -60,6 +62,66 @@ function drawBlankMap() {
         minZoom: 3.5,
         maxZoom: 12
     });
+}
+
+function loadAllData(data) {
+    if (data != null) {
+        if (data.length > 2) {
+            allData = JSON.parse(data);
+            populateAllGeo(allData);
+
+            map.addSource('Points', {
+                'type': 'geojson',
+                'data': allDataGeo
+            });
+            map.addLayer({
+                id: 'user-heatmap',
+                type: 'heatmap',
+                source: 'Points',
+                maxzoom: 15,
+                paint: {
+                // increase weight as risk increases
+                'heatmap-weight': {
+                    'property': 'point_count',
+                    'type': 'identity'
+                },
+                // increase intensity as zoom level increases
+                'heatmap-intensity': {
+                    stops: [
+                    [11, 1],
+                    [15, 3]
+                    ]
+                },
+                // assign color values be applied to points depending on their density
+                    'heatmap-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['heatmap-density'],
+                        0, 'hsla(180, 100%, 80%, 0)',
+                        0.2, 'hsl(230, 100%, 80%)',
+                        0.4, 'hsl(275, 100%, 70%)',
+                        0.6, 'hsl(320, 100%, 60%)',
+                        0.8, 'hsl(350, 100%, 60%)',
+                    ],
+                // increase radius as zoom increases
+                'heatmap-radius': {
+                    stops: [
+                    [11, 15],
+                    [15, 20]
+                    ]
+                },
+                // decrease opacity to transition into the circle layer
+                'heatmap-opacity': {
+                    default: 1,
+                    stops: [
+                    [14, 1],
+                    [15, 0]
+                    ]
+                },
+                }
+            }, 'waterway-label');
+        }
+    }
 }
 
 // ajax call to populate county data with formated filter
@@ -133,7 +195,7 @@ function loadInitialData(data) {
             slider.max = dateList.length -1;
             slider.value = dateList.length - 1;
             console.log(erics);
-            initMap(erics);
+            initMap(erics, null);
         } else {
             displayFooterMessage("Data was empty. We need to repopulate the database again...", true);
         }
@@ -148,10 +210,20 @@ function loadInitialData(data) {
             displayFooterMessage("Erics county data was empty. Try reloading the page in a minute or so.", true);
         }
     }
+    // load all points
+    $.ajax({
+        method: "GET",
+        url: config.server_ip + config.allData_url,
+        processData: false,
+        contentType: false,
+        encType: "multipart/form-data",
+        success: loadAllData,
+        error: ajaxErrorHandle
+    });
 }
 
 // initializes map
-function initMap(data) {
+function initMap(data, fullData) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
     map = new mapboxgl.Map({
         container: 'map',
@@ -233,7 +305,6 @@ function initMap(data) {
             var textString = "<strong class=\"map-info-box-title\">" + feature.properties.NAME + "</strong>" + stringBuilder;
             popup.setLngLat(e.lngLat).setHTML(textString).addTo(map);
         });
-
         map.on('mouseleave', 'county', function() {
             map.getCanvas().style.cursor = '';
             popup.remove();
@@ -451,10 +522,34 @@ function initContactMap(center, option, countyData) {
     displayFooterMessage("Map displayed.", false);
 }
 
+function populateAllGeo(data) {
+    allDataGeo = {
+        'type': 'FeatureCollection',
+        'features': [
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [0, 0]
+                }
+            }
+        ]
+    };
+    data.forEach(pos => {
+        allDataGeo.features.push({
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': pos.location
+            }
+        });
+    });
+}
+
 // initializes geojson for location overlap
-function initGeo(uploadOption) {
+function initGeo(geoObject, points, uploadOption) {
     // init for geojson
-    geojson = {
+    geoObject = {
         'type': 'FeatureCollection',
         'features': [
             {
@@ -471,32 +566,34 @@ function initGeo(uploadOption) {
         ]
     };
     // Test data load
-    geojson.features = new Array();
+    geoObject.features = new Array();
     var indexPos = 0;
-    positions.forEach(pos => {
-        var startDate = new Date(parseInt(pos.start));
-        var endDate = new Date(parseInt(pos.end));
-        var riskDisplay = "<ins class=\"risk-low\">low";
-        if (pos.risk > 0.7){
-            riskDisplay = "<ins class=\"risk-med\">moderate";
-            if (pos.risk > 0.9) {
-                riskDisplay = "<ins class=\"risk-high\">high"
+    points.forEach(pos => {
+        if (uploadOption != "allData") {
+            var startDate = new Date(parseInt(pos.start));
+            var endDate = new Date(parseInt(pos.end));
+            var riskDisplay = "<ins class=\"risk-low\">low";
+            if (pos.risk > 0.7){
+                riskDisplay = "<ins class=\"risk-med\">moderate";
+                if (pos.risk > 0.9) {
+                    riskDisplay = "<ins class=\"risk-high\">high"
+                }
             }
-        }
-        var temp = '<strong class=\"map-info-box\">' + pos.address +
-        '</strong><hr><p class=\"map-info-box\"><strong>Time Arrived:</strong> ' +
-        startDate.toLocaleTimeString() + ' (' + startDate.toLocaleDateString() + ')' +
-        '<br><strong>Time Left:</strong> '
-        + endDate.toLocaleTimeString() + ' (' + endDate.toLocaleDateString() + ')' +
-        '<br><strong style="font-size:15px">';
-        if (uploadOption == "countyLevel")
-            temp += 'Area Risk Assessment:</strong> '+ riskDisplay + '</p>';
-        if (uploadOption == "infectedPlaces")
-            temp += 'Risk Assessment:</strong> '+ riskDisplay + '</p><label class="map-info-box" for="pos_' + indexPos +
-            '">Keep this location?</label><input type="checkbox" id="pos_' + indexPos + '" checked>';
+            var temp = '<strong class=\"map-info-box\">' + pos.address +
+            '</strong><hr><p class=\"map-info-box\"><strong>Time Arrived:</strong> ' +
+            startDate.toLocaleTimeString() + ' (' + startDate.toLocaleDateString() + ')' +
+            '<br><strong>Time Left:</strong> '
+            + endDate.toLocaleTimeString() + ' (' + endDate.toLocaleDateString() + ')' +
+            '<br><strong style="font-size:15px">';
+            if (uploadOption == "countyLevel")
+                temp += 'Area Risk Assessment:</strong> '+ riskDisplay + '</p>';
+            if (uploadOption == "infectedPlaces")
+                temp += 'Risk Assessment:</strong> '+ riskDisplay + '</p><label class="map-info-box" for="pos_' + indexPos +
+                '">Keep this location?</label><input type="checkbox" id="pos_' + indexPos + '" checked>';
 
-        riskDisplay += "</ins>";
-        geojson.features.push({
+            riskDisplay += "</ins>";
+        }
+        geoObject.features.push({
                 'type': 'Feature',
                 'properties': {
                     'description': temp,
@@ -605,14 +702,14 @@ function loadJSON(e) {
                     case "countyLevel":
                         populatePoints(json_data.placesVisited, option);
                         $("#loginModal")[0].style.display="none";
-                        initGeo(option);
+                        initGeo(geojson,positions,option);
                         initContactMap(positions[0].location, option, json_data['counties']);
                         displayFooterMessage(contributeForm, false);
                         break;
                     case "infectedPlaces":
                         populatePoints(json_data.infectedPlaces, option);
                         $("#loginModal")[0].style.display="none";
-                        initGeo(option);
+                        initGeo(geojson,positions,option);
                         initContactMap(positions[0].location, option);
                         displayFooterMessage(contributeForm, false);
                         break;
