@@ -81,5 +81,9 @@ def getRiskScore(place):
     else:
         return 0
 
+def replaceKeys(config,source):
+    for key in config.keys():
+        source = source.replace(key,config[key])
+    return source
 if __name__ == "__main__":
     print(get_quantile([1,1]))

@@ -21,16 +21,21 @@ def getCountyLocations():
   for item in retCollection:
     caseList=[]
     deathList=[]
+    oldCount=0
     for case in item['confirmed_cases']:
       if(case['count']>0):
-        caseList.append(case)
+        if(oldCount!=case['count']):
+          oldCount=case['count']
+          caseList.append(case)
         case_count_set.add(case['count'])
+    oldCount=0
     for case in item['deaths']:
-      if(case['count']!=0):
-        deathList.append(case)
+      if(oldCount!=case['count']):
+        oldCount=case['count']
+        deathList.append(case)          
     item['confirmed_cases']=caseList
     item['deaths']=deathList
-  colorCodes = get_quantile(list(case_count_set))
+  colorCodes = addDiffEncodingOnColorCodes(get_quantile(list(case_count_set)))
   return {"colorCodes" : colorCodes,"collection" : retCollection}
 
 def getEricsData():
@@ -43,6 +48,15 @@ def getAllInfectedLocations():
     return res
   return updateCacheAndFetch()
 
+
+def addDiffEncodingOnColorCodes(colorCodes):
+  oldVal=-1
+  retVal={}
+  for key in sorted(list(map(int, colorCodes.keys()))):
+    if(colorCodes[key]!=oldVal):
+      oldVal=retVal[key]=colorCodes[key]
+  return retVal
+      
 
 def updateCacheAndFetch():
   perDayCollection.drop()
