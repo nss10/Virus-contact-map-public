@@ -33,6 +33,9 @@ def getDaysSinceTimeLineEpoch(timeInMs):
     diff = datetime(2020, 5, 17) - datetime.fromtimestamp(int(timeInMs)/1000.0)
     return diff.days
 
+def getDiffDaysSinceDataEpoch(newDate):
+    diff = newDate - datetime(2020, 1, 22)
+    return diff.days
 
 def get_json_from_path(path):
     with open(path) as json_file:
