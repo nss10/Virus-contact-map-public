@@ -39,8 +39,8 @@ def intialData():
 
 @app.route(app.config['GET_COUNTY_CASES_DATA'])
 def countyLocationData():
-    countyCasesData =  json.dumps(getCountyLocations(), separators=(',', ':'))
-    return replaceKeys(app.config['CCD'],countyCasesData)
+    countyCasesData =  json.dumps(getCountyLocations())#, separators=(',', ':'))
+    return countyCasesData #replaceKeys(app.config['CCD'],countyCasesData)
 
 
 @app.route(app.config['GET_ERICS_DATA'])
