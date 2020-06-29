@@ -26,18 +26,14 @@ def getCountyLocations():
     oldCount=0
     for case in item['confirmed_cases']:
       if(case['count']>0):
-        if(oldCount!=case['count']):
-          oldCount=case['count']
-          caseList.append(case)
+        caseList.append(case)
         case_count_set.add(case['count'])
-    oldCount=0
     for case in item['deaths']:
-      if(oldCount!=case['count']):
-        oldCount=case['count']
+      if(0!=case['count']):
         deathList.append(case)          
     item['confirmed_cases']=caseList
     item['deaths']=deathList
-  colorCodes = addDiffEncodingOnColorCodes(get_quantile(list(case_count_set)))
+  colorCodes = get_quantile(list(case_count_set)) #addDiffEncodingOnColorCodes(get_quantile(list(case_count_set)))
   return {"colorCodes" : colorCodes,"collection" : retCollection}
 
 def getEricsData():
@@ -158,31 +154,6 @@ def test():
   countyList = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
   caseCountList = [get_latest_cases_count(county) for county in countyList]
   colorCodes = get_quantile(caseCountList)
-
-def getFutureData():
-  token= os.environ.get('GIT_AUTH_TOKEN')
-  headers = {'Authorization': 'token %s' % token}
-  url='https://raw.githubusercontent.com/Wjerry5/uiuc-covid19-prediction-county/master/covid19-prediction-county.csv'
-  print(url)
-  s = requests.get(url,headers=headers).content
-  df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-  fips_set = set(df['County_FIPS'].dropna().astype(int))
-  date_range = sorted(list(set(df['date'])))
-  df_conf = pd.DataFrame(columns=['fips']+date_range)
-  df_conf.index=df_conf['fips']
-  df_deaths = pd.DataFrame(columns=['fips']+date_range)
-  df_deaths.index=df_conf['fips']
-  for county in fips_set:
-      df1 = df[df['County_FIPS']==county].iloc[:,[1,2,3]]
-      df1.index=df1['date']
-      dfc1=df1.transpose().iloc[[1],:]
-      dfd1=df1.transpose().iloc[[2],:]
-      dfc1['fips']=dfd1['fips']=county
-      df_conf = df_conf.append(dfc1,sort=False)
-      df_deaths = df_deaths.append(dfd1,sort=False)
-  df_conf.index=df_conf['fips']
-  df_deaths.index=df_deaths['fips']
-  return [df_conf,df_deaths]
 
 if __name__ == "__main__":
   get_geometry_from_erics("01009")
