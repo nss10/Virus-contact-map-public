@@ -130,6 +130,7 @@
     border-radius: 3px;
     padding: 10px;
     margin-bottom: 10px;
+    visibility: hidden;
 }
 .map-slider input {
     background-color: transparent;
