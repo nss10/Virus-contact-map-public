@@ -8,7 +8,6 @@ config={
     allInfected_url: "/allData",
     countyCases_url: "/countyCasesData",
     ericsData_url: "/ericsData"
-
 }
 
 config['server_ip'] = config.backend_remote ? config.server_remote : config.server_local;

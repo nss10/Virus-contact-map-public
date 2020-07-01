@@ -129,6 +129,7 @@ function loadInitialData(data) {
     if (erics != null) {
         if (data.length > 2) {
             dataObj = JSON.parse(data);
+            console.log(dataObj);
             counties = dataObj.collection
             colorCodes = dataObj.colorCodes
             // hopefully erics data doesn't change
@@ -147,8 +148,6 @@ function loadInitialData(data) {
                         erics.features[i].properties['dates'] = new Array();
                         // most recently changed date in the for current index
                         var lastChangedDate = addToDate(startDate, cases[0].daysElapsed);
-                        // the number of days from our first case until now
-                        var daysFromFirst = date_diff_indays(lastChangedDate, getToday());
                         // iterate from the first day in cases until today
                         for (var j = 0; j < cases.length; j++) {
                             // Get the max of all cases
@@ -193,8 +192,7 @@ function loadInitialData(data) {
             dateList = getDateArray(addToDate(startDate,latestDateAvailable));
             var slider = document.getElementById("slider");
             slider.max = dateList.length -1;
-            slider.value = dateList.length - 1;
-            console.log(erics);
+            slider.value = date_diff_indays(startDate, getToday());
             initMap(erics, null);
         } else {
             displayFooterMessage("Data was empty. We need to repopulate the database again...", true);
@@ -211,15 +209,15 @@ function loadInitialData(data) {
         }
     }
     // load all points
-    $.ajax({
-        method: "GET",
-        url: config.server_ip + config.allData_url,
-        processData: false,
-        contentType: false,
-        encType: "multipart/form-data",
-        success: loadAllData,
-        error: ajaxErrorHandle
-    });
+    // $.ajax({
+    //     method: "GET",
+    //     url: config.server_ip + config.allData_url,
+    //     processData: false,
+    //     contentType: false,
+    //     encType: "multipart/form-data",
+    //     success: loadAllData,
+    //     error: ajaxErrorHandle
+    // });
 }
 
 // initializes map
@@ -318,14 +316,24 @@ function initMap(data, fullData) {
         });
 
         // filter starting position
-        if (dateList != null)
-            filterBy(dateList.length - 1);
+        if (dateList != null) {
+            filterBy(date_diff_indays(startDate, getToday()));
+            document.getElementById("map-overlay-inner").style.visibility = "visible";
+        }
         // filter listener
         document.getElementById("slider").addEventListener('input', function(e) {
             filterBy(e.target.value);
         });
     }); // eof map.onLoad
 } // eof initMap
+
+// forces slider to today
+function forceToday() {
+    var slider = document.getElementById("slider");
+    var today = date_diff_indays(startDate, getToday());
+    slider.value = today;
+    filterBy(today);
+}
 
 // filter by date for county map
 function filterBy(date) {
@@ -339,6 +347,16 @@ function filterBy(date) {
     ]
     );
     currentDate = niceDate(addToDate(startDate, dateList[date]));
+    // the number of days from our first case until now
+    var daysFromFirst = date_diff_indays(startDate, getToday());
+    var referenceString = "Past";
+    if (date == daysFromFirst) {
+        referenceString = "Today";
+    } else if (date > daysFromFirst) {
+        referenceString = "Future";
+    }
+
+    document.getElementById("map-refrence-tense").textContent = referenceString;
     document.getElementById("map-date").textContent = currentDate;
 }
 
