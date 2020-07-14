@@ -279,16 +279,17 @@ function initMap(data, fullData) {
             var casesConfirmed = JSON.parse(feature.properties['confirmed_cases']);
             // Flag if there was no cases for that date
             var flag = 0;
-            let oldCount = 0;
+            let oldCount = -1;
             let stop = false;
             if (casesConfirmed) {
                 if (casesConfirmed.length > 0) {
-                    casesConfirmed.forEach(element => {
+                    casesConfirmed.forEach((element,index) => {
                         // if (element.date == currentDate) {
                         //     stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(element.count);
                         //     flag = 1;
                         // }
-                        if (!stop && element.daysElapsed > currentDayValue) {
+                        if ((!stop && element.daysElapsed > currentDayValue) || index == casesConfirmed.length-1) {
+                            if(oldCount==-1){oldCount=element.count;}
                             stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(oldCount);
                             flag = 1;
                             stop=true
@@ -296,18 +297,20 @@ function initMap(data, fullData) {
                         oldCount = element.count;
                     });
                     stop=false;
-                    oldCount=0;
+                    oldCount=-1;
                     // We won't see a death with out seeing other cases
                     if (flag == 1) {
                         // grab our deaths array
                         var deathsConfirmed = JSON.parse(feature.properties['deaths']);
                         if (deathsConfirmed.length > 0) {
-                            deathsConfirmed.forEach(element => {
+                            deathsConfirmed.forEach((element,index) => {
                                 // if (element.date == currentDate) {
                                 //     stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(element.count);
                                 // } 
-                                if (!stop && element.daysElapsed > currentDayValue) {
-                                    stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(oldCount);
+                                console.log(currentDayValue);
+                                if ((!stop && element.daysElapsed > currentDayValue) || index == deathsConfirmed.length-1) {
+                                    if(oldCount==-1){oldCount=element.count;}
+                                    stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(oldCount);
                                     flag = 1;
                                     stop=true
                                 }
