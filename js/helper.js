@@ -94,4 +94,5 @@ function getColorCode(colorCodes, count){
             return colorArray[colorCodes[key]-1];
         }
     }
+    return colorArray[colorArray.length-1];
 }

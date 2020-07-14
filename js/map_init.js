@@ -11,6 +11,7 @@ var ericDataAttempts = 0;   // Attempts to grab erics data
 var maxCases = 0;           // Max cases to determine the min and max for gradient
 var maxDeaths = 0;          // Max deaths to determine the min and max for gradient
 var currentDate = '';       // Current day determined from the slider
+var currentDayValue = 0;    // Numerical value of current day determined from the slider
 var mapStyle = 'mapbox://styles/mapbox/dark-v10';
 var uploadOption = "countyLevel";    // countyLevel, infectedPlaces, etc..
 
@@ -132,6 +133,8 @@ function loadInitialData(data) {
             console.log(dataObj);
             counties = dataObj.collection
             colorCodes = dataObj.colorCodes
+            lastDayElapsed = dataObj.lastDayElapsed;
+            // colorCodesDiffEncoded = dataObj.colorCodesDiffEncoded
             // hopefully erics data doesn't change
             for (var i = 0; i < counties.length; i++) {
                 // cut out the first part of the geoid
@@ -147,7 +150,7 @@ function loadInitialData(data) {
 
                         erics.features[i].properties['dates'] = new Array();
                         // most recently changed date in the for current index
-                        var lastChangedDate = addToDate(startDate, cases[0].daysElapsed);
+                        let colorCode;
                         // iterate from the first day in cases until today
                         for (var j = 0; j < cases.length; j++) {
                             // Get the max of all cases
@@ -155,11 +158,18 @@ function loadInitialData(data) {
                                 maxCases = cases[casesIndex].count;
                             cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex].daysElapsed));
                             erics.features[i].properties.dates.push(cases[casesIndex].daysElapsed);
-                            erics.features[i].properties[cases[casesIndex].daysElapsed+"_color"] = colorArray[colorCodes[cases[casesIndex].count]];
+                            colorCode = getColorCode(colorCodes,cases[casesIndex].count);
+                            erics.features[i].properties[cases[casesIndex].daysElapsed+"_color"] = colorCode;
+                            let nextAvailableDay = (casesIndex!=cases.length-1) ? cases[casesIndex+1].daysElapsed : lastDayElapsed;
+                            let nextActualDay = cases[casesIndex].daysElapsed + 1;
+                            while(nextActualDay<nextAvailableDay){
+                                erics.features[i].properties[nextActualDay+"_color"] = colorCode;
+                                nextActualDay++;
+                            }
                             // will add colors to erics properties
                             casesIndex ++;
                         }
-                        erics.features[i].properties['latestColor'] = colorArray[colorCodes[cases[casesIndex - 1].count]]
+                        erics.features[i].properties['latestColor'] = colorCode;
                     }
                     // load deaths into an array for easy interaction
                     var deaths = counties[i].deaths;
@@ -269,23 +279,39 @@ function initMap(data, fullData) {
             var casesConfirmed = JSON.parse(feature.properties['confirmed_cases']);
             // Flag if there was no cases for that date
             var flag = 0;
+            let oldCount = 0;
+            let stop = false;
             if (casesConfirmed) {
                 if (casesConfirmed.length > 0) {
                     casesConfirmed.forEach(element => {
-                        if (element.date == currentDate) {
-                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(element.count);
+                        // if (element.date == currentDate) {
+                        //     stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(element.count);
+                        //     flag = 1;
+                        // }
+                        if (!stop && element.daysElapsed > currentDayValue) {
+                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(oldCount);
                             flag = 1;
+                            stop=true
                         }
+                        oldCount = element.count;
                     });
+                    stop=false;
+                    oldCount=0;
                     // We won't see a death with out seeing other cases
                     if (flag == 1) {
                         // grab our deaths array
                         var deathsConfirmed = JSON.parse(feature.properties['deaths']);
                         if (deathsConfirmed.length > 0) {
                             deathsConfirmed.forEach(element => {
-                                if (element.date == currentDate) {
-                                    stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(element.count);
-                                } 
+                                // if (element.date == currentDate) {
+                                //     stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(element.count);
+                                // } 
+                                if (!stop && element.daysElapsed > currentDayValue) {
+                                    stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(oldCount);
+                                    flag = 1;
+                                    stop=true
+                                }
+                                oldCount = element.count;
                             });
                         } else {
                             stringBuilder += "<br>No deaths in this county.";  
@@ -346,6 +372,7 @@ function filterBy(date) {
        "rgba(0,0,0,0)"
     ]
     );
+    currentDayValue = dateList[date];
     currentDate = niceDate(addToDate(startDate, dateList[date]));
     // the number of days from our first case until now
     var daysFromFirst = date_diff_indays(startDate, getToday());
