@@ -86,9 +86,20 @@
         <section id="map-section">
             <div id="map" class="map"></div>
             <div id="map-slider" class="map-slider top">
-                <div class="map-overlay-inner">
+                <div class="map-overlay-inner" id="map-overlay-inner">
                     <h2>View number of cases by county and time</h2>
-                    <label class="medium-title" id="map-date"></label>
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="medium-title" id="map-refrence-tense"></label>
+                                <label class="medium-title" id="map-date"></label>
+                            </td>
+                            <td>
+                                <button onclick="forceToday()" class="load-json-button">Today's Data</button>
+                            </td>
+                        </tr>
+                    </table>
+                    
                     <input id="slider" type="range" min="0" max="88" step="1" value="88" />
                 </div>
             </div>
@@ -121,7 +132,8 @@
                     <p><strong class="bolded-text">Front-end </strong>developed by Zachary Vanscoit, graduate student in the School of Computing at Southern Illinois University, Carbondale.</p>
                     <p><strong class="bolded-text">Back-end </strong>developed by Sai Shanmukha Narumanchi, graduate student in the School of Computing at Southern Illinois University, Carbondale.</p>
                     <p>Subhas K. Ghosh is a Senior Staff Engineer in the Commonwealth Bank of Australia.</p>
-                    <p>Koushim Sinha is a faculty in the School of Computing, Southern Illinois University, Carbondale.</p>
+                    <p>Koushik Sinha is a faculty in the School of Computing, Southern Illinois University, Carbondale.</p>
+                    <br><br><br>
                 </div>
             </div>
         </section>
