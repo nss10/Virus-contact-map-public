@@ -40,6 +40,7 @@ def intialData():
 @app.route(app.config['GET_COUNTY_CASES_DATA'])
 def countyLocationData():
     countyCasesData =  json.dumps(getCountyLocations(), separators=(',', ':'))
+    return countyCasesData
     return replaceKeys(app.config['CCD'],countyCasesData)
 
 

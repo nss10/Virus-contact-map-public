@@ -37,8 +37,9 @@ def getCountyLocations():
         deathList.append(case)          
     item['confirmed_cases']=caseList
     item['deaths']=deathList
-  colorCodes = addDiffEncodingOnColorCodes(get_quantile(list(case_count_set)))
-  return {"colorCodes" : colorCodes,"collection" : retCollection}
+    colorCodes = get_quantile(list(case_count_set))
+    colorCodesDiffEncoded = addDiffEncodingOnColorCodes(colorCodes)
+    return {"colorCodes" : colorCodes,"colorCodesDiffEncoded" : colorCodesDiffEncoded, "collection" : retCollection}
 
 def getEricsData():
   return  list(ericsCollection.find({},{ "_id": 0}))
