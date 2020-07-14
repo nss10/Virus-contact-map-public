@@ -22,11 +22,10 @@ def getCountyLocations_non__diffEncoded():
   for item in retCollection:	
     caseList=[]	
     deathList=[]	
-    oldCount=0	
     for case in item['confirmed_cases']:	
       if(case['count']>0):	
-        caseList.append(case)	
         case_count_set.add(case['count'])	
+        caseList.append(case)	
     for case in item['deaths']:	
       if(0!=case['count']):	
         deathList.append(case)          	
@@ -58,7 +57,7 @@ def getCountyLocations():
     item['deaths']=deathList
     colorCodes = get_quantile(list(case_count_set))
     colorCodesDiffEncoded = addDiffEncodingOnColorCodes(colorCodes)
-    return {"lastAvailableDay":retCollection[0]['confirmed_cases'][-1]['daysElapsed'], "colorCodes" : colorCodesDiffEncoded,"collection" : retCollection}
+  return {"lastAvailableDay":retCollection[0]['confirmed_cases'][-1]['daysElapsed'], "colorCodes" : colorCodesDiffEncoded,"collection" : retCollection}
 
 def getEricsData():
   return  list(ericsCollection.find({},{ "_id": 0}))
@@ -207,5 +206,4 @@ def getFutureData():
 if __name__ == "__main__":
   get_geometry_from_erics("01009")
 
- 
  
