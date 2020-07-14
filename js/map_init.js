@@ -133,7 +133,7 @@ function loadInitialData(data) {
             console.log(dataObj);
             counties = dataObj.collection
             colorCodes = dataObj.colorCodes
-            lastDayElapsed = dataObj.lastDayElapsed;
+            lastDayElapsed = dataObj.lastAvailableDay;
             // colorCodesDiffEncoded = dataObj.colorCodesDiffEncoded
             // hopefully erics data doesn't change
             for (var i = 0; i < counties.length; i++) {
@@ -162,7 +162,7 @@ function loadInitialData(data) {
                             erics.features[i].properties[cases[casesIndex].daysElapsed+"_color"] = colorCode;
                             let nextAvailableDay = (casesIndex!=cases.length-1) ? cases[casesIndex+1].daysElapsed : lastDayElapsed;
                             let nextActualDay = cases[casesIndex].daysElapsed + 1;
-                            while(nextActualDay<nextAvailableDay){
+                            while(nextActualDay<=nextAvailableDay){
                                 erics.features[i].properties[nextActualDay+"_color"] = colorCode;
                                 nextActualDay++;
                             }
@@ -288,14 +288,12 @@ function initMap(data, fullData) {
                         //     stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(element.count);
                         //     flag = 1;
                         // }
-                        if ((!stop && element.daysElapsed > currentDayValue) || index == casesConfirmed.length-1) {
-                            if(oldCount==-1){oldCount=element.count;}
-                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(oldCount);
+                        if (element.daysElapsed < currentDayValue) {
+                            oldCount = element.count;
                             flag = 1;
-                            stop=true
                         }
-                        oldCount = element.count;
                     });
+                    stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(oldCount);
                     stop=false;
                     oldCount=-1;
                     // We won't see a death with out seeing other cases
@@ -307,15 +305,12 @@ function initMap(data, fullData) {
                                 // if (element.date == currentDate) {
                                 //     stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(element.count);
                                 // } 
-                                console.log(currentDayValue);
-                                if ((!stop && element.daysElapsed > currentDayValue) || index == deathsConfirmed.length-1) {
-                                    if(oldCount==-1){oldCount=element.count;}
-                                    stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(oldCount);
+                                if (element.daysElapsed < currentDayValue) {
+                                    oldCount = element.count;
                                     flag = 1;
-                                    stop=true
                                 }
-                                oldCount = element.count;
                             });
+                            stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(oldCount);
                         } else {
                             stringBuilder += "<br>No deaths in this county.";  
                         }
