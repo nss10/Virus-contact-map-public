@@ -1,10 +1,10 @@
 from flask import Flask, request,render_template, url_for, redirect,flash,render_template
 from flask_cors import CORS
 from timeline_object import timelineObject
-from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations,get_county_matches,getEricsData,filterPlacesStayedLongerThan
+from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations,get_county_matches,getEricsData,filterPlacesStayedLongerThan,getRoomName
 from response import get_response
 from helper import get_json_from_path,replaceKeys
-from mdb import save_to_db,get_place_visits
+from mdb import save_to_db,get_place_visits,add_qrData_to_collection
 import json,uuid,os,sys
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +13,13 @@ app.config.from_pyfile('config.py')
 @app.route("/test")
 def testMethod():
     return "Server running!"
+
+@app.route("/postTest", methods=['POST'])
+def postTest():
+    record = [request.get_json()]
+    add_qrData_to_collection(record)
+    return "You've entered " + str(getRoomName(record[0]['code']))
+    
 
 @app.route(app.config['ROUTE_PROCESS_INPUT'], methods=["get"])
 def process_input():

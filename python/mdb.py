@@ -22,11 +22,15 @@ def add_cases_data_to_collection(countyList):
 def add_feature_data_to_collection(featureList):
     save_to_db(featureList,ericsCollection)
 
+def add_qrData_to_collection(qrData):
+    save_to_db(qrData,qrCollection)
+
 client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
 db = client[dbConf["dbname"]]
 collection = db[dbConf['collection']]
 countyCollection = db[dbConf['countyLocationCollection']]
 ericsCollection = db[dbConf['ericsCollection']]
+qrCollection = db[dbConf['qrCollection']]
 
 
 def save_to_db(pvList,collectionName=collection,userDefinedId=False):    

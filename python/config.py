@@ -32,7 +32,9 @@ DB_LOCAL={
     "collection":"placesVisited",
     "dailyCollection":"latestCollection",
     "countyLocationCollection" : "countyLocations",
-    "ericsCollection" : "ericsCollection"
+    "ericsCollection" : "ericsCollection",
+    "qrCollection" : "qrCollection",
+    "roomCollection" : "roomCollection"
 }
 DB_REMOTE={
     "uri":'173.28.146.185',
@@ -43,6 +45,8 @@ DB_REMOTE={
     "collection":"infectedPlaces",
     "dailyCollection":"latestCollection",
     "countyLocationCollection" : "countyLocations",
-    "ericsCollection" : "ericsCollection"
+    "ericsCollection" : "ericsCollection",
+    "qrCollection" : "qrCollection",
+    "roomCollection" : "roomCollection"
 }
 DB=DB_REMOTE if BACKEND_REMOTE else DB_LOCAL

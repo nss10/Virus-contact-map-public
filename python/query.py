@@ -15,6 +15,11 @@ collection = db[dbConf['collection']]
 perDayCollection = db[dbConf['dailyCollection']]
 countyCollection = db[dbConf['countyLocationCollection']]
 ericsCollection = db[dbConf['ericsCollection']]
+roomCollection  = db[dbConf['roomCollection']]
+
+def getRoomName(roomId):
+  retCollection = list(roomCollection.find({"id":roomId},{ "_id": 0,"name" : 1}))[0]['name']
+  return retCollection
 
 
 def getCountyLocations():
