@@ -7,7 +7,8 @@ config = {
     countyCases_url: "/countyCasesData",
     allInfected_url: "/allData",
     countyCases_url: "/countyCasesData",
-    ericsData_url: "/ericsData"
+    ericsData_url: "/ericsData",
+    mapbox_token: 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA'
 }
 
 config['server_ip'] = config.backend_remote ? config.server_remote : config.server_local;

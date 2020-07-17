@@ -19,7 +19,8 @@ CCD={
     "confirmed_cases": "CC",
     "deaths": "D",
     "daysElapsed": "DE",
-    "count": "C"
+    "count": "C",
+    "isPredicted":"IP"
 }
 
 

@@ -7,6 +7,7 @@ from datetime import date
 import random
 import pandas as pd
 import io,os, requests
+from datetime import datetime as dt
 dbConf = cfg.DB
 
 client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
@@ -15,7 +16,8 @@ collection = db[dbConf['collection']]
 perDayCollection = db[dbConf['dailyCollection']]
 countyCollection = db[dbConf['countyLocationCollection']]
 ericsCollection = db[dbConf['ericsCollection']]
-
+countyLocations = {}
+lastFetchedDate = dt(2020,1,22)
 def getCountyLocations_non__diffEncoded():	
   retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))	
   case_count_set=set()	
@@ -36,29 +38,33 @@ def getCountyLocations_non__diffEncoded():
   return {"colorCodes" : colorCodesDiffEncoded, "collection" : retCollection}
 
 def getCountyLocations():
-  retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
-  case_count_set=set()
-  for item in retCollection:
-    caseList=[]
-    deathList=[]
-    oldCount=0
-    for case in item['confirmed_cases']:
-      if(case['count']>0):
+  global lastFetchedDate,countyLocations
+  if(lastFetchedDate!=dt.date(dt.now())):
+    lastFetchedDate=dt.date(dt.now())
+    print("updating cache")
+    retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
+    case_count_set=set()
+    for item in retCollection:
+      caseList=[]
+      deathList=[]
+      oldCount=0
+      for case in item['confirmed_cases']:
+        if(case['count']>0):
+          if(oldCount!=case['count']):
+            oldCount=case['count']
+            caseList.append(case)
+          case_count_set.add(case['count'])
+      oldCount=0
+      for case in item['deaths']:
         if(oldCount!=case['count']):
           oldCount=case['count']
-          caseList.append(case)
-        case_count_set.add(case['count'])
-    oldCount=0
-    for case in item['deaths']:
-      if(oldCount!=case['count']):
-        oldCount=case['count']
-        deathList.append(case)          
-    item['confirmed_cases']=caseList
-    item['deaths']=deathList
-    colorCodes = get_quantile(list(case_count_set))
-    colorCodesDiffEncoded = addDiffEncodingOnColorCodes(colorCodes)
-  return {"lastAvailableDay":retCollection[0]['confirmed_cases'][-1]['daysElapsed'], "colorCodes" : colorCodesDiffEncoded,"collection" : retCollection}
-
+          deathList.append(case)          
+      item['confirmed_cases']=caseList
+      item['deaths']=deathList
+      colorCodes = get_quantile(list(case_count_set))
+      colorCodesDiffEncoded = addDiffEncodingOnColorCodes(colorCodes)
+      countyLocations = {"lastAvailableDay":retCollection[0]['confirmed_cases'][-1]['daysElapsed'], "colorCodes" : colorCodesDiffEncoded,"collection" : retCollection}
+  return countyLocations
 def getEricsData():
   return  list(ericsCollection.find({},{ "_id": 0}))
     
