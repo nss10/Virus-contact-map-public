@@ -18,24 +18,6 @@ countyCollection = db[dbConf['countyLocationCollection']]
 ericsCollection = db[dbConf['ericsCollection']]
 countyLocations = {}
 lastFetchedDate = dt(2020,1,22)
-def getCountyLocations_non__diffEncoded():	
-  retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))	
-  case_count_set=set()	
-  for item in retCollection:	
-    caseList=[]	
-    deathList=[]	
-    for case in item['confirmed_cases']:	
-      if(case['count']>0):	
-        case_count_set.add(case['count'])	
-        caseList.append(case)	
-    for case in item['deaths']:	
-      if(0!=case['count']):	
-        deathList.append(case)          	
-    item['confirmed_cases']=caseList	
-    item['deaths']=deathList	
-  colorCodes = get_quantile(list(case_count_set)) 
-  colorCodesDiffEncoded = addDiffEncodingOnColorCodes(colorCodes)	
-  return {"colorCodes" : colorCodesDiffEncoded, "collection" : retCollection}
 
 def getCountyLocations():
   global lastFetchedDate,countyLocations
@@ -65,6 +47,7 @@ def getCountyLocations():
       colorCodesDiffEncoded = addDiffEncodingOnColorCodes(colorCodes)
       countyLocations = {"lastAvailableDay":retCollection[0]['confirmed_cases'][-1]['daysElapsed'], "colorCodes" : colorCodesDiffEncoded,"collection" : retCollection}
   return countyLocations
+
 def getEricsData():
   return  list(ericsCollection.find({},{ "_id": 0}))
     
@@ -83,7 +66,6 @@ def addDiffEncodingOnColorCodes(colorCodes):
     if(colorCodes[key]!=oldVal):
       oldVal=retVal[key]=colorCodes[key]
   return retVal
-      
 
 def updateCacheAndFetch():
   perDayCollection.drop()
@@ -93,6 +75,7 @@ def updateCacheAndFetch():
     retVal.append({"address": "","location": item["place_location"]["location"]["coordinates"], "start": "", "end": "", "timeDifference": 0, "loggedDate": str(date.today())})
   save_to_db(retVal,perDayCollection) 
   return retVal
+
 def getSpatioTemporalMatch(placesVisited, radius, timeSpan):
   '''
     Returns list of all location objects that fall within the distance range and timespan \n
@@ -177,39 +160,3 @@ def filterPlacesStayedLongerThan(places, time):
       place['risk'] = getRiskScore(place)
       placeList.append(place)
   return placeList
-
-
-def test():
-  countyList = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
-  caseCountList = [get_latest_cases_count(county) for county in countyList]
-  colorCodes = get_quantile(caseCountList)
-
-def getFutureData():
-  token= os.environ.get('GIT_AUTH_TOKEN')
-  headers = {'Authorization': 'token %s' % token}
-  url='https://raw.githubusercontent.com/Wjerry5/uiuc-covid19-prediction-county/master/covid19-prediction-county.csv'
-  print(url)
-  s = requests.get(url,headers=headers).content
-  df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-  fips_set = set(df['County_FIPS'].dropna().astype(int))
-  date_range = sorted(list(set(df['date'])))
-  df_conf = pd.DataFrame(columns=['fips']+date_range)
-  df_conf.index=df_conf['fips']
-  df_deaths = pd.DataFrame(columns=['fips']+date_range)
-  df_deaths.index=df_conf['fips']
-  for county in fips_set:
-      df1 = df[df['County_FIPS']==county].iloc[:,[1,2,3]]
-      df1.index=df1['date']
-      dfc1=df1.transpose().iloc[[1],:]
-      dfd1=df1.transpose().iloc[[2],:]
-      dfc1['fips']=dfd1['fips']=county
-      df_conf = df_conf.append(dfc1,sort=False)
-      df_deaths = df_deaths.append(dfd1,sort=False)
-  df_conf.index=df_conf['fips']
-  df_deaths.index=df_deaths['fips']
-  return [df_conf,df_deaths]
-
-if __name__ == "__main__":
-  get_geometry_from_erics("01009")
-
- 

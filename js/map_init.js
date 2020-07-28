@@ -134,15 +134,14 @@ function loadInitialData(data) {
             counties = dataObj.collection
             colorCodes = dataObj.colorCodes
             lastDayElapsed = dataObj.lastAvailableDay;
-            // colorCodesDiffEncoded = dataObj.colorCodesDiffEncoded
             // hopefully erics data doesn't change
             for (var i = 0; i < counties.length; i++) {
                 // cut out the first part of the geoid
                 var geoid = erics.features[i].properties.GEO_ID.substring(9,);
                 // just a double check if theres an inconsitency in data, we really just wanna break out of the loop
-                if (geoid == counties[i][config['ccd']['GEO_ID']]/**Replace here */) {
+                if (geoid == counties[i][config['ccd']['GEO_ID']]) {
                     // our cases array that will change as we reconstruct the differential encoding
-                    var cases = counties[i][config['ccd']['confirmed_cases']];/**Replace here */
+                    var cases = counties[i][config['ccd']['confirmed_cases']];
                     // make sure there are cases in the county
                     if (cases.length > 0) {
                         // current index
@@ -154,14 +153,14 @@ function loadInitialData(data) {
                         // iterate from the first day in cases until today
                         for (var j = 0; j < cases.length; j++) {
                             // Get the max of all cases
-                            if (cases[casesIndex][config['ccd']['count']] > maxCases)/**Replace here */
-                                maxCases = cases[casesIndex][config['ccd']['count']];/**Replace here */
-                            cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex][config['ccd']['daysElapsed']]));/**Replace here */
-                            erics.features[i].properties.dates.push(cases[casesIndex][config['ccd']['daysElapsed']]);/**Replace here */
-                            colorCode = getColorCode(colorCodes,cases[casesIndex][config['ccd']['count']]);/**Replace here */
-                            erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_color"] = colorCode;/**Replace here */
-                            let nextAvailableDay = (casesIndex!=cases.length-1) ? cases[casesIndex+1][config['ccd']['daysElapsed']] : lastDayElapsed;/**Replace here */
-                            let nextActualDay = cases[casesIndex][config['ccd']['daysElapsed']] + 1;/**Replace here */
+                            if (cases[casesIndex][config['ccd']['count']] > maxCases)
+                                maxCases = cases[casesIndex][config['ccd']['count']];
+                            cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex][config['ccd']['daysElapsed']]));
+                            erics.features[i].properties.dates.push(cases[casesIndex][config['ccd']['daysElapsed']]);
+                            colorCode = getColorCode(colorCodes,cases[casesIndex][config['ccd']['count']]);
+                            erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_color"] = colorCode;
+                            let nextAvailableDay = (casesIndex!=cases.length-1) ? cases[casesIndex+1][config['ccd']['daysElapsed']] : lastDayElapsed;
+                            let nextActualDay = cases[casesIndex][config['ccd']['daysElapsed']] + 1;
                             while(nextActualDay<=nextAvailableDay){
                                 erics.features[i].properties[nextActualDay+"_color"] = colorCode;
                                 nextActualDay++;
@@ -172,7 +171,7 @@ function loadInitialData(data) {
                         erics.features[i].properties['latestColor'] = colorCode;
                     }
                     // load deaths into an array for easy interaction
-                    var deaths = counties[i][config['ccd']['deaths']];/**Replace here */
+                    var deaths = counties[i][config['ccd']['deaths']];
                     // make sure there are deaths in the county before doing anything else
                     if (deaths.length > 0) {
                         // current index
@@ -180,14 +179,14 @@ function loadInitialData(data) {
                         // iterate through all deaths to add the date field
                         for (var j = 0; j < deaths.length; j++) {
                             // Get the max of all deaths
-                            if (deaths[deathsIndex][config['ccd']['count']] > maxDeaths)/**Replace here */
-                                maxDeaths = deaths[deathsIndex][config['ccd']['count']];/**Replace here */
-                            deaths[deathsIndex]['date'] = niceDate(addToDate(startDate, deaths[deathsIndex][config['ccd']['daysElapsed']])); /**Replace here */
+                            if (deaths[deathsIndex][config['ccd']['count']] > maxDeaths)
+                                maxDeaths = deaths[deathsIndex][config['ccd']['count']];
+                            deaths[deathsIndex]['date'] = niceDate(addToDate(startDate, deaths[deathsIndex][config['ccd']['daysElapsed']])); 
                             deathsIndex ++;
                         }
                     }
-                    erics.features[i].properties['confirmed_cases'] = counties[i][config['ccd']['confirmed_cases']];/**Replace here */
-                    erics.features[i].properties['deaths'] = counties[i][config['ccd']['deaths']];/**Replace here */
+                    erics.features[i].properties['confirmed_cases'] = counties[i][config['ccd']['confirmed_cases']];
+                    erics.features[i].properties['deaths'] = counties[i][config['ccd']['deaths']];
                 } else {
                     displayFooterMessage("An error occured with combining erics data.", true);
                     console.log(geoid);
@@ -218,7 +217,7 @@ function loadInitialData(data) {
             displayFooterMessage("Erics county data was empty. Try reloading the page in a minute or so.", true);
         }
     }
-    // load all points
+    // load all points -- loads all the locations where infected people have been(at certain higher height) -- not doing it anymore
     // $.ajax({
     //     method: "GET",
     //     url: config.server_ip + config.allData_url,
@@ -282,7 +281,7 @@ function initMap(data, fullData) {
             let currentElement = {}
             if (casesConfirmed && casesConfirmed.length > 0) {
                 casesConfirmed.forEach((element, index) => {
-                    if (element[config['ccd']['daysElapsed']] < currentDayValue) { /**Replace here */
+                    if (element[config['ccd']['daysElapsed']] < currentDayValue) { 
                         currentElement = element;
                         flag = 1;
                     }
@@ -298,7 +297,7 @@ function initMap(data, fullData) {
                     var deathsConfirmed = JSON.parse(feature.properties['deaths']);
                     if (deathsConfirmed.length > 0) {
                         deathsConfirmed.forEach((element, index) => {
-                            if (element[config['ccd']['daysElapsed']] < currentDayValue) { /**Replace here */
+                            if (element[config['ccd']['daysElapsed']] < currentDayValue) { 
                                 currentElement = element;
                                 flag = 2;
                             }
@@ -404,7 +403,7 @@ function initContactMap(center, option, countyData) {
             };
             for (var i = 0; i < countyData['collection'].length; i++) {
                 for (var j = 0; j < erics.features.length; j++) {
-                    if (erics.features[j].properties.GEO_ID.substring(9,) == countyData['collection'][i][config['ccd']['GEO_ID']]/**Replace here */) {
+                    if (erics.features[j].properties.GEO_ID.substring(9,) == countyData['collection'][i][config['ccd']['GEO_ID']]) {
                         formatedData.features.push({
                             'geometry': erics.features[j].geometry,
                             'properties': erics.features[j].properties,

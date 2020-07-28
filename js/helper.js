@@ -87,8 +87,8 @@ function addToDate(date, days) {
     return date.addDays(days);
 }
 
+// This function is needed to overcome the hassle of diffEncoding and get apt color code
 function getColorCode(colorCodes, count){
-    //colorArray[colorCodes[cases[casesIndex].count]];
     for(key in colorCodes){
         if(parseInt(key)>count){
             return colorArray[colorCodes[key]-1];

@@ -1,4 +1,4 @@
-from flask import Flask, request,render_template, url_for, redirect,flash,render_template
+from flask import Flask, request, url_for, redirect
 from flask_cors import CORS
 from timeline_object import timelineObject
 from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations,get_county_matches,getEricsData,filterPlacesStayedLongerThan

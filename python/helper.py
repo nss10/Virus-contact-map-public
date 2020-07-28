@@ -29,28 +29,32 @@ def getTimeSince(infectedTime):
     diff = time.time() - int(infectedTime["startTimestampMs"])
     return diff
 
+
 def getDaysSinceTimeLineEpoch(timeInMs):
     diff = datetime(2020, 5, 17) - datetime.fromtimestamp(int(timeInMs)/1000.0)
     return diff.days
 
+
 def getDiffDaysSinceDataEpoch(newDate):
     diff = newDate - datetime(2020, 1, 22)
     return diff.days
+
 
 def get_json_from_path(path):
     with open(path) as json_file:
         return json.load(json_file)
 
 
-def get_latest_cases_count(county,daysSinceEpoch):
+def get_latest_cases_count(county, daysSinceEpoch):
     firstConfirmedCaseDay = int(county['confirmed_cases'][0]['daysElapsed'])
     return county['confirmed_cases'][daysSinceEpoch-firstConfirmedCaseDay]['count'] if firstConfirmedCaseDay < daysSinceEpoch < int(county['confirmed_cases'][-1]['daysElapsed'])else 0
 
 
 def get_quantile(arr):
     arr = list(dict.fromkeys(arr))
-    if(len(arr)==1):
-        return {arr[0] : 5} # If single county returns median color from the list
+    if(len(arr) == 1):
+        # If single county returns median color from the list
+        return {arr[0]: 5}
     labelList = list(range(11))
     x = pd.qcut(arr, len(labelList), labels=labelList)
     return dict((x, y) for x, y in zip(arr, list(x)))
@@ -75,18 +79,17 @@ def isPointInCounty(lat, lon, county_dict, get_geometry_from_erics, poly_dict={}
 
 
 def getRiskScore(place):
-    diff = int(place['duration']['endTimestampMs']) - int(place['duration']['endTimestampMs'])
+    diff = int(place['duration']['endTimestampMs']) - int(place['duration']['endTimestampMs'])  #Bug -- needs to be fixed. probably it is end - start timestamp
     minute = 60*1000
     if(diff >= 30*minute):
         return 1
-    elif(diff >=15*minute):
+    elif(diff >= 15*minute):
         return 0.7
     else:
         return 0
 
-def replaceKeys(config,source):
+
+def replaceKeys(config, source):
     for key in config.keys():
-        source = source.replace(key,config[key])
+        source = source.replace(key, config[key])
     return source
-if __name__ == "__main__":
-    print(get_quantile([1,1]))
