@@ -11,6 +11,7 @@ var ericDataAttempts = 0;   // Attempts to grab erics data
 var maxCases = 0;           // Max cases to determine the min and max for gradient
 var maxDeaths = 0;          // Max deaths to determine the min and max for gradient
 var currentDate = '';       // Current day determined from the slider
+var currentDayValue = 0;    // Numerical value of current day determined from the slider
 var mapStyle = 'mapbox://styles/mapbox/dark-v10';
 var uploadOption = "countyLevel";    // countyLevel, infectedPlaces, etc..
 
@@ -53,7 +54,7 @@ function loadEricData(data){
 }
 
 function drawBlankMap() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
+    mapboxgl.accessToken = config['mapbox_token'];
     map = new mapboxgl.Map({
         container: 'map',
         style: mapStyle,
@@ -132,14 +133,15 @@ function loadInitialData(data) {
             console.log(dataObj);
             counties = dataObj.collection
             colorCodes = dataObj.colorCodes
+            lastDayElapsed = dataObj.lastAvailableDay;
             // hopefully erics data doesn't change
             for (var i = 0; i < counties.length; i++) {
                 // cut out the first part of the geoid
                 var geoid = erics.features[i].properties.GEO_ID.substring(9,);
                 // just a double check if theres an inconsitency in data, we really just wanna break out of the loop
-                if (geoid == counties[i].GEO_ID) {
+                if (geoid == counties[i][config['ccd']['GEO_ID']]) {
                     // our cases array that will change as we reconstruct the differential encoding
-                    var cases = counties[i].confirmed_cases;
+                    var cases = counties[i][config['ccd']['confirmed_cases']];
                     // make sure there are cases in the county
                     if (cases.length > 0) {
                         // current index
@@ -147,22 +149,29 @@ function loadInitialData(data) {
 
                         erics.features[i].properties['dates'] = new Array();
                         // most recently changed date in the for current index
-                        var lastChangedDate = addToDate(startDate, cases[0].daysElapsed);
+                        let colorCode;
                         // iterate from the first day in cases until today
                         for (var j = 0; j < cases.length; j++) {
                             // Get the max of all cases
-                            if (cases[casesIndex].count > maxCases)
-                                maxCases = cases[casesIndex].count;
-                            cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex].daysElapsed));
-                            erics.features[i].properties.dates.push(cases[casesIndex].daysElapsed);
-                            erics.features[i].properties[cases[casesIndex].daysElapsed+"_color"] = colorArray[colorCodes[cases[casesIndex].count]];
+                            if (cases[casesIndex][config['ccd']['count']] > maxCases)
+                                maxCases = cases[casesIndex][config['ccd']['count']];
+                            cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex][config['ccd']['daysElapsed']]));
+                            erics.features[i].properties.dates.push(cases[casesIndex][config['ccd']['daysElapsed']]);
+                            colorCode = getColorCode(colorCodes,cases[casesIndex][config['ccd']['count']]);
+                            erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_color"] = colorCode;
+                            let nextAvailableDay = (casesIndex!=cases.length-1) ? cases[casesIndex+1][config['ccd']['daysElapsed']] : lastDayElapsed;
+                            let nextActualDay = cases[casesIndex][config['ccd']['daysElapsed']] + 1;
+                            while(nextActualDay<=nextAvailableDay){
+                                erics.features[i].properties[nextActualDay+"_color"] = colorCode;
+                                nextActualDay++;
+                            }
                             // will add colors to erics properties
                             casesIndex ++;
                         }
-                        erics.features[i].properties['latestColor'] = colorArray[colorCodes[cases[casesIndex - 1].count]]
+                        erics.features[i].properties['latestColor'] = colorCode;
                     }
                     // load deaths into an array for easy interaction
-                    var deaths = counties[i].deaths;
+                    var deaths = counties[i][config['ccd']['deaths']];
                     // make sure there are deaths in the county before doing anything else
                     if (deaths.length > 0) {
                         // current index
@@ -170,14 +179,14 @@ function loadInitialData(data) {
                         // iterate through all deaths to add the date field
                         for (var j = 0; j < deaths.length; j++) {
                             // Get the max of all deaths
-                            if (deaths[deathsIndex].count > maxDeaths)
-                                maxDeaths = deaths[deathsIndex].count;
-                            deaths[deathsIndex]['date'] = niceDate(addToDate(startDate, deaths[deathsIndex].daysElapsed));
+                            if (deaths[deathsIndex][config['ccd']['count']] > maxDeaths)
+                                maxDeaths = deaths[deathsIndex][config['ccd']['count']];
+                            deaths[deathsIndex]['date'] = niceDate(addToDate(startDate, deaths[deathsIndex][config['ccd']['daysElapsed']])); 
                             deathsIndex ++;
                         }
                     }
-                    erics.features[i].properties['confirmed_cases'] = counties[i].confirmed_cases;
-                    erics.features[i].properties['deaths'] = counties[i].deaths;
+                    erics.features[i].properties['confirmed_cases'] = counties[i][config['ccd']['confirmed_cases']];
+                    erics.features[i].properties['deaths'] = counties[i][config['ccd']['deaths']];
                 } else {
                     displayFooterMessage("An error occured with combining erics data.", true);
                     console.log(geoid);
@@ -208,7 +217,7 @@ function loadInitialData(data) {
             displayFooterMessage("Erics county data was empty. Try reloading the page in a minute or so.", true);
         }
     }
-    // load all points
+    // load all points -- loads all the locations where infected people have been(at certain higher height) -- not doing it anymore
     // $.ajax({
     //     method: "GET",
     //     url: config.server_ip + config.allData_url,
@@ -222,7 +231,7 @@ function loadInitialData(data) {
 
 // initializes map
 function initMap(data, fullData) {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA';
+    mapboxgl.accessToken = config['mapbox_token'];
     map = new mapboxgl.Map({
         container: 'map',
         style: mapStyle,
@@ -269,27 +278,36 @@ function initMap(data, fullData) {
             var casesConfirmed = JSON.parse(feature.properties['confirmed_cases']);
             // Flag if there was no cases for that date
             var flag = 0;
-            if (casesConfirmed) {
-                if (casesConfirmed.length > 0) {
-                    casesConfirmed.forEach(element => {
-                        if (element.date == currentDate) {
-                            stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(element.count);
-                            flag = 1;
+            let currentElement = {}
+            if (casesConfirmed && casesConfirmed.length > 0) {
+                casesConfirmed.forEach((element, index) => {
+                    if (element[config['ccd']['daysElapsed']] < currentDayValue) { 
+                        currentElement = element;
+                        flag = 1;
+                    }
+                });
+                if (flag == 1) {
+                    let futureText = currentElement[config['ccd']['isPredicted']] ? " [Forecasted]" : "";
+                    stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(currentElement[config['ccd']['count']]) + futureText;
+                }
+
+                // We won't see a death with out seeing other cases
+                if (flag == 1) {
+                    // grab our deaths array
+                    var deathsConfirmed = JSON.parse(feature.properties['deaths']);
+                    if (deathsConfirmed.length > 0) {
+                        deathsConfirmed.forEach((element, index) => {
+                            if (element[config['ccd']['daysElapsed']] < currentDayValue) { 
+                                currentElement = element;
+                                flag = 2;
+                            }
+                        });
+                        if (flag == 2) {
+                            let futureText = currentElement[config['ccd']['isPredicted']] ? " [Forecasted]" : "";
+                            stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(currentElement[config['ccd']['count']]) + futureText;
                         }
-                    });
-                    // We won't see a death with out seeing other cases
-                    if (flag == 1) {
-                        // grab our deaths array
-                        var deathsConfirmed = JSON.parse(feature.properties['deaths']);
-                        if (deathsConfirmed.length > 0) {
-                            deathsConfirmed.forEach(element => {
-                                if (element.date == currentDate) {
-                                    stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(element.count);
-                                } 
-                            });
-                        } else {
-                            stringBuilder += "<br>No deaths in this county.";  
-                        }
+                    } else {
+                        stringBuilder += "<br>No deaths in this county.";
                     }
                 }
             }
@@ -346,6 +364,7 @@ function filterBy(date) {
        "rgba(0,0,0,0)"
     ]
     );
+    currentDayValue = dateList[date];
     currentDate = niceDate(addToDate(startDate, dateList[date]));
     // the number of days from our first case until now
     var daysFromFirst = date_diff_indays(startDate, getToday());
@@ -384,7 +403,7 @@ function initContactMap(center, option, countyData) {
             };
             for (var i = 0; i < countyData['collection'].length; i++) {
                 for (var j = 0; j < erics.features.length; j++) {
-                    if (erics.features[j].properties.GEO_ID.substring(9,) == countyData['collection'][i]['GEO_ID']) {
+                    if (erics.features[j].properties.GEO_ID.substring(9,) == countyData['collection'][i][config['ccd']['GEO_ID']]) {
                         formatedData.features.push({
                             'geometry': erics.features[j].geometry,
                             'properties': erics.features[j].properties,

@@ -1,10 +1,11 @@
-from flask import Flask, request,render_template, url_for, redirect
+from flask import Flask, request, url_for, redirect
 from flask_cors import CORS
 from timeline_object import timelineObject
 from query import getSpatioTemporalMatch,getAllInfectedLocations,updateCacheAndFetch,getCountyLocations,get_county_matches,getEricsData,filterPlacesStayedLongerThan
 from response import get_response
-from helper import get_json_from_path
+from helper import get_json_from_path,replaceKeys
 from mdb import save_to_db,get_place_visits
+
 import json,uuid,os,sys
 app = Flask(__name__)
 CORS(app)
@@ -39,7 +40,7 @@ def intialData():
 
 @app.route(app.config['GET_COUNTY_CASES_DATA'])
 def countyLocationData():
-    return json.dumps(getCountyLocations())
+    return replaceKeys(app.config['CCD'],json.dumps(getCountyLocations(), separators=(',', ':')))
 
 
 @app.route(app.config['GET_ERICS_DATA'])
@@ -87,5 +88,4 @@ def uploadFile(file,errorFiles, uploadList):
         print("Exception caught " + str(e) + " while adding "+file.filename)
         errorFiles.append(file.filename)
         return False
-    
     

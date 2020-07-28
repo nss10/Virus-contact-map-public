@@ -12,9 +12,21 @@ GET_ALL_INFECTED_DATA='/allData'
 GET_COUNTY_CASES_DATA='/countyCasesData'
 GET_ERICS_DATA='/ericsData'
 BACKEND_REMOTE=True
+FLASK_HOME='C:\\Users\\nvas_\\Documents\\VCM\\Virus-Contact-Map\\python\\'
+CCD={
+    "GEO_ID": "ID",
+    "NAME": "N",
+    "confirmed_cases": "CC",
+    "deaths": "D",
+    "daysElapsed": "DE",
+    "count": "C",
+    "isPredicted":"IP"
+}
+
+
 DB_LOCAL={
     "uri":'localhost',
-     "port":27017,   
+    "port":27017,   
     "dbname":"testdb",
     "un":"",
     "pwd":"",
