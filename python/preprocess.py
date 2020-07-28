@@ -30,6 +30,7 @@ def countyData(path):
     deaths_df = getDeaths()
 
     pred_conf, pred_death =  getFutureData()
+    strainData = getStrainData()
     
     lastDate = datetime.strptime(confirmed_df.columns[-2],'%m/%d/%y')
     for dateIndex in range(1,len(pred_conf.columns)):
@@ -53,7 +54,6 @@ def countyData(path):
         for county in counties:
             c = county['properties']
             c['geometry'] = county['geometry']
-
             confirmed_series = confirmed_df[confirmed_df['CODE']==c['GEO_ID']].values.tolist()
             pred_conf_series = pred_conf[pred_conf['fips']==int(c['GEO_ID'][-5:])].values.tolist()
             
@@ -65,6 +65,7 @@ def countyData(path):
                     pred_ccases  = [ccases[-1]]*(len(pred_conf.columns)-1)
                 c['confirmed_cases'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),ccases)]
                 c['confirmed_cases'] += [{'daysElapsed':(pred_DaysElapsed+i), 'count':c, 'isPredicted' : True} for i,c in enumerate(pred_ccases)]
+                c['strain_data'] = strainData[int(c['GEO_ID'][-5:])] if int(c['GEO_ID'][-5:]) in strainData else []
                 deaths_series = deaths_df[deaths_df['CODE']==c['GEO_ID']].values.tolist()
                 pred_death_series = pred_death[pred_death['fips']==int(c['GEO_ID'][-5:])].values.tolist()
                 dcases = deaths_series[0][4:-2]
@@ -112,6 +113,27 @@ def getFutureData():
   return [df_conf,df_deaths]
 
 
+def getStrainData():
+    def removeDateKey(rec):
+        rec = rec.copy()
+        del rec['date']
+        return rec
+    token = os.environ.get('GIT_AUTH_TOKEN')
+    headers = {'Authorization': 'token %s' % token}
+    url = 'https://raw.githubusercontent.com/gagnonlab/ncov-data/master/mock-data.csv'
+    print(url)
+    s = requests.get(url, headers=headers).content
+    df = pd.read_csv(io.StringIO(s.decode('utf-8')))
+    df['date'] = [getDiffDaysSinceDataEpoch(datetime.strptime(date,'%m/%d/%Y')) for date in df['date']]
+    fips_set = set(df['countyFIPS'].dropna().astype(int))
+    county_dict = {}
+    for county in fips_set:
+        county_dict[county] = json.loads(df[df['countyFIPS'] == county] \
+                                .drop(columns=['countyFIPS']) \
+                                .rename(columns={'-': 'Other','date':'DE'}) \
+                                .to_json(orient="records"))
+    return county_dict
+
 def main():
     if not os.path.exists('./data'):
         os.makedirs('./data')
@@ -122,5 +144,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-   

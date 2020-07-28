@@ -24,7 +24,7 @@ def getCountyLocations():
   if(lastFetchedDate!=dt.date(dt.now())):
     lastFetchedDate=dt.date(dt.now())
     print("updating cache")
-    retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1}))
+    retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1, "strain_data":1}))
     case_count_set=set()
     for item in retCollection:
       caseList=[]

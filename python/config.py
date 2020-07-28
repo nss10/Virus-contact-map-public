@@ -20,7 +20,8 @@ CCD={
     "deaths": "D",
     "daysElapsed": "DE",
     "count": "C",
-    "isPredicted":"IP"
+    "isPredicted":"IP",
+    "strain_data" : "SD"
 }
 
 
