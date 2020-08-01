@@ -326,7 +326,7 @@ function initMap(data, fullData) {
                     }
                 });
                 
-                if(currentElement && false){
+                if(currentElement){  // temporary
                     let daysElapsedTag = config['ccd']['daysElapsed'];
                     let otherTag = "Other"; 
                     stringBuilder += "<table align='center'> <th colspan=2><br><strong>Strain Data</strong></th>"
@@ -338,14 +338,14 @@ function initMap(data, fullData) {
                     stringBuilder += "</table>"
                 }
 
-                if(true){
+                if(false){ // temporary
                     stringBuilder += "<br><br><a href='#'>View Strain Data ></a>" + " <br><br> <a href='#'>View Mobility Data ></a>"
                 }
             }
             stringBuilder += "</div>";
             // Display a popup with the name of the county
             var textString = "<strong class=\"map-info-box-title\">" + feature.properties.NAME + "</strong>" + stringBuilder;
-            popup.setLngLat(e.lngLat).setHTML(textString).addTo(map);
+            popup.setLngLat(e.lngLat).setHTML(textString).setMaxWidth("500px").addTo(map);
         });
         map.on('mouseleave', 'county', function() {
             map.getCanvas().style.cursor = '';
@@ -556,7 +556,8 @@ function initContactMap(center, option, countyData) {
         // Create a popup, but don't add it to the map yet.
         var popup = new mapboxgl.Popup({
             closeButton: false,
-            closeOnClick: false
+            closeOnClick: false,
+            
         });
             
         map.on('mouseenter', 'user-position', function(e) {
