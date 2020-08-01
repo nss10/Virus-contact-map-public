@@ -31,7 +31,7 @@ def countyData(path):
 
     pred_conf, pred_death =  getFutureData()
     strainData = getStrainData()
-    
+    mobilityData = getMobilityData()
     lastDate = datetime.strptime(confirmed_df.columns[-2],'%m/%d/%y')
     for dateIndex in range(1,len(pred_conf.columns)):
         firstFutureDate = datetime.strptime(pred_conf.columns[dateIndex],'%Y-%m-%d')
@@ -66,6 +66,7 @@ def countyData(path):
                 c['confirmed_cases'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),ccases)]
                 c['confirmed_cases'] += [{'daysElapsed':(pred_DaysElapsed+i), 'count':c, 'isPredicted' : True} for i,c in enumerate(pred_ccases)]
                 c['strain_data'] = strainData[int(c['GEO_ID'][-5:])] if int(c['GEO_ID'][-5:]) in strainData else []
+                c['mobility_data'] = mobilityData[(c['GEO_ID'][-5:])] if (c['GEO_ID'][-5:]) in mobilityData else []
                 deaths_series = deaths_df[deaths_df['CODE']==c['GEO_ID']].values.tolist()
                 pred_death_series = pred_death[pred_death['fips']==int(c['GEO_ID'][-5:])].values.tolist()
                 dcases = deaths_series[0][4:-2]
@@ -130,8 +131,43 @@ def getStrainData():
     for county in fips_set:
         county_dict[county] = json.loads(df[df['countyFIPS'] == county] \
                                 .drop(columns=['countyFIPS']) \
-                                .rename(columns={'-': 'Other','date':'DE'}) \
+                                .rename(columns={'-': 'Other','date':'daysElapsed'}) \
                                 .to_json(orient="records"))
+    return county_dict
+
+def getMobilityData():   
+    url = 'https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv'
+    print(url)
+    s = requests.get(url).content
+    data = pd.read_csv(io.StringIO(s.decode('utf-8')))
+    data['date'] = [getDiffDaysSinceDataEpoch(datetime.strptime(date,'%Y-%m-%d')) for date in data['date']]
+    data = data[data['country_region_code'] == 'US'] \
+        .dropna(subset=['census_fips_code'], how='all') \
+        .drop(columns=['country_region_code', 'country_region', 'sub_region_1', 'sub_region_2','metro_area', 'iso_3166_2_code']) \
+        .astype({
+                            'date' : 'int64',
+                            'retail_and_recreation_percent_change_from_baseline': 'Int64',
+                            'grocery_and_pharmacy_percent_change_from_baseline': 'Int64',
+                            'parks_percent_change_from_baseline': 'Int64',
+                            'transit_stations_percent_change_from_baseline': 'Int64',
+                            'workplaces_percent_change_from_baseline': 'Int64',
+                            'residential_percent_change_from_baseline': 'Int64'
+                     }) \
+        .rename(columns=
+                    {
+                            'date' : 'daysElapsed',
+                            'retail_and_recreation_percent_change_from_baseline': 'retail_and_recreation',
+                            'grocery_and_pharmacy_percent_change_from_baseline': 'grocery_and_pharmacy',
+                            'parks_percent_change_from_baseline': 'parks',
+                            'transit_stations_percent_change_from_baseline': 'transit_stations',
+                            'workplaces_percent_change_from_baseline': 'workplaces',
+                            'residential_percent_change_from_baseline': 'residential'
+                    }) 
+    fips_set = set(data['census_fips_code'])
+    county_dict = {}
+    for county in fips_set:
+        county_dict[str(int(county)).zfill(5)] = json.loads(data[data['census_fips_code']==county] \
+                                                                .drop(columns=['census_fips_code'])                                                                     .to_json(orient="values"))
     return county_dict
 
 def main():
