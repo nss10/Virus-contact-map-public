@@ -115,10 +115,6 @@ def getFutureData():
 
 
 def getStrainData():
-    def removeDateKey(rec):
-        rec = rec.copy()
-        del rec['date']
-        return rec
     token = os.environ.get('GIT_AUTH_TOKEN')
     headers = {'Authorization': 'token %s' % token}
     url = 'https://raw.githubusercontent.com/gagnonlab/ncov-data/master/mock-data.csv'
