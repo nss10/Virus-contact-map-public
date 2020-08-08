@@ -137,7 +137,8 @@ def getMobilityData():
     s = requests.get(url).content
     data = pd.read_csv(io.StringIO(s.decode('utf-8')))
     data['date'] = [getDiffDaysSinceDataEpoch(datetime.strptime(date,'%Y-%m-%d')) for date in data['date']]
-    data = data[data['country_region_code'] == 'US'] \
+    # data = data[data['country_region_code'] == 'US'] \  #replace next line with this when broadeing the filter 
+    data = data[data['sub_region_1'] == 'Illinois'] \
         .dropna(subset=['census_fips_code'], how='all') \
         .drop(columns=['country_region_code', 'country_region', 'sub_region_1', 'sub_region_2','metro_area', 'iso_3166_2_code']) \
         .astype({
@@ -163,7 +164,8 @@ def getMobilityData():
     county_dict = {}
     for county in fips_set:
         county_dict[str(int(county)).zfill(5)] = json.loads(data[data['census_fips_code']==county] \
-                                                                .drop(columns=['census_fips_code'])                                                                     .to_json(orient="values"))
+                                                                .drop(columns=['census_fips_code'])                                                                     
+                                                                .to_json(orient="records"))
     return county_dict
 
 def main():

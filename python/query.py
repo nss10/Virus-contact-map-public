@@ -26,6 +26,8 @@ def getCountyLocations():
     print("updating cache")
     retCollection = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":1,"confirmed_cases":1, "deaths":1, "strain_data":1, "mobility_data":1}))
     case_count_set=set()
+    mob_entity_set=set()
+
     for item in retCollection:
       caseList=[]
       deathList=[]
@@ -43,9 +45,17 @@ def getCountyLocations():
           deathList.append(case)          
       item['confirmed_cases']=caseList
       item['deaths']=deathList
-      colorCodes = get_quantile(list(case_count_set))
-      colorCodesDiffEncoded = addDiffEncodingOnColorCodes(colorCodes)
-      countyLocations = {"lastAvailableDay":retCollection[0]['confirmed_cases'][-1]['daysElapsed'], "colorCodes" : colorCodesDiffEncoded,"collection" : retCollection}
+      if 'mobility_data' in item: 
+        # print(item['mobility_data'])
+        for entry in item['mobility_data']:
+          for key in entry:
+            if key !='daysElapsed' and entry[key]!=None:
+              mob_entity_set.add(entry[key])
+    caseColorCodes = get_quantile(list(case_count_set))
+    colorCodesDiffEncoded = addDiffEncodingOnColorCodes(caseColorCodes)
+    mobilityColorCodes = get_quantile(list(mob_entity_set))
+    mobilityColorCodesDiffEncoded = addDiffEncodingOnColorCodes(mobilityColorCodes)
+    countyLocations = {"lastAvailableDay":retCollection[0]['confirmed_cases'][-1]['daysElapsed'], "colorCodes" : colorCodesDiffEncoded,"mobilityColorCodes" : mobilityColorCodesDiffEncoded, "collection" : retCollection}
   return countyLocations
 
 def getEricsData():

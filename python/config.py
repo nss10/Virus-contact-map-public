@@ -29,6 +29,7 @@ CCD={
     "transit_stations" : "T_S",
     "workplaces" : "W",
     "residential" : "R",
+    "null" : "~",
 }
 
 
@@ -41,7 +42,8 @@ DB_LOCAL={
     "collection":"placesVisited",
     "dailyCollection":"latestCollection",
     "countyLocationCollection" : "countyLocations",
-    "ericsCollection" : "ericsCollection"
+    "ericsCollection" : "ericsCollection",
+    "mobilityFeatureCollection":"mobilityFeatureCollection",
 }
 DB_REMOTE={
     "uri":'173.28.146.185',
@@ -52,6 +54,7 @@ DB_REMOTE={
     "collection":"infectedPlaces",
     "dailyCollection":"latestCollection",
     "countyLocationCollection" : "countyLocations",
-    "ericsCollection" : "ericsCollection"
+    "ericsCollection" : "ericsCollection",
+    "mobilityFeatureCollection" : "mobilityFeatureCollection",
 }
 DB=DB_REMOTE if BACKEND_REMOTE else DB_LOCAL

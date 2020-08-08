@@ -133,6 +133,7 @@ function loadInitialData(data) {
             console.log(dataObj);
             counties = dataObj.collection
             colorCodes = dataObj.colorCodes
+            mobColorCodes = dataObj.mobilityColorCodes
             lastDayElapsed = dataObj.lastAvailableDay;
             // hopefully erics data doesn't change
             for (var i = 0; i < counties.length; i++) {
@@ -149,7 +150,7 @@ function loadInitialData(data) {
 
                         erics.features[i].properties['dates'] = new Array();
                         // most recently changed date in the for current index
-                        let colorCode;
+                        let colorCode,mobColorCode;
                         // iterate from the first day in cases until today
                         for (var j = 0; j < cases.length; j++) {
                             // Get the max of all cases
@@ -158,7 +159,9 @@ function loadInitialData(data) {
                             cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex][config['ccd']['daysElapsed']]));
                             erics.features[i].properties.dates.push(cases[casesIndex][config['ccd']['daysElapsed']]);
                             colorCode = getColorCode(colorCodes,cases[casesIndex][config['ccd']['count']]);
+                            // TODO: Add mobility color code keys for each category
                             erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_color"] = colorCode;
+                            erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_mob_color"] = colorCode;
                             let nextAvailableDay = (casesIndex!=cases.length-1) ? cases[casesIndex+1][config['ccd']['daysElapsed']] : lastDayElapsed;
                             let nextActualDay = cases[casesIndex][config['ccd']['daysElapsed']] + 1;
                             while(nextActualDay<=nextAvailableDay){
@@ -354,6 +357,7 @@ function forceToday() {
 }
 
 // filter by date for county map
+// TODO: See if you can update the code design here. To change the paint property based on mobility data
 function filterBy(date) {
     date_color=date+"_color"
     var filters = ['!=',date_color, null];
