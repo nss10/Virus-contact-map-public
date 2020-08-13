@@ -33,6 +33,7 @@ def countyData(path):
     strainData = getStrainData()
     mobilityData = getMobilityData()
     lastDate = datetime.strptime(confirmed_df.columns[-2],'%m/%d/%y')
+    pred_DaysElapsed=None
     for dateIndex in range(1,len(pred_conf.columns)):
         firstFutureDate = datetime.strptime(pred_conf.columns[dateIndex],'%Y-%m-%d')
         if(lastDate< firstFutureDate):
@@ -64,7 +65,8 @@ def countyData(path):
                 else:
                     pred_ccases  = [ccases[-1]]*(len(pred_conf.columns)-1)
                 c['confirmed_cases'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),ccases)]
-                c['confirmed_cases'] += [{'daysElapsed':(pred_DaysElapsed+i), 'count':c, 'isPredicted' : True} for i,c in enumerate(pred_ccases)]
+                if pred_DaysElapsed is not None:
+                    c['confirmed_cases'] += [{'daysElapsed':(pred_DaysElapsed+i), 'count':c, 'isPredicted' : True} for i,c in enumerate(pred_ccases)]
                 c['strain_data'] = strainData[int(c['GEO_ID'][-5:])] if int(c['GEO_ID'][-5:]) in strainData else []
                 c['mobility_data'] = mobilityData[(c['GEO_ID'][-5:])] if (c['GEO_ID'][-5:]) in mobilityData else []
                 deaths_series = deaths_df[deaths_df['CODE']==c['GEO_ID']].values.tolist()
@@ -78,7 +80,8 @@ def countyData(path):
             else:
                 c['confirmed_cases'] = [{'daysElapsed': (d+1), 'count': 0} for d in range(len(date_series))]
                 c['deaths'] = [{'daysElapsed': (d+1), 'count': 0} for d in range(len(date_series))]
-                c['deaths'] += [{'daysElapsed':(pred_DaysElapsed+i), 'count':c, 'isPredicted' : True} for i,c in enumerate(pred_dcases)]
+                if pred_DaysElapsed is not None:
+                    c['deaths'] += [{'daysElapsed':(pred_DaysElapsed+i), 'count':c, 'isPredicted' : True} for i,c in enumerate(pred_dcases)]
             c['GEO_ID'] = c['GEO_ID'][-5:]
             output_data['counties'].append(c)
             # Modify here to insert each c into mongodb
@@ -117,11 +120,11 @@ def getFutureData():
 def getStrainData():
     token = os.environ.get('GIT_AUTH_TOKEN')
     headers = {'Authorization': 'token %s' % token}
-    url = 'https://raw.githubusercontent.com/gagnonlab/ncov-data/master/mock-data.csv'
+    url = 'https://raw.githubusercontent.com/gagnonlab/ncov-data/master/gagnon_data.csv'
     print(url)
     s = requests.get(url, headers=headers).content
     df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-    df['date'] = [getDiffDaysSinceDataEpoch(datetime.strptime(date,'%m/%d/%Y')) for date in df['date']]
+    df['date'] = [getDiffDaysSinceDataEpoch(datetime.strptime(date,'%Y-%m-%d')) for date in df['date']]
     fips_set = set(df['countyFIPS'].dropna().astype(int))
     county_dict = {}
     for county in fips_set:

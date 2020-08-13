@@ -190,6 +190,7 @@ function loadInitialData(data) {
                     }
                     erics.features[i].properties['confirmed_cases'] = counties[i][config['ccd']['confirmed_cases']];
                     erics.features[i].properties['deaths'] = counties[i][config['ccd']['deaths']];
+                    erics.features[i].properties['strain_data'] = counties[i][config['ccd']['strain_data']];
                 } else {
                     displayFooterMessage("An error occured with combining erics data.", true);
                     console.log(geoid);
@@ -291,7 +292,7 @@ function initMap(data, fullData) {
                 });
                 if (flag == 1) {
                     let futureText = currentElement[config['ccd']['isPredicted']] ? " [Forecasted]" : "";
-                    stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(currentElement[config['ccd']['count']]) + futureText;
+                    stringBuilder += "<br/><br/>"+ futureText+"<br/><strong> Confirmed Cases:</strong> " + niceNumber(currentElement[config['ccd']['count']]);
                 }
 
                 // We won't see a death with out seeing other cases
@@ -307,22 +308,47 @@ function initMap(data, fullData) {
                         });
                         if (flag == 2) {
                             let futureText = currentElement[config['ccd']['isPredicted']] ? " [Forecasted]" : "";
-                            stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(currentElement[config['ccd']['count']]) + futureText;
+                            stringBuilder += "<br><br><strong>Deaths:</strong> " + niceNumber(currentElement[config['ccd']['count']]);
                         }
                     } else {
-                        stringBuilder += "<br>No deaths in this county.";
+                        stringBuilder += "<br><br/>No deaths in this county.";
                     }
                 }
             }
             // Flag will be 0 if no cases were gathered on date the user is currently looking at
             if (flag == 0) {
-                stringBuilder += "<br>There are no reported cases on this day.";
+                stringBuilder += "<br><br/>There are no reported cases on this day.";
             }
 
+
+            let strainData =  JSON.parse(feature.properties['strain_data']);
+            if(strainData.length){
+                strainData.forEach((element, index) => {
+                    if (element[config['ccd']['daysElapsed']] < currentDayValue) { 
+                        currentElement = element;
+                    }
+                });
+                
+                if(currentElement){  // temporary
+                    let daysElapsedTag = config['ccd']['daysElapsed'];
+                    let otherTag = "Other"; 
+                    stringBuilder += "<table align='center'> <th colspan=2><br><strong>Strain Data</strong></th>"
+                    for(strain in currentElement){
+                        if(strain!=daysElapsedTag && currentElement[strain]>0){
+                            stringBuilder += "<tr><td><strong>"+strain+": </strong></td><td> " + niceNumber(currentElement[strain]) +"</td><tr>";
+                        }
+                    }
+                    stringBuilder += "</table>"
+                }
+
+                if(false){ // temporary
+                    stringBuilder += "<br><br><a href='#'>View Strain Data ></a>" + " <br><br> <a href='#'>View Mobility Data ></a>"
+                }
+            }
             stringBuilder += "</div>";
             // Display a popup with the name of the county
             var textString = "<strong class=\"map-info-box-title\">" + feature.properties.NAME + "</strong>" + stringBuilder;
-            popup.setLngLat(e.lngLat).setHTML(textString).addTo(map);
+            popup.setLngLat(e.lngLat).setHTML(textString).setMaxWidth("500px").addTo(map);
         });
         map.on('mouseleave', 'county', function() {
             map.getCanvas().style.cursor = '';
@@ -534,7 +560,8 @@ function initContactMap(center, option, countyData) {
         // Create a popup, but don't add it to the map yet.
         var popup = new mapboxgl.Popup({
             closeButton: false,
-            closeOnClick: false
+            closeOnClick: false,
+            
         });
             
         map.on('mouseenter', 'user-position', function(e) {
