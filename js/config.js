@@ -21,7 +21,14 @@ config['ccd'] = {
     count: "C",
     isPredicted : "IP",
     null:"~",
-    strain_data: "SD"
+    strain_data: "SD",
+    mobility_data:"MD",
+    retail_and_recreation : "R_R",
+    grocery_and_pharmacy : "G_P",
+    parks : "P",
+    transit_stations : "T_S",
+    workplaces : "W",
+    residential : "R",
 }
 
 

@@ -14,7 +14,7 @@ var currentDate = '';       // Current day determined from the slider
 var currentDayValue = 0;    // Numerical value of current day determined from the slider
 var mapStyle = 'mapbox://styles/mapbox/dark-v10';
 var uploadOption = "countyLevel";    // countyLevel, infectedPlaces, etc..
-
+let globalCategory='cases'; //FIXME: temporary -- until a UI dropdown for color code selector is made
 // initializer functions -------------------------------------------------------
 // main initializer
 function mainInit() {
@@ -159,13 +159,11 @@ function loadInitialData(data) {
                             cases[casesIndex]['date'] = niceDate(addToDate(startDate, cases[casesIndex][config['ccd']['daysElapsed']]));
                             erics.features[i].properties.dates.push(cases[casesIndex][config['ccd']['daysElapsed']]);
                             colorCode = getColorCode(colorCodes,cases[casesIndex][config['ccd']['count']]);
-                            // TODO: Add mobility color code keys for each category
-                            erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_color"] = colorCode;
-                            erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_mob_color"] = colorCode;
+                            erics.features[i].properties[cases[casesIndex][config['ccd']['daysElapsed']]+"_cases_color"] = colorCode;
                             let nextAvailableDay = (casesIndex!=cases.length-1) ? cases[casesIndex+1][config['ccd']['daysElapsed']] : lastDayElapsed;
                             let nextActualDay = cases[casesIndex][config['ccd']['daysElapsed']] + 1;
                             while(nextActualDay<=nextAvailableDay){
-                                erics.features[i].properties[nextActualDay+"_color"] = colorCode;
+                                erics.features[i].properties[nextActualDay+"_cases_color"] = colorCode;
                                 nextActualDay++;
                             }
                             // will add colors to erics properties
@@ -186,6 +184,16 @@ function loadInitialData(data) {
                                 maxDeaths = deaths[deathsIndex][config['ccd']['count']];
                             deaths[deathsIndex]['date'] = niceDate(addToDate(startDate, deaths[deathsIndex][config['ccd']['daysElapsed']])); 
                             deathsIndex ++;
+                        }
+                    }
+                    //TODO: Verify if there is any better way of doing it
+                    mobData = counties[i][config['ccd']['mobility_data']];
+                    if(mobData){
+                        for(let mobDataIndex=0; mobDataIndex<mobData.length;mobDataIndex++){
+                            for(let category in mobData[mobDataIndex]){
+                                mobColorCode = getColorCode(mobColorCodes,mobData[mobDataIndex][config['ccd'][category]]);
+                                erics.features[i].properties[mobData[mobDataIndex][config['ccd']['daysElapsed']]+"_"+category+"_color"] = mobColorCode;
+                            }
                         }
                     }
                     erics.features[i].properties['confirmed_cases'] = counties[i][config['ccd']['confirmed_cases']];
@@ -283,6 +291,7 @@ function initMap(data, fullData) {
             // Flag if there was no cases for that date
             var flag = 0;
             let currentElement = {}
+            //TODO: - verify mobility data and handle color codes well accordingly
             if (casesConfirmed && casesConfirmed.length > 0) {
                 casesConfirmed.forEach((element, index) => {
                     if (element[config['ccd']['daysElapsed']] < currentDayValue) { 
@@ -369,7 +378,7 @@ function initMap(data, fullData) {
         }
         // filter listener
         document.getElementById("slider").addEventListener('input', function(e) {
-            filterBy(e.target.value);
+            filterBy(e.target.value,globalCategory); //FIXME: This is temporary, will change later
         });
     }); // eof map.onLoad
 } // eof initMap
@@ -384,8 +393,8 @@ function forceToday() {
 
 // filter by date for county map
 // TODO: See if you can update the code design here. To change the paint property based on mobility data
-function filterBy(date) {
-    date_color=date+"_color"
+function filterBy(date, category='cases') {
+    date_color=date+"_"+category+"_color"
     var filters = ['!=',date_color, null];
     map.setPaintProperty('county-layer', 'fill-color', 
     [   

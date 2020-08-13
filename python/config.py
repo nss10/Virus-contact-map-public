@@ -29,7 +29,7 @@ CCD={
     "transit_stations" : "T_S",
     "workplaces" : "W",
     "residential" : "R",
-    "null" : "~",
+    "null" : "\"~\"",
 }
 
 
