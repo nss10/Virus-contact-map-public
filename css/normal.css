@@ -20,7 +20,8 @@
     position: absolute;
     z-index: 1;
     padding-bottom: 5px;
-    background-color: #4d0066;
+    /* background-color: #002c66; */
+    background-color: black;
     font-weight: bold;
     width: 100%;
 }
@@ -125,7 +126,8 @@
     padding: 10px;
 }
 .map-slider .map-overlay-inner {
-    background-color: rgba(77, 0, 102, 0.7);
+    /* background-color: rgba(77, 0, 102, 0.7); */
+    background-color: black;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     padding: 10px;
@@ -147,7 +149,8 @@
 }
 /* Density Color overlay */
 .map-overlay-color {
-    background-color: rgba(77, 0, 102, 0.7);
+    /* background-color: rgba(77, 0, 102, 0.7); */
+    background-color: black;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     position: absolute;
@@ -166,7 +169,8 @@
 }
 /* Side menu */
 .map-side-menu {
-    background-color: rgba(77, 0, 102, 0.7);
+    /* background-color: rgba(77, 0, 102, 0.7); */
+    background-color: black;
     height: 100%;
     position: fixed;
     z-index: 1;
@@ -175,11 +179,17 @@
     left: 0;
     width:300px;
     overflow-x: hidden;
+    overflow-y: auto;
     padding-top: 60px;
     transition: 0.5s;
 }
+
+.map-side-menu::-webkit-scrollbar {
+    display: none;
+}
 .map-side-interface-button {
-    background-color: rgba(77, 0, 102, 0.7);
+    /* background-color: rgba(77, 0, 102, 0.7); */
+    background-color: black;
     width: 25px;
     height: 30px;
     top: 55px;
@@ -189,14 +199,18 @@
 }
 .map-side-interface-button:hover {
     background-color: rgba(147, 1, 196, 0.7);
+    /* background-color: white; */
 }
+
 .arrow {
-    border: solid rgb(240, 180, 255);
+    /* border: solid rgb(240, 180, 255); */
+    border: solid white;
     margin-top: 7px;
     border-width: 0 5px 5px 0;
     display: inline-block;
     padding: 5px;
 }
+
 .right-arrow {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
@@ -232,7 +246,8 @@
     z-index: 10;
     position: fixed;
     bottom: 0;
-    background-color: #4d0066;
+    /* background-color: #4d0066; */
+    background-color: black;
     width: 100%;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
@@ -241,7 +256,8 @@
 }
 .modal-footer {
     padding: 2px 16px;
-    background-color: #4d0066;
+    /* background-color: #4d0066; */
+    background-color: black;
     color: rgb(199, 199, 199);
 }
 .modal-content {
