@@ -1,34 +1,8 @@
 import json
 import time
 import requests
-import numpy as np
 import pandas as pd
-from shapely.geometry import Point, Polygon
 from datetime import datetime
-
-
-def getTimeOverlap(infectedTime, userTime):
-    '''
-    Computes the difference in time in terms of number of hours and returns a floating point number
-    '''
-    if(userTime["endTimestampMs"] < infectedTime["startTimestampMs"]):
-        #  infected person visited after user left : No Chance of overlap
-        return -1
-
-    elif(infectedTime["endTimestampMs"] < userTime["startTimestampMs"]):
-        # user visited after infected person left : Returns the time gap between visits
-        diff = int(userTime["startTimestampMs"]) - int(infectedTime["startTimestampMs"])
-        return diff
-
-    else:
-        # both are at the same place with some time overlap
-        return 0
-
-
-def getTimeSince(infectedTime):
-    diff = time.time() - int(infectedTime["startTimestampMs"])
-    return diff
-
 
 def getDaysSinceTimeLineEpoch(timeInMs):
     diff = datetime(2020, 5, 17) - datetime.fromtimestamp(int(timeInMs)/1000.0)
@@ -58,35 +32,6 @@ def get_quantile(arr):
     labelList = list(range(11))
     x = pd.qcut(arr, len(labelList), labels=labelList)
     return dict((x, y) for x, y in zip(arr, list(x)))
-
-
-def getCountyFromPoint(lat, lon):
-    content = requests.get(
-        "https://geo.fcc.gov/api/census/area?lat="+str(lat)+"&lon="+str(lon)+"&format=json")
-    jsonObj = json.loads(content.content)
-    return jsonObj['results'][0]['county_fips']
-
-
-def isPointInCounty(lat, lon, county_dict, get_geometry_from_erics, poly_dict={}):
-    for county_fips in county_dict:
-        if(county_fips not in poly_dict):
-            poly_dict[county_fips] = get_geometry_from_erics(county_fips)
-        p1 = Point(lon, lat)
-        poly = Polygon(poly_dict[county_fips])
-        if(p1.within(poly)):
-            return True
-    return False
-
-
-def getRiskScore(place):
-    diff = int(place['duration']['endTimestampMs']) - int(place['duration']['endTimestampMs'])  #Bug -- needs to be fixed. probably it is end - start timestamp
-    minute = 60*1000
-    if(diff >= 30*minute):
-        return 1
-    elif(diff >= 15*minute):
-        return 0.7
-    else:
-        return 0
 
 
 def replaceKeys(config, source):
