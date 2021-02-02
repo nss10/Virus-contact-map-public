@@ -11,19 +11,16 @@ def add_cases_data_to_collection(countyList):
 
 client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
 db = client[dbConf["dbname"]]
-collection = db[dbConf['collection']]
 countyCollection = db[dbConf['countyLocationCollection']]
 
 
-def save_to_db(pvList,collectionName=collection,userDefinedId=False):
+def save_to_db(pvList,collectionName,userDefinedId=False):
 
     for pv in pvList:
-        if(userDefinedId and collectionName==collection):
+        if(userDefinedId):
             pv['_id'] = str(pv['centerLat'])+str(pv['centerLon'])+pv['duration']['startTimestampMs']+pv['duration']['endTimestampMs']
         try:
             collectionName.insert(pv)
         except errors.DuplicateKeyError:
             pass
         del pv['_id']
-    if(collectionName==collection):
-        collection.create_index([("location", GEOSPHERE)])

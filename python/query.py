@@ -2,7 +2,6 @@ from pymongo import MongoClient
 from helper import *
 from functools import lru_cache
 import config as cfg
-from mdb import save_to_db
 import time
 from datetime import date
 import random
@@ -13,7 +12,6 @@ dbConf = cfg.DB
 
 client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
 db = client[dbConf["dbname"]]
-collection = db[dbConf['collection']]
 countyCollection = db[dbConf['countyLocationCollection']]
 countyLocations = {}
 ericsData = {}
@@ -41,7 +39,7 @@ def getCountyLocations():
 
 def fetchAndUpdateCache() :
   print("updating cache")
-  countyCasesData = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"NAME":0,"confirmed_cases":1, "deaths":1}))
+  countyCasesData = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"confirmed_cases":1, "deaths":1}))
   case_count_set=set()
   for item in countyCasesData:
     item['confirmed_cases'] = differentialEncode(item['confirmed_cases'])

@@ -4,7 +4,6 @@ from timeline_object import timelineObject
 from query import getCountyLocations,getGeometryData
 from response import get_response
 from helper import get_json_from_path,replaceKeys
-from mdb import save_to_db
 import json,uuid,os,sys
 app = Flask(__name__)
 CORS(app)
