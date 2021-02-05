@@ -11,10 +11,13 @@ const countKey = config['ccd']['count'];
 const daysElapsedKey = config['ccd']['daysElapsed'];
 const FETCH_RETRY_LIMIT = 3;
 const htmlElements = {
-    slider : document.getElementById("slider"),
-    sliderToolbar : document.getElementById("map-overlay-inner"),
-    maxCasesDiv :  document.getElementById("cases-max"),
-    dateLabel : document.getElementById("map-date")
+    slider: document.getElementById("slider"),
+    sliderToolbar: document.getElementById("map-overlay-inner"),
+    maxCasesDiv: document.getElementById("cases-max"),
+    dateLabel: document.getElementById("map-date"),
+    infoTable: document.getElementById("info-table-container"),
+    filterEl:document.getElementById('filter-box'),
+    countyName:document.getElementById('county-name')
 
 }
 
@@ -27,7 +30,7 @@ async function mainInit() {
     let geoJsonPromise = fetch_retry(config.geoJsonData_url, FETCH_RETRY_LIMIT);
     let countyCasesPromise = fetch_retry(config.countyCases_url, FETCH_RETRY_LIMIT);
 
-    let [geoJson,countyCases] = await Promise.all([geoJsonPromise, countyCasesPromise]);
+    let [geoJson, countyCases] = await Promise.all([geoJsonPromise, countyCasesPromise]);
     displayFooterMessage("Loading initial county data, please wait...", false);
     loadInitialData(geoJson, countyCases);
 }
@@ -60,15 +63,12 @@ function loadInitialData(geoJson, countyCases) {
         }
         else {
             let cases = counties[countyIndex][config['ccd']['confirmed_cases']];
-            let deaths = counties[countyIndex][config['ccd']['deaths']];
-            addNiceDateToProp(cases);
-            addNiceDateToProp(deaths);
-
             //For a property whose value decides the color codes
             addColorCodes(geoJson, cases, colorCodes, lastDayElapsed);
 
             geoJson.features[countyIndex].properties['confirmed_cases'] = cases;
-            geoJson.features[countyIndex].properties['deaths'] = deaths;
+            geoJson.features[countyIndex].properties['deaths'] = counties[countyIndex][config['ccd']['deaths']];
+            geoJson.features[countyIndex].properties['strain_data'] = counties[countyIndex]['strain_data'];
         }
     }
     displayFooterMessage("Background loading complete. Map is fully ready.", false);
@@ -76,7 +76,7 @@ function loadInitialData(geoJson, countyCases) {
     latestDateValue = addToDate(startDate, lastDayElapsed)
     initMap(geoJson);
     updateToolbarLimits();
-    
+
     //Local function 
     function addNiceDateToProp(prop) {
         if (prop.length > 0) {
@@ -99,11 +99,11 @@ function loadInitialData(geoJson, countyCases) {
         for (let propIndex = 0; propIndex < prop.length; propIndex++) {
             let daysElapsed = prop[propIndex][daysElapsedKey];
             let caseCount = prop[propIndex][countKey];
-            maxPropValForColorCode = Math.max(caseCount,maxPropValForColorCode);
+            maxPropValForColorCode = Math.max(caseCount, maxPropValForColorCode);
             colorCode = getColorCode(colorCodes, caseCount);
 
             // next date where number of cases is changed
-            let nextAvailableDay = (propIndex < prop.length-1) ? prop[propIndex + 1][daysElapsedKey] : lastDayElapsed;
+            let nextAvailableDay = (propIndex < prop.length - 1) ? prop[propIndex + 1][daysElapsedKey] : lastDayElapsed;
             while (daysElapsed <= nextAvailableDay) {
                 //Making colorcode as a property in the county object (required for mapbox)
                 geoJson.features[countyIndex].properties[daysElapsed + "_color"] = colorCode;
@@ -137,6 +137,7 @@ function initMap(geoJson) {
     var popup = new mapboxgl.Popup({
         closeButton: false
     });
+    let markers = [];
 
     // county geometry
     const countyLayerGeometry = {
@@ -151,11 +152,13 @@ function initMap(geoJson) {
 
     // init of map with blank geojson
     map.on('load', function () {
-        map.addSource('county', {'type': 'geojson','data': geoJson});
+        map.addSource('county', { 'type': 'geojson', 'data': geoJson });
         map.addLayer(countyLayerGeometry);
         map.on('mousemove', 'county-layer', function (e) {
             // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = 'pointer';
+            let strainData = JSON.parse(e.features[0].properties.strain_data)
+            document.getElementById('info-table-container').innerHTML = populateInfoBox(e.features[0].properties.NAME, strainData);
             popup
                 .setLngLat(e.lngLat)
                 .setHTML(getPopupContent(e.features[0]))
@@ -163,15 +166,45 @@ function initMap(geoJson) {
         });
         map.on('mouseleave', 'county', resetPopupProerties);
         map.on('mouseenter', 'county', resetPopupProerties);
-        
+         
         // filter listener
-        htmlElements.slider.addEventListener('input', e =>filterBy(e.target.value));
+        htmlElements.slider.addEventListener('input', e => filterBy(e.target.value));
 
         // filter by initial slider position
         if (dateList) {
             filterBy(lastDayElapsed);
             htmlElements.sliderToolbar.style.visibility = "visible";
         }
+
+        htmlElements.filterEl.addEventListener('keyup', function (e) {
+            markers.forEach(marker=>marker.remove());
+            var value = normalize(e.target.value);
+            let selectedCounty='Search for counties';
+            // Filter visible features that don't match the input value.
+            let filtered = [];
+            if (value) {
+                filtered = geoJson.features.filter(function (feature) {
+                    var name = normalize(feature.properties.NAME);
+                    return name.startsWith(value);
+                });
+                if(filtered.length){
+                    selectedCounty=filtered[0].properties.NAME;
+                    map.flyTo({center:filtered[0].properties.coords, speed:0.5, curve:0});
+                }
+                else{
+                    selectedCounty = "No such county exists";
+                }
+            }
+            htmlElements.countyName.innerText = selectedCounty;
+            filtered.filter(feature => feature.properties.NAME==selectedCounty).forEach(feature=>{
+                let coords =feature.properties.coords;
+                let newMarker = new mapboxgl.Marker({color:'black'});
+                newMarker.setLngLat(coords)
+                .addTo(map);
+                markers.push(newMarker);
+            });
+
+        });
     }); // eof map.onLoad
 
     function resetPopupProerties() {
@@ -184,25 +217,24 @@ function initMap(geoJson) {
 
 function getPopupContent(feature) {
 
-    // Grab our confirmed cases array for the hovered county
-    const casesConfirmed = JSON.parse(feature.properties['confirmed_cases']);
-
+    let casesConfirmed,deathsConfirmed;
     // Start the popup string
     let stringBuilder = "<strong class=\"map-info-box-title\">" + feature.properties.NAME + "</strong>";
+    casesConfirmed = JSON.parse(feature.properties['confirmed_cases']);
     stringBuilder += "<div class=\"map-info-box\">" + currentDate;
     let currentCaseElement = getCurrentElement(casesConfirmed);
     if (currentCaseElement) {
         stringBuilder += "<br><strong>Confirmed Cases:</strong> " + niceNumber(currentCaseElement[countKey]);
         let currentDeathElement = null;
         // grab our deaths array - we get deaths only if we have cases. 
-        const deathsConfirmed = JSON.parse(feature.properties['deaths']);
+        deathsConfirmed = JSON.parse(feature.properties['deaths']);
         currentDeathElement = getCurrentElement(deathsConfirmed);
         if (currentDeathElement) {
             stringBuilder += "<br><strong>Deaths:</strong> " + niceNumber(currentDeathElement[countKey]);
         }
         else {
             stringBuilder += "<br>No deaths in this county.";
-        }
+        } 
     }
     else {
         stringBuilder += "<br>There are no reported cases on this day.";
@@ -211,17 +243,23 @@ function getPopupContent(feature) {
     return stringBuilder
 
 
-    function getCurrentElement(propList) {
-        let currentElement = null;
-        if (propList && propList.length > 0) {
-            propList.forEach((element, index) => {
-                if (element[daysElapsedKey] < currentDayValue) {
-                    currentElement = element;
-                }
-            });
-        }
-        return currentElement;
+    
+}
+
+function normalize(string) {
+    return string.trim().toLowerCase();
+}
+
+function getCurrentElement(propList) {
+    let currentElement = null;
+    if (propList && propList.length > 0) {
+        propList.forEach((element, index) => {
+            if (element[daysElapsedKey] < currentDayValue) {
+                currentElement = element;
+            }
+        });
     }
+    return currentElement;
 }
 
 // Update the colors of map based on selected date
@@ -239,25 +277,42 @@ function filterBy(date) {
     htmlElements.dateLabel.textContent = currentDate;
 }
 
+function populateInfoBox(countyName, strainData){
+    let currentStrainElement = getCurrentElement(strainData);
+    htmlElements.infoTable.style.display='block';
+    let stringBuilder = "";
+    if (currentStrainElement) {
+        stringBuilder+="<table class='info-table'> <th colspan=2><strong color='red'>"+countyName+"</strong><br><strong>Strain Data</strong></th>";
+        stringBuilder+="<tr><td><strong> Strain Type </strong></td><td> Count </td><tr>"
+        for (strain in currentStrainElement) {
+            if (strain != daysElapsedKey) {
+                stringBuilder += "<tr><td><strong>" + strain + " </strong></td><td> " + niceNumber(currentStrainElement[strain]) + "</td><tr>";
+            }
+        }
+        stringBuilder += "</table>";
+    }
+    else{
+        stringBuilder+="<div class='no-strain' align='center'><strong>"+countyName+"</strong><br><strong>No Strain Data</strong></div>";
+    }
+    return stringBuilder;
+}
 
+//-------------------------------------------------------------
 
-// function functions -------------------------------------------------------------
-
-async function fetch_retry(url,attempts){
-    try{
+async function fetch_retry(url, attempts) {
+    try {
         let response = await fetch(config.server_ip + url);
-        if(response.status!=200){
+        if (response.status != 200) {
             throw response.statusText;
         }
         return await response.json();
-        
     }
-    catch(err){
-        if(attempts==0){
+    catch (err) {
+        if (attempts == 0) {
             displayFooterMessage("An error occured while fetching data from the server.", true);
             throw err;
         }
-        return fetch_retry(url,attempts-1);
+        return fetch_retry(url, attempts - 1);
 
     }
 }
