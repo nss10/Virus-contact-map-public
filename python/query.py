@@ -25,6 +25,7 @@ def getGeometryData():
        "_id": 0,
        "properties.GEO_ID":"$GEO_ID",
        "properties.NAME":"$NAME",
+       "properties.coords":"$coords",
        "geometry": 1
        }}
   ]))
@@ -39,7 +40,7 @@ def getCountyLocations():
 
 def fetchAndUpdateCache() :
   print("updating cache")
-  countyCasesData = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"confirmed_cases":1, "deaths":1}))
+  countyCasesData = list(countyCollection.find({},{ "_id": 0,"GEO_ID" : 1,"confirmed_cases":1, "deaths":1, "strain_data":1}))
   case_count_set=set()
   for item in countyCasesData:
     item['confirmed_cases'] = differentialEncode(item['confirmed_cases'])
