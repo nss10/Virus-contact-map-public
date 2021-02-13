@@ -13,14 +13,14 @@ def getConfirmed():
     url = "https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_confirmed_usafacts.csv"
     s = requests.get(url).content
     df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-    df['CODE'] = df.apply(lambda row: f"{row.stateFIPS:02d}{str(row.countyFIPS)[len(str(row.stateFIPS)):]}", axis=1)
+    df['CODE'] = df.apply(lambda row: f"{row.StateFIPS:02d}{str(row.countyFIPS)[len(str(row.StateFIPS)):]}", axis=1)
     return df
 
 def getDeaths():
     url = "https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_deaths_usafacts.csv"
     s = requests.get(url).content
     df = pd.read_csv(io.StringIO(s.decode('utf-8')))
-    df['CODE'] = df.apply(lambda row: f"{row.stateFIPS:02d}{str(row.countyFIPS)[len(str(row.stateFIPS)):]}", axis=1)
+    df['CODE'] = df.apply(lambda row: f"{row.StateFIPS:02d}{str(row.countyFIPS)[len(str(row.StateFIPS)):]}", axis=1)
     return df
 
 def getCountyCooords():
@@ -44,7 +44,7 @@ def countyData(path):
     strain_data = getStrainData()
 
     columns = confirmed_df.columns.tolist()
-    date_series = columns[4:-2]
+    date_series = columns[4:-1]
     if not os.path.isfile(path):
         print("Fetching geolocation data")
         url = "https://eric.clst.org/assets/wiki/uploads/Stuff/gz_2010_us_050_00_20m.json"
@@ -69,11 +69,11 @@ def countyData(path):
             confirmed_series = confirmed_df[confirmed_df['CODE']==c['GEO_ID']].values.tolist()
             c['coords'] = coords_df[coords_df['GEO_ID']==c['GEO_ID']].iloc[[0],[2,1]].values.flatten().tolist()
             if len(confirmed_series)> 0:
-                ccases = confirmed_series[0][4:-2]
+                ccases = confirmed_series[0][4:-1]
                 c['confirmed_cases'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),ccases)]
                 c['strain_data'] = strain_data[int(c['GEO_ID'])] if int(c['GEO_ID']) in strain_data else []
                 deaths_series = deaths_df[deaths_df['CODE']==c['GEO_ID']].values.tolist()
-                dcases = deaths_series[0][4:-2]
+                dcases = deaths_series[0][4:-1]
                 c['deaths'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),dcases)]
             else:
                 c['confirmed_cases'] = [{'daysElapsed': (d+1), 'count': 0} for d in range(len(date_series))]
@@ -111,7 +111,7 @@ def main():
     if not os.path.exists('./generated'):
         os.makedirs('./generated')
     countyData("./data/gz_2010_us_050_00_20m.json")
-
+    
 if __name__ == "__main__":
     main()
     
