@@ -154,6 +154,7 @@ function initMap(geoJson) {
     map.on('load', function () {
         map.addSource('county', { 'type': 'geojson', 'data': geoJson });
         map.addLayer(countyLayerGeometry);
+        map.setPaintProperty("water","fill-color",'#00243D');
         map.on('mousemove', 'county-layer', function (e) {
             // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = 'pointer';
@@ -178,6 +179,7 @@ function initMap(geoJson) {
 
         htmlElements.filterEl.addEventListener('keyup', function (e) {
             markers.forEach(marker=>marker.remove());
+            popup.remove();
             var value = normalize(e.target.value);
             let selectedCounty='Search for counties';
             // Filter visible features that don't match the input value.

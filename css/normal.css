@@ -174,7 +174,7 @@ input[type=text] {
     position: absolute;
     padding: 10px;
     top: 50px;
-    width: 15%;
+    width: 350px;
     min-width: 110px;
     max-height: 300px;
     right: 0;
@@ -184,6 +184,10 @@ input[type=text] {
 .search-box-container .search-results{
     padding: 2px;
     text-align: center;
+}
+
+.search-box-container input{
+    padding: 2px;
 }
 
 .info-table-container {
