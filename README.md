@@ -19,8 +19,10 @@ Virus Contact map is a data visualization platform to see the spread of Covid-19
 3. Run <code> pip install -r requirements.txt </code> or <code>python3 -m pip -r 
 requirements.txt</code>
 
-4. Run Flask Server using <code>python3 -m flask run</code> from the [python](./python) directory
+4. Run [preprocess.py](./python/preprocess.py) using Python3 to fetch and update all database records in MongoDB.
 
-5. Intialize the npm server from the root directory by using the command <code> npm update </code>
+5. Run Flask Server using <code>python3 -m flask run</code> from the [python](./python) directory
 
-6. Run NodeJs server using <code> npm start</code> from the root directory
+6. Intialize the npm server from the root directory by using the command <code> npm update </code>
+
+7. Run NodeJs server using <code> npm start</code> from the root directory
