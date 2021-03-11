@@ -18,7 +18,7 @@ const htmlElements = {
     maxCasesDiv: document.getElementById("cases-max"),
     dateLabel: document.getElementById("map-date"),
     infoTable: document.getElementById("info-table-container"),
-    filterEl:document.getElementById('filter-box'),
+    searchBox:document.getElementById('filter-box'),
     countyName:document.getElementById('county-name')
 
 }
@@ -77,18 +77,6 @@ function loadInitialData(geoJson, countyCases, colorCodes) {
     latestDateValue = addToDate(startDate, lastDayElapsed)
     initMap(geoJson);
     updateToolbarLimits();
-
-    //Local function 
-    function addNiceDateToProp(prop) {
-        if (prop.length > 0) {
-            // iterate through all prop instances to add the date field
-            for (let propIndex = 0; propIndex < prop.length; propIndex++) {
-                let daysElapsed = prop[propIndex][daysElapsedKey];
-                // Parsing the daysElapsed property to get the actual date in MM/DD/YYYY format
-                prop[propIndex]['date'] = niceDate(addToDate(startDate, daysElapsed));
-            }
-        }
-    }
 
     //Local function
     function addColorCodes(geoJson,county, colorCodeProperty, colorCodes, lastDayElapsed) {
@@ -179,7 +167,7 @@ function initMap(geoJson) {
             htmlElements.sliderToolbar.style.visibility = "visible";
         }
 
-        htmlElements.filterEl.addEventListener('keyup', function (e) {
+        htmlElements.searchBox.addEventListener('keyup', function (e) {
             markers.forEach(marker=>marker.remove());
             resetPopupProperties();
             var value = normalize(e.target.value);
