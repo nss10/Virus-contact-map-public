@@ -2,13 +2,6 @@ let jsonError = "<p>Unable to load json file. Is it an http or https link direct
 let contributeForm = "<p>JSON file loaded. If you see nothing, then there was probably no location data in the file.</p>";
 
 // ------- Modal js ---------
-var modal = document.getElementById("loginModal");
-// Get the button that opens the modal
-var btn = document.getElementById("loginModal-button");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
 // Modal footer object
 var messageModal = document.getElementById("message-modal");
 
@@ -21,15 +14,6 @@ var errorFlag = false;
 // Map toggle boolean
 var mapSide = true;
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
 
 // When the user clicks on <span> (x) in the footer, close the modal
 footerSpan.onclick = function() {
@@ -59,24 +43,6 @@ function mapSideToggle() {
   mapSide = !mapSide;
 }
 
-// Acts as the tab handler
-function openTab(event, tabName) {
-  var tabContent = document.getElementsByClassName("tab-content");
-  for (var i = 0; i < tabContent.length; i++) {
-    tabContent[i].style.display = "none";
-  }
-  var tabLinks = document.getElementsByClassName("tab-link");
-  for (var i = 0; i < tabLinks.length; i++) {
-    tabLinks[i].className = tabLinks[i].className.replace(" active", "");
-  }
-
-  if (tabName != 'saveData') {
-    
-  }
-  uploadOption = tabName;
-  document.getElementById(tabName).style.display = "block";
-  event.currentTarget.className += " active";
-}
 
 // Will display the footer modal with a message
 // the boolean will determine to higlight it red for an error or not red for a regular message
@@ -98,5 +64,3 @@ function displayFooterMessage(text, error) {
 function ajaxErrorHandle(XMLHttpRequest, textStatus, errorThrown) {
   displayFooterMessage("An error has occured: " + errorThrown, true);
 }
-
-document.getElementById("defaultTab").click();

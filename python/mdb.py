@@ -1,55 +1,44 @@
 from pymongo import MongoClient, GEOSPHERE,errors
-from helper import get_json_from_path
-from timeline_object import timelineObject
 import os
 import config as cfg
 dbConf=cfg.DB
-
-def get_activity_segments(path):
-    to = timelineObject(jsonObject)
-    asList = to.getActivitySegments()
-    return asList
-
-def get_place_visits(jsonObject):
-    to = timelineObject(jsonObject)
-    pvList = to.getPlaceVisits()
-    return pvList
 
 def add_cases_data_to_collection(countyList):
     countyCollection.drop()
     save_to_db(countyList,countyCollection)
 
-def add_feature_data_to_collection(featureList):
-    save_to_db(featureList,ericsCollection)
-
 client = MongoClient(dbConf['uri'], dbConf['port'], username=dbConf['un'],password=dbConf['pwd'],authsource=dbConf['dbname'])
 db = client[dbConf["dbname"]]
-collection = db[dbConf['collection']]
-countyCollection = db[dbConf['countyLocationCollection']]
-ericsCollection = db[dbConf['ericsCollection']]
+countyCollectionName = dbConf['countyLocationCollection']
+countyCollection = db[countyCollectionName]
+metaCollection = db['metaDataCollection']
 
-
-def save_to_db(pvList,collectionName=collection,userDefinedId=False):    
+def save_to_db(pvList,collectionName,userDefinedId=False):
     for pv in pvList:
-        if(userDefinedId and collectionName==collection):
+        if(userDefinedId):
             pv['_id'] = str(pv['centerLat'])+str(pv['centerLon'])+pv['duration']['startTimestampMs']+pv['duration']['endTimestampMs']
         try:
-            collectionName.insert(pv)
+            collectionName.insert(pv, check_keys=False)
         except errors.DuplicateKeyError:
             pass
         del pv['_id']
-    if(collectionName==collection):
-        collection.create_index([("location", GEOSPHERE)])
+
+def add_new_records(geo_id, key_name, records):
+    countyCollection.update_one({"GEO_ID": geo_id},
+                                {"$addToSet": {
+                                        key_name: {
+                                            "$each": records
+                                        }
+                                    }
+    })
 
 
-def process():
-    for dirname, _, filenames in os.walk("../json/"):
-        for filename in filenames:
-            if("test" in dirname or "geo" in dirname):
-                continue
-            jsonObject = get_json_from_path(os.path.join(dirname, filename))
-            pvList = get_place_visits(jsonObject)
-            save_to_db(pvList)
+def set_last_updated_date_in_db(key, dateString):
+    metaCollection.update_one({},{"$set":{key: dateString}},True)
 
-if __name__ == "__main__":
-    process()
+def get_last_updated_date_in_db(key):
+    return list(metaCollection.find({},{"_id":0}))[0][key]
+
+
+if __name__=="__main__":
+    set_last_updated_date_in_db("cases", "2021-02-01")

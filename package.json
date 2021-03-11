@@ -1,0 +1,27 @@
+{
+  "name": "virus-contact-map-public",
+  "version": "1.0.0",
+  "description": "> [ReadMe file In-progress] # Virus-contact-map-public Virus Contact map is a data visualization platform to see the spread of Covid-19 over a period of time across all the counties in the state of United States.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss10/Virus-contact-map-public.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nss10/Virus-contact-map-public/issues"
+  },
+  "homepage": "https://github.com/nss10/Virus-contact-map-public#readme"
+}
