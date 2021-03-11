@@ -1,7 +1,5 @@
 import os
-TEST="Hello World from Config file"
-RADIUS_IN_MTRS=50
-TIMESPAN_IN_HRS=3*24
+
 UPLOAD_PATH= os.getcwd()+"\\tempFiles\\"
 GET_COUNTY_CASES_DATA='/countyCasesData'
 GET_GEOMETRY_DATA='/geometryData'
@@ -13,7 +11,8 @@ CCD={
     "deaths": "D",
     "daysElapsed": "DE",
     "count": "C",
-    "isPredicted":"IP"
+    "isPredicted":"IP",
+    "strain_data":"SD"
 }
 
 
@@ -34,3 +33,11 @@ DB_REMOTE={
     "countyLocationCollection" : "countyLocations"    
 }
 DB=DB_REMOTE if BACKEND_REMOTE else DB_LOCAL
+
+COUNTY_PROPS={
+    "GEO_ID" : "GEO_ID",
+    "CASES" : "confirmed_cases",
+    "DEATHS" : "deaths",
+    "STRAIN" : "strain_data", 
+    "MOBILTY" : "mobility_data"
+}
