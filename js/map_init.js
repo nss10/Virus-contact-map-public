@@ -7,6 +7,7 @@ let currentDayValue = 0;    // Numerical value of current day determined from th
 let colorCodeProperty = config.county_props.CASES;
 let latestDateValue;
 let lastDayElapsed;
+let popup;
 const mapStyle = 'mapbox://styles/mapbox/dark-v10';
 const countKey = config['ccd']['count'];
 const daysElapsedKey = config['ccd']['daysElapsed'];
@@ -135,7 +136,7 @@ function initMap(geoJson) {
         touchZoomRotate: false
     });
 
-    var popup = new mapboxgl.Popup({
+    popup = new mapboxgl.Popup({
         closeButton: false
     });
     let markers = [];
@@ -166,8 +167,8 @@ function initMap(geoJson) {
                 .setHTML(getPopupContent(e.features[0]))
                 .addTo(map);
         });
-        map.on('mouseleave', 'county', resetPopupProerties);
-        map.on('mouseenter', 'county', resetPopupProerties);
+        map.on('mouseleave', 'county', resetPopupProperties);
+        map.on('mouseenter', 'county', resetPopupProperties);
          
         // filter listener
         htmlElements.slider.addEventListener('input', e => filterBy(e.target.value));
@@ -180,7 +181,7 @@ function initMap(geoJson) {
 
         htmlElements.filterEl.addEventListener('keyup', function (e) {
             markers.forEach(marker=>marker.remove());
-            popup.remove();
+            resetPopupProperties();
             var value = normalize(e.target.value);
             let selectedCounty='Search for counties';
             // Filter visible features that don't match the input value.
@@ -210,11 +211,7 @@ function initMap(geoJson) {
         });
     }); // eof map.onLoad
 
-    function resetPopupProerties() {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-        overlay.style.display = 'none';
-    }
+
 } // eof initMap
 
 
@@ -249,6 +246,11 @@ function getPopupContent(feature) {
     
 }
 
+function resetPopupProperties() {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+}
+
 function normalize(string) {
     return string.trim().toLowerCase();
 }
@@ -278,6 +280,7 @@ function filterBy(date) {
     currentDayValue = dateList[date];
     currentDate = niceDate(addToDate(startDate, dateList[date]));
     htmlElements.dateLabel.textContent = currentDate;
+    resetPopupProperties();
 }
 
 function populateInfoBox(countyName, strainData){
