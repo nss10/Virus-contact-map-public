@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 app.config.from_pyfile('config.py')
 
-@app.route("/test")
+@app.route("/")
 def testMethod():
     return "Server running!"
 
