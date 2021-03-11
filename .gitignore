@@ -9,3 +9,4 @@ python/__pycache__/timeline_object.cpython-37.pyc
 .DS_Store
 python/generated/
 python/preprocess.log
+node_modules/
