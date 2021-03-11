@@ -8,3 +8,4 @@ python/__pycache__/query.cpython-37.pyc
 python/__pycache__/timeline_object.cpython-37.pyc
 .DS_Store
 python/generated/
+python/preprocess.log
