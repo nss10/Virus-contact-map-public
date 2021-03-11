@@ -7,6 +7,7 @@ Virus Contact map is a data visualization platform to see the spread of Covid-19
 1. Python 3.x
 2. Pip
 3. MongoDB
+4. NodeJs
 
 
 # How to setup 
@@ -18,6 +19,6 @@ Virus Contact map is a data visualization platform to see the spread of Covid-19
 3. Run <code> pip install -r requirements.txt </code> or <code>python3 -m pip -r 
 requirements.txt</code>
 
-4. Run Flask Server using <code>python3 -m flask run</code>
+4. Run Flask Server using <code>python3 -m flask run</code> from the [python](./python) directory
 
-5. Open [index.html](./index.html) on a browser
+5. Run NodeJs server using <code> npm start</code> from the root directory
