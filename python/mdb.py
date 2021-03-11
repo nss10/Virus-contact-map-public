@@ -1,6 +1,4 @@
 from pymongo import MongoClient, GEOSPHERE,errors
-from helper import get_json_from_path
-from timeline_object import timelineObject
 import os
 import config as cfg
 dbConf=cfg.DB

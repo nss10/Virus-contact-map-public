@@ -4,6 +4,7 @@ let dateList = null;    // List of dates to filter by
 let maxPropValForColorCode = 0; // Max cases to determine the min and max for gradient
 let currentDate = '';       // Current day determined from the slider
 let currentDayValue = 0;    // Numerical value of current day determined from the slider
+let colorCodeProperty = config.county_props.CASES;
 let latestDateValue;
 let lastDayElapsed;
 const mapStyle = 'mapbox://styles/mapbox/dark-v10';
@@ -29,10 +30,10 @@ async function mainInit() {
     // load erics
     let geoJsonPromise = fetch_retry(config.geoJsonData_url, FETCH_RETRY_LIMIT);
     let countyCasesPromise = fetch_retry(config.countyCases_url, FETCH_RETRY_LIMIT);
-
-    let [geoJson, countyCases] = await Promise.all([geoJsonPromise, countyCasesPromise]);
+    let countyColorCodePromise = fetch_retry(config.colorCodes_url+"/" + colorCodeProperty, FETCH_RETRY_LIMIT)
+    let [geoJson, countyCases, colorCodes] = await Promise.all([geoJsonPromise, countyCasesPromise, countyColorCodePromise]);
     displayFooterMessage("Loading initial county data, please wait...", false);
-    loadInitialData(geoJson, countyCases);
+    loadInitialData(geoJson, countyCases, colorCodes);
 }
 
 function drawBlankMap() {
@@ -48,9 +49,8 @@ function drawBlankMap() {
 }
 
 // ajax call to populate county data with formated filter
-function loadInitialData(geoJson, countyCases) {
+function loadInitialData(geoJson, countyCases, colorCodes) {
     let counties = countyCases.collection
-    let colorCodes = countyCases.colorCodes
     lastDayElapsed = countyCases.lastAvailableDay;
 
     for (var countyIndex = 0; countyIndex < counties.length; countyIndex++) {
@@ -62,13 +62,13 @@ function loadInitialData(geoJson, countyCases) {
             break;
         }
         else {
-            let cases = counties[countyIndex][config['ccd']['confirmed_cases']];
+            county = counties[countyIndex];
             //For a property whose value decides the color codes
-            addColorCodes(geoJson, cases, colorCodes, lastDayElapsed);
+            addColorCodes(geoJson, county, colorCodeProperty, colorCodes, lastDayElapsed);
 
-            geoJson.features[countyIndex].properties['confirmed_cases'] = cases;
-            geoJson.features[countyIndex].properties['deaths'] = counties[countyIndex][config['ccd']['deaths']];
-            geoJson.features[countyIndex].properties['strain_data'] = counties[countyIndex]['strain_data'];
+            geoJson.features[countyIndex].properties['confirmed_cases'] = county[config['ccd']['confirmed_cases']];
+            geoJson.features[countyIndex].properties['deaths'] = county[config['ccd']['deaths']];
+            geoJson.features[countyIndex].properties['strain_data'] = county[config['ccd']['strain_data']];
         }
     }
     displayFooterMessage("Background loading complete. Map is fully ready.", false);
@@ -90,7 +90,8 @@ function loadInitialData(geoJson, countyCases) {
     }
 
     //Local function
-    function addColorCodes(geoJson, prop, colorCodes, lastDayElapsed) {
+    function addColorCodes(geoJson,county, colorCodeProperty, colorCodes, lastDayElapsed) {
+        prop = county[config['ccd'][colorCodeProperty]];
         if (prop.length <= 0) {
             return;
         }
