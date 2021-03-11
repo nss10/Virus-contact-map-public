@@ -42,6 +42,8 @@ def countyData(path):
     coords_df = getCountyCooords()
     print("Getting Strain data from repo - ")
     strain_data = getStrainData()
+    print("Getting Mobility data from repo - ")
+    mobility_data = getMobilityData()
 
     columns = confirmed_df.columns.tolist()
     date_series = columns[4:-1]
@@ -72,6 +74,7 @@ def countyData(path):
                 ccases = confirmed_series[0][4:-1]
                 c['confirmed_cases'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),ccases)]
                 c['strain_data'] = strain_data[int(c['GEO_ID'])] if int(c['GEO_ID']) in strain_data else []
+                c['mobility_data'] = mobility_data[c['GEO_ID']] if c['GEO_ID'] in  mobility_data else []
                 deaths_series = deaths_df[deaths_df['CODE']==c['GEO_ID']].values.tolist()
                 dcases = deaths_series[0][4:-1]
                 c['deaths'] = [{'daysElapsed':(d+1), 'count':c} for d,c in zip(range(len(date_series)),dcases)]
@@ -104,6 +107,44 @@ def getStrainData():
                                 .to_json(orient="records"))
     return county_dict
 
+def getMobilityData():   
+    url = 'https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv'
+    print(url)
+    s = requests.get(url).content
+    data = pd.read_csv(io.StringIO(s.decode('utf-8')))
+    data['date'] = [getDiffDaysSinceDataEpoch(datetime.strptime(date,'%Y-%m-%d')) for date in data['date']]
+    # data = data[data['sub_region_1'] == 'Illinois'] \ #replace prev line with this when broadeing the filter 
+    data = data[data['country_region_code'] == 'US']  \
+        .dropna(subset=['census_fips_code'], how='all') \
+        .drop(columns=['country_region_code', 'country_region', 'sub_region_1', 'sub_region_2','metro_area', 'iso_3166_2_code']) \
+        .astype({
+                            'date' : 'int64',
+                            'retail_and_recreation_percent_change_from_baseline': 'Int64',
+                            'grocery_and_pharmacy_percent_change_from_baseline': 'Int64',
+                            'parks_percent_change_from_baseline': 'Int64',
+                            'transit_stations_percent_change_from_baseline': 'Int64',
+                            'workplaces_percent_change_from_baseline': 'Int64',
+                            'residential_percent_change_from_baseline': 'Int64'
+                     }) \
+        .rename(columns=
+                    {
+                            'date' : 'daysElapsed',
+                            'retail_and_recreation_percent_change_from_baseline': 'retail_and_recreation',
+                            'grocery_and_pharmacy_percent_change_from_baseline': 'grocery_and_pharmacy',
+                            'parks_percent_change_from_baseline': 'parks',
+                            'transit_stations_percent_change_from_baseline': 'transit_stations',
+                            'workplaces_percent_change_from_baseline': 'workplaces',
+                            'residential_percent_change_from_baseline': 'residential'
+                    }) 
+    fips_set = set(data['census_fips_code'])
+    print(len(fips_set))
+    county_dict = {}
+    for county in fips_set:
+        county_dict[str(int(county)).zfill(5)] = json.loads(data[data['census_fips_code']==county] \
+                                                                .drop(columns=['census_fips_code'])                                                                     
+                                                                .to_json(orient="records"))
+    return county_dict
+
 def main():
     if not os.path.exists('./data'):
         os.makedirs('./data')
@@ -114,5 +155,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-    
-   
