@@ -21,4 +21,6 @@ requirements.txt</code>
 
 4. Run Flask Server using <code>python3 -m flask run</code> from the [python](./python) directory
 
-5. Run NodeJs server using <code> npm start</code> from the root directory
+5. Intialize the npm server from the root directory by using the command <code> npm update </code>
+
+6. Run NodeJs server using <code> npm start</code> from the root directory
