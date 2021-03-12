@@ -18,7 +18,7 @@ def countyLocationData():
     return replaceKeys(app.config['CCD'],json.dumps(getCountyLocations(), separators=(',', ':')))
 
 @app.route(app.config['GET_GEOMETRY_DATA'])
-def ericsData():
+def geometryData():
     return json.dumps({"type": "FeatureCollection", "features": getGeometryData()})
 
 @app.route("/colorCodes/<prop>")
