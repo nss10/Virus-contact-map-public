@@ -9,7 +9,7 @@ from datetime import datetime
 from helper import getDiffDaysSinceDataEpoch
 from mdb import add_cases_data_to_collection
 
-logging.basicConfig(level=logging.DEBUG, filename='./preprocess.log', format='%(asctime)s - [%(levelname)s] - %(message)s')
+logging.basicConfig(level=logging.DEBUG, filename='./data-preprocess.log', format='%(asctime)s - [%(levelname)s] - %(message)s')
 
 def formatUsaFactsData(url):
     logging.debug(url)
@@ -44,7 +44,7 @@ def getCountyCooords():
 def getStrainData():
     token = os.environ.get('GIT_AUTH_TOKEN')
     if token is None:
-        logging.debug("GIT_AUTH_TOKEN missing from env vars, No Strain data collected.")
+        logging.error("GIT_AUTH_TOKEN missing from env vars, No Strain data collected.")
         return None
     headers = {'Authorization': 'token %s' % token}
     url = 'https://raw.githubusercontent.com/gagnonlab/ncov-data/master/gagnon_data.csv'
@@ -128,7 +128,7 @@ def countyData(path):
     logging.debug("Getting Strain data from repo - ")
     strain_data = getStrainData()
     logging.debug("Getting Mobility data from repo - ")
-    mobility_data = [] #getMobilityData()
+    mobility_data = getMobilityData()
 
     columns = confirmed_df.columns.tolist()
     date_series = columns[4:-1]
@@ -145,6 +145,8 @@ def countyData(path):
         logging.debug("Combining geolocation data with cases and deaths")
         for county in counties:
             c = getBasicCountyInfo(county)
+            if c['GEO_ID'].startswith("72"):
+                continue
             c['coords'] = coords_df[coords_df['GEO_ID']==c['GEO_ID']].iloc[[0],[2,1]].values.flatten().tolist() if coords_df is not None else []
             confirmed_series = confirmed_df[confirmed_df['CODE']==c['GEO_ID']].values.tolist() if confirmed_df is not None else []
             if len(confirmed_series)> 0:
