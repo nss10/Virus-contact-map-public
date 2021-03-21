@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 import json
 
-from query import getCountyLocations,getGeometryData,getColorCodes
+from query import getCountyLevelData,getGeometryData,getColorCodes
 from helper import replaceKeys
 
 app = Flask(__name__)
@@ -13,11 +13,11 @@ app.config.from_pyfile('config.py')
 def testMethod():
     return "Server running!"
 
-@app.route(app.config['GET_COUNTY_CASES_DATA'])
+@app.route("/countyCasesData")
 def countyLocationData():
-    return replaceKeys(app.config['CCD'],json.dumps(getCountyLocations(), separators=(',', ':')))
+    return replaceKeys(app.config['CCD'],json.dumps(getCountyLevelData(), separators=(',', ':')))
 
-@app.route(app.config['GET_GEOMETRY_DATA'])
+@app.route("/geometryData")
 def geometryData():
     return json.dumps({"type": "FeatureCollection", "features": getGeometryData()})
 
