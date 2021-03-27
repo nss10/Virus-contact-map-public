@@ -17,7 +17,7 @@ Virus Contact map is a data visualization platform to see the spread of Covid-19
 2. Install flask server and set the environment variable FLASK_APP to `API.py`
 
 3. Run <code> pip install -r requirements.txt </code> or <code>python3 -m pip -r 
-requirements.txt</code>
+requirements.txt</code> from the [python](./python) directory
 
 4. Run [preprocess.py](./python/preprocess.py) using Python3 to fetch and update all database records in MongoDB.
 
