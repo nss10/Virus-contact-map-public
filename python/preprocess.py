@@ -104,6 +104,9 @@ def getBasicCountyInfo(county):
     #Changed in 2015, but not updated in Erics dataset
     if c['GEO_ID']=="46113":
         c = {"GEO_ID" : '46102',"NAME": 'Oglala Lakota'}
+    #Changed by Census, but not updated in Erics dataset
+    if c['GEO_ID']=="02270":
+        c = {"GEO_ID" : '02158',"NAME": 'Kusilvak'}
     #Changed in 2013, but not updated in Erics dataset
     elif c['GEO_ID']=="51515":
         c['GEO_ID']="51019"
