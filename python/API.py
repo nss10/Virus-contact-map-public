@@ -13,6 +13,10 @@ app.config.from_pyfile('config.py')
 def testMethod():
     return "Server running!"
 
+@app.route("/config/mapboxToken")
+def getMapboxToken():
+    return json.dumps({"token" : app.config['MAPBOX_TOKEN']})
+
 @app.route("/countyCasesData")
 def countyLocationData():
     return replaceKeys(app.config['CCD'],json.dumps(getCountyLevelData(), separators=(',', ':')))

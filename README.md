@@ -30,16 +30,6 @@ requirements.txt</code>
 8. Once Both Flask and Node servers are running, open browser and enter the following url in the address bar http://localhost:3000 to access the application
 
 
-# Working with Strain Data
-
-* Unlike all the datasets that are publicly available, strain Data is the only dataset that is fetched from a private repository. 
-* If you have access to the repo, you can view the dataset here - [Strain_data_csv](https://github.com/gagnonlab/ncov-data/blob/master/gagnon_data.csv)
-* In order to fetch strain data to your local server, you would need to get a GIT_AUTH_TOKEN and set it as an environment variable.
-* Useful Links 
-    - [Creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
-    - [How To Set Environment Variables](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
-
-
 # Working with Mobility Data
 
 * Google's mobility data is a public database that can be downloaded from here - [Google Mobility Data](https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv)

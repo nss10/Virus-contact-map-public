@@ -42,14 +42,9 @@ def getCountyCooords():
     return df.iloc[:,[1,2,3]]
 
 def getStrainData():
-    token = os.environ.get('GIT_AUTH_TOKEN')
-    if token is None:
-        logging.error("GIT_AUTH_TOKEN missing from env vars, No Strain data collected.")
-        return None
-    headers = {'Authorization': 'token %s' % token}
     url = 'https://raw.githubusercontent.com/gagnonlab/ncov-data/master/gagnon_data.csv'
     logging.debug(url)
-    s = requests.get(url, headers=headers).content
+    s = requests.get(url).content
     df = pd.read_csv(io.StringIO(s.decode('utf-8')))
     df['date'] = [getDiffDaysSinceDataEpoch(datetime.strptime(date,'%Y-%m-%d')) for date in df['date']]
     fips_set = set(df['countyFIPS'].dropna().astype(int))

@@ -1,4 +1,5 @@
 BACKEND_REMOTE=False
+MAPBOX_TOKEN='pk.eyJ1IjoiemFjaGFyeTgxNiIsImEiOiJjazd6NXN2eWwwMml0M2tvNGo2c3JkcGFpIn0.aB1upejZ61JQjb_z2g1NuA'
 DB_LOCAL={
     "uri":'localhost',
     "port":27017,   

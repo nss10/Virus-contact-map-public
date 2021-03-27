@@ -26,7 +26,9 @@ const htmlElements = {
 // initializer functions -------------------------------------------------------
 // main initializer
 async function mainInit() {
-    drawBlankMap();
+    let mapboxTokenPromise = fetch_retry(config.mapboxToken_url, FETCH_RETRY_LIMIT);
+    response = await mapboxTokenPromise;
+    drawBlankMap(response.token);
 
     // load erics
     let geoJsonPromise = fetch_retry(config.geoJsonData_url, FETCH_RETRY_LIMIT);
@@ -37,8 +39,8 @@ async function mainInit() {
     loadInitialData(geoJson, countyCases, colorCodes);
 }
 
-function drawBlankMap() {
-    mapboxgl.accessToken = config['mapbox_token'];
+function drawBlankMap(token) {
+    mapboxgl.accessToken = token
     map = new mapboxgl.Map({
         container: 'map',
         style: mapStyle,
